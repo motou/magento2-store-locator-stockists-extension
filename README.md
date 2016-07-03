@@ -1,1 +1,1 @@
-This is a stockists extension for magento2, currently alpha
+This is a stockists extension for magento2, currently alpha 
