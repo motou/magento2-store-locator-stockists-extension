@@ -4,4 +4,32 @@
  * See COPYING.txt for license details.
  */
 ?>
-<p><?= 'Hello world!' ?></p>
+<div id="map-canvas"></div>
+<div class="search-stockists">
+	
+	<div class="search-header">
+		<p class="search-title"><?php echo __("Find a stockist") ?></p>
+		<p class="stockists-intro"><?php echo __("Enter a city, country or full post/zip code") ?></p>
+		<input id="stockist-search-term" type="text" placeholder="Search" /> 
+		<button id="stockists-submit">Search</button>
+	</div>
+	<div class="stockists-results">
+		
+
+				
+		<div class="results-store worldwide">
+
+	        			
+		</div>
+		
+	</div>
+</div>
+<script>
+    require([
+        'jquery',
+        'stockists'
+    ], function ($) {
+        'use strict';
+alert("nu");
+    });
+</script>
