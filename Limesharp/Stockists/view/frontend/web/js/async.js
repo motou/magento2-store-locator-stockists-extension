@@ -1,6 +1,6 @@
 /** @license
  * RequireJS plugin for async dependency load like JSONP and Google Maps
- * Author: Miller Medeiros
+ * Stores: Miller Medeiros
  * Version: 0.1.2 (2014/02/24)
  * Released under the MIT license
  */

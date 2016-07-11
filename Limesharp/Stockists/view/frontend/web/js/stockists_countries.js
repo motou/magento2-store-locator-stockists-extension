@@ -1,4 +1,4 @@
-define(['countries'], function(){
+define(['stockists_countries'], function(){
 	return [
 		{
 		"name": "Afghanistan",

@@ -1,14 +1,13 @@
 require([
         'jquery',
-        'gmaps_countries',
-        'mapstyles',
-        'search',
+        'stockists_countries',
+        'stockists_mapstyles',
+        'stockists_search',
         'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
     ],
     function($,country_list,mapstyles,search){    
 		$(document).ready(function(){
 	
-		
 		    getStores();
 			
 
@@ -60,10 +59,9 @@ require([
 				map = new google.maps.Map(mapElement,mapOptions);
 				
 				var image = {
-				    url: '../images/map_pin.png'
+				    url: window.map_pin
 				};
-				console.log(image)
-				
+				console.log(window.map_pin);
 		  		var infowindow = new google.maps.InfoWindow({
 				    content: ""
 				});

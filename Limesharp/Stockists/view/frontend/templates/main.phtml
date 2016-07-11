@@ -4,14 +4,16 @@
  * See COPYING.txt for license details.
  */
 ?>
-<div id="map-canvas"></div>
+<div id="map-canvas" style="height: 100%; width: 100%;"></div>
 <div class="search-stockists">
 	
 	<div class="search-header">
+
 		<p class="search-title"><?php echo __("Find a stockist") ?></p>
 		<p class="stockists-intro"><?php echo __("Enter a city, country or full post/zip code") ?></p>
 		<input id="stockist-search-term" type="text" placeholder="Search" /> 
 		<button id="stockists-submit">Search</button>
+		
 	</div>
 	<div class="stockists-results">
 		
@@ -24,10 +26,25 @@
 		
 	</div>
 </div>
-<script>
 
+
+
+<script type="text/x-magento-init">
+	{
+		"*": {
+		        
+	        	"stockists_widget": " <?php echo "test" ?> "
+	        	
+	    }
+    }
+</script>
+<script>
+	
+    window.map_pin = '<?php echo $block->getViewFileUrl('images/map_pin.png') ?>';
+    
     require([
-        'stockists'
+        'limesharp_stockists'
     ], function ($) {
+	    
     });
 </script>
