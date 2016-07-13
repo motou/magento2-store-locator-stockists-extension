@@ -33,7 +33,7 @@ class Collection extends AbstractCollection
     /**
      * @var string
      */
-    protected $_idFieldName = 'store_id';
+    protected $_idFieldName = 'stockist_id';
     /**
      * Event prefix
      *
@@ -92,8 +92,8 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(Stores::class, AuthorResourceModel::class);
-        $this->_map['fields']['store_id'] = 'main_table.store_id';
-
+		$this->_map['fields']['stockist_id'] = 'main_table.stockist_id';
+        $this->_map['fields']['store_id'] = 'store_table.store_id';
     }
 
     /**
@@ -103,7 +103,7 @@ class Collection extends AbstractCollection
      */
     protected function _afterLoad()
     {
-        $this->performAfterLoad('limesharp_stockists_stores', 'store_id');
+        $this->performAfterLoad('limesharp_stockists_stores', 'stockist_id');
         foreach ($this->getItems() as $item) {
             /** @var \Limesharp\Stockists\Model\Stores $item */
             $awards = $item->getAwards();
@@ -161,11 +161,11 @@ class Collection extends AbstractCollection
         if ($this->getFilter('store_id')) {
             $this->getSelect()->join(
                 ['store_table' => $this->getTable('limesharp_stockists_stores')],
-                'main_table.store_id = store_table.store_id',
+                'main_table.stockist_id = store_table.stockist_id',
                 []
             )
             // @codingStandardsIgnoreStart
-            ->group('main_table.store_id');
+            ->group('main_table.stockist_id');
             // @codingStandardsIgnoreEnd
         }
         parent::_renderFiltersBefore();

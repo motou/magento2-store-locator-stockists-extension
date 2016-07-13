@@ -65,7 +65,7 @@ class ListAuthor extends Template
         if (is_null($this->authors)) {
             $this->authors = $this->authorCollectionFactory->create()
                 ->addFieldToSelect('*')
-                ->addFieldToFilter('is_active', Stores::STATUS_ENABLED)
+                ->addFieldToFilter('status', Stores::STATUS_ENABLED)
                 ->addStoreFilter($this->_storeManager->getStore()->getId())
                 ->setOrder('name', 'ASC');
         }

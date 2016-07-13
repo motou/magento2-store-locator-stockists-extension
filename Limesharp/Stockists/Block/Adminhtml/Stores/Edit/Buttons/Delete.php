@@ -47,6 +47,6 @@ class Delete extends Generic implements ButtonProviderInterface
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/*/delete', ['store_id' => $this->getAuthorId()]);
+        return $this->getUrl('*/*/delete', ['stockist_id' => $this->getAuthorId()]);
     }
 }

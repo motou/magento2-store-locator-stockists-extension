@@ -87,7 +87,7 @@ class Stores extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('limesharp_stockists_stores', 'store_id');
+        $this->_init('limesharp_stockists_stores', 'stockist_id');
     }
 
     /**
@@ -98,7 +98,7 @@ class Stores extends AbstractDb
      */
     protected function _beforeDelete(AbstractModel $object)
     {
-        $condition = ['store_id = ?' => (int)$object->getId()];
+        $condition = ['stockist_id = ?' => (int)$object->getId()];
         $this->getConnection()->delete($this->getTable('limesharp_stockists_stores'), $condition);
         return parent::_beforeDelete($object);
     }
@@ -203,26 +203,6 @@ class Stores extends AbstractDb
     protected function _getLoadSelect($field, $value, $object)
     {
         $select = parent::_getLoadSelect($field, $value, $object);
-
-        if ($object->getStoreId()) {
-            $storeIds = [
-                Store::DEFAULT_STORE_ID,
-                (int)$object->getStoreId()
-            ];
-            $select->join(
-                [
-                    'limesharp_stockists_stores' => $this->getTable('limesharp_stockists_stores')
-                ],
-                $this->getMainTable() . '.store_id = limesharp_stockists_stores.store_id',
-                []
-            )
-                ->where(
-                    'limesharp_stockists_stores.store_id IN (?)',
-                    $storeIds
-                )
-                ->order('limesharp_stockists_stores.store_id DESC')
-                ->limit(1);
-        }
         return $select;
     }
 
@@ -231,29 +211,20 @@ class Stores extends AbstractDb
      *
      * @param string $urlKey
      * @param int|array $store
-     * @param int $isActive
+     * @param int $status
      * @return \Magento\Framework\DB\Select
      */
-    protected function getLoadByUrlKeySelect($urlKey, $store, $isActive = null)
+    protected function getLoadByUrlKeySelect($urlKey, $store, $status = null)
     {
         $select = $this->getConnection()
             ->select()
-            ->from(['author' => $this->getMainTable()])
-            ->join(
-                ['author_store' => $this->getTable('limesharp_stockists_stores')],
-                'author.store_id = author_store.store_id',
-                []
-            )
+            ->from(['stores' => $this->getMainTable()])
             ->where(
-                'author.url_key = ?',
+                'stores.link = ?',
                 $urlKey
-            )
-            ->where(
-                'author_store.store_id IN (?)',
-                $store
             );
-        if (!is_null($isActive)) {
-            $select->where('author.is_active = ?', $isActive);
+        if (!is_null($status)) {
+            $select->where('stores.status = ?', $status);
         }
         return $select;
     }
@@ -272,7 +243,7 @@ class Stores extends AbstractDb
         $stores = [Store::DEFAULT_STORE_ID, $storeId];
         $select = $this->getLoadByUrlKeySelect($urlKey, $stores, 1);
         $select->reset(\Zend_Db_Select::COLUMNS)
-            ->columns('author.store_id')
+            ->columns('author.stockist_id')
             ->order('author_store.store_id DESC')
             ->limit(1);
         return $this->getConnection()->fetchOne($select);
@@ -291,7 +262,7 @@ class Stores extends AbstractDb
             $this->getTable('limesharp_stockists_stores'),
             'store_id'
         )->where(
-            'store_id = ?',
+            'stockist_id = ?',
             (int)$authorId
         );
         return $adapter->fetchCol($select);
@@ -334,7 +305,7 @@ class Stores extends AbstractDb
         }
         $select = $this->getLoadByUrlKeySelect($object->getData('url_key'), $stores);
         if ($object->getId()) {
-            $select->where('author_store.store_id <> ?', $object->getId());
+            $select->where('author_store.stockist_id <> ?', $object->getId());
         }
         if ($this->getConnection()->fetchRow($select)) {
             return false;
@@ -360,7 +331,7 @@ class Stores extends AbstractDb
 
         if ($delete) {
             $where = [
-                'store_id = ?' => (int)$author->getId(),
+                'stockist_id = ?' => (int)$author->getId(),
                 'store_id IN (?)' => $delete
             ];
             $this->getConnection()->delete($table, $where);
@@ -369,7 +340,7 @@ class Stores extends AbstractDb
             $data = [];
             foreach ($insert as $storeId) {
                 $data[] = [
-                    'store_id' => (int)$author->getId(),
+                    'stockist_id' => (int)$author->getId(),
                     'store_id' => (int)$storeId
                 ];
             }
@@ -394,6 +365,7 @@ class Stores extends AbstractDb
         if (is_array($attributes) && !empty($attributes)) {
             $this->getConnection()->beginTransaction();
             $data = array_intersect_key($object->getData(), array_flip($attributes));
+            var_dump($data);die();
             try {
                 $this->beforeSaveAttribute($object, $attributes);
                 if ($object->getId() && !empty($data)) {

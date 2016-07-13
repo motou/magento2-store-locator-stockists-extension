@@ -30,14 +30,14 @@ class AuthorActions extends Column
      * 
      * @var string
      */
-    const URL_PATH_EDIT = 'limesharp_stockists/author/edit';
+    const URL_PATH_EDIT = 'stockists/stores/edit';
 
     /**
      * Url path  to delete
      * 
      * @var string
      */
-    const URL_PATH_DELETE = 'limesharp_stockists/author/delete';
+    const URL_PATH_DELETE = 'stockists/stores/delete';
 
     /**
      * URL builder
@@ -76,13 +76,13 @@ class AuthorActions extends Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['store_id'])) {
+                if (isset($item['stockist_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->_urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'store_id' => $item['store_id']
+                                    'stockist_id' => $item['stockist_id']
                                 ]
                             ),
                             'label' => __('Edit')
@@ -91,13 +91,13 @@ class AuthorActions extends Column
                             'href' => $this->_urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'store_id' => $item['store_id']
+                                    'stockist_id' => $item['stockist_id']
                                 ]
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
                                 'title' => __('Delete "${ $.$data.name }"'),
-                                'message' => __('Are you sure you wan\'t to delete the Author "${ $.$data.name }" ?')
+                                'message' => __('Are you sure you wan\'t to delete the Store "${ $.$data.name }" ?')
                             ]
                         ]
                     ];

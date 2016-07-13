@@ -89,13 +89,13 @@ class Save extends Stores
         /** @var \Limesharp\Stockists\Api\Data\AuthorInterface $author */
         $author = null;
         $data = $this->getRequest()->getPostValue();
-        $id = !empty($data['store_id']) ? $data['store_id'] : null;
+        $id = !empty($data['stockist_id']) ? $data['stockist_id'] : null;
         $resultRedirect = $this->resultRedirectFactory->create();
         try {
             if ($id) {
                 $author = $this->authorRepository->getById((int)$id);
             } else {
-                unset($data['store_id']);
+                unset($data['stockist_id']);
                 $author = $this->authorFactory->create();
             }
             $avatar = $this->getUploader('image')->uploadFileAndGetName('avatar', $data);
@@ -106,7 +106,7 @@ class Save extends Stores
             $this->authorRepository->save($author);
             $this->messageManager->addSuccessMessage(__('You saved the store'));
             if ($this->getRequest()->getParam('back')) {
-                $resultRedirect->setPath('stockists/stores/edit', ['store_id' => $author->getId()]);
+                $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $author->getId()]);
             } else {
                 $resultRedirect->setPath('stockists/stores');
             }
@@ -120,9 +120,8 @@ class Save extends Stores
                     )
                 );
             }
-            $resultRedirect->setPath('stockists/stores/edit', ['store_id' => $id]);
+            $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $id]);
         } catch (\Exception $e) {
-	        var_dump($e); die();
             $this->messageManager->addErrorMessage(__('There was a problem saving the store'));
             if ($author != null) {
                 $this->storeAuthorDataToSession(

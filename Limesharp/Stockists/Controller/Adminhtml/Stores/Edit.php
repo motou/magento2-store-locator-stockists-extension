@@ -29,8 +29,8 @@ class Edit extends Stores
      */
     protected function _initAuthor()
     {
-        $authorId = $this->getRequest()->getParam('store_id');
-        $this->coreRegistry->register(RegistryConstants::CURRENT_STORE_ID, $authorId);
+        $authorId = $this->getRequest()->getParam('stockist_id');
+        $this->coreRegistry->register(RegistryConstants::CURRENT_STOCKIST_ID, $authorId);
 
         return $authorId;
     }
@@ -48,7 +48,7 @@ class Edit extends Stores
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Limesharp_Stockists::stores');
         $resultPage->getConfig()->getTitle()->prepend(__('Stockists'));
-        $resultPage->addBreadcrumb(__('Stockists'), __('Stockists'), $this->getUrl('limesharp_stockists/stores'));
+        $resultPage->addBreadcrumb(__('Stockists'), __('Stockists'), $this->getUrl('stockists/stores'));
 
         if ($authorId === null) {
             $resultPage->addBreadcrumb(__('New Store'), __('New Store'));

@@ -136,15 +136,6 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
         $this->_init(AuthorResourceModel::class);
     }
 
-    /**
-     * Get in rss
-     *
-     * @return bool|int
-     */
-    public function getInRss()
-    {
-        return $this->getData(AuthorInterface::IN_RSS);
-    }
 
     /**
      * Get type
@@ -154,16 +145,6 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     public function getType()
     {
         return $this->getData(AuthorInterface::TYPE);
-    }
-
-    /**
-     * Get awards
-     *
-     * @return string
-     */
-    public function getAwards()
-    {
-        return $this->getData(AuthorInterface::AWARDS);
     }
 
     /**
@@ -188,39 +169,6 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     }
 
     /**
-     * Set in rss
-     *
-     * @param $inRss
-     * @return AuthorInterface
-     */
-    public function setInRss($inRss)
-    {
-        return $this->setData(AuthorInterface::IN_RSS, $inRss);
-    }
-
-    /**
-     * Set biography
-     *
-     * @param $biography
-     * @return AuthorInterface
-     */
-    public function setBiography($biography)
-    {
-        return $this->setData(AuthorInterface::BIOGRAPHY, $biography);
-    }
-
-    /**
-     * Set DOB
-     *
-     * @param $dob
-     * @return AuthorInterface
-     */
-    public function setDob($dob)
-    {
-        return $this->setData(AuthorInterface::DOB, $dob);
-    }
-
-    /**
      * set type
      *
      * @param $type
@@ -231,16 +179,6 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
         return $this->setData(AuthorInterface::TYPE, $type);
     }
 
-    /**
-     * set awards
-     *
-     * @param $awards
-     * @return AuthorInterface
-     */
-    public function setAwards($awards)
-    {
-        return $this->setData(AuthorInterface::AWARDS, $awards);
-    }
 
     /**
      * Set country
@@ -268,110 +206,101 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      *
      * @return string
      */
-    public function getUrlKey()
+    public function getLink()
     {
-        return $this->getData(AuthorInterface::URL_KEY);
+        return $this->getData(AuthorInterface::LINK);
+    }
+    
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->getData(AuthorInterface::ADDRESS);
     }
 
     /**
-     * Get is active
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->getData(AuthorInterface::CITY);
+    }
+    
+    /**
+     * Get postcode
+     *
+     * @return string
+     */
+    public function getPostcode()
+    {
+        return $this->getData(AuthorInterface::POSTCODE);
+    }
+
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->getData(AuthorInterface::REGION);
+    }
+    
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->getData(AuthorInterface::EMAIL);
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->getData(AuthorInterface::PHONE);
+    }
+    
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->getData(AuthorInterface::LATITUDE);
+    }
+    
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->getData(AuthorInterface::LONGITUDE);
+    }
+
+    /**
+     * Get status
      *
      * @return bool|int
      */
-    public function getIsActive()
+    public function getStatus()
     {
-        return $this->getData(AuthorInterface::IS_ACTIVE);
+        return $this->getData(AuthorInterface::STATUS);
     }
 
-    /**
-     * Get biography
-     *
-     * @return string
-     */
-    public function getBiography()
-    {
-        return $this->getData(AuthorInterface::BIOGRAPHY);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProcessedBiography()
-    {
-        return $this->outputProcessor->filterOutput($this->getBiography());
-    }
-
-    /**
-     * Get DOB
-     *
-     * @return string
-     */
-    public function getDob()
-    {
-        return $this->getData(AuthorInterface::DOB);
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return string
-     */
-    public function getAvatar()
-    {
-        return $this->getData(AuthorInterface::AVATAR);
-    }
-
-    /**
-     * @return bool|string
-     * @throws LocalizedException
-     */
-    public function getAvatarUrl()
-    {
-        $url = false;
-        $avatar = $this->getAvatar();
-        if ($avatar) {
-            if (is_string($avatar)) {
-                $uploader = $this->uploaderPool->getUploader('image');
-                $url = $uploader->getBaseUrl().$uploader->getBasePath().$avatar;
-            } else {
-                throw new LocalizedException(
-                    __('Something went wrong while getting the avatar url.')
-                );
-            }
-        }
-        return $url;
-    }
-
-    /**
-     * @return bool|string
-     * @throws LocalizedException
-     */
-    public function getResumeUrl()
-    {
-        $url = false;
-        $resume = $this->getResume();
-        if ($resume) {
-            if (is_string($resume)) {
-                $uploader = $this->uploaderPool->getUploader('file');
-                $url = $uploader->getBaseUrl().$uploader->getBasePath().$resume;
-            } else {
-                throw new LocalizedException(
-                    __('Something went wrong while getting the resume url.')
-                );
-            }
-        }
-        return $url;
-    }
-
-    /**
-     * Get resume
-     *
-     * @return string
-     */
-    public function getResume()
-    {
-        return $this->getData(AuthorInterface::RESUME);
-    }
 
     /**
      * Get created at
@@ -394,48 +323,115 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     }
 
     /**
-     * set url key
+     * set link
      *
-     * @param $urlKey
+     * @param $link
      * @return AuthorInterface
      */
-    public function setUrlKey($urlKey)
+    public function setLink($link)
     {
-        return $this->setData(AuthorInterface::URL_KEY, $urlKey);
+        return $this->setData(AuthorInterface::LINK, $link);
     }
 
     /**
-     * Set is active
+     * set address
      *
-     * @param $isActive
+     * @param $address
      * @return AuthorInterface
      */
-    public function setIsActive($isActive)
+    public function setAddress($address)
     {
-        return $this->setData(AuthorInterface::IS_ACTIVE, $isActive);
+        return $this->setData(AuthorInterface::ADDRESS, $address);
     }
 
     /**
-     * set avatar
+     * set city
      *
-     * @param $avatar
+     * @param $city
      * @return AuthorInterface
      */
-    public function setAvatar($avatar)
+    public function setCity($city)
     {
-        return $this->setData(AuthorInterface::AVATAR, $avatar);
+        return $this->setData(AuthorInterface::CITY, $city);
     }
 
     /**
-     * set resume
+     * set postcode
      *
-     * @param $resume
+     * @param $postcode
      * @return AuthorInterface
      */
-    public function setResume($resume)
+    public function setPostcode($postcode)
     {
-        return $this->setData(AuthorInterface::RESUME, $resume);
+        return $this->setData(AuthorInterface::POSTCODE, $postcode);
     }
+
+    /**
+     * set region
+     *
+     * @param $region
+     * @return AuthorInterface
+     */
+    public function setRegion($region)
+    {
+        return $this->setData(AuthorInterface::REGION, $region);
+    }
+
+    /**
+     * set email
+     *
+     * @param $email
+     * @return AuthorInterface
+     */
+    public function setEmail($email)
+    {
+        return $this->setData(AuthorInterface::EMAIL, $email);
+    }
+
+    /**
+     * set phone
+     *
+     * @param $phone
+     * @return AuthorInterface
+     */
+    public function setPhone($phone)
+    {
+        return $this->setData(AuthorInterface::PHONE, $phone);
+    }
+
+    /**
+     * set latitude
+     *
+     * @param $latitude
+     * @return AuthorInterface
+     */
+    public function setLatitude($latitude)
+    {
+        return $this->setData(AuthorInterface::LATITUDE, $latitude);
+    }
+    
+    /**
+     * set longitude
+     *
+     * @param $longitude
+     * @return AuthorInterface
+     */
+    public function setLongitude($longitude)
+    {
+        return $this->setData(AuthorInterface::LONGITUDE, $longitude);
+    }
+
+    /**
+     * Set status
+     *
+     * @param $status
+     * @return AuthorInterface
+     */
+    public function setStatus($status)
+    {
+        return $this->setData(AuthorInterface::STATUS, $status);
+    }
+
 
     /**
      * set created at
@@ -502,61 +498,6 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     }
 
     /**
-     * @return string
-     */
-    public function getMetaTitle()
-    {
-        return $this->getData(AuthorInterface::META_TITLE);
-    }
-
-    /**
-     * @param $metaTitle
-     * @return AuthorInterface
-     */
-    public function setMetaTitle($metaTitle)
-    {
-        $this->setData(AuthorInterface::META_TITLE, $metaTitle);
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMetaDescription()
-    {
-        return $this->getData(AuthorInterface::META_DESCRIPTION);
-    }
-
-    /**
-     * @param $metaDescription
-     * @return AuthorInterface
-     */
-    public function setMetaDescription($metaDescription)
-    {
-        $this->setData(AuthorInterface::META_DESCRIPTION, $metaDescription);
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMetaKeywords()
-    {
-        return $this->getData(AuthorInterface::META_KEYWORDS);
-    }
-
-    /**
-     * @param $metaKeywords
-     * @return AuthorInterface
-     */
-    public function setMetaKeywords($metaKeywords)
-    {
-        $this->setData(AuthorInterface::META_KEYWORDS, $metaKeywords);
-        return $this;
-    }
-
-
-    /**
      * sanitize the url key
      *
      * @param $string
@@ -578,9 +519,9 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     /**
      * @return bool
      */
-    public function isActive()
+    public function status()
     {
-        return (bool)$this->getIsActive();
+        return (bool)$this->getStatus();
     }
 
     /**

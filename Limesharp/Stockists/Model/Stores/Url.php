@@ -27,15 +27,15 @@ class Url
     /**
      * @var string
      */
-    const LIST_URL_CONFIG_PATH      = 'limesharp_stockists/author/list_url';
+    const LIST_URL_CONFIG_PATH      = 'stockists/stores/list_url';
     /**
      * @var string
      */
-    const URL_PREFIX_CONFIG_PATH    = 'limesharp_stockists/author/url_prefix';
+    const URL_PREFIX_CONFIG_PATH    = 'stockists/stores/url_prefix';
     /**
      * @var string
      */
-    const URL_SUFFIX_CONFIG_PATH    = 'limesharp_stockists/author/url_suffix';
+    const URL_SUFFIX_CONFIG_PATH    = 'stockists/stores/url_suffix';
     /**
      * url builder
      *
@@ -69,7 +69,7 @@ class Url
         if ($sefUrl) {
             return $this->urlBuilder->getUrl('', ['_direct' => $sefUrl]);
         }
-        return $this->urlBuilder->getUrl('limesharp_stockists/author/index');
+        return $this->urlBuilder->getUrl('stockists/stores/index');
     }
 
     /**
@@ -92,6 +92,6 @@ class Url
                 (($suffix) ? '.'. $suffix : '');
             return $this->urlBuilder->getUrl('', ['_direct'=>$path]);
         }
-        return $this->urlBuilder->getUrl('limesharp_stockists/author/view', ['id' => $author->getId()]);
+        return $this->urlBuilder->getUrl('stockists/stores/view', ['id' => $author->getId()]);
     }
 }

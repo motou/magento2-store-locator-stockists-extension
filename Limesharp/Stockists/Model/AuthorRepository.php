@@ -165,7 +165,7 @@ class AuthorRepository implements AuthorRepositoryInterface
         } else {
             // set a default sorting order since this method is used constantly in many
             // different blocks
-            $field = 'store_id';
+            $field = 'stockist_id';
             $collection->addOrder($field, 'ASC');
         }
         $collection->setCurPage($searchCriteria->getCurrentPage());

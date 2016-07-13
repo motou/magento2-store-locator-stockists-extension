@@ -24,7 +24,7 @@ class MassDisable extends MassAction
     /**
      * @var bool
      */
-    protected $isActive = false;
+    protected $status = false;
 
     /**
      * @param Stores $author
@@ -32,7 +32,7 @@ class MassDisable extends MassAction
      */
     protected function massAction(Stores $author)
     {
-        $author->setIsActive($this->isActive);
+        $author->setStatus($this->status);
         $this->authorRepository->save($author);
         return $this;
     }

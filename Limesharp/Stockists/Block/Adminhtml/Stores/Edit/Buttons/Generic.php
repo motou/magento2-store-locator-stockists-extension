@@ -54,7 +54,7 @@ class Generic
     {
         try {
             return $this->authorRepository->getById(
-                $this->context->getRequest()->getParam('store_id')
+                $this->context->getRequest()->getParam('stockist_id')
             )->getId();
         } catch (NoSuchEntityException $e) {
             return null;

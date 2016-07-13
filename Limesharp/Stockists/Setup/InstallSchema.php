@@ -44,7 +44,7 @@ class InstallSchema implements InstallSchemaInterface
             $table = $installer->getConnection()
                 ->newTable($installer->getTable('limesharp_stockists_stores'));
             $table->addColumn(
-                    'store_id',
+                    'stockist_id',
                     Table::TYPE_INTEGER,
                     null,
                     [
@@ -52,6 +52,17 @@ class InstallSchema implements InstallSchemaInterface
                         'unsigned' => true,
                         'nullable' => false,
                         'primary' => true
+                    ],
+                    'Store ID'
+                )
+                ->addColumn(
+                    'store_id',
+                    Table::TYPE_SMALLINT,
+                    null,
+                    [
+                        'unsigned'  => true,
+                        'nullable'  => false,
+                        'primary'   => true,
                     ],
                     'Store ID'
                 )

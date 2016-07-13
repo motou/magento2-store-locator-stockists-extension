@@ -29,26 +29,26 @@ class Delete extends Stores
     public function execute()
     {
         $resultRedirect = $this->resultRedirectFactory->create();
-        $id = $this->getRequest()->getParam('store_id');
+        $id = $this->getRequest()->getParam('stockist_id');
         if ($id) {
             try {
                 $this->authorRepository->deleteById($id);
-                $this->messageManager->addSuccessMessage(__('The author has been deleted.'));
-                $resultRedirect->setPath('limesharp_stockists/*/');
+                $this->messageManager->addSuccessMessage(__('The store has been deleted.'));
+                $resultRedirect->setPath('stockists/*/');
                 return $resultRedirect;
             } catch (NoSuchEntityException $e) {
-                $this->messageManager->addErrorMessage(__('The author no longer exists.'));
-                return $resultRedirect->setPath('limesharp_stockists/*/');
+                $this->messageManager->addErrorMessage(__('The store no longer exists.'));
+                return $resultRedirect->setPath('stockists/*/');
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
-                return $resultRedirect->setPath('limesharp_stockists/author/edit', ['store_id' => $id]);
+                return $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $id]);
             } catch (\Exception $e) {
-                $this->messageManager->addErrorMessage(__('There was a problem deleting the author'));
-                return $resultRedirect->setPath('limesharp_stockists/author/edit', ['store_id' => $id]);
+                $this->messageManager->addErrorMessage(__('There was a problem deleting the store'));
+                return $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $id]);
             }
         }
-        $this->messageManager->addErrorMessage(__('We can\'t find a author to delete.'));
-        $resultRedirect->setPath('limesharp_stockists/*/');
+        $this->messageManager->addErrorMessage(__('We can\'t find a store to delete.'));
+        $resultRedirect->setPath('stockists/*/');
         return $resultRedirect;
     }
 }

@@ -37,14 +37,14 @@
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">limesharp_stockists_stores_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">store_id</argument>
-            <argument name="requestFieldName" xsi:type="string">store_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">stockist_id</argument>
+            <argument name="requestFieldName" xsi:type="string">stockist_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">store_id</item>
+                        <item name="indexField" xsi:type="string">stockist_id</item>
                     </item>
                 </item>
             </argument>
@@ -142,7 +142,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">limesharp_stockists_stores_listing.limesharp_stockists_stores_listing.limesharp_stockists_stores_columns.ids</item>
-                    <item name="indexField" xsi:type="string">store_id</item>
+                    <item name="indexField" xsi:type="string">stockist_id</item>
                 </item>
             </argument>
             <action name="delete">
@@ -150,7 +150,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="limesharp_stockists/stores/massDelete"/>
+                        <item name="url" xsi:type="url" path="stockists/stores/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete items</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected items?</item>
@@ -163,7 +163,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">disable</item>
                         <item name="label" xsi:type="string" translate="true">Disable</item>
-                        <item name="url" xsi:type="url" path="limesharp_stockists/stores/massDisable"/>
+                        <item name="url" xsi:type="url" path="stockists/stores/massDisable"/>
                     </item>
                 </argument>
             </action>
@@ -172,7 +172,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">enable</item>
                         <item name="label" xsi:type="string" translate="true">Enable</item>
-                        <item name="url" xsi:type="url" path="limesharp_stockists/stores/massEnable"/>
+                        <item name="url" xsi:type="url" path="stockists/stores/massEnable"/>
                     </item>
                 </argument>
             </action>
@@ -211,9 +211,9 @@
                 <item name="editorConfig" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">limesharp_stockists_stores_listing.limesharp_stockists_stores_listing.limesharp_stockists_stores_columns.ids</item>
                     <item name="enabled" xsi:type="boolean">true</item>
-                    <item name="indexField" xsi:type="string">store_id</item>
+                    <item name="indexField" xsi:type="string">stockist_id</item>
                     <item name="clientConfig" xsi:type="array">
-                        <item name="saveUrl" xsi:type="url" path="limesharp_stockists/stores/inlineEdit"/>
+                        <item name="saveUrl" xsi:type="url" path="stockists/stores/inlineEdit"/>
                         <item name="validateBeforeSave" xsi:type="boolean">false</item>
                     </item>
                 </item>
@@ -239,11 +239,11 @@
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">55</item>
-                    <item name="indexField" xsi:type="string">store_id</item>
+                    <item name="indexField" xsi:type="string">stockist_id</item>
                 </item>
             </argument>
         </selectionsColumn>
-        <column name="store_id">
+        <column name="stockist_id">
             <argument name="data" xsi:type="array">
                 <item name="js_config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/column</item>
@@ -368,23 +368,23 @@
                 </item>
             </argument>
         </column>
-        <column name="is_active">
+        <column name="status">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">LimesharpStockistsModelStoresSourceIsActive</item>
+                <item name="options" xsi:type="object">LimesharpStockistsModelStoresSourceStatus</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">select</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
                     <item name="editor" xsi:type="string">select</item>
                     <item name="dataType" xsi:type="string">select</item>
-                    <item name="label" xsi:type="string" translate="true">Is Active</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
                 </item>
             </argument>
         </column>
         <actionsColumn name="actions" class="Limesharp\Stockists\Ui\Component\Listing\Column\AuthorActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">store_id</item>
-                    <item name="urlEntityParamName" xsi:type="string">store_id</item>
+                    <item name="indexField" xsi:type="string">stockist_id</item>
+                    <item name="urlEntityParamName" xsi:type="string">stockist_id</item>
                 </item>
             </argument>
         </actionsColumn>

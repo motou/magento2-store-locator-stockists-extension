@@ -23,8 +23,8 @@
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Limesharp\Stockists\Model\Stores\DataProvider</argument>
             <argument name="name" xsi:type="string">author_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">store_id</argument>
-            <argument name="requestFieldName" xsi:type="string">store_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">stockist_id</argument>
+            <argument name="requestFieldName" xsi:type="string">stockist_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="submit_url" xsi:type="url" path="stockists/stores/save"/>
@@ -43,14 +43,14 @@
                 <item name="label" xsi:type="string"/>
             </item>
         </argument>
-        <field name="store_id">
+        <field name="stockist_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">author</item>
-                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="dataScope" xsi:type="string">stockist_id</item>
                 </item>
             </argument>
         </field>
@@ -60,7 +60,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Name</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">author</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="notice" xsi:type="string" translate="true">Enter full store name here</item>
@@ -70,16 +70,16 @@
                 </item>
             </argument>
         </field>
-        <field name="is_active">
+        <field name="status">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">boolean</item>
-                    <item name="label" xsi:type="string" translate="true">Is Active</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
                     <item name="formElement" xsi:type="string">checkbox</item>
                     <item name="prefer" xsi:type="string">toggle</item>
                     <item name="source" xsi:type="string">page</item>
                     <item name="sortOrder" xsi:type="number">30</item>
-                    <item name="dataScope" xsi:type="string">is_active</item>
+                    <item name="dataScope" xsi:type="string">status</item>
                     <item name="valueMap" xsi:type="array">
                         <item name="true" xsi:type="number">1</item>
                         <item name="false" xsi:type="number">0</item>
@@ -102,7 +102,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Longitude</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">longitude</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">2</item>
                     <item name="dataScope" xsi:type="string">longitude</item>
                     <item name="notice" xsi:type="string" translate="true">Example for Silicon Roundabout, London: -0.088302</item>
@@ -118,7 +118,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Latitude</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">latitude</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">1</item>
                     <item name="dataScope" xsi:type="string">latitude</item>
                     <item name="notice" xsi:type="string" translate="true">Example for Silicon Roundabout, London: 51.525127</item>
@@ -142,7 +142,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Address</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">address</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">1</item>
                     <item name="dataScope" xsi:type="string">address</item>
                 </item>
@@ -154,7 +154,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">City</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">city</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">2</item>
                     <item name="dataScope" xsi:type="string">city</item>
                 </item>
@@ -166,7 +166,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Postcode</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">postcode</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">4</item>
                     <item name="dataScope" xsi:type="string">postcode</item>
                 </item>
@@ -179,7 +179,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Country</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">author</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="dataScope" xsi:type="string">country</item>
                 </item>
             </argument>
@@ -190,7 +190,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Region</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">region</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">3</item>
                     <item name="dataScope" xsi:type="string">region</item>
                 </item>
@@ -210,7 +210,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Email</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">email</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">email</item>
                 </item>
@@ -222,7 +222,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Phone</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">phone</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">phone</item>
                 </item>
@@ -234,7 +234,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Link</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">link</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">link</item>
                 </item>
@@ -256,7 +256,7 @@
                     <item name="dataType" xsi:type="string">int</item>
                     <item name="label" xsi:type="string" translate="true">Store View</item>
                     <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="source" xsi:type="string">author</item>
+                    <item name="source" xsi:type="string">stores</item>
                     <item name="dataScope" xsi:type="string">store_id</item>
                     <item name="default" xsi:type="string">0</item>
                     <item name="validation" xsi:type="array">

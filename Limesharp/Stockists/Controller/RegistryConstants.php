@@ -23,5 +23,5 @@ class RegistryConstants
     /**
      * Registry key where current author ID is stored
      */
-    const CURRENT_STORE_ID = 'current_store_id';
+    const CURRENT_STOCKIST_ID = 'current_store_id';
 }
