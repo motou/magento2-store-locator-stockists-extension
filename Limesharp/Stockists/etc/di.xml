@@ -130,16 +130,16 @@
         </arguments>
     </virtualType>
 
-    <virtualType name="LimesharpStockistsModelStoresSourceIsActive" type="Limesharp\Stockists\Model\Source\Options">
+    <virtualType name="LimesharpStockistsModelStoresSourceStatus" type="Limesharp\Stockists\Model\Source\Options">
         <arguments>
             <argument name="options" xsi:type="array">
                 <item name="1" xsi:type="array">
                     <item name="value" xsi:type="const">Limesharp\Stockists\Model\Stores::STATUS_ENABLED</item>
-                    <item name="label" xsi:type="string" translate="true">Yes</item>
+                    <item name="label" xsi:type="string" translate="true">Enabled</item>
                 </item>
                 <item name="2" xsi:type="array">
                     <item name="value" xsi:type="const">Limesharp\Stockists\Model\Stores::STATUS_DISABLED</item>
-                    <item name="label" xsi:type="string" translate="true">No</item>
+                    <item name="label" xsi:type="string" translate="true">Disabled</item>
                 </item>
             </argument>
         </arguments>

@@ -25,24 +25,23 @@ interface AuthorInterface
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const store_id         = 'store_id';
-    const NAME              = 'name';
-    const URL_KEY           = 'url_key';
-    const IS_ACTIVE         = 'is_active';
-    const IN_RSS            = 'in_rss';
-    const BIOGRAPHY         = 'biography';
-    const DOB               = 'dob';
-    const TYPE              = 'type';
-    const AWARDS            = 'awards';
-    const AVATAR            = 'avatar';
-    const RESUME            = 'resume';
-    const COUNTRY           = 'country';
-    const CREATED_AT        = 'created_at';
-    const UPDATED_AT        = 'updated_at';
-    const META_TITLE        = 'meta_title';
-    const META_DESCRIPTION  = 'meta_description';
-    const META_KEYWORDS     = 'meta_keywords';
-    const STORE_ID          = 'store_id';
+    const STOCKIST_ID         = 'stockist_id';
+    const NAME                = 'name';
+    const ADDRESS             = 'address';
+    const CITY                = 'city';
+    const POSTCODE            = 'postcode';
+    const REGION              = 'region';
+    const EMAIL               = 'email';
+    const PHONE               = 'phone';
+    const LATITUDE            = 'latitude';
+    const LONGITUDE           = 'longitude';
+    const LINK                = 'link';
+    const STATUS              = 'status';
+    const TYPE                = 'type';
+    const COUNTRY             = 'country';
+    const CREATED_AT          = 'created_at';
+    const UPDATED_AT          = 'updated_at';
+    const STORE_ID            = 'store_id';
 
 
     /**
@@ -60,44 +59,74 @@ interface AuthorInterface
     public function getName();
 
     /**
-     * Get url key
+     * Get store url
      *
      * @return string
      */
-    public function getUrlKey();
+    public function getLink();
+    
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress();
+    
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity();
+    
+    /**
+     * Get postcode
+     *
+     * @return string
+     */
+    public function getPostcode();
+    
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion();
+    
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail();
+    
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone();
+    
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude();
+    
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude();
 
     /**
      * Get is active
      *
      * @return bool|int
      */
-    public function getIsActive();
-
-    /**
-     * Get in rss
-     *
-     * @return bool|int
-     */
-    public function getInRss();
-
-    /**
-     * Get biography
-     *
-     * @return string
-     */
-    public function getBiography();
-
-    /**
-     * @return string
-     */
-    public function getProcessedBiography();
-
-    /**
-     * Get DOB
-     *
-     * @return string
-     */
-    public function getDob();
+    public function getStatus();
 
     /**
      * Get type
@@ -105,27 +134,6 @@ interface AuthorInterface
      * @return int
      */
     public function getType();
-
-    /**
-     * Get awards
-     *
-     * @return string
-     */
-    public function getAwards();
-
-    /**
-     * Get avatar
-     *
-     * @return string
-     */
-    public function getAvatar();
-
-    /**
-     * Get resume
-     *
-     * @return string
-     */
-    public function getResume();
 
     /**
      * Get country
@@ -151,44 +159,84 @@ interface AuthorInterface
     public function setName($name);
 
     /**
-     * set url key
+     * set link
      *
-     * @param $urlKey
+     * @param $link
      * @return AuthorInterface
      */
-    public function setUrlKey($urlKey);
+    public function setLink($link);
+    
+    /**
+     * set address
+     *
+     * @param $address
+     * @return AuthorInterface
+     */
+    public function setAddress($address);
 
     /**
-     * Set is active
+     * set city
      *
-     * @param $isActive
+     * @param $city
      * @return AuthorInterface
      */
-    public function setIsActive($isActive);
+    public function setCity($city);
+    
+    /**
+     * set postcode
+     *
+     * @param $postcode
+     * @return AuthorInterface
+     */
+    public function setPostcode($postcode);
 
     /**
-     * Set in rss
+     * set region
      *
-     * @param $inRss
+     * @param $region
      * @return AuthorInterface
      */
-    public function setInRss($inRss);
+    public function setRegion($region);
 
     /**
-     * Set biography
+     * set email
      *
-     * @param $biography
+     * @param $email
      * @return AuthorInterface
      */
-    public function setBiography($biography);
+    public function setEmail($email);
+    
+    /**
+     * set phone
+     *
+     * @param $phone
+     * @return AuthorInterface
+     */
+    public function setPhone($phone);
 
     /**
-     * Set DOB
+     * set latitude
      *
-     * @param $dob
+     * @param $latitude
      * @return AuthorInterface
      */
-    public function setDob($dob);
+    public function setLatitude($latitude);
+    
+    /**
+     * set longitude
+     *
+     * @param $longitude
+     * @return AuthorInterface
+     */
+    public function setLongitude($longitude);
+
+    /**
+     * Set status
+     *
+     * @param $status
+     * @return AuthorInterface
+     */
+    public function setStatus($status);
 
     /**
      * set type
@@ -197,30 +245,6 @@ interface AuthorInterface
      * @return AuthorInterface
      */
     public function setType($type);
-
-    /**
-     * set awards
-     *
-     * @param $awards
-     * @return AuthorInterface
-     */
-    public function setAwards($awards);
-
-    /**
-     * set avatar
-     *
-     * @param $avatar
-     * @return AuthorInterface
-     */
-    public function setAvatar($avatar);
-
-    /**
-     * set resume
-     *
-     * @param $resume
-     * @return AuthorInterface
-     */
-    public function setResume($resume);
 
     /**
      * Set country
@@ -271,36 +295,4 @@ interface AuthorInterface
      */
     public function getStoreId();
 
-    /**
-     * @return string
-     */
-    public function getMetaTitle();
-
-    /**
-     * @param $metaTitle
-     * @return AuthorInterface
-     */
-    public function setMetaTitle($metaTitle);
-
-    /**
-     * @return string
-     */
-    public function getMetaDescription();
-
-    /**
-     * @param $metaDescription
-     * @return AuthorInterface
-     */
-    public function setMetaDescription($metaDescription);
-
-    /**
-     * @return string
-     */
-    public function getMetaKeywords();
-
-    /**
-     * @param $metaKeywords
-     * @return AuthorInterface
-     */
-    public function setMetaKeywords($metaKeywords);
 }
