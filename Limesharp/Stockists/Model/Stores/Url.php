@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model\Stores;
 
@@ -73,12 +73,12 @@ class Url
     }
 
     /**
-     * @param Stores $author
+     * @param Stores $stockist
      * @return string
      */
-    public function getAuthorUrl(Stores $author)
+    public function getStockistUrl(Stores $stockist)
     {
-        if ($urlKey = $author->getUrlKey()) {
+        if ($urlKey = $stockist->getUrlKey()) {
             $prefix = $this->scopeConfig->getValue(
                 self::URL_PREFIX_CONFIG_PATH,
                 ScopeInterface::SCOPE_STORE
@@ -92,6 +92,6 @@ class Url
                 (($suffix) ? '.'. $suffix : '');
             return $this->urlBuilder->getUrl('', ['_direct'=>$path]);
         }
-        return $this->urlBuilder->getUrl('stockists/stores/view', ['id' => $author->getId()]);
+        return $this->urlBuilder->getUrl('stockists/stores/view', ['id' => $stockist->getId()]);
     }
 }

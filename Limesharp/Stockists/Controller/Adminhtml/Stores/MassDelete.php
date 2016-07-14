@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
@@ -22,12 +22,12 @@ use Limesharp\Stockists\Model\Stores;
 class MassDelete extends MassAction
 {
     /**
-     * @param Stores $author
+     * @param Stores $stockist
      * @return $this
      */
-    protected function massAction(Stores $author)
+    protected function massAction(Stores $stockist)
     {
-        $this->authorRepository->delete($author);
+        $this->stockistRepository->delete($stockist);
         return $this;
     }
 }

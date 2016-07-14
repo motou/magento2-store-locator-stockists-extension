@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons;
 
@@ -29,7 +29,7 @@ class Delete extends Generic implements ButtonProviderInterface
     public function getButtonData()
     {
         $data = [];
-        if ($this->getAuthorId()) {
+        if ($this->getStockistId()) {
             $data = [
                 'label' => __('Delete Store'),
                 'class' => 'delete',
@@ -47,6 +47,6 @@ class Delete extends Generic implements ButtonProviderInterface
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/*/delete', ['stockist_id' => $this->getAuthorId()]);
+        return $this->getUrl('*/*/delete', ['stockist_id' => $this->getStockistId()]);
     }
 }

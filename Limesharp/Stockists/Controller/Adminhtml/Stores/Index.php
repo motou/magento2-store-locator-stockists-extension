@@ -13,16 +13,16 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
-use \Limesharp\Stockists\Controller\Adminhtml\Stores as AuthorController;
+use \Limesharp\Stockists\Controller\Adminhtml\Stores as StockistController;
 
-class Index extends AuthorController
+class Index extends StockistController
 {
     /**
-     * Authors list.
+     * Stockists list.
      *
      * @return \Magento\Backend\Model\View\Result\Page
      */

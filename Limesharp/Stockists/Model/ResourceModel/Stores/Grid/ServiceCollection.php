@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 // @codingStandardsIgnoreFile
 namespace Limesharp\Stockists\Model\ResourceModel\Stores\Grid;
@@ -25,18 +25,18 @@ use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\Api\SortOrderBuilder;
 use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
-use Limesharp\Stockists\Api\AuthorRepositoryInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
 
 /**
- * Author collection backed by services
+ * Stockist collection backed by services
  */
 class ServiceCollection extends AbstractServiceCollection
 {
     /**
-     * @var AuthorRepositoryInterface
+     * @var StockistRepositoryInterface
      */
-    protected $authorRepository;
+    protected $stockistRepository;
 
     /**
      * @var SimpleDataObjectConverter
@@ -48,7 +48,7 @@ class ServiceCollection extends AbstractServiceCollection
      * @param FilterBuilder $filterBuilder
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param SortOrderBuilder $sortOrderBuilder
-     * @param AuthorRepositoryInterface $authorRepository
+     * @param StockistRepositoryInterface $stockistRepository
      * @param SimpleDataObjectConverter $simpleDataObjectConverter
      */
     public function __construct(
@@ -56,10 +56,10 @@ class ServiceCollection extends AbstractServiceCollection
         FilterBuilder $filterBuilder,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SortOrderBuilder $sortOrderBuilder,
-        AuthorRepositoryInterface $authorRepository,
+        StockistRepositoryInterface $stockistRepository,
         SimpleDataObjectConverter $simpleDataObjectConverter
     ) {
-        $this->authorRepository          = $authorRepository;
+        $this->stockistRepository          = $stockistRepository;
         $this->simpleDataObjectConverter = $simpleDataObjectConverter;
         parent::__construct($entityFactory, $filterBuilder, $searchCriteriaBuilder, $sortOrderBuilder);
     }
@@ -76,16 +76,16 @@ class ServiceCollection extends AbstractServiceCollection
     {
         if (!$this->isLoaded()) {
             $searchCriteria = $this->getSearchCriteria();
-            $searchResults = $this->authorRepository->getList($searchCriteria);
+            $searchResults = $this->stockistRepository->getList($searchCriteria);
             $this->_totalRecords = $searchResults->getTotalCount();
-            /** @var AuthorInterface[] $authors */
-            $authors = $searchResults->getItems();
-            foreach ($authors as $author) {
-                $authorItem = new DataObject();
-                $authorItem->addData(
-                    $this->simpleDataObjectConverter->toFlatArray($author, AuthorInterface::class)
+            /** @var StockistInterface[] $stockists */
+            $stockists = $searchResults->getItems();
+            foreach ($stockists as $stockist) {
+                $stockistItem = new DataObject();
+                $stockistItem->addData(
+                    $this->simpleDataObjectConverter->toFlatArray($stockist, StockistInterface::class)
                 );
-                $this->_addItem($authorItem);
+                $this->_addItem($stockistItem);
             }
             $this->_setIsLoaded();
         }

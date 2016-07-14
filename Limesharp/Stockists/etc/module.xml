@@ -7,13 +7,12 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Limesharp_Stockists" setup_version="1.0.0">
-	            <sequence>
+	    <sequence>
             <module name="Magento_Backend"/>
             <module name="Magento_Ui" />
             <module name="Magento_Store" />
             <module name="Magento_Theme" />
             <module name="Magento_Customer" />
-            <module name="Magento_Rss" />
         </sequence>
     </module>
 </config>

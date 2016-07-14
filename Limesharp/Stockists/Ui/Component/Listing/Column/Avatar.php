@@ -64,7 +64,7 @@ class Avatar extends Column
                 $item[$fieldName . '_src'] = $url;
                 $item[$fieldName . '_alt'] = $this->getAlt($item) ?: '';
                 $item[$fieldName . '_link'] = $this->urlBuilder->getUrl(
-                    'limesharp_stockists/author/edit',
+                    'limesharp_stockists/stockist/edit',
                     ['store_id' => $item['store_id']]
                 );
                 $item[$fieldName . '_orig_src'] = $url;

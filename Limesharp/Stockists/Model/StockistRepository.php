@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model;
 
@@ -26,27 +26,27 @@ use Magento\Framework\Exception\StateException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
-use Limesharp\Stockists\Api\AuthorRepositoryInterface;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
 use Limesharp\Stockists\Api\Data;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterfaceFactory;
-use Limesharp\Stockists\Api\Data\AuthorSearchResultsInterfaceFactory;
-use Limesharp\Stockists\Model\ResourceModel\Stores as ResourceAuthor;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
+use Limesharp\Stockists\Api\Data\StockistSearchResultsInterfaceFactory;
+use Limesharp\Stockists\Model\ResourceModel\Stores as ResourceStockist;
 use Limesharp\Stockists\Model\ResourceModel\Stores\Collection;
-use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as AuthorCollectionFactory;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistCollectionFactory;
 
 /**
- * Class AuthorRepository
+ * Class StockistRepository
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class AuthorRepository implements AuthorRepositoryInterface
+class StockistRepository implements StockistRepositoryInterface
 {
     /**
      * @var array
      */
     protected $instances = [];
     /**
-     * @var ResourceAuthor
+     * @var ResourceStockist
      */
     protected $resource;
     /**
@@ -54,98 +54,102 @@ class AuthorRepository implements AuthorRepositoryInterface
      */
     protected $storeManager;
     /**
-     * @var AuthorCollectionFactory
+     * @var StockistCollectionFactory
      */
-    protected $authorCollectionFactory;
+    protected $stockistCollectionFactory;
     /**
-     * @var AuthorSearchResultsInterfaceFactory
+     * @var StockistSearchResultsInterfaceFactory
      */
     protected $searchResultsFactory;
     /**
-     * @var AuthorInterfaceFactory
+     * @var StockistInterfaceFactory
      */
-    protected $authorInterfaceFactory;
+    protected $stockistInterfaceFactory;
     /**
      * @var DataObjectHelper
      */
     protected $dataObjectHelper;
 
     public function __construct(
-        ResourceAuthor $resource,
+        ResourceStockist $resource,
         StoreManagerInterface $storeManager,
-        AuthorCollectionFactory $authorCollectionFactory,
-        AuthorSearchResultsInterfaceFactory $authorSearchResultsInterfaceFactory,
-        AuthorInterfaceFactory $authorInterfaceFactory,
+        StockistCollectionFactory $stockistCollectionFactory,
+        StockistSearchResultsInterfaceFactory $stockistSearchResultsInterfaceFactory,
+        StockistInterfaceFactory $stockistInterfaceFactory,
         DataObjectHelper $dataObjectHelper
     ) {
         $this->resource                 = $resource;
         $this->storeManager             = $storeManager;
-        $this->authorCollectionFactory  = $authorCollectionFactory;
-        $this->searchResultsFactory     = $authorSearchResultsInterfaceFactory;
-        $this->authorInterfaceFactory   = $authorInterfaceFactory;
+        $this->stockistCollectionFactory  = $stockistCollectionFactory;
+        $this->searchResultsFactory     = $stockistSearchResultsInterfaceFactory;
+        $this->stockistInterfaceFactory   = $stockistInterfaceFactory;
         $this->dataObjectHelper         = $dataObjectHelper;
     }
     /**
      * Save page.
      *
-     * @param \Limesharp\Stockists\Api\Data\AuthorInterface $author
-     * @return \Limesharp\Stockists\Api\Data\AuthorInterface
+     * @param \Limesharp\Stockists\Api\Data\StockistInterface $stockist
+     * @return \Limesharp\Stockists\Api\Data\StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function save(AuthorInterface $author)
+    public function save(StockistInterface $stockist)
     {
-        /** @var AuthorInterface|\Magento\Framework\Model\AbstractModel $author */
-        if (empty($author->getStoreId())) {
+        /** @var StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
+        if (empty($stockist->getStoreId())) {
             $storeId = $this->storeManager->getStore()->getId();
-            $author->setStoreId($storeId);
+            $stockist->setStoreId($storeId);
         }
         try {
-            $this->resource->save($author);
+            $this->resource->save($stockist);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
-                'Could not save the author: %1',
+                'Could not save the store: %1',
                 $exception->getMessage()
             ));
         }
-        return $author;
+        return $stockist;
     }
 
     /**
-     * Retrieve Author.
+     * Retrieve Stockist.
      *
-     * @param int $authorId
-     * @return \Limesharp\Stockists\Api\Data\AuthorInterface
+     * @param int $stockistId
+     * @return \Limesharp\Stockists\Api\Data\StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getById($authorId)
+    public function getById($stockistId)
     {
-        if (!isset($this->instances[$authorId])) {
-            /** @var \Limesharp\Stockists\Api\Data\AuthorInterface|\Magento\Framework\Model\AbstractModel $author */
-            $author = $this->authorInterfaceFactory->create();
-            $this->resource->load($author, $authorId);
-            if (!$author->getId()) {
-                throw new NoSuchEntityException(__('Requested author doesn\'t exist'));
-            }
-            $this->instances[$authorId] = $author;
+        if (!isset($this->instances[$stockistId])) {
+
+            /** @var \Limesharp\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
+            $stockist = $this->stockistInterfaceFactory->create();
+            $this->resource->load($stockist, $stockistId);
+            
+            if (!$stockist->getId()) {
+                throw new NoSuchEntityException(__('Requested stockist doesn\'t exist'));
+
+           }
+            $this->instances[$stockistId] = $stockist;
         }
-        return $this->instances[$authorId];
+
+        return $this->instances[$stockistId];;
     }
 
     /**
      * Retrieve pages matching the specified criteria.
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Limesharp\Stockists\Api\Data\AuthorSearchResultsInterface
+     * @return \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var \Limesharp\Stockists\Api\Data\AuthorSearchResultsInterface $searchResults */
+        /** @var \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface $searchResults */
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($searchCriteria);
 
         /** @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection $collection */
-        $collection = $this->authorCollectionFactory->create();
+        $collection = $this->stockistCollectionFactory->create();
 
         //Add filters from root filter group to the collection
         /** @var FilterGroup $group */
@@ -171,38 +175,38 @@ class AuthorRepository implements AuthorRepositoryInterface
         $collection->setCurPage($searchCriteria->getCurrentPage());
         $collection->setPageSize($searchCriteria->getPageSize());
 
-        /** @var \Limesharp\Stockists\Api\Data\AuthorInterface[] $authors */
-        $authors = [];
-        /** @var \Limesharp\Stockists\Model\Stores $author */
-        foreach ($collection as $author) {
-            /** @var \Limesharp\Stockists\Api\Data\AuthorInterface $authorDataObject */
-            $authorDataObject = $this->authorInterfaceFactory->create();
-            $this->dataObjectHelper->populateWithArray($authorDataObject, $author->getData(), AuthorInterface::class);
-            $authors[] = $authorDataObject;
+        /** @var \Limesharp\Stockists\Api\Data\StockistInterface[] $stockists */
+        $stockists = [];
+        /** @var \Limesharp\Stockists\Model\Stores $stockist */
+        foreach ($collection as $stockist) {
+            /** @var \Limesharp\Stockists\Api\Data\StockistInterface $stockistDataObject */
+            $stockistDataObject = $this->stockistInterfaceFactory->create();
+            $this->dataObjectHelper->populateWithArray($stockistDataObject, $stockist->getData(), StockistInterface::class);
+            $stockists[] = $stockistDataObject;
         }
         $searchResults->setTotalCount($collection->getSize());
-        return $searchResults->setItems($authors);
+        return $searchResults->setItems($stockists);
     }
 
     /**
-     * Delete author.
+     * Delete stockist.
      *
-     * @param \Limesharp\Stockists\Api\Data\AuthorInterface $author
+     * @param \Limesharp\Stockists\Api\Data\StockistInterface $stockist
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function delete(AuthorInterface $author)
+    public function delete(StockistInterface $stockist)
     {
-        /** @var \Limesharp\Stockists\Api\Data\AuthorInterface|\Magento\Framework\Model\AbstractModel $author */
-        $id = $author->getId();
+        /** @var \Limesharp\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
+        $id = $stockist->getId();
         try {
             unset($this->instances[$id]);
-            $this->resource->delete($author);
+            $this->resource->delete($stockist);
         } catch (ValidatorException $e) {
             throw new CouldNotSaveException(__($e->getMessage()));
         } catch (\Exception $e) {
             throw new StateException(
-                __('Unable to remove author %1', $id)
+                __('Unable to remove stockist %1', $id)
             );
         }
         unset($this->instances[$id]);
@@ -210,17 +214,17 @@ class AuthorRepository implements AuthorRepositoryInterface
     }
 
     /**
-     * Delete author by ID.
+     * Delete stockist by ID.
      *
-     * @param int $authorId
+     * @param int $stockistId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function deleteById($authorId)
+    public function deleteById($stockistId)
     {
-        $author = $this->getById($authorId);
-        return $this->delete($author);
+        $stockist = $this->getById($stockistId);
+        return $this->delete($stockist);
     }
 
     /**

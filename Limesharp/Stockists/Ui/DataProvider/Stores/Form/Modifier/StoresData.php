@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 
 namespace Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier;
@@ -21,7 +21,7 @@ namespace Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 
-class AuthorData implements ModifierInterface
+class StoresData implements ModifierInterface
 {
     /**
      * @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection
@@ -29,12 +29,12 @@ class AuthorData implements ModifierInterface
     protected $collection;
 
     /**
-     * @param CollectionFactory $authorCollectionFactory
+     * @param CollectionFactory $stockistCollectionFactory
      */
     public function __construct(
-        CollectionFactory $authorCollectionFactory
+        CollectionFactory $stockistCollectionFactory
     ) {
-        $this->collection = $authorCollectionFactory->create();
+        $this->collection = $stockistCollectionFactory->create();
     }
 
     /**
@@ -54,23 +54,23 @@ class AuthorData implements ModifierInterface
     public function modifyData(array $data)
     {
         $items = $this->collection->getItems();
-        /** @var $author \Limesharp\Stockists\Model\Stores */
-        foreach ($items as $author) {
-            $_data = $author->getData();
+        /** @var $stockist \Limesharp\Stockists\Model\Stores */
+        foreach ($items as $stockist) {
+            $_data = $stockist->getData();
             if (isset($_data['avatar'])) {
                 $avatar = [];
-                $avatar[0]['name'] = $author->getAvatar();
-                $avatar[0]['url'] = $author->getAvatarUrl();
+                $avatar[0]['name'] = $stockist->getAvatar();
+                $avatar[0]['url'] = $stockist->getAvatarUrl();
                 $_data['avatar'] = $avatar;
             }
             if (isset($_data['resume'])) {
                 $resume = [];
-                $resume[0]['name'] = $author->getResume();
-                $resume[0]['url'] = $author->getResumeUrl();
+                $resume[0]['name'] = $stockist->getResume();
+                $resume[0]['url'] = $stockist->getResumeUrl();
                 $_data['resume'] = $resume;
             }
-            $author->setData($_data);
-            $data[$author->getId()] = $_data;
+            $stockist->setData($_data);
+            $data[$stockist->getId()] = $_data;
         }
         return $data;
     }

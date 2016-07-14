@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model;
 
@@ -31,19 +31,19 @@ class Uploader
     /**
      * @var string
      */
-    const IMAGE_TMP_PATH    = 'limesharp_stockists/tmp/author/image';
+    const IMAGE_TMP_PATH    = 'limesharp_stockists/tmp/stockist/image';
     /**
      * @var string
      */
-    const IMAGE_PATH        = 'limesharp_stockists/author/image';
+    const IMAGE_PATH        = 'limesharp_stockists/stockist/image';
     /**
      * @var string
      */
-    const FILE_TMP_PATH     = 'limesharp_stockists/tmp/author/file';
+    const FILE_TMP_PATH     = 'limesharp_stockists/tmp/stockist/file';
     /**
      * @var string
      */
-    const FILE_PATH         = 'limesharp_stockists/author/file';
+    const FILE_PATH         = 'limesharp_stockists/stockist/file';
 
     /**
      * Core file storage database

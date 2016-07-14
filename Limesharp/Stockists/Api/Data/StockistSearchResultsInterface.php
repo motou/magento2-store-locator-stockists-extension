@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Api\Data;
 
@@ -22,19 +22,19 @@ use Magento\Framework\Api\SearchResultsInterface;
 /**
  * @api
  */
-interface AuthorSearchResultsInterface extends SearchResultsInterface
+interface StockistSearchResultsInterface extends SearchResultsInterface
 {
     /**
-     * Get author list.
+     * Get stockist list.
      *
-     * @return \Limesharp\Stockists\Api\Data\AuthorInterface[]
+     * @return \Limesharp\Stockists\Api\Data\StockistInterface[]
      */
     public function getItems();
 
     /**
-     * Set authors list.
+     * Set stockists list.
      *
-     * @param \Limesharp\Stockists\Api\Data\AuthorInterface[] $items
+     * @param \Limesharp\Stockists\Api\Data\StockistInterface[] $items
      * @return $this
      */
     public function setItems(array $items);

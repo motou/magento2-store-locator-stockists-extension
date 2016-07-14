@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
@@ -25,9 +25,9 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
-use Limesharp\Stockists\Api\AuthorRepositoryInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterfaceFactory;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
 use Limesharp\Stockists\Controller\Adminhtml\Stores;
 use Limesharp\Stockists\Model\Uploader;
 use Limesharp\Stockists\Model\UploaderPool;
@@ -51,32 +51,32 @@ class Save extends Stores
 
     /**
      * @param Registry $registry
-     * @param AuthorRepositoryInterface $authorRepository
+     * @param StockistRepositoryInterface $stockistRepository
      * @param PageFactory $resultPageFactory
      * @param Date $dateFilter
      * @param Context $context
-     * @param AuthorInterfaceFactory $authorFactory
+     * @param StockistInterfaceFactory $stockistFactory
      * @param DataObjectProcessor $dataObjectProcessor
      * @param DataObjectHelper $dataObjectHelper
      * @param UploaderPool $uploaderPool
      */
     public function __construct(
         Registry $registry,
-        AuthorRepositoryInterface $authorRepository,
+        StockistRepositoryInterface $stockistRepository,
         PageFactory $resultPageFactory,
         Date $dateFilter,
         Context $context,
-        AuthorInterfaceFactory $authorFactory,
+        StockistInterfaceFactory $stockistFactory,
         DataObjectProcessor $dataObjectProcessor,
         DataObjectHelper $dataObjectHelper,
         UploaderPool $uploaderPool
     )
     {
-        $this->authorFactory = $authorFactory;
+        $this->stockistFactory = $stockistFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->uploaderPool = $uploaderPool;
-        parent::__construct($registry, $authorRepository, $resultPageFactory, $dateFilter, $context);
+        parent::__construct($registry, $stockistRepository, $resultPageFactory, $dateFilter, $context);
     }
 
     /**
@@ -86,48 +86,48 @@ class Save extends Stores
      */
     public function execute()
     {
-        /** @var \Limesharp\Stockists\Api\Data\AuthorInterface $author */
-        $author = null;
+        /** @var \Limesharp\Stockists\Api\Data\StockistInterface $stockist */
+        $stockist = null;
         $data = $this->getRequest()->getPostValue();
         $id = !empty($data['stockist_id']) ? $data['stockist_id'] : null;
         $resultRedirect = $this->resultRedirectFactory->create();
         try {
             if ($id) {
-                $author = $this->authorRepository->getById((int)$id);
+                $stockist = $this->stockistRepository->getById((int)$id);
             } else {
                 unset($data['stockist_id']);
-                $author = $this->authorFactory->create();
+                $stockist = $this->stockistFactory->create();
             }
             $avatar = $this->getUploader('image')->uploadFileAndGetName('avatar', $data);
             $data['avatar'] = $avatar;
             $resume = $this->getUploader('file')->uploadFileAndGetName('resume', $data);
             $data['resume'] = $resume;
-            $this->dataObjectHelper->populateWithArray($author, $data, AuthorInterface::class);
-            $this->authorRepository->save($author);
+            $this->dataObjectHelper->populateWithArray($stockist, $data, StockistInterface::class);
+            $this->stockistRepository->save($stockist);
             $this->messageManager->addSuccessMessage(__('You saved the store'));
             if ($this->getRequest()->getParam('back')) {
-                $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $author->getId()]);
+                $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $stockist->getId()]);
             } else {
                 $resultRedirect->setPath('stockists/stores');
             }
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
-            if ($author != null) {
-                $this->storeAuthorDataToSession(
+            if ($stockist != null) {
+                $this->storeStockistDataToSession(
                     $this->dataObjectProcessor->buildOutputDataArray(
-                        $author,
-                        AuthorInterface::class
+                        $stockist,
+                        StockistInterface::class
                     )
                 );
             }
             $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $id]);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__('There was a problem saving the store'));
-            if ($author != null) {
-                $this->storeAuthorDataToSession(
+            if ($stockist != null) {
+                $this->storeStockistDataToSession(
                     $this->dataObjectProcessor->buildOutputDataArray(
-                        $author,
-                        AuthorInterface::class
+                        $stockist,
+                        StockistInterface::class
                     )
                 );
             }
@@ -147,10 +147,10 @@ class Save extends Stores
     }
 
     /**
-     * @param $authorData
+     * @param $stockistData
      */
-    protected function storeAuthorDataToSession($authorData)
+    protected function storeStockistDataToSession($stockistData)
     {
-        $this->_getSession()->setSampleNewsAuthorData($authorData);
+        $this->_getSession()->setSampleNewsStockistData($stockistData);
     }
 }

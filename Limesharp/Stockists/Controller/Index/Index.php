@@ -26,7 +26,7 @@ class Index extends \Magento\Framework\App\Action\Action
         parent::__construct($context);
     }
     /**
-     * Load the page defined in view/frontend/layout/samplenewpage_index_index.xml
+     * Load the page defined in view/frontend/layout/stockists_index_index.xml
      *
      * @return \Magento\Framework\View\Result\Page
      */

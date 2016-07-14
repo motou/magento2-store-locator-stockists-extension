@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
@@ -23,40 +23,39 @@ use Limesharp\Stockists\Controller\RegistryConstants;
 class Edit extends Stores
 {
     /**
-     * Initialize current author and set it in the registry.
+     * Initialize current stockist and set it in the registry.
      *
      * @return int
      */
-    protected function _initAuthor()
+    protected function _initStockist()
     {
-        $authorId = $this->getRequest()->getParam('stockist_id');
-        $this->coreRegistry->register(RegistryConstants::CURRENT_STOCKIST_ID, $authorId);
+        $stockistId = $this->getRequest()->getParam('stockist_id');
+        $this->coreRegistry->register(RegistryConstants::CURRENT_STOCKIST_ID, $stockistId);
 
-        return $authorId;
+        return $stockistId;
     }
 
     /**
-     * Edit or create author
+     * Edit or create stockist
      *
      * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
-        $authorId = $this->_initAuthor();
-
+        $stockistId = $this->_initStockist();
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Limesharp_Stockists::stores');
         $resultPage->getConfig()->getTitle()->prepend(__('Stockists'));
         $resultPage->addBreadcrumb(__('Stockists'), __('Stockists'), $this->getUrl('stockists/stores'));
 
-        if ($authorId === null) {
+        if ($stockistId === null) {
             $resultPage->addBreadcrumb(__('New Store'), __('New Store'));
             $resultPage->getConfig()->getTitle()->prepend(__('New Store'));
         } else {
             $resultPage->addBreadcrumb(__('Edit Store'), __('Edit Store'));
             $resultPage->getConfig()->getTitle()->prepend(
-                $this->authorRepository->getById($authorId)->getName()
+                $this->stockistRepository->getById($stockistId)->getName()
             );
         }
         return $resultPage;

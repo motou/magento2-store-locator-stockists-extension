@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
  
 namespace Limesharp\Stockists\Setup;
@@ -170,6 +170,29 @@ class InstallSchema implements InstallSchemaInterface
                 ->setComment('List of stores');
                 
             $installer->getConnection()->createTable($table);
+            
+            $installer->getConnection()->addIndex(
+                $installer->getTable('limesharp_stockists_stores'),
+                $setup->getIdxName(
+                    $installer->getTable('limesharp_stockists_stores'),
+                    ['name','photo'],
+                    AdapterInterface::INDEX_TYPE_FULLTEXT
+                ),
+                [
+                    'name',
+                    'address',
+                    'city',
+                    'country',
+                    'region',
+                    'link',
+                    'email',
+                    'postcode',
+                    'phone',
+                    'latitude',
+                    'longitude'
+                ],
+                AdapterInterface::INDEX_TYPE_FULLTEXT
+            );
             
             $installer->endSetup();
             

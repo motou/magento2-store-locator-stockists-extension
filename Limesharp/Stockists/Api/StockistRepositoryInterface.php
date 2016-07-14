@@ -13,61 +13,61 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
 
 /**
  * @api
  */
-interface AuthorRepositoryInterface
+interface StockistRepositoryInterface
 {
     /**
      * Save page.
      *
-     * @param AuthorInterface $author
-     * @return AuthorInterface
+     * @param StockistInterface $stockist
+     * @return StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function save(AuthorInterface $author);
+    public function save(StockistInterface $stockist);
 
     /**
-     * Retrieve Author.
+     * Retrieve Stockist.
      *
-     * @param int $authorId
-     * @return AuthorInterface
+     * @param int $stockistId
+     * @return StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getById($authorId);
+    public function getById($stockistId);
 
     /**
      * Retrieve pages matching the specified criteria.
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Limesharp\Stockists\Api\Data\AuthorSearchResultsInterface
+     * @return \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
-     * Delete author.
+     * Delete stockist.
      *
-     * @param AuthorInterface $author
+     * @param StockistInterface $stockist
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function delete(AuthorInterface $author);
+    public function delete(StockistInterface $stockist);
 
     /**
-     * Delete author by ID.
+     * Delete stockist by ID.
      *
-     * @param int $authorId
+     * @param int $stockistId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function deleteById($authorId);
+    public function deleteById($stockistId);
 }

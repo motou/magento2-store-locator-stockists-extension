@@ -13,14 +13,14 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model;
 
 use Magento\Framework\ObjectManagerInterface;
 use Limesharp\Stockists\Model\Routing\RoutableInterface;
 
-class AuthorFactory implements FactoryInterface
+class StockistFactory implements FactoryInterface
 {
     /**
      * Object Manager instance

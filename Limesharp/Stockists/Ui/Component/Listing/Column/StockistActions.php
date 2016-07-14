@@ -21,9 +21,9 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
- * @method AuthorActions setName($name)
+ * @method StockistActions setName($name)
  */
-class AuthorActions extends Column
+class StockistActions extends Column
 {
     /**
      * Url path  to edit

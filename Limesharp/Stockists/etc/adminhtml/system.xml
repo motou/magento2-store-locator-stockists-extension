@@ -14,7 +14,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
@@ -26,7 +26,7 @@
             <label>News</label>
             <tab>limesharp_stockists</tab>
             <resource>Limesharp_Stockists::news</resource>
-            <group id="author" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="stockist" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Storess</label>
                 <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enable Breadcrumbs</label>
@@ -49,14 +49,6 @@
                 </field>
                 <field id="url_suffix" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stores url suffix</label>
-                </field>
-                <field id="rss" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enable RSS</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="rss_cache" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>RSS Cache Lifetime</label>
-                    <comment>in seconds</comment>
                 </field>
             </group>
         </section>

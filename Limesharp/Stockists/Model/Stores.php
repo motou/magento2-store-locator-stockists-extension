@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model;
 
@@ -25,18 +25,18 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
 use Limesharp\Stockists\Model\Stores\Url;
-use Limesharp\Stockists\Model\ResourceModel\Stores as AuthorResourceModel;
+use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 use Limesharp\Stockists\Model\Routing\RoutableInterface;
 use Limesharp\Stockists\Model\Source\AbstractSource;
 
 
 /**
- * @method AuthorResourceModel _getResource()
- * @method AuthorResourceModel getResource()
+ * @method StockistResourceModel _getResource()
+ * @method StockistResourceModel getResource()
  */
-class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
+class Stores extends AbstractModel implements StockistInterface, RoutableInterface
 {
     /**
      * @var int
@@ -133,7 +133,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     protected function _construct()
     {
-        $this->_init(AuthorResourceModel::class);
+        $this->_init(StockistResourceModel::class);
     }
 
 
@@ -144,9 +144,19 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getType()
     {
-        return $this->getData(AuthorInterface::TYPE);
+        return $this->getData(StockistInterface::TYPE);
     }
 
+    /**
+     * @param $storeId
+     * @return StockistInterface
+     */
+    public function setStoreId($storeId)
+    {
+        $this->setData(StockistInterface::STORE_ID, $storeId);
+        return $this;
+    }
+    
     /**
      * Get country
      *
@@ -154,41 +164,173 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getCountry()
     {
-        return $this->getData(AuthorInterface::COUNTRY);
+        return $this->getData(StockistInterface::COUNTRY);
     }
 
     /**
      * set name
      *
      * @param $name
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setName($name)
     {
-        return $this->setData(AuthorInterface::NAME, $name);
+        return $this->setData(StockistInterface::NAME, $name);
     }
 
     /**
      * set type
      *
      * @param $type
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setType($type)
     {
-        return $this->setData(AuthorInterface::TYPE, $type);
+        return $this->setData(StockistInterface::TYPE, $type);
     }
-
 
     /**
      * Set country
      *
      * @param $country
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setCountry($country)
     {
-        return $this->setData(AuthorInterface::COUNTRY, $country);
+        return $this->setData(StockistInterface::COUNTRY, $country);
+    }
+    
+        /**
+     * set link
+     *
+     * @param $link
+     * @return StockistInterface
+     */
+    public function setLink($link)
+    {
+        return $this->setData(StockistInterface::LINK, $link);
+    }
+
+    /**
+     * set address
+     *
+     * @param $address
+     * @return StockistInterface
+     */
+    public function setAddress($address)
+    {
+        return $this->setData(StockistInterface::ADDRESS, $address);
+    }
+
+    /**
+     * set city
+     *
+     * @param $city
+     * @return StockistInterface
+     */
+    public function setCity($city)
+    {
+        return $this->setData(StockistInterface::CITY, $city);
+    }
+
+    /**
+     * set postcode
+     *
+     * @param $postcode
+     * @return StockistInterface
+     */
+    public function setPostcode($postcode)
+    {
+        return $this->setData(StockistInterface::POSTCODE, $postcode);
+    }
+
+    /**
+     * set region
+     *
+     * @param $region
+     * @return StockistInterface
+     */
+    public function setRegion($region)
+    {
+        return $this->setData(StockistInterface::REGION, $region);
+    }
+
+    /**
+     * set email
+     *
+     * @param $email
+     * @return StockistInterface
+     */
+    public function setEmail($email)
+    {
+        return $this->setData(StockistInterface::EMAIL, $email);
+    }
+
+    /**
+     * set phone
+     *
+     * @param $phone
+     * @return StockistInterface
+     */
+    public function setPhone($phone)
+    {
+        return $this->setData(StockistInterface::PHONE, $phone);
+    }
+
+    /**
+     * set latitude
+     *
+     * @param $latitude
+     * @return StockistInterface
+     */
+    public function setLatitude($latitude)
+    {
+        return $this->setData(StockistInterface::LATITUDE, $latitude);
+    }
+    
+    /**
+     * set longitude
+     *
+     * @param $longitude
+     * @return StockistInterface
+     */
+    public function setLongitude($longitude)
+    {
+        return $this->setData(StockistInterface::LONGITUDE, $longitude);
+    }
+
+    /**
+     * Set status
+     *
+     * @param $status
+     * @return StockistInterface
+     */
+    public function setStatus($status)
+    {
+        return $this->setData(StockistInterface::STATUS, $status);
+    }
+
+
+    /**
+     * set created at
+     *
+     * @param $createdAt
+     * @return StockistInterface
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->setData(StockistInterface::CREATED_AT, $createdAt);
+    }
+
+    /**
+     * set updated at
+     *
+     * @param $updatedAt
+     * @return StockistInterface
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        return $this->setData(StockistInterface::UPDATED_AT, $updatedAt);
     }
 
     /**
@@ -198,7 +340,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getName()
     {
-        return $this->getData(AuthorInterface::NAME);
+        return $this->getData(StockistInterface::NAME);
     }
 
     /**
@@ -208,7 +350,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getLink()
     {
-        return $this->getData(AuthorInterface::LINK);
+        return $this->getData(StockistInterface::LINK);
     }
     
     /**
@@ -218,7 +360,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getAddress()
     {
-        return $this->getData(AuthorInterface::ADDRESS);
+        return $this->getData(StockistInterface::ADDRESS);
     }
 
     /**
@@ -228,7 +370,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getCity()
     {
-        return $this->getData(AuthorInterface::CITY);
+        return $this->getData(StockistInterface::CITY);
     }
     
     /**
@@ -238,7 +380,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getPostcode()
     {
-        return $this->getData(AuthorInterface::POSTCODE);
+        return $this->getData(StockistInterface::POSTCODE);
     }
 
     /**
@@ -248,7 +390,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getRegion()
     {
-        return $this->getData(AuthorInterface::REGION);
+        return $this->getData(StockistInterface::REGION);
     }
     
     /**
@@ -258,7 +400,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getEmail()
     {
-        return $this->getData(AuthorInterface::EMAIL);
+        return $this->getData(StockistInterface::EMAIL);
     }
 
     /**
@@ -268,7 +410,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getPhone()
     {
-        return $this->getData(AuthorInterface::PHONE);
+        return $this->getData(StockistInterface::PHONE);
     }
     
     /**
@@ -278,7 +420,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getLatitude()
     {
-        return $this->getData(AuthorInterface::LATITUDE);
+        return $this->getData(StockistInterface::LATITUDE);
     }
     
     /**
@@ -288,7 +430,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getLongitude()
     {
-        return $this->getData(AuthorInterface::LONGITUDE);
+        return $this->getData(StockistInterface::LONGITUDE);
     }
 
     /**
@@ -298,7 +440,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getStatus()
     {
-        return $this->getData(AuthorInterface::STATUS);
+        return $this->getData(StockistInterface::STATUS);
     }
 
 
@@ -309,7 +451,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getCreatedAt()
     {
-        return $this->getData(AuthorInterface::CREATED_AT);
+        return $this->getData(StockistInterface::CREATED_AT);
     }
 
     /**
@@ -319,154 +461,7 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
      */
     public function getUpdatedAt()
     {
-        return $this->getData(AuthorInterface::UPDATED_AT);
-    }
-
-    /**
-     * set link
-     *
-     * @param $link
-     * @return AuthorInterface
-     */
-    public function setLink($link)
-    {
-        return $this->setData(AuthorInterface::LINK, $link);
-    }
-
-    /**
-     * set address
-     *
-     * @param $address
-     * @return AuthorInterface
-     */
-    public function setAddress($address)
-    {
-        return $this->setData(AuthorInterface::ADDRESS, $address);
-    }
-
-    /**
-     * set city
-     *
-     * @param $city
-     * @return AuthorInterface
-     */
-    public function setCity($city)
-    {
-        return $this->setData(AuthorInterface::CITY, $city);
-    }
-
-    /**
-     * set postcode
-     *
-     * @param $postcode
-     * @return AuthorInterface
-     */
-    public function setPostcode($postcode)
-    {
-        return $this->setData(AuthorInterface::POSTCODE, $postcode);
-    }
-
-    /**
-     * set region
-     *
-     * @param $region
-     * @return AuthorInterface
-     */
-    public function setRegion($region)
-    {
-        return $this->setData(AuthorInterface::REGION, $region);
-    }
-
-    /**
-     * set email
-     *
-     * @param $email
-     * @return AuthorInterface
-     */
-    public function setEmail($email)
-    {
-        return $this->setData(AuthorInterface::EMAIL, $email);
-    }
-
-    /**
-     * set phone
-     *
-     * @param $phone
-     * @return AuthorInterface
-     */
-    public function setPhone($phone)
-    {
-        return $this->setData(AuthorInterface::PHONE, $phone);
-    }
-
-    /**
-     * set latitude
-     *
-     * @param $latitude
-     * @return AuthorInterface
-     */
-    public function setLatitude($latitude)
-    {
-        return $this->setData(AuthorInterface::LATITUDE, $latitude);
-    }
-    
-    /**
-     * set longitude
-     *
-     * @param $longitude
-     * @return AuthorInterface
-     */
-    public function setLongitude($longitude)
-    {
-        return $this->setData(AuthorInterface::LONGITUDE, $longitude);
-    }
-
-    /**
-     * Set status
-     *
-     * @param $status
-     * @return AuthorInterface
-     */
-    public function setStatus($status)
-    {
-        return $this->setData(AuthorInterface::STATUS, $status);
-    }
-
-
-    /**
-     * set created at
-     *
-     * @param $createdAt
-     * @return AuthorInterface
-     */
-    public function setCreatedAt($createdAt)
-    {
-        return $this->setData(AuthorInterface::CREATED_AT, $createdAt);
-    }
-
-    /**
-     * set updated at
-     *
-     * @param $updatedAt
-     * @return AuthorInterface
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        return $this->setData(AuthorInterface::UPDATED_AT, $updatedAt);
-    }
-
-
-    /**
-     * Check if author url key exists
-     * return author id if author exists
-     *
-     * @param string $urlKey
-     * @param int $storeId
-     * @return int
-     */
-    public function checkUrlKey($urlKey, $storeId)
-    {
-        return $this->_getResource()->checkUrlKey($urlKey, $storeId);
+        return $this->getData(StockistInterface::UPDATED_AT);
     }
 
     /**
@@ -479,22 +474,13 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
 
-    /**
-     * @param $storeId
-     * @return AuthorInterface
-     */
-    public function setStoreId($storeId)
-    {
-        $this->setData(AuthorInterface::STORE_ID, $storeId);
-        return $this;
-    }
 
     /**
      * @return array
      */
     public function getStoreId()
     {
-        return $this->getData(AuthorInterface::STORE_ID);
+        return $this->getData(StockistInterface::STORE_ID);
     }
 
     /**
@@ -511,9 +497,9 @@ class Stores extends AbstractModel implements AuthorInterface, RoutableInterface
     /**
      * @return mixed
      */
-    public function getAuthorUrl()
+    public function getStockistUrl()
     {
-        return $this->urlModel->getAuthorUrl($this);
+        return $this->urlModel->getStockistUrl($this);
     }
 
     /**

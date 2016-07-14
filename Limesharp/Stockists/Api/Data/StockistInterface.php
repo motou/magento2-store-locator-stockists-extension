@@ -13,14 +13,14 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Api\Data;
 
 /**
  * @api
  */
-interface AuthorInterface
+interface StockistInterface
 {
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case
@@ -146,7 +146,7 @@ interface AuthorInterface
      * set id
      *
      * @param $id
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setId($id);
 
@@ -154,7 +154,7 @@ interface AuthorInterface
      * set name
      *
      * @param $name
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setName($name);
 
@@ -162,7 +162,7 @@ interface AuthorInterface
      * set link
      *
      * @param $link
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setLink($link);
     
@@ -170,7 +170,7 @@ interface AuthorInterface
      * set address
      *
      * @param $address
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setAddress($address);
 
@@ -178,7 +178,7 @@ interface AuthorInterface
      * set city
      *
      * @param $city
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setCity($city);
     
@@ -186,7 +186,7 @@ interface AuthorInterface
      * set postcode
      *
      * @param $postcode
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setPostcode($postcode);
 
@@ -194,7 +194,7 @@ interface AuthorInterface
      * set region
      *
      * @param $region
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setRegion($region);
 
@@ -202,7 +202,7 @@ interface AuthorInterface
      * set email
      *
      * @param $email
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setEmail($email);
     
@@ -210,7 +210,7 @@ interface AuthorInterface
      * set phone
      *
      * @param $phone
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setPhone($phone);
 
@@ -218,7 +218,7 @@ interface AuthorInterface
      * set latitude
      *
      * @param $latitude
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setLatitude($latitude);
     
@@ -226,7 +226,7 @@ interface AuthorInterface
      * set longitude
      *
      * @param $longitude
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setLongitude($longitude);
 
@@ -234,7 +234,7 @@ interface AuthorInterface
      * Set status
      *
      * @param $status
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setStatus($status);
 
@@ -242,7 +242,7 @@ interface AuthorInterface
      * set type
      *
      * @param $type
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setType($type);
 
@@ -250,7 +250,7 @@ interface AuthorInterface
      * Set country
      *
      * @param $country
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setCountry($country);
 
@@ -265,7 +265,7 @@ interface AuthorInterface
      * set created at
      *
      * @param $createdAt
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setCreatedAt($createdAt);
 
@@ -280,13 +280,13 @@ interface AuthorInterface
      * set updated at
      *
      * @param $updatedAt
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setUpdatedAt($updatedAt);
 
     /**
      * @param $storeId
-     * @return AuthorInterface
+     * @return StockistInterface
      */
     public function setStoreId($storeId);
 

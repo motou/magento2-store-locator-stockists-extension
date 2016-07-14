@@ -2,8 +2,8 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">limesharp_stockists_stores_form.author_form_data_source</item>
-            <item name="deps" xsi:type="string">limesharp_stockists_stores_form.author_form_data_source</item>
+            <item name="provider" xsi:type="string">limesharp_stockists_stores_form.stores_form_data_source</item>
+            <item name="deps" xsi:type="string">limesharp_stockists_stores_form.stores_form_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Store Information</item>
         <item name="config" xsi:type="array">
@@ -19,10 +19,10 @@
             <item name="save_and_continue" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\SaveAndContinue</item>
         </item>
     </argument>
-    <dataSource name="author_form_data_source">
+    <dataSource name="stores_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Limesharp\Stockists\Model\Stores\DataProvider</argument>
-            <argument name="name" xsi:type="string">author_form_data_source</argument>
+            <argument name="name" xsi:type="string">stores_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">stockist_id</argument>
             <argument name="requestFieldName" xsi:type="string">stockist_id</argument>
             <argument name="data" xsi:type="array">
@@ -37,7 +37,7 @@
             </item>
         </argument>
     </dataSource>
-    <fieldset name="author_main">
+    <fieldset name="stores_main">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string"/>
@@ -60,7 +60,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Name</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">stores</item>
+                    <item name="source" xsi:type="string">stockist</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="notice" xsi:type="string" translate="true">Enter full store name here</item>

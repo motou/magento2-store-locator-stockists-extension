@@ -14,12 +14,12 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Limesharp\Stockists\Api\AuthorRepositoryInterface" type="Limesharp\Stockists\Model\AuthorRepository" />
-    <preference for="Limesharp\Stockists\Api\Data\AuthorInterface" type="Limesharp\Stockists\Model\Stores" />
+    <preference for="Limesharp\Stockists\Api\StockistRepositoryInterface" type="Limesharp\Stockists\Model\StockistRepository" />
+    <preference for="Limesharp\Stockists\Api\Data\StockistInterface" type="Limesharp\Stockists\Model\Stores" />
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -31,7 +31,7 @@
         <arguments>
             <argument name="mainTable" xsi:type="string">limesharp_stockists_stores</argument>
             <argument name="eventPrefix" xsi:type="string">limesharp_stockists_stores_grid_collection</argument>
-            <argument name="eventObject" xsi:type="string">author_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">stores_grid_collection</argument>
             <argument name="resourceModel" xsi:type="string">Limesharp\Stockists\Model\ResourceModel\Stores</argument>
         </arguments>
     </type>
@@ -81,8 +81,6 @@
         <arguments>
             <argument name="uploaderPool" xsi:type="object">Limesharp\Stockists\Model\UploaderPool</argument>
             <argument name="optionProviders" xsi:type="array">
-                <item name="awards" xsi:type="object">LimesharpStockistsModelStoresSourceAward</item>
-                <item name="type" xsi:type="object">LimesharpStockistsModelStoresSourceType</item>
                 <item name="country" xsi:type="object">Limesharp\Stockists\Model\Source\Country</item>
             </argument>
         </arguments>
@@ -97,39 +95,6 @@
             <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
         </arguments>
     </type>
-    <virtualType name="LimesharpStockistsModelStoresSourceAward" type="Limesharp\Stockists\Model\Source\Options">
-        <arguments>
-            <argument name="options" xsi:type="array">
-                <item name="1" xsi:type="array">
-                    <item name="value" xsi:type="number">1</item>
-                    <item name="label" xsi:type="string" translate="true">Award 1</item>
-                </item>
-                <item name="2" xsi:type="array">
-                    <item name="value" xsi:type="number">2</item>
-                    <item name="label" xsi:type="string" translate="true">Award 2</item>
-                </item>
-                <item name="3" xsi:type="array">
-                    <item name="value" xsi:type="number">3</item>
-                    <item name="label" xsi:type="string" translate="true">Award 3</item>
-                </item>
-            </argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="LimesharpStockistsModelStoresSourceType" type="Limesharp\Stockists\Model\Source\Options">
-        <arguments>
-            <argument name="options" xsi:type="array">
-                <item name="1" xsi:type="array">
-                    <item name="value" xsi:type="number">1</item>
-                    <item name="label" xsi:type="string" translate="true">Collaborator</item>
-                </item>
-                <item name="2" xsi:type="array">
-                    <item name="value" xsi:type="number">2</item>
-                    <item name="label" xsi:type="string" translate="true">Employee</item>
-                </item>
-            </argument>
-        </arguments>
-    </virtualType>
-
     <virtualType name="LimesharpStockistsModelStoresSourceStatus" type="Limesharp\Stockists\Model\Source\Options">
         <arguments>
             <argument name="options" xsi:type="array">
@@ -143,14 +108,7 @@
                 </item>
             </argument>
         </arguments>
-    </virtualType>
-    <type name="Magento\Framework\App\Rss\RssManagerInterface">
-        <arguments>
-            <argument name="dataProviders" xsi:type="array">
-                <item name="authors" xsi:type="string">Limesharp\Stockists\Block\Stores\ListAuthor\Rss</item>
-            </argument>
-        </arguments>
-    </type>
+    </virtualType>  
     <type name="Limesharp\Stockists\Model\Image">
         <arguments>
             <argument name="uploader" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
@@ -158,12 +116,12 @@
     </type>
     <virtualType name="LimesharpStockistsBlockStoresImageBuilder" type="Limesharp\Stockists\Block\ImageBuilder">
         <arguments>
-            <argument name="entityCode" xsi:type="string">author</argument>
+            <argument name="entityCode" xsi:type="string">stockist</argument>
         </arguments>
     </virtualType>
-    <type name="Limesharp\Stockists\Block\Stores\ViewAuthor">
+    <type name="Limesharp\Stockists\Block\Stores\ViewStockist">
         <arguments>
-            <argument name="imageBuilder" xsi:type="object">LimesharpStockistsBlockAuthorImageBuilder</argument>
+            <argument name="imageBuilder" xsi:type="object">LimesharpStockistsBlockStockistImageBuilder</argument>
         </arguments>
     </type>
 </config>

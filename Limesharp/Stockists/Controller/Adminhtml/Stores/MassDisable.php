@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
@@ -27,13 +27,13 @@ class MassDisable extends MassAction
     protected $status = false;
 
     /**
-     * @param Stores $author
+     * @param Stores $stockist
      * @return $this
      */
-    protected function massAction(Stores $author)
+    protected function massAction(Stores $stockist)
     {
-        $author->setStatus($this->status);
-        $this->authorRepository->save($author);
+        $stockist->setStatus($this->status);
+        $this->stockistRepository->save($stockist);
         return $this;
     }
 }

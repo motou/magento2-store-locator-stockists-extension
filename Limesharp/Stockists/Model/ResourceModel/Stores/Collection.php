@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model\ResourceModel\Stores;
 
@@ -26,7 +26,7 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 use Limesharp\Stockists\Model\Stores;
-use Limesharp\Stockists\Model\ResourceModel\Stores as AuthorResourceModel;
+use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 
 class Collection extends AbstractCollection
 {
@@ -46,7 +46,7 @@ class Collection extends AbstractCollection
      *
      * @var string
      */
-    protected $_eventObject = 'author_collection';
+    protected $_eventObject = 'stockist_collection';
 
     /**
      * Store manager
@@ -91,9 +91,9 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Stores::class, AuthorResourceModel::class);
+        $this->_init(Stores::class, StockistResourceModel::class);
 		$this->_map['fields']['stockist_id'] = 'main_table.stockist_id';
-        $this->_map['fields']['store_id'] = 'store_table.store_id';
+//         $this->_map['fields']['store_id'] = 'store_table.store_id';
     }
 
     /**
@@ -103,14 +103,6 @@ class Collection extends AbstractCollection
      */
     protected function _afterLoad()
     {
-        $this->performAfterLoad('limesharp_stockists_stores', 'stockist_id');
-        foreach ($this->getItems() as $item) {
-            /** @var \Limesharp\Stockists\Model\Stores $item */
-            $awards = $item->getAwards();
-            if ($awards && !is_array($awards)) {
-                $item->setAwards(explode(',', $awards));
-            }
-        }
         return parent::_afterLoad();
     }
 
@@ -158,6 +150,7 @@ class Collection extends AbstractCollection
      */
     protected function _renderFiltersBefore()
     {
+/*
         if ($this->getFilter('store_id')) {
             $this->getSelect()->join(
                 ['store_table' => $this->getTable('limesharp_stockists_stores')],
@@ -168,6 +161,7 @@ class Collection extends AbstractCollection
             ->group('main_table.stockist_id');
             // @codingStandardsIgnoreEnd
         }
+*/
         parent::_renderFiltersBefore();
     }
 

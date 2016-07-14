@@ -14,7 +14,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
@@ -380,7 +380,7 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Limesharp\Stockists\Ui\Component\Listing\Column\AuthorActions">
+        <actionsColumn name="actions" class="Limesharp\Stockists\Ui\Component\Listing\Column\StockistActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">stockist_id</item>

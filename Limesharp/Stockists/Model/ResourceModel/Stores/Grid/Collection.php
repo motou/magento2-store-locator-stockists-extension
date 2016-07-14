@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model\ResourceModel\Stores\Grid;
 
@@ -27,10 +27,10 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
-use Limesharp\Stockists\Model\ResourceModel\Stores\Collection as AuthorCollection;
+use Limesharp\Stockists\Model\ResourceModel\Stores\Collection as StockistCollection;
 
 
-class Collection extends AuthorCollection implements SearchResultInterface
+class Collection extends StockistCollection implements SearchResultInterface
 {
     /**
      * @var AggregationInterface

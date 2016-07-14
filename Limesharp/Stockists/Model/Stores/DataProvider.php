@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Model\Stores;
 
@@ -38,7 +38,7 @@ class DataProvider extends AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param CollectionFactory $authorCollectionFactory
+     * @param CollectionFactory $stockistCollectionFactory
      * @param PoolInterface $pool
      * @param array $meta
      * @param array $data
@@ -47,12 +47,12 @@ class DataProvider extends AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $authorCollectionFactory,
+        CollectionFactory $stockistCollectionFactory,
         PoolInterface $pool,
         array $meta = [],
         array $data = []
     ) {
-        $this->collection   = $authorCollectionFactory->create();
+        $this->collection   = $stockistCollectionFactory->create();
         $this->pool         = $pool;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->meta = $this->prepareMeta($this->meta);
@@ -86,6 +86,10 @@ class DataProvider extends AbstractDataProvider
         foreach ($this->pool->getModifiersInstances() as $modifier) {
             $this->data = $modifier->modifyData($this->data);
         }
+$writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
+$logger = new \Zend\Log\Logger();
+$logger->addWriter($writer);
+$logger->info($this->data);
         return $this->data;
     }
 }

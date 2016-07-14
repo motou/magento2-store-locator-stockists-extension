@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Helper;
 
@@ -581,7 +581,7 @@ class Image extends AbstractHelper
     protected function getModel()
     {
         if (!$this->model) {
-            $this->model = $this->imageFactory->create(['entityCode' => 'author']);
+            $this->model = $this->imageFactory->create(['entityCode' => 'stockist']);
         }
         return $this->model;
     }

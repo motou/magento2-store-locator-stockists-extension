@@ -26,7 +26,7 @@ class Stores extends \Magento\Framework\App\Action\Action
 	}
 	
     /**
-     * Load the page defined in view/frontend/layout/samplenewpage_index_index.xml
+     * Load the page defined in view/frontend/layout/stockists_index_index.xml
      *
      * @return \Magento\Framework\Controller\Result\JsonFactory
      */

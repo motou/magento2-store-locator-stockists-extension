@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
@@ -26,14 +26,14 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
-use Limesharp\Stockists\Api\AuthorRepositoryInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterface;
-use Limesharp\Stockists\Api\Data\AuthorInterfaceFactory;
-use Limesharp\Stockists\Controller\Adminhtml\Stores as AuthorController;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
+use Limesharp\Stockists\Controller\Adminhtml\Stores as StockistController;
 use Limesharp\Stockists\Model\Stores;
-use Limesharp\Stockists\Model\ResourceModel\Stores as AuthorResourceModel;
+use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 
-class InlineEdit extends AuthorController
+class InlineEdit extends StockistController
 {
     /**
      * @var DataObjectHelper
@@ -48,38 +48,38 @@ class InlineEdit extends AuthorController
      */
     protected $jsonFactory;
     /**
-     * @var AuthorResourceModel
+     * @var StockistResourceModel
      */
-    protected $authorResourceModel;
+    protected $stockistResourceModel;
 
     /**
      * @param Registry $registry
-     * @param AuthorRepositoryInterface $authorRepository
+     * @param StockistRepositoryInterface $stockistRepository
      * @param PageFactory $resultPageFactory
      * @param Date $dateFilter
      * @param Context $context
      * @param DataObjectProcessor $dataObjectProcessor
      * @param DataObjectHelper $dataObjectHelper
      * @param JsonFactory $jsonFactory
-     * @param AuthorResourceModel $authorResourceModel
+     * @param StockistResourceModel $stockistResourceModel
      */
     public function __construct(
         Registry $registry,
-        AuthorRepositoryInterface $authorRepository,
+        StockistRepositoryInterface $stockistRepository,
         PageFactory $resultPageFactory,
         Date $dateFilter,
         Context $context,
         DataObjectProcessor $dataObjectProcessor,
         DataObjectHelper $dataObjectHelper,
         JsonFactory $jsonFactory,
-        AuthorResourceModel $authorResourceModel
+        StockistResourceModel $stockistResourceModel
     )
     {
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper    = $dataObjectHelper;
         $this->jsonFactory         = $jsonFactory;
-        $this->authorResourceModel = $authorResourceModel;
-        parent::__construct($registry, $authorRepository, $resultPageFactory, $dateFilter, $context);
+        $this->stockistResourceModel = $stockistResourceModel;
+        parent::__construct($registry, $stockistRepository, $resultPageFactory, $dateFilter, $context);
     }
 
     /**
@@ -100,23 +100,23 @@ class InlineEdit extends AuthorController
             ]);
         }
 
-        foreach (array_keys($postItems) as $authorId) {
-            /** @var \Limesharp\Stockists\Model\Stores|AuthorInterface $author */
-            $author = $this->authorRepository->getById((int)$authorId);
+        foreach (array_keys($postItems) as $stockistId) {
+            /** @var \Limesharp\Stockists\Model\Stores|StockistInterface $stockist */
+            $stockist = $this->stockistRepository->getById((int)$stockistId);
             try {
-                $authorData = $this->filterData($postItems[$authorId]);
-                $this->dataObjectHelper->populateWithArray($author, $authorData , AuthorInterface::class);
-                $this->authorResourceModel->saveAttribute($author, array_keys($authorData));
+                $stockistData = $this->filterData($postItems[$stockistId]);
+                $this->dataObjectHelper->populateWithArray($stockist, $stockistData , StockistInterface::class);
+                $this->stockistResourceModel->saveAttribute($stockist, array_keys($stockistData));
             } catch (LocalizedException $e) {
-                $messages[] = $this->getErrorWithAuthorId($author, $e->getMessage());
+                $messages[] = $this->getErrorWithStockistId($stockist, $e->getMessage());
                 $error = true;
             } catch (\RuntimeException $e) {
-                $messages[] = $this->getErrorWithAuthorId($author, $e->getMessage());
+                $messages[] = $this->getErrorWithStockistId($stockist, $e->getMessage());
                 $error = true;
             } catch (\Exception $e) {
-                $messages[] = $this->getErrorWithAuthorId(
-                    $author,
-                    __('Something went wrong while saving the author.')
+                $messages[] = $this->getErrorWithStockistId(
+                    $stockist,
+                    __('Something went wrong while saving the stockist.')
                 );
                 $error = true;
             }
@@ -129,14 +129,14 @@ class InlineEdit extends AuthorController
     }
 
     /**
-     * Add author id to error message
+     * Add stockist id to error message
      *
-     * @param Stores $author
+     * @param Stores $stockist
      * @param string $errorText
      * @return string
      */
-    protected function getErrorWithAuthorId(Stores $author, $errorText)
+    protected function getErrorWithStockistId(Stores $stockist, $errorText)
     {
-        return '[Author ID: ' . $author->getId() . '] ' . $errorText;
+        return '[Stockist ID: ' . $stockist->getId() . '] ' . $errorText;
     }
 }

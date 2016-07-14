@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 namespace Limesharp\Stockists\Controller\Adminhtml;
 
@@ -22,7 +22,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
-use Limesharp\Stockists\Api\AuthorRepositoryInterface;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
 
 abstract class Stores extends Action
 {
@@ -31,11 +31,11 @@ abstract class Stores extends Action
      */
     const ACTION_RESOURCE = 'Limesharp_Stockists::stores';
     /**
-     * author factory
+     * stockist factory
      *
-     * @var AuthorRepositoryInterface
+     * @var StockistRepositoryInterface
      */
-    protected $authorRepository;
+    protected $stockistRepository;
 
     /**
      * Core registry
@@ -58,21 +58,21 @@ abstract class Stores extends Action
 
     /**
      * @param Registry $registry
-     * @param AuthorRepositoryInterface $authorRepository
+     * @param StockistRepositoryInterface $stockistRepository
      * @param PageFactory $resultPageFactory
      * @param Date $dateFilter
      * @param Context $context
      */
     public function __construct(
         Registry $registry,
-        AuthorRepositoryInterface $authorRepository,
+        StockistRepositoryInterface $stockistRepository,
         PageFactory $resultPageFactory,
         Date $dateFilter,
         Context $context
 
     ) {
         $this->coreRegistry      = $registry;
-        $this->authorRepository  = $authorRepository;
+        $this->stockistRepository  = $stockistRepository;
         $this->resultPageFactory = $resultPageFactory;
         $this->dateFilter        = $dateFilter;
         parent::__construct($context);

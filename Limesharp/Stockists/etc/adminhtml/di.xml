@@ -14,15 +14,15 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author    Claudiu Creanga
+ * @author   Claudiu Creanga
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="SampleNewsUiDataProviderAuthorFormModifierPool" type="Magento\Ui\DataProvider\Modifier\Pool">
+    <virtualType name="LimesharpStockistsUiDataProviderStoresFormModifierPool" type="Magento\Ui\DataProvider\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
-                <item name="author_data" xsi:type="array">
-                    <item name="class" xsi:type="string">Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier\AuthorData</item>
+                <item name="stores_data" xsi:type="array">
+                    <item name="class" xsi:type="string">Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier\StoresData</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
@@ -30,7 +30,7 @@
     </virtualType>
     <type name="Limesharp\Stockists\Model\Stores\DataProvider">
         <arguments>
-            <argument name="pool" xsi:type="object">SampleNewsUiDataProviderAuthorFormModifierPool</argument>
+            <argument name="pool" xsi:type="object">LimesharpStockistsUiDataProviderStoresFormModifierPool</argument>
         </arguments>
     </type>
     <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\MassDelete">
@@ -41,14 +41,14 @@
     </type>
     <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\MassDisable">
         <arguments>
-            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 authors have been disabled.</argument>
-            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while disabling authors.</argument>
+            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 stores have been disabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while disabling stores.</argument>
         </arguments>
     </type>
     <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\MassEnable">
         <arguments>
-            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 authors have been enabled.</argument>
-            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while enabling authors.</argument>
+            <argument name="successMessage" xsi:type="string" translate="true">A total of %1 stores have been enabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while enabling stores.</argument>
         </arguments>
     </type>
 </config>
