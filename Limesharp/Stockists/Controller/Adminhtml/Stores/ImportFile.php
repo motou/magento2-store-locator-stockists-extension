@@ -32,7 +32,7 @@ use Limesharp\Stockists\Controller\Adminhtml\Stores;
 use Limesharp\Stockists\Model\Uploader;
 use Limesharp\Stockists\Model\UploaderPool;
 
-class Save extends Stores
+class ImportFile extends Stores
 {
     /**
      * @var DataObjectProcessor
@@ -86,54 +86,59 @@ class Save extends Stores
      */
     public function execute()
     {
+	  
 
         /** @var \Limesharp\Stockists\Api\Data\StockistInterface $stockist */
         $stockist = null;
         $data = $this->getRequest()->getPostValue();
+        $file = $this->getUploader('file')->uploadFileAndGetName('import', $data);        
         $id = !empty($data['stockist_id']) ? $data['stockist_id'] : null;
         $resultRedirect = $this->resultRedirectFactory->create();
-        try {
-            if ($id) {
-                $stockist = $this->stockistRepository->getById((int)$id);
-            } else {
-                unset($data['stockist_id']);
-                $stockist = $this->stockistFactory->create();
-            }
-            $avatar = $this->getUploader('image')->uploadFileAndGetName('avatar', $data);
-            $data['avatar'] = $avatar;
-            $resume = $this->getUploader('file')->uploadFileAndGetName('resume', $data);
-            $data['resume'] = $resume;
-            $this->dataObjectHelper->populateWithArray($stockist, $data, StockistInterface::class);
-            $this->stockistRepository->save($stockist);
-            $this->messageManager->addSuccessMessage(__('You saved the store'));
-            if ($this->getRequest()->getParam('back')) {
-                $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $stockist->getId()]);
-            } else {
+        
+        if($file){
+            try {
+	            if ($id) {
+	                $stockist = $this->stockistRepository->getById((int)$id);
+	            } else {
+	                unset($data['stockist_id']);
+	                $stockist = $this->stockistFactory->create();
+	            }
+
+	            $resume = $this->getUploader('file')->uploadFileAndGetName('resume', $data);
+	            $data['resume'] = $resume;
+	            $this->dataObjectHelper->populateWithArray($stockist, $data, StockistInterface::class);
+	            $this->stockistRepository->save($stockist);
+	            $this->messageManager->addSuccessMessage(__('Your file has been imported successfully'));
+	            
                 $resultRedirect->setPath('stockists/stores');
-            }
-        } catch (LocalizedException $e) {
-            $this->messageManager->addErrorMessage($e->getMessage());
-            if ($stockist != null) {
-                $this->storeStockistDataToSession(
-                    $this->dataObjectProcessor->buildOutputDataArray(
-                        $stockist,
-                        StockistInterface::class
-                    )
-                );
-            }
-            $resultRedirect->setPath('stockists/stores/edit', ['stockist_id' => $id]);
-        } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__('There was a problem saving the store'));
-            if ($stockist != null) {
-                $this->storeStockistDataToSession(
-                    $this->dataObjectProcessor->buildOutputDataArray(
-                        $stockist,
-                        StockistInterface::class
-                    )
-                );
-            }
-            $resultRedirect->setPath('stockists/stores/edit', ['store_id' => $id]);
+	            
+	        } catch (LocalizedException $e) {
+	            $this->messageManager->addErrorMessage($e->getMessage());
+	            if ($stockist != null) {
+	                $this->storeStockistDataToSession(
+	                    $this->dataObjectProcessor->buildOutputDataArray(
+	                        $stockist,
+	                        StockistInterface::class
+	                    )
+	                );
+	            }
+	            $resultRedirect->setPath('stockists/stores/edit');
+	        } catch (\Exception $e) {
+	            $this->messageManager->addErrorMessage(__('There was a importing the file'));
+	            if ($stockist != null) {
+	                $this->storeStockistDataToSession(
+	                    $this->dataObjectProcessor->buildOutputDataArray(
+	                        $stockist,
+	                        StockistInterface::class
+	                    )
+	                );
+	            }
+	            $resultRedirect->setPath('stockists/stores/import');
+	        }
+        } else {
+			$this->messageManager->addError(__('Please upload a file'));
         }
+
         return $resultRedirect;
     }
 

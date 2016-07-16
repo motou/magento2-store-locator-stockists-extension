@@ -86,10 +86,7 @@ class DataProvider extends AbstractDataProvider
         foreach ($this->pool->getModifiersInstances() as $modifier) {
             $this->data = $modifier->modifyData($this->data);
         }
-$writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
-$logger = new \Zend\Log\Logger();
-$logger->addWriter($writer);
-$logger->info($this->data);
+
         return $this->data;
     }
 }
