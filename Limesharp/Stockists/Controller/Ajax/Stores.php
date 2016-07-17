@@ -6,6 +6,8 @@
 
 namespace Limesharp\Stockists\Controller\Ajax;
 
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+
 /**
  * Responsible for loading page content.
  *
@@ -17,10 +19,18 @@ class Stores extends \Magento\Framework\App\Action\Action
 	
 	protected $resultJsonFactory;
 	
+	
+    /**
+     * @var CollectionFactory
+     */
+    protected $collectionFactory;
+	
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
+        CollectionFactory $collectionFactory 
     ){
+	    $this->collectionFactory = $collectionFactory;
         $this->resultJsonFactory = $resultJsonFactory;
 		parent::__construct($context);
 	}
@@ -32,21 +42,14 @@ class Stores extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-	    $json =  array("name"=> "Harrods",
-"address"=> "87-135 Brompton Rd",
-"city"=> "London",
-"country"=> "United Kingdom",
-"zipcode"=> "SW1X 7XL",
-"region"=> "London",
-"email"=> "customer.services@harrods.com",
-"phone"=> "442077301234",
-"store"=> "worldwide",
-"status"=> "Enabled",
-"link"=> "www.harrods.com",
-"latitude"=> "51.499394",
-"longitude"=> "-0.163245");
-return  $this->resultJsonFactory->create()->setData($json);
+	    
+		$collection = $this->collectionFactory->create()->getData();
+		$json = array();
+		foreach ($collection as $stockist){
+			$json[] = $stockist;
+		}
 
+		return  $this->resultJsonFactory->create()->setData($json);
 
     }
 }

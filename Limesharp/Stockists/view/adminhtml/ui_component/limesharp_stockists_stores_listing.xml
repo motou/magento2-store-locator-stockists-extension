@@ -37,6 +37,12 @@
                 <item name="class" xsi:type="string">secondary</item>
                 <item name="url" xsi:type="string">*/*/import</item>
             </item>
+            <item name="export" xsi:type="array">
+                <item name="name" xsi:type="string">export</item>
+                <item name="label" xsi:type="string" translate="true">Export stockists</item>
+                <item name="class" xsi:type="string">secondary</item>
+                <item name="url" xsi:type="string">*/*/export</item>
+            </item>
         </item>
     </argument>
     <dataSource name="limesharp_stockists_stores_listing_data_source">

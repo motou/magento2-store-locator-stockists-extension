@@ -92,11 +92,7 @@ abstract class Stores extends Action
             $data
         );
         $data = $inputFilter->getUnescaped();
-        if (isset($data['awards'])) {
-            if (is_array($data['awards'])) {
-                $data['awards'] = implode(',', $data['awards']);
-            }
-        }
+        
         return $data;
     }
 

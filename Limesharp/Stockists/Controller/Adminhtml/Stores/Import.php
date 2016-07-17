@@ -22,7 +22,7 @@ use \Limesharp\Stockists\Controller\Adminhtml\Stores as StockistController;
 class Import extends StockistController
 {
     /**
-     * Stockists list.
+     * Stockists import.
      *
      * @return \Magento\Backend\Model\View\Result\Page
      */
