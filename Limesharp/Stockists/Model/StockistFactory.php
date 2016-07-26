@@ -15,6 +15,7 @@
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author   Claudiu Creanga
  */
+ 
 namespace Limesharp\Stockists\Model;
 
 use Magento\Framework\ObjectManagerInterface;

@@ -11,8 +11,9 @@
         <css src="Limesharp_Stockists::css/stockists.css"/>
     </head>
     <body>
+	    <attribute name="class" value="stockists"/>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" template="Limesharp_Stockists::main.phtml"/>
+            <block class="Limesharp\Stockists\Block\Stores" name="stockists.stores" template="Limesharp_Stockists::main.phtml"/>
         </referenceContainer>
     </body>
 </page>

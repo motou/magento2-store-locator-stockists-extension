@@ -1,10 +1,26 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
+ * Limesharp_Stockists extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
+ * @copyright 2016 Claudiu Creanga
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author   Claudiu Creanga
  */
-?>
+ ?>
+
+<?php $data = $block->getStoresForFrontend(); ?>
+
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
+
 <div class="search-stockists">
 	
 	<div class="search-header">
@@ -12,15 +28,28 @@
 		<p class="search-title"><?php echo __("Find a stockist") ?></p>
 		<p class="stockists-intro"><?php echo __("Enter a city, country or full post/zip code") ?></p>
 		<input id="stockist-search-term" type="text" placeholder="Search" /> 
-		<button id="stockists-submit">Search</button>
+		<button id="stockists-submit"><?php echo __("Search") ?></button>
 		
 	</div>
 	<div class="stockists-results">
 		
 
-				
-		<div class="results-store worldwide">
-
+		<div class="results-store">
+			
+			<?php foreach ($data as $item): ?>
+			
+		        <?php $data_marker = $item["latitude"].$item["longitude"]; ?>				        
+		        
+	        	<div class="results-content loaded-results" data-marker="<?php echo $data_marker; ?>">
+		        	
+		        	<p class="results-title"><?php echo $item["name"] ?></p>
+		        	<p class="results-address"><?php echo $item["address"] ?></p>
+		        	<p class="results-phone"><?php echo $item["city"]." ".$item["postcode"] ?></p>
+		        	<p class="results-miles"><?php echo $item["country"] ?></p>
+		        	
+	        	</div>		        	
+	        
+	        <?php endforeach; ?>
 	        			
 		</div>
 		
@@ -33,7 +62,7 @@
 	{
 		"*": {
 		        
-	        	"stockists_widget": " <?php echo "test" ?> "
+        	"stockists_widget": " <?php echo "test" ?> "
 	        	
 	    }
     }

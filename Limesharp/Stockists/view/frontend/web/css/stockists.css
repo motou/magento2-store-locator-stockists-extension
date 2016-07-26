@@ -1,3 +1,13 @@
+.stockists #maincontent,
+.stockists .page-wrapper{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: none;
+}
+.stockists .page-title-wrapper{
+	text-align: center;
+}
 #map-canvas {
   height: 100%;
   min-height: 800px;
@@ -34,7 +44,7 @@
   position: absolute;
   right: 100px;
   width: 285px;
-  height: 425px;
+  height: 464px;
   padding: 20px 17px 20px 15px;
 }
 .search-stockists.close-up {
@@ -78,34 +88,28 @@
 .results-store.grenson {
   display: none;
 }
-
 .stockists-intro {
   display: block;
 }
-
-
 #stockist-search-term {
-  display: inline-block;
-  height: 16px;
-  padding-left: 10px;
-  width: 194px;
-  border: 1px solid #c2c2c2;
-  margin-top: 5px;
+	display: inline-block;
+    height: 40px;
+    padding-left: 10px;
+    width: 184px;
+    border: 1px solid #c2c2c2;
+    margin-top: 5px;
 }
-
-
 #stockists-submit {
-  display: inline-block;
-  margin-left: 0px;
-  background: #081c2a; 
-  width: 61px;
-  border: none;
-  font-size: 15px;
-  padding-top: 7px;
-  top: 2px;
-  position: relative;
-  letter-spacing: 0.3px;
-  color:white;
+	display: inline-block;
+	margin-left: 0px;
+	background: #081c2a;
+	border: none;
+	font-size: 15px;
+	padding: 10px 10px;
+	top: -2px;
+	position: relative;
+	letter-spacing: 0.3px;
+	color: white;
 }
 
 .search-header {
@@ -116,7 +120,7 @@
   cursor: pointer;
   width: 93%;
   padding: 5px 10px 5px 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .results-content p:not(.results-title){
 	padding-bottom: 0;

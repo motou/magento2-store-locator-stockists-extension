@@ -20,35 +20,35 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="limesharp_stockists" sortOrder="2000">
-            <label>News</label>
+            <label>Stockists</label>
         </tab>
         <section id="limesharp_stockists" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>News</label>
+            <label>Stockists</label>
             <tab>limesharp_stockists</tab>
-            <resource>Limesharp_Stockists::news</resource>
+            <resource>Limesharp_Stockists::stores</resource>
             <group id="stockist" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Storess</label>
+                <label>Stores</label>
                 <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enable Breadcrumbs</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores list meta title</label>
+                    <label>Stockists list meta title</label>
                 </field>
                 <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores list meta description</label>
+                    <label>Stockists list meta description</label>
                 </field>
                 <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores list meta keywords</label>
+                    <label>Stockists list meta keywords</label>
                 </field>
                 <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores list url</label>
+                    <label>Stockists list url</label>
                 </field>
                 <field id="url_prefix" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores url prefix</label>
+                    <label>Stockists url prefix</label>
                 </field>
                 <field id="url_suffix" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stores url suffix</label>
+                    <label>Stockists url suffix</label>
                 </field>
             </group>
         </section>

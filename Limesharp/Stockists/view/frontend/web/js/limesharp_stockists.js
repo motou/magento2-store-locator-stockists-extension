@@ -5,15 +5,18 @@ require([
         'stockists_search',
         'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
     ],
-    function($,country_list,mapstyles,search){    
+    function($,country_list,mapstyles,search_widget){ 
+	       
 		$(document).ready(function(){
-	
-		    getStores();
 			
+			var map;
+			markers = [];
+
+		    getStores();
 
 			$("#stockists-submit").on("click", function(e){
 				
-				search();
+				search_widget.search(map);
 				
 			});
 				
@@ -21,7 +24,7 @@ require([
 				
 		        if(e.which == 13){//Enter key pressed
 			        
-					search();
+					search_widget.search(map);
 		        }
 		        
 		    });
@@ -41,8 +44,6 @@ require([
 				});	
 			}
 	
-			var map;
-			markers = [];
 			
 			function initialize(response) {
 				
@@ -55,7 +56,6 @@ require([
 					styles: mapstyles 
 				};
 				
-				
 				map = new google.maps.Map(mapElement,mapOptions);
 				
 				var image = {
@@ -66,7 +66,7 @@ require([
 				    content: ""
 				});
 				
-		        function bindInfoWindow(marker, map, infowindow, name, address, city, zipcode, telephone, link, email) {
+		        function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
 				    google.maps.event.addListener(marker, 'click', function() {
 					    var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
 			    		var contentString = '<div class="stockists-window"><p class="stockists-title">'+name+
@@ -75,15 +75,12 @@ require([
 			    		'</p><p class="stockists-address"><a href="mailto:'+email+'" target="_blank">'+email+
 			    		'</a></p><p class="stockists-telephone">'+address+
 			    		'</p><p class="stockists-telephone">'+city+
-			    		'</span></p><p class="stockists-web">'+zipcode+'</p></div>';
+			    		'</span></p><p class="stockists-web">'+postcode+'</p></div>';
 					    map.setCenter(marker.getPosition());
 				        infowindow.setContent(contentString);
 				        infowindow.open(map, marker);
 				    });
-				}
-				
-	
-				
+				}		
 				
 				var length = response.length
 				
@@ -101,7 +98,7 @@ require([
 						global_name: data.name,
 						global_address: data.address,
 						global_city: data.city,
-						global_zipcode: data.zipcode,
+						global_postcode: data.postcode,
 						global_country: data.country,
 						position: latLng,
 						map:map,
@@ -110,7 +107,7 @@ require([
 					});
 					markers.push(marker);
 	
-			        bindInfoWindow(marker, map, infowindow, data.name, data.address, data.city, data.zipcode, data.phone, data.link, data.email);
+			        bindInfoWindow(marker, map, infowindow, data.name, data.address, data.city, data.postcode, data.phone, data.link, data.email);
 			        			
 		        }
 		        
@@ -128,14 +125,6 @@ require([
 		            	google.maps.event.trigger(markers[i], 'click');
 					}
 	            }
-			}
-			
-			function getCountryCode(name){
-				for(var i = 0, len=country_list.length; i < len; i++){
-					if(country_list[i].name.toUpperCase() == name.toUpperCase()){
-						return country_list[i].code
-					}
-				}
 			}
 			
 			
