@@ -33,14 +33,6 @@ class Import extends StockistController
         $resultPage->setActiveMenu('Limesharp_Stockists::stores'); 
         $resultPage->getConfig()->getTitle()->prepend(__('Import'));
         $resultPage->addBreadcrumb(__('Import'), __('Import'), $this->getUrl('stockists/stores'));      
-                
-        $this->messageManager->addNotice(
-            $this->_objectManager->get('Magento\ImportExport\Helper\Data')->getMaxUploadSizeMessage()
-        );
-        
-        $this->messageManager->addNotice(
-            __("Make sure your file is a correctly formatted CSV file, delimited by commas and the fields are quoted.")
-        );
         
         return $resultPage;
     }

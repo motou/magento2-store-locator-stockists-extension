@@ -153,8 +153,8 @@ class ImageBuilder
             );
 
         $template = $helper->getFrame()
-            ? 'Sample_News::image.phtml'
-            : 'Sample_News::image_with_borders.phtml';
+            ? 'Limesharp_Stockists::image.phtml'
+            : 'Limesharp_Stockists::image_with_borders.phtml';
 
         $imagesize = $helper->getResizedImageInfo();
 

@@ -308,8 +308,18 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public function setStatus($status)
     {
         return $this->setData(StockistInterface::STATUS, $status);
+    }    
+    
+    /**
+     * set image
+     *
+     * @param $image
+     * @return StockistInterface
+     */
+    public function setImage($image)
+    {
+        return $this->setData(StockistInterface::IMAGE, $image);
     }
-
 
     /**
      * set created at
@@ -401,6 +411,37 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public function getEmail()
     {
         return $this->getData(StockistInterface::EMAIL);
+    }
+    
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->getData(StockistInterface::IMAGE);
+    }
+    
+    /**
+     * @return bool|string
+     * @throws LocalizedException
+     */
+    public function getImageUrl()
+    {
+        $url = false;
+        $image = $this->getImage();
+        if ($image) {
+            if (is_string($image)) {
+                $uploader = $this->uploaderPool->getUploader('image');
+                $url = $uploader->getBaseUrl().$uploader->getBasePath().$image;
+            } else {
+                throw new LocalizedException(
+                    __('Something went wrong while getting the image url.')
+                );
+            }
+        }
+        return $url;
     }
 
     /**

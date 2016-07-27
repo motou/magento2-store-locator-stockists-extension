@@ -19,25 +19,41 @@
 namespace Limesharp\Stockists\Block;
 
 use Magento\Backend\Block\Template\Context;
-use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Limesharp\Stockists\Model\Stores;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 class Stores extends \Magento\Framework\View\Element\Template
 {
 	
+    
     /**
-     * @var CollectionFactory
+     * @var StockistsCollectionFactory
      */
-     
-    protected $collectionFactory;
+    protected $stockistsCollectionFactory;
+    
+    /**
+     * Store manager
+     *
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
     
     public function __construct(
-        CollectionFactory $collectionFactory,
+        StockistsCollectionFactory $stockistsCollectionFactory,
+        StoreManagerInterface $storeManager,
 		Context $context ,
 		array $data = []
     )
     {
-        $this->collectionFactory = $collectionFactory; 
+        $this->stockistsCollectionFactory = $stockistsCollectionFactory;
+        $this->storeManager = $storeManager;
         parent::__construct($context, $data);
+    }
+    
+    public function getBaseImageUrl()
+    {
+	    return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
     
      /**
@@ -47,7 +63,11 @@ class Stores extends \Magento\Framework\View\Element\Template
      */
     public function getStoresForFrontend()
     {
-	    $collection = $this->collectionFactory->create()->getData();
+	    $collection = $this->stockistsCollectionFactory->create()
+	    	->addFieldToSelect('*')
+            ->addFieldToFilter('status', Stores::STATUS_ENABLED)
+            ->addStoreFilter($this->_storeManager->getStore()->getId())
+            ->setOrder('name', 'ASC');;
 	    return $collection;
     }
 }

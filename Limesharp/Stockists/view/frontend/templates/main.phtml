@@ -16,7 +16,9 @@
  * @author   Claudiu Creanga
  */
  ?>
-
+ 
+<?php /** @var \Limesharp\Stockists\Block\Stores $block */?>
+<?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
@@ -38,16 +40,27 @@
 			
 			<?php foreach ($data as $item): ?>
 			
+
 		        <?php $data_marker = $item["latitude"].$item["longitude"]; ?>				        
 		        
 	        	<div class="results-content loaded-results" data-marker="<?php echo $data_marker; ?>">
+		        	
+		        	<?php if($item["image"]): ?>
+		        		
+		        		<div class="image">
+				        		<img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$item["image"] ?>" alt="<?php echo $item["name"] ?>" /> 
+		        		</div>
+		        		
+		        	<?php endif; ?>
+		        	
 		        	
 		        	<p class="results-title"><?php echo $item["name"] ?></p>
 		        	<p class="results-address"><?php echo $item["address"] ?></p>
 		        	<p class="results-phone"><?php echo $item["city"]." ".$item["postcode"] ?></p>
 		        	<p class="results-miles"><?php echo $item["country"] ?></p>
 		        	
-	        	</div>		        	
+	        	</div>	
+		        	
 	        
 	        <?php endforeach; ?>
 	        			

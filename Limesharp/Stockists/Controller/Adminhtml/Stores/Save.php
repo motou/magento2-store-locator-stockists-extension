@@ -99,10 +99,8 @@ class Save extends Stores
                 unset($data['stockist_id']);
                 $stockist = $this->stockistFactory->create();
             }
-            $avatar = $this->getUploader('image')->uploadFileAndGetName('avatar', $data);
-            $data['avatar'] = $avatar;
-            $resume = $this->getUploader('file')->uploadFileAndGetName('resume', $data);
-            $data['resume'] = $resume;
+            $image = $this->getUploader('image')->uploadFileAndGetName('image', $data);
+            $data['image'] = $image;
             $this->dataObjectHelper->populateWithArray($stockist, $data, StockistInterface::class);
             $this->stockistRepository->save($stockist);
             $this->messageManager->addSuccessMessage(__('You saved the store'));
@@ -152,6 +150,6 @@ class Save extends Stores
      */
     protected function storeStockistDataToSession($stockistData)
     {
-        $this->_getSession()->setSampleNewsStockistData($stockistData);
+        $this->_getSession()->setLimesharpStockistsStoresData($stockistData);
     }
 }

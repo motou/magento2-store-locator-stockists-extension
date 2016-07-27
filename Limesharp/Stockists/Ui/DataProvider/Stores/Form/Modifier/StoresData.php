@@ -57,17 +57,11 @@ class StoresData implements ModifierInterface
         /** @var $stockist \Limesharp\Stockists\Model\Stores */
         foreach ($items as $stockist) {
             $_data = $stockist->getData();
-            if (isset($_data['avatar'])) {
-                $avatar = [];
-                $avatar[0]['name'] = $stockist->getAvatar();
-                $avatar[0]['url'] = $stockist->getAvatarUrl();
-                $_data['avatar'] = $avatar;
-            }
-            if (isset($_data['resume'])) {
-                $resume = [];
-                $resume[0]['name'] = $stockist->getResume();
-                $resume[0]['url'] = $stockist->getResumeUrl();
-                $_data['resume'] = $resume;
+            if (isset($_data['image'])) {
+                $image = [];
+                $image[0]['name'] = $stockist->getImage();
+                $image[0]['url'] = $stockist->getImageUrl();
+                $_data['image'] = $image;
             }
             $stockist->setData($_data);
             $data[$stockist->getId()] = $_data;

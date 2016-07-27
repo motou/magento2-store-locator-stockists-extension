@@ -1,4 +1,21 @@
 <?php
+/**
+ * Limesharp_Stockists extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
+ * @copyright 2016 Claudiu Creanga
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author   Claudiu Creanga
+ */
+	 
 namespace Limesharp\Stockists\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
@@ -9,9 +26,9 @@ use Magento\Ui\Component\Listing\Columns\Column;
 use Limesharp\Stockists\Model\Uploader;
 
 /**
- * @method Avatar setName($name)
+ * @method Image setName($name)
  */
-class Avatar extends Column
+class Image extends Column
 {
     const ALT_FIELD = 'name';
 

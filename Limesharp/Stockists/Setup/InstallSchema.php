@@ -130,6 +130,13 @@ class InstallSchema implements InstallSchemaInterface
                     'Link'
                 )
                 ->addColumn(
+                    'image',
+                    Table::TYPE_TEXT,
+                    255,
+                    [],
+                    'Image'
+                )
+                ->addColumn(
                     'latitude',
                     Table::TYPE_TEXT,
                     255,

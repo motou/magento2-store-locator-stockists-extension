@@ -196,13 +196,5 @@ class ImportFile extends Stores
     {
         return $this->uploaderPool->getUploader($type);
     }
-
-    /**
-     * @param $stockistData
-     */
-    protected function storeStockistDataToSession($stockistData)
-    {
-        $this->_getSession()->setSampleNewsStockistData($stockistData);
-    }
     
 }

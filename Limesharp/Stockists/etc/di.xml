@@ -85,7 +85,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Ui\Component\Listing\Column\Avatar">
+    <type name="Limesharp\Stockists\Ui\Component\Listing\Column\Image">
         <arguments>
             <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
         </arguments>
@@ -114,6 +114,11 @@
             <argument name="uploader" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
         </arguments>
     </type>
+    <type name="Limesharp\Stockists\Ui\Component\Listing\Column\Image">
+        <arguments>
+            <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
+        </arguments>
+	</type>
     <virtualType name="LimesharpStockistsBlockStoresImageBuilder" type="Limesharp\Stockists\Block\ImageBuilder">
         <arguments>
             <argument name="entityCode" xsi:type="string">stockist</argument>

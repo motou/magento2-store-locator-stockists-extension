@@ -87,7 +87,6 @@ abstract class Stores extends Action
     public function filterData($data)
     {
         $inputFilter = new \Zend_Filter_Input(
-            ['dob' => $this->dateFilter],
             [],
             $data
         );

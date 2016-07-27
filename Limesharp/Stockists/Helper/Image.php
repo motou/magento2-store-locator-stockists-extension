@@ -200,7 +200,7 @@ class Image extends AbstractHelper
         $this->_reset();
 
         $this->attributes = array_merge(
-            $this->getConfigView()->getMediaAttributes('Sample_News', self::MEDIA_TYPE_CONFIG_NODE, $imageId),
+            $this->getConfigView()->getMediaAttributes('Limesharp_Stockists', self::MEDIA_TYPE_CONFIG_NODE, $imageId),
             $attributes
         );
 
@@ -454,10 +454,10 @@ class Image extends AbstractHelper
     public function getPlaceholder($placeholder = null)
     {
         if ($placeholder) {
-            $placeholderFullPath = 'Sample_News::images/'.$this->entityCode.'/placeholder/' . $placeholder . '.jpg';
+            $placeholderFullPath = 'Limesharp_Stockists::images/'.$this->entityCode.'/placeholder/' . $placeholder . '.jpg';
         } else {
             $placeholderFullPath = $this->placeholder
-                ?: 'Sample_News::images/'.$this->entityCode.'/placeholder/' . $this->getModel()->getDestinationSubdir() . '.jpg';
+                ?: 'Limesharp_Stockists::images/'.$this->entityCode.'/placeholder/' . $this->getModel()->getDestinationSubdir() . '.jpg';
         }
         return $placeholderFullPath;
     }
@@ -850,7 +850,7 @@ class Image extends AbstractHelper
     {
         $frame = $this->getAttribute('frame');
         if (empty($frame)) {
-            $frame = $this->getConfigView()->getVarValue('Sample_News', 'image_white_borders');
+            $frame = $this->getConfigView()->getVarValue('Limesharp_Stockists', 'image_white_borders');
         }
         return $frame;
     }

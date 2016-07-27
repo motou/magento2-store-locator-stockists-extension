@@ -719,7 +719,7 @@ class Image extends AbstractModel
     {
         if ($this->newFile === true) {
             $url = $this->assetRepo->getUrl(
-                "Sample_News::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
+                "Limesharp_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
             );
         } else {
             $url = $this->storeManager->getStore()->getBaseUrl(
@@ -956,7 +956,7 @@ class Image extends AbstractModel
         $fileInfo = null;
         if ($this->newFile === true) {
             $asset = $this->assetRepo->createAsset(
-                "Sample_News::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
+                "Limesharp_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
             );
             $img = $asset->getSourceFile();
             $fileInfo = getimagesize($img);

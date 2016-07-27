@@ -39,6 +39,7 @@ interface StockistInterface
     const STATUS              = 'status';
     const TYPE                = 'type';
     const COUNTRY             = 'country';
+    const IMAGE               = 'image';
     const CREATED_AT          = 'created_at';
     const UPDATED_AT          = 'updated_at';
     const STORE_ID            = 'store_id';
@@ -108,6 +109,13 @@ interface StockistInterface
     public function getPhone();
     
     /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage();
+    
+    /**
      * Get latitude
      *
      * @return string
@@ -165,6 +173,14 @@ interface StockistInterface
      * @return StockistInterface
      */
     public function setLink($link);
+    
+    /**
+     * set image
+     *
+     * @param $image
+     * @return AuthorInterface
+     */
+    public function setImage($image);
     
     /**
      * set address

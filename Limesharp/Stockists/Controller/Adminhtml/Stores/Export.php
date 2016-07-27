@@ -104,11 +104,12 @@ class Export extends Stores
 	    
         try {
 	        
-			$content = "";
+			$content = '"store_id","name","address","city","country","postcode","region","email","phone","link","image","latitude","longitude","status","updated_at","created_at"'."\n";
 	        $fileName = 'stockists_export.csv';
 			$collection = $this->collectionFactory->create()->getData();
 			
 			foreach ($collection as $stockist){
+				array_shift($stockist); //skip the id
 				$content .= implode(",", array_map(array($this, 'addQuotationMarks'),$stockist));
 				$content .= "\n";
 			}

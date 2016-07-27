@@ -6,25 +6,54 @@
 
 namespace Limesharp\Stockists\Controller\Index;
 
-/**
- * Responsible for loading page content.
- *
- * This is a basic controller that only loads the corresponding layout file. It may duplicate other such
- * controllers, and thus it is considered tech debt. This code duplication will be resolved in future releases.
- */
-class Index extends \Magento\Framework\App\Action\Action
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
+
+class Index extends Action
 {
+	/**
+     * @var string
+     */
+    const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stores/meta_description';
+    /**
+     * @var string
+     */
+    const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stores/meta_keywords';
+    /**
+     * @var string
+     */
+    const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stores/meta_title';
+    /**
+     * @var string
+     */
+    const BREADCRUMBS_CONFIG_PATH = 'limesharp_stockists/stores/breadcrumbs';
+
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $scopeConfig;
+    
     /** @var \Magento\Framework\View\Result\PageFactory  */
     protected $resultPageFactory;
 
+    /**
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param ScopeConfigInterface $scopeConfig
+     */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        PageFactory $resultPageFactory,
+        ScopeConfigInterface $scopeConfig
     ) {
-
-        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
+        $this->scopeConfig = $scopeConfig;
     }
+    
     /**
      * Load the page defined in view/frontend/layout/stockists_index_index.xml
      *
@@ -32,6 +61,39 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        return $this->resultPageFactory->create();
+
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->getConfig()->getTitle()->set(
+            $this->scopeConfig->getValue(self::META_TITLE_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
+        );
+        $resultPage->getConfig()->setDescription(
+            $this->scopeConfig->getValue(self::META_DESCRIPTION_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
+        );
+        $resultPage->getConfig()->setKeywords(
+            $this->scopeConfig->getValue(self::META_KEYWORDS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
+        );
+        if ($this->scopeConfig->isSetFlag(self::BREADCRUMBS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)) {
+	        
+            /** @var \Magento\Theme\Block\Html\Breadcrumbs $breadcrumbsBlock */
+            $breadcrumbsBlock = $resultPage->getLayout()->getBlock('breadcrumbs');
+            if ($breadcrumbsBlock) {
+                $breadcrumbsBlock->addCrumb(
+                    'home',
+                    [
+                        'label'    => __('Home'),
+                        'link'     => $this->_url->getUrl('')
+                    ]
+                );
+                $breadcrumbsBlock->addCrumb(
+                    'stockists',
+                    [
+                        'label'    => __('Stockists'),
+                    ]
+                );
+            }
+        }
+        
+        return $resultPage;
+
     }
 }
