@@ -31,7 +31,8 @@ Or you can download this zip file and drop it into your app folder and then run 
 * name, latitude and longitude are required;
 * country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
 * image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);
-* To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this:
+* To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
+
 ![csv](documentation/images/csv.jpg?raw=true "CSV")
 
 ## Support
