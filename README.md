@@ -24,6 +24,11 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ## Usage
 
+### Basic
+
+* The default url is /stockists. So once installed go to www.website.com/stockists (insert store code if necessary)
+* Name, latitude and longitude are required values;
+
 ### Import
 
 * The csv file needs to be comma separated and values should be quoted;
@@ -34,6 +39,10 @@ Or you can download this zip file and drop it into your app folder and then run 
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
 ![csv](documentation/images/csv.jpg?raw=true "CSV")
+
+### Export
+
+* Just click export stores and a file will be saved by your browser on your computer;
 
 ## Support
 * We **DO NOT** offer any free technical support in installing or customizing this extension.
