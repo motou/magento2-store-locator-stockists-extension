@@ -26,7 +26,8 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ### Basic
 
-* The default url is /stockists. So once installed go to www.website.com/stockists (insert store code if necessary)
+* The default url is /stockists. So once installed go to www.website.com/stockists (insert store code if necessary);
+* Location in admin is inside content menu > stockists;
 * Name, latitude and longitude are required values;
 
 ### Import
