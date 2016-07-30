@@ -27,15 +27,15 @@ class Url
     /**
      * @var string
      */
-    const LIST_URL_CONFIG_PATH      = 'stockists/stores/list_url';
+    const LIST_URL_CONFIG_PATH      = 'limesharp_stockists/stockist/list_url';
     /**
      * @var string
      */
-    const URL_PREFIX_CONFIG_PATH    = 'stockists/stores/url_prefix';
+    const URL_PREFIX_CONFIG_PATH    = 'limesharp_stockists/stockist/url_prefix';
     /**
      * @var string
      */
-    const URL_SUFFIX_CONFIG_PATH    = 'stockists/stores/url_suffix';
+    const URL_SUFFIX_CONFIG_PATH    = 'limesharp_stockists/stockist/url_suffix';
     /**
      * url builder
      *

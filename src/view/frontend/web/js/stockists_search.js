@@ -42,18 +42,16 @@ define([
 									});
 									for (i = 0; i < markers.length; i++) { 
 										if(markers[i].global_country == code_country){
-											$(".stockists-results").append(
-												"<div class='results-content' data-marker='"
-												+markers[i].record_id+
-												"'><p class='results-title'>"
-												+markers[i].global_name+
-												"</p><p class='results-address'>"
-												+markers[i].global_address+
-												"</p><p class='data-phone'>"
-												+markers[i].global_city+" "+markers[i].global_postcode+
-												"</p><p class='data-miles'>"
-												+parseFloat(distance*0.000621371192).toFixed(2)+
-												" miles</p></div>");
+											var store_distance = parseFloat(distance*0.000621371192).toFixed(2);
+											var contentToAppend = "<div class='results-content' data-miles='"+store_distance+"' data-marker='"+markers[i].record_id+"'><p class='results-title'>"+markers[i].global_name+"</p>";
+											if(markers[i].global_address){
+												contentToAppend += "<p class='results-address'>"+markers[i].global_address+"</p>";
+											}
+											if(markers[i].global_city){
+												contentToAppend += "<p class='data-phone'>"+markers[i].global_city+" "+markers[i].global_postcode+"</p>";
+											}
+											contentToAppend += "</div>";
+											$(".stockists-results").append(contentToAppend);
 										}
 						            }
 								}
@@ -74,19 +72,15 @@ define([
 										var distance = google.maps.geometry.spherical.computeDistanceBetween(marker.position, markers[i].position);
 										if(distance < 40233){
 											var store_distance = parseFloat(distance*0.000621371192).toFixed(2);
-											$(".stockists-results").append(
-												"<div class='results-content' data-miles='"
-												+store_distance+"' data-marker='"
-												+markers[i].record_id+
-												"'><p class='results-title'>"
-												+markers[i].global_name+
-												"</p><p class='results-address'>"
-												+markers[i].global_address+
-												"</p><p class='data-phone'>"
-												+markers[i].global_city+" "+markers[i].global_postcode+
-												"</p><p class='data-miles'>"
-												+store_distance+
-												" miles</p></div>");
+											var contentToAppend = "<div class='results-content' data-miles='"+store_distance+"' data-marker='"+markers[i].record_id+"'><p class='results-title'>"+markers[i].global_name+"</p>";
+											if(markers[i].global_address){
+												contentToAppend += "<p class='results-address'>"+markers[i].global_address+"</p>";
+											}
+											if(markers[i].global_city){
+												contentToAppend += "<p class='data-phone'>"+markers[i].global_city+" "+markers[i].global_postcode+"</p>";
+											}
+											contentToAppend += "<p class='data-miles'>"+store_distance+" miles</p></div>";
+											$(".stockists-results").append(contentToAppend);
 										}
 						            }
 						            var $wrapper = $('.stockists-results');

@@ -22,6 +22,8 @@ use Magento\Backend\Block\Template\Context;
 use Limesharp\Stockists\Model\Stores;
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Directory\Model\CountryFactory;
+use Magento\Directory\Model\Config\Source\Country;
 
 class Stores extends \Magento\Framework\View\Element\Template
 {
@@ -31,6 +33,11 @@ class Stores extends \Magento\Framework\View\Element\Template
      * @var StockistsCollectionFactory
      */
     protected $stockistsCollectionFactory;
+        
+    /**
+     * @var Country
+     */
+    protected $countryHelper;
     
     /**
      * Store manager
@@ -42,12 +49,14 @@ class Stores extends \Magento\Framework\View\Element\Template
     public function __construct(
         StockistsCollectionFactory $stockistsCollectionFactory,
         StoreManagerInterface $storeManager,
-		Context $context ,
+        Country $countryHelper,
+		Context $context,
 		array $data = []
     )
     {
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
         $this->storeManager = $storeManager;
+        $this->countryHelper = $countryHelper;
         parent::__construct($context, $data);
     }
     
@@ -70,4 +79,26 @@ class Stores extends \Magento\Framework\View\Element\Template
             ->setOrder('name', 'ASC');;
 	    return $collection;
     }
+    
+    /**
+     * get an array of country codes and country names: AF => Afganisthan
+     *
+     * @return array
+     */
+    public function getCountries()
+    {
+
+		$loadCountries = $this->countryHelper->toOptionArray();
+		$countries = array();
+		$i = 0;
+	    foreach ($loadCountries as $country ){
+		    $i++;
+		    if($i == 1){ //remove first element that is a select
+			    continue;
+		    }
+		    $countries[$country["value"]] = $country["label"];
+	    }
+	    return $countries;
+    }
+    
 }

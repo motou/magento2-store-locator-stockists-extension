@@ -27,7 +27,7 @@
             <tab>limesharp_stockists</tab>
             <resource>Limesharp_Stockists::stores</resource>
             <group id="stockist" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Stores</label>
+                <label>Stockists</label>
                 <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enable Breadcrumbs</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -41,6 +41,7 @@
                 <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list meta keywords</label>
                 </field>
+<!--
                 <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list url</label>
                 </field>
@@ -50,6 +51,7 @@
                 <field id="url_suffix" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists url suffix</label>
                 </field>
+-->
             </group>
         </section>
     </system>

@@ -17,19 +17,19 @@ class Index extends Action
 	/**
      * @var string
      */
-    const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stores/meta_description';
+    const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist/meta_description';
     /**
      * @var string
      */
-    const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stores/meta_keywords';
+    const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stockist/meta_keywords';
     /**
      * @var string
      */
-    const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stores/meta_title';
+    const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stockist/meta_title';
     /**
      * @var string
      */
-    const BREADCRUMBS_CONFIG_PATH = 'limesharp_stockists/stores/breadcrumbs';
+    const BREADCRUMBS_CONFIG_PATH = 'limesharp_stockists/stockist/breadcrumbs';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

@@ -68,14 +68,27 @@ require([
 				
 		        function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
 				    google.maps.event.addListener(marker, 'click', function() {
-					    var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
-			    		var contentString = '<div class="stockists-window"><p class="stockists-title">'+name+
-			    		'</p><p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+link+
-			    		'</a></p><p class="stockists-telephone">'+telephone+
-			    		'</p><p class="stockists-address"><a href="mailto:'+email+'" target="_blank">'+email+
-			    		'</a></p><p class="stockists-telephone">'+address+
-			    		'</p><p class="stockists-telephone">'+city+
-			    		'</span></p><p class="stockists-web">'+postcode+'</p></div>';
+			    		var contentString = '<div class="stockists-window"><p class="stockists-title">'+name+'</p>'
+			    		if(link){
+						    var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
+				    		contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+link+'</a></p>'
+			    		}
+			    		if(telephone){
+				    		contentString += '<p class="stockists-telephone">'+telephone+'</p>';
+			    		}
+			    		if(email){
+				    		contentString += '<p class="stockists-address"><a href="mailto:'+email+'" target="_blank">'+email+'</a></p>';
+			    		}
+			    		if(address){
+			    			contentString += '<p class="stockists-telephone">'+address+'</p>'
+			    		}
+			    		if(city){
+			    			contentString += '<p class="stockists-telephone">'+city+'</p>'
+			    		}
+			    		if(postcode){
+			    			contentString += '<p class="stockists-web">'+postcode+'</p>';
+			    		}
+		    			contentString += '</div>';
 					    map.setCenter(marker.getPosition());
 				        infowindow.setContent(contentString);
 				        infowindow.open(map, marker);

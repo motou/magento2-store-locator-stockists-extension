@@ -20,6 +20,7 @@
 <?php /** @var \Limesharp\Stockists\Block\Stores $block */?>
 <?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
+<?php $countryList = $block->getCountries(); ?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
@@ -48,16 +49,25 @@
 		        	<?php if($item["image"]): ?>
 		        		
 		        		<div class="image">
-				        		<img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$item["image"] ?>" alt="<?php echo $item["name"] ?>" /> 
+			        		<img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$item["image"] ?>" alt="<?php echo $item["name"] ?>" /> 
 		        		</div>
 		        		
 		        	<?php endif; ?>
 		        	
 		        	
 		        	<p class="results-title"><?php echo $item["name"] ?></p>
-		        	<p class="results-address"><?php echo $item["address"] ?></p>
-		        	<p class="results-phone"><?php echo $item["city"]." ".$item["postcode"] ?></p>
-		        	<p class="results-miles"><?php echo $item["country"] ?></p>
+		        	
+		        	<?php if($item["address"]): ?>
+			        	<p class="results-address"><?php echo $item["address"] ?></p>
+		        	<?php endif; ?>
+		        	
+		        	<?php if($item["city"]): ?>
+			        	<p class="results-phone"><?php echo $item["city"]; echo $item["postcode"] ? ", " . $item["postcode"] : ""; ?></p>
+		        	<?php endif; ?>
+		        	
+		        	<?php if($item["country"] && $countryList[$item["country"]]): ?>
+			        	<p class="results-miles"><?php echo $countryList[$item["country"]] ?></p>
+		        	<?php endif; ?>
 		        	
 	        	</div>	
 		        	
