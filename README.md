@@ -28,9 +28,11 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 * The csv file needs to be comma separated and values should be quoted;
 * check the sample csv file in documentation folder;
-* name, latitude and longitude are required
-* country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA.
-* image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course).
+* name, latitude and longitude are required;
+* country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
+* image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);
+* To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this:
+![csv](documentation/images/csv.jpg?raw=true "CSV")
 
 ## Support
 * We **DO NOT** offer any free technical support in installing or customizing this extension.
@@ -38,4 +40,11 @@ Or you can download this zip file and drop it into your app folder and then run 
 * If you have any questions, the best place to ask them is http://magento.stackexchange.com/ .
 
 ## Demo
-![Alt text](documentation/images/main.jpg?raw=true "Title")
+
+* Main dashboard
+![Main dashboard](documentation/images/main.jpg?raw=true "Main dashboard")
+* Location in admin
+![Locationd](documentation/images/location.jpg?raw=true "Location")
+* Settings
+![Settings](documentation/images/settings.jpg?raw=true "Settings")
+
