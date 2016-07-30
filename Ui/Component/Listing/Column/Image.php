@@ -13,7 +13,7 @@
  * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @author   Claudiu Creanga
+ * @author    Claudiu Creanga
  */
 	 
 namespace Limesharp\Stockists\Ui\Component\Listing\Column;
