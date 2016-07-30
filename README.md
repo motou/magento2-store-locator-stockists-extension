@@ -62,3 +62,15 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ![Settings](documentation/images/settings.jpg?raw=true "Settings")
 
+* Frontend full page:
+
+![Frontend](documentation/images/front.jpg?raw=true "Frontend")
+
+* Frontend store window:
+
+![window](documentation/images/window.jpg?raw=true "Window")
+
+* Frontend seach:
+
+![seach](documentation/images/seach.jpg?raw=true "seach")
+
