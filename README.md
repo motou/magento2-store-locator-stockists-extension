@@ -4,15 +4,14 @@ This is a stockists store locator extension for magento2.
 
 **Table of Contents** 
 
-- [Magento2 stockists store locator extension](#)
-	- [Install](#)
-	- [Features](#)
-	- [Usage](#)
-		- [Basic](#)
-		- [Import](#)
-		- [Export](#)
+	- [Install](#install)
+	- [Features](#features)
+	- [Usage](#usage)
+		- [Basic](#basic)
+		- [Import](#import)
+		- [Export](#export)
 	- [Support](#support)
-	- [Demo](#)
+	- [Demo](#demo)
 
 ## Install
 
