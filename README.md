@@ -11,7 +11,7 @@ This is a stockists store locator extension for magento2.
 		- [Basic](#)
 		- [Import](#)
 		- [Export](#)
-	- [Support](#)
+	- [Support](#support)
 	- [Demo](#)
 
 ## Install
