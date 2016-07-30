@@ -2,6 +2,18 @@
 
 This is a stockists store locator extension for magento2.
 
+**Table of Contents** 
+
+- [Magento2 stockists store locator extension](#)
+	- [Install](#)
+	- [Features](#)
+	- [Usage](#)
+		- [Basic](#)
+		- [Import](#)
+		- [Export](#)
+	- [Support](#)
+	- [Demo](#)
+
 ## Install
 
 ```
@@ -70,7 +82,7 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ![window](documentation/images/window.jpg?raw=true "Window")
 
-* Frontend seach:
+* Frontend search:
 
-![seach](documentation/images/seach.jpg?raw=true "seach")
+![search](documentation/images/search.jpg?raw=true "search")
 
