@@ -42,10 +42,13 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ## Demo
 
-* Main dashboard
+* Main dashboard:
+
 ![Main dashboard](documentation/images/main.jpg?raw=true "Main dashboard")
-* Location in admin
+* Location in admin:
+
 ![Locationd](documentation/images/location.jpg?raw=true "Location")
-* Settings
+* Settings:
+
 ![Settings](documentation/images/settings.jpg?raw=true "Settings")
 
