@@ -3,24 +3,24 @@ define([
     'stockists_countries',
     'stockists_search'
     ], 
-    function($,country_list){        
+    function($,country_list) {        
 
         return {
-            geocoderObject : function(){
+            geocoderObject : function() {
                 return new google.maps.Geocoder();
             },
-            address : function(){
+            address : function() {
                 return $("#stockist-search-term").val()
             },
-            getCountryCode : function(){
+            getCountryCode : function() {
                 name = this.address();
-                for(var i = 0, len=country_list.length; i < len; i++){
-                    if (country_list[i].name.toUpperCase() == name.toUpperCase()){
+                for(var i = 0, len=country_list.length; i < len; i++) {
+                    if (country_list[i].name.toUpperCase() == name.toUpperCase()) {
                         return country_list[i].code
                     }
                 }
             },
-            search : function(map){                        
+            search : function(map) {                        
 
                 var geocoder = this.geocoderObject();
                 
@@ -30,10 +30,10 @@ define([
                 var code_country = this.getCountryCode();    
                 geocoder.geocode(
                     {'address': this.address()},
-                    function(results, status){
+                    function(results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results[0]) {
-                                if (results[0]["types"][0] == "country"){
+                                if (results[0]["types"][0] == "country") {
                                     map.setZoom(5);
                                     map.setCenter(results[0].geometry.location);
                                     var marker = new google.maps.Marker({
@@ -41,13 +41,13 @@ define([
                                         position: results[0].geometry.location
                                     });
                                     for (i = 0; i < markers.length; i++) { 
-                                        if (markers[i].global_country == code_country){
+                                        if (markers[i].global_country == code_country) {
                                             var store_distance = parseFloat(distance*0.000621371192).toFixed(2);
                                             var contentToAppend = "<div class='results-content' data-miles='"+store_distance+"' data-marker='"+markers[i].record_id+"'><p class='results-title'>"+markers[i].global_name+"</p>";
-                                            if (markers[i].global_address){
+                                            if (markers[i].global_address) {
                                                 contentToAppend += "<p class='results-address'>"+markers[i].global_address+"</p>";
                                             }
-                                            if (markers[i].global_city){
+                                            if (markers[i].global_city) {
                                                 contentToAppend += "<p class='data-phone'>"+markers[i].global_city+" "+markers[i].global_postcode+"</p>";
                                             }
                                             contentToAppend += "</div>";
@@ -70,13 +70,13 @@ define([
                                     circle.bindTo('center', marker, 'position');
                                     for (i = 0; i < markers.length; i++) { 
                                         var distance = google.maps.geometry.spherical.computeDistanceBetween(marker.position, markers[i].position);
-                                        if (distance < 40233){
+                                        if (distance < 40233) {
                                             var store_distance = parseFloat(distance*0.000621371192).toFixed(2);
                                             var contentToAppend = "<div class='results-content' data-miles='"+store_distance+"' data-marker='"+markers[i].record_id+"'><p class='results-title'>"+markers[i].global_name+"</p>";
-                                            if (markers[i].global_address){
+                                            if (markers[i].global_address) {
                                                 contentToAppend += "<p class='results-address'>"+markers[i].global_address+"</p>";
                                             }
-                                            if (markers[i].global_city){
+                                            if (markers[i].global_city) {
                                                 contentToAppend += "<p class='data-phone'>"+markers[i].global_city+" "+markers[i].global_postcode+"</p>";
                                             }
                                             contentToAppend += "<p class='data-miles'>"+store_distance+" miles</p></div>";

@@ -125,7 +125,7 @@ class Export extends Stores
             $fileName = 'stockists_export.csv';
             $collection = $this->collectionFactory->create()->getData();
             
-            foreach ($collection as $stockist){
+            foreach ($collection as $stockist) {
                 array_shift($stockist); //skip the id
                 $content .= implode(",", array_map([$this, 'addQuotationMarks'],$stockist));
                 $content .= "\n";

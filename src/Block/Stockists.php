@@ -66,17 +66,17 @@ class Stockists extends \Magento\Framework\View\Element\Template
     }
     
      /**
-     * return stockists collection
-     *
-     * @return CollectionFactory
-     */
+      * return stockists collection
+      *
+      * @return CollectionFactory
+      */
     public function getStoresForFrontend()
     {
         $collection = $this->stockistsCollectionFactory->create()
             ->addFieldToSelect('*')
             ->addFieldToFilter('status', Stores::STATUS_ENABLED)
             ->addStoreFilter($this->_storeManager->getStore()->getId())
-            ->setOrder('name', 'ASC');;
+            ->setOrder('name', 'ASC');
         return $collection;
     }
     
@@ -91,9 +91,9 @@ class Stockists extends \Magento\Framework\View\Element\Template
         $loadCountries = $this->countryHelper->toOptionArray();
         $countries = [];
         $i = 0;
-        foreach ($loadCountries as $country ){
+        foreach ($loadCountries as $country ) {
             $i++;
-            if ($i == 1){ //remove first element that is a select
+            if ($i == 1) { //remove first element that is a select
                 continue;
             }
             $countries[$country["value"]] = $country["label"];

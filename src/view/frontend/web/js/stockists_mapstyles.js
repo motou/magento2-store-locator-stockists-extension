@@ -1,4 +1,4 @@
-define(['stockists_mapstyles'], function(){
+define(['stockists_mapstyles'], function() {
     return [
         {
             "featureType": "water",

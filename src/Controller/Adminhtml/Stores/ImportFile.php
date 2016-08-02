@@ -93,7 +93,7 @@ class ImportFile extends Stores
         $filePath = $data["import"][0]["path"].$data["import"][0]["file"];
         $resultRedirect = $this->resultRedirectFactory->create();
         
-        if ($data["import"][0]["path"] && $data["import"][0]["file"]){
+        if ($data["import"][0]["path"] && $data["import"][0]["file"]) {
             
             try {
                 $rawStockistData = $this->csvProcessor->getData($filePath);
@@ -102,7 +102,7 @@ class ImportFile extends Stores
                 $fileHeaders = $rawStockistData[0];
                 $processedStockistData = $this->filterFileData($fileHeaders, $rawStockistData);
             
-                foreach($processedStockistData as $individualStockist){
+                foreach($processedStockistData as $individualStockist) {
                     
                     $stockistId = !empty($individualStockist['stockist_id']) ? $individualStockist['stockist_id'] : null;
                     

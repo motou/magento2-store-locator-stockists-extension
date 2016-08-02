@@ -4,18 +4,18 @@
  * Version: 0.1.2 (2014/02/24)
  * Released under the MIT license
  */
-define(function(){
+define(function() {
 
     var DEFAULT_PARAM_NAME = 'callback',
         _uid = 0;
 
-    function injectScript(src){
+    function injectScript(src) {
         var s, t;
         s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = src;
         t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s,t);
     }
 
-    function formatUrl(name, id){
+    function formatUrl(name, id) {
         var paramRegex = /!(.+)/,
             url = name.replace(paramRegex, ''),
             param = (paramRegex.test(name))? name.replace(/.+!/, '') : DEFAULT_PARAM_NAME;
@@ -29,8 +29,8 @@ define(function(){
     }
 
     return{
-        load : function(name, req, onLoad, config){
-            if (config.isBuild){
+        load : function(name, req, onLoad, config) {
+            if (config.isBuild) {
                 onLoad(null); //avoid errors on the optimizer
             }else{
                 var id = uid();

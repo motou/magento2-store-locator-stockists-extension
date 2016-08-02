@@ -5,41 +5,41 @@ require([
         'stockists_search',
         'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
     ],
-    function($,country_list,mapstyles,search_widget){ 
+    function($,country_list,mapstyles,search_widget) { 
            
-        $(document).ready(function(){
+        $(document).ready(function() {
             
             var map;
             markers = [];
 
             getStores();
 
-            $("#stockists-submit").on("click", function(e){
+            $("#stockists-submit").on("click", function(e) {
                 
                 search_widget.search(map);
                 
             });
                 
-            $('#stockist-search-term').keypress(function(e){
+            $('#stockist-search-term').keypress(function(e) {
                 
-                if (e.which == 13){//Enter key pressed
+                if (e.which == 13) {//Enter key pressed
                     
                     search_widget.search(map);
                 }
                 
             });
             
-            $("body").on("click",".results-content", function(){
+            $("body").on("click",".results-content", function() {
                 $(".results-content").not($(this)).removeClass("active");
                 $(this).addClass("active");
             })    
             
-            function getStores(){
+            function getStores() {
                 var url = window.location.href.replace(/\/+$/, "") + '/ajax/stores';
                 $.ajax({
                     dataType: 'json',
                     url: url
-                }).done(function(response){
+                }).done(function(response) {
                     initialize(response);
                 });    
             }
@@ -69,23 +69,23 @@ require([
                 function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
                     google.maps.event.addListener(marker, 'click', function() {
                         var contentString = '<div class="stockists-window"><p class="stockists-title">'+name+'</p>'
-                        if (link){
+                        if (link) {
                             var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
                             contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+link+'</a></p>'
                         }
-                        if (telephone){
+                        if (telephone) {
                             contentString += '<p class="stockists-telephone">'+telephone+'</p>';
                         }
-                        if (email){
+                        if (email) {
                             contentString += '<p class="stockists-address"><a href="mailto:'+email+'" target="_blank">'+email+'</a></p>';
                         }
-                        if (address){
+                        if (address) {
                             contentString += '<p class="stockists-telephone">'+address+'</p>'
                         }
-                        if (city){
+                        if (city) {
                             contentString += '<p class="stockists-telephone">'+city+'</p>'
                         }
-                        if (postcode){
+                        if (postcode) {
                             contentString += '<p class="stockists-web">'+postcode+'</p>';
                         }
                         contentString += '</div>';
@@ -127,14 +127,14 @@ require([
             
             }
     
-            $("body").on("click", ".results-content", function(){
+            $("body").on("click", ".results-content", function() {
                 var id = $(this).attr('data-marker');
                 changeMarker(id);                             
             });
             
-            function changeMarker(id){
+            function changeMarker(id) {
                 for (i = 0; i < markers.length; i++) { 
-                    if (markers[i].record_id == id){
+                    if (markers[i].record_id == id) {
                         google.maps.event.trigger(markers[i], 'click');
                     }
                 }
