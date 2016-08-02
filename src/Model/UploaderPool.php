@@ -52,8 +52,8 @@ class UploaderPool
     {
         if (!isset($this->uploaders[$type])) {
             throw new \Magento\Framework\Exception\LocalizedException(
-	            __("Uploader not found for type: ".$type);
-            )
+	            __("Uploader not found for type: ".$type)
+            );
         }
         if (!is_object($this->uploaders[$type])) {
             $this->uploaders[$type] = $this->objectManager->create($this->uploaders[$type]);
@@ -62,8 +62,8 @@ class UploaderPool
         $uploader = $this->uploaders[$type];
         if (!($uploader instanceof Uploader)) {	        
             throw new \Magento\Framework\Exception\LocalizedException(
-	            __("Uploader for type {$type} not instance of ". Uploader::class);
-            )
+	            __("Uploader for type {$type} not instance of ". Uploader::class)
+            );
         }
         return $uploader;
     }
