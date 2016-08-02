@@ -362,7 +362,7 @@
                     <item name="label" xsi:type="string" translate="true">Image</item>
                 </item>
             </argument>
-		</column>
+        </column>
         <column name="link">
             <argument name="data" xsi:type="array">
                 <item name="js_config" xsi:type="array">

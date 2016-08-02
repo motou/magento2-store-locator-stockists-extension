@@ -27,7 +27,7 @@ use Magento\Directory\Model\Config\Source\Country;
 
 class Stockists extends \Magento\Framework\View\Element\Template
 {
-	
+    
     
     /**
      * @var StockistsCollectionFactory
@@ -50,8 +50,8 @@ class Stockists extends \Magento\Framework\View\Element\Template
         StockistsCollectionFactory $stockistsCollectionFactory,
         StoreManagerInterface $storeManager,
         Country $countryHelper,
-		Context $context,
-		array $data = []
+        Context $context,
+        array $data = []
     )
     {
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
@@ -62,7 +62,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
     
     public function getBaseImageUrl()
     {
-	    return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
     
      /**
@@ -72,12 +72,12 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */
     public function getStoresForFrontend()
     {
-	    $collection = $this->stockistsCollectionFactory->create()
-	    	->addFieldToSelect('*')
+        $collection = $this->stockistsCollectionFactory->create()
+            ->addFieldToSelect('*')
             ->addFieldToFilter('status', Stores::STATUS_ENABLED)
             ->addStoreFilter($this->_storeManager->getStore()->getId())
             ->setOrder('name', 'ASC');;
-	    return $collection;
+        return $collection;
     }
     
     /**
@@ -88,17 +88,17 @@ class Stockists extends \Magento\Framework\View\Element\Template
     public function getCountries()
     {
 
-		$loadCountries = $this->countryHelper->toOptionArray();
-		$countries = array();
-		$i = 0;
-	    foreach ($loadCountries as $country ){
-		    $i++;
-		    if($i == 1){ //remove first element that is a select
-			    continue;
-		    }
-		    $countries[$country["value"]] = $country["label"];
-	    }
-	    return $countries;
+        $loadCountries = $this->countryHelper->toOptionArray();
+        $countries = array();
+        $i = 0;
+        foreach ($loadCountries as $country ){
+            $i++;
+            if($i == 1){ //remove first element that is a select
+                continue;
+            }
+            $countries[$country["value"]] = $country["label"];
+        }
+        return $countries;
     }
     
 }

@@ -118,7 +118,7 @@
         <arguments>
             <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
         </arguments>
-	</type>
+    </type>
     <virtualType name="LimesharpStockistsBlockStoresImageBuilder" type="Limesharp\Stockists\Block\ImageBuilder">
         <arguments>
             <argument name="entityCode" xsi:type="string">stockist</argument>

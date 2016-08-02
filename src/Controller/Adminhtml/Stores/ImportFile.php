@@ -54,7 +54,7 @@ class ImportFile extends Stores
     /**
      * @var csvProcessor
      */
-	protected $csvProcessor;
+    protected $csvProcessor;
 
 
     /**
@@ -73,7 +73,7 @@ class ImportFile extends Stores
         Csv $csvProcessor
     )
     {
-		$this->csvProcessor = $csvProcessor;
+        $this->csvProcessor = $csvProcessor;
         $this->stockistFactory = $stockistFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper = $dataObjectHelper;
@@ -88,65 +88,65 @@ class ImportFile extends Stores
      */
     public function execute()
     {
-	    $stockist = null;
-		$data = $this->getRequest()->getPostValue();
-		$filePath = $data["import"][0]["path"].$data["import"][0]["file"];
+        $stockist = null;
+        $data = $this->getRequest()->getPostValue();
+        $filePath = $data["import"][0]["path"].$data["import"][0]["file"];
         $resultRedirect = $this->resultRedirectFactory->create();
         
         if($data["import"][0]["path"] && $data["import"][0]["file"]){
-	        
-	        try {
-				$rawStockistData = $this->csvProcessor->getData($filePath);
-				
-		        // first row of file represents headers
-		        $fileHeaders = $rawStockistData[0];
-		        $processedStockistData = $this->filterFileData($fileHeaders, $rawStockistData);
-			
-				foreach($processedStockistData as $individualStockist){
-			        
-			        $stockistId = !empty($individualStockist['stockist_id']) ? $individualStockist['stockist_id'] : null;
-			        
-		            if ($stockistId) {
-		                $stockist = $this->stockistRepository->getById((int)$stockistId);
-		            } else {
-		                unset($individualStockist['stockist_id']);
-		                $stockist = $this->stockistFactory->create();
-		            }
-		
-		            $this->dataObjectHelper->populateWithArray($stockist, $individualStockist, StockistInterface::class);
-		            $this->stockistRepository->save($stockist);
-			    }
-	
-	            $this->messageManager->addSuccessMessage(__('Your file has been imported successfully'));
-	            
-	            $resultRedirect->setPath('stockists/stores');
-		            
-	        } catch (LocalizedException $e) {
-	            $this->messageManager->addErrorMessage($e->getMessage());
-	            if ($stockist != null) {
-	                $this->storeStockistDataToSession(
-	                    $this->dataObjectProcessor->buildOutputDataArray(
-	                        $stockist,
-	                        StockistInterface::class
-	                    )
-	                );
-	            }
-	            $resultRedirect->setPath('stockists/stores/edit');
-	        } catch (\Exception $e) {
-	            $this->messageManager->addErrorMessage(__('There was an error importing the file'));
-	            if ($stockist != null) {
-	                $this->storeStockistDataToSession(
-	                    $this->dataObjectProcessor->buildOutputDataArray(
-	                        $stockist,
-	                        StockistInterface::class
-	                    )
-	                );
-	            }
-	            $resultRedirect->setPath('stockists/stores/import');
-	        }
-		        
+            
+            try {
+                $rawStockistData = $this->csvProcessor->getData($filePath);
+                
+                // first row of file represents headers
+                $fileHeaders = $rawStockistData[0];
+                $processedStockistData = $this->filterFileData($fileHeaders, $rawStockistData);
+            
+                foreach($processedStockistData as $individualStockist){
+                    
+                    $stockistId = !empty($individualStockist['stockist_id']) ? $individualStockist['stockist_id'] : null;
+                    
+                    if ($stockistId) {
+                        $stockist = $this->stockistRepository->getById((int)$stockistId);
+                    } else {
+                        unset($individualStockist['stockist_id']);
+                        $stockist = $this->stockistFactory->create();
+                    }
+        
+                    $this->dataObjectHelper->populateWithArray($stockist, $individualStockist, StockistInterface::class);
+                    $this->stockistRepository->save($stockist);
+                }
+    
+                $this->messageManager->addSuccessMessage(__('Your file has been imported successfully'));
+                
+                $resultRedirect->setPath('stockists/stores');
+                    
+            } catch (LocalizedException $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
+                if ($stockist != null) {
+                    $this->storeStockistDataToSession(
+                        $this->dataObjectProcessor->buildOutputDataArray(
+                            $stockist,
+                            StockistInterface::class
+                        )
+                    );
+                }
+                $resultRedirect->setPath('stockists/stores/edit');
+            } catch (\Exception $e) {
+                $this->messageManager->addErrorMessage(__('There was an error importing the file'));
+                if ($stockist != null) {
+                    $this->storeStockistDataToSession(
+                        $this->dataObjectProcessor->buildOutputDataArray(
+                            $stockist,
+                            StockistInterface::class
+                        )
+                    );
+                }
+                $resultRedirect->setPath('stockists/stores/import');
+            }
+                
         } else {
-			$this->messageManager->addError(__('Please upload a file'));
+            $this->messageManager->addError(__('Please upload a file'));
         }
 
         return $resultRedirect;
@@ -161,12 +161,12 @@ class ImportFile extends Stores
      */
     protected function filterFileData(array $fileHeaders, array $rawStockistData)
     {
-		$rowCount=0;
-		$rawDataRows = array();
-		
+        $rowCount=0;
+        $rawDataRows = array();
+        
         foreach ($rawStockistData as $rowIndex => $dataRow) {
-	        
-			// skip headers
+            
+            // skip headers
             if ($rowIndex == 0) {
                 continue;
             }
@@ -175,13 +175,13 @@ class ImportFile extends Stores
                 unset($rawStockistData[$rowIndex]);
                 continue;
             }
-			/* we take rows from [0] = > value to [website] = base */
+            /* we take rows from [0] = > value to [website] = base */
             if ($rowIndex > 0) {
-				foreach ($dataRow as $rowIndex => $dataRowNew) {
-					$rawDataRows[$rowCount][$fileHeaders[$rowIndex]] = $dataRowNew;
-				}
-			}
-			$rowCount++;
+                foreach ($dataRow as $rowIndex => $dataRowNew) {
+                    $rawDataRows[$rowCount][$fileHeaders[$rowIndex]] = $dataRowNew;
+                }
+            }
+            $rowCount++;
         }
         return $rawDataRows;
     }

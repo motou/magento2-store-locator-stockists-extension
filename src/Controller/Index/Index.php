@@ -14,7 +14,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Index extends Action
 {
-	/**
+    /**
      * @var string
      */
     const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist/meta_description';
@@ -73,7 +73,7 @@ class Index extends Action
             $this->scopeConfig->getValue(self::META_KEYWORDS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
         );
         if ($this->scopeConfig->isSetFlag(self::BREADCRUMBS_CONFIG_PATH, ScopeInterface::SCOPE_STORE)) {
-	        
+            
             /** @var \Magento\Theme\Block\Html\Breadcrumbs $breadcrumbsBlock */
             $breadcrumbsBlock = $resultPage->getLayout()->getBlock('breadcrumbs');
             if ($breadcrumbsBlock) {

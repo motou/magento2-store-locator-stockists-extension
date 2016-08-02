@@ -256,7 +256,7 @@
                     </item>
                 </item>
             </argument>
-		</field>
+        </field>
     </fieldset>
     <fieldset name="websites" class="Magento\Store\Ui\Component\Form\Fieldset\Websites">
         <argument name="data" xsi:type="array">

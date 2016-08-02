@@ -15,7 +15,7 @@
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-	 
+     
 namespace Limesharp\Stockists\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;

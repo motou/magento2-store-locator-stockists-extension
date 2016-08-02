@@ -8,9 +8,9 @@
   "homepage": "https://github.com/ClaudiuCreanga/magento2-stockists-extension",
   "authors": [
     {
-	  "name": "Claudiu Creanga",
-	  "email": "claudiu@limesharp.net",
-	  "homepage": "http://claudiucreanga.me",
+      "name": "Claudiu Creanga",
+      "email": "claudiu@limesharp.net",
+      "homepage": "http://claudiucreanga.me",
       "role": "Developer"
     }
   ],

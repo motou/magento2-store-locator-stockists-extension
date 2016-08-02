@@ -92,8 +92,7 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(Stores::class, StockistResourceModel::class);
-		$this->_map['fields']['stockist_id'] = 'main_table.stockist_id';
-//         $this->_map['fields']['store_id'] = 'store_table.store_id';
+        $this->_map['fields']['stockist_id'] = 'main_table.stockist_id';
     }
 
     /**
@@ -150,18 +149,6 @@ class Collection extends AbstractCollection
      */
     protected function _renderFiltersBefore()
     {
-/*
-        if ($this->getFilter('store_id')) {
-            $this->getSelect()->join(
-                ['store_table' => $this->getTable('limesharp_stockists_stores')],
-                'main_table.stockist_id = store_table.stockist_id',
-                []
-            )
-            // @codingStandardsIgnoreStart
-            ->group('main_table.stockist_id');
-            // @codingStandardsIgnoreEnd
-        }
-*/
         parent::_renderFiltersBefore();
     }
 

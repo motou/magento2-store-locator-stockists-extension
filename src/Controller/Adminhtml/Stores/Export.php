@@ -84,7 +84,7 @@ class Export extends Stores
         CollectionFactory $collectionFactory 
     )
     {
-	    $this->collectionFactory = $collectionFactory;
+        $this->collectionFactory = $collectionFactory;
         $this->fileFactory = $fileFactory;
         $this->stockistFactory = $stockistFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
@@ -100,29 +100,29 @@ class Export extends Stores
      */
     public function execute()
     {
-	    $resultRedirect = $this->resultRedirectFactory->create();
-	    
+        $resultRedirect = $this->resultRedirectFactory->create();
+        
         try {
-	        
-			$content = '"store_id","name","address","city","country","postcode","region","email","phone","link","image","latitude","longitude","status","updated_at","created_at"'."\n";
-	        $fileName = 'stockists_export.csv';
-			$collection = $this->collectionFactory->create()->getData();
-			
-			foreach ($collection as $stockist){
-				array_shift($stockist); //skip the id
-				$content .= implode(",", array_map(array($this, 'addQuotationMarks'),$stockist));
-				$content .= "\n";
-			}
+            
+            $content = '"store_id","name","address","city","country","postcode","region","email","phone","link","image","latitude","longitude","status","updated_at","created_at"'."\n";
+            $fileName = 'stockists_export.csv';
+            $collection = $this->collectionFactory->create()->getData();
+            
+            foreach ($collection as $stockist){
+                array_shift($stockist); //skip the id
+                $content .= implode(",", array_map(array($this, 'addQuotationMarks'),$stockist));
+                $content .= "\n";
+            }
 
-	        return $this->fileFactory->create(
-	            $fileName,
-	            $content,
-	            DirectoryList::VAR_DIR
-	        );
-	        
+            return $this->fileFactory->create(
+                $fileName,
+                $content,
+                DirectoryList::VAR_DIR
+            );
+            
             $this->messageManager->addSuccessMessage(__('You exported the file. It can be found in var folder or in browser downloads.'));
             $resultRedirect->setPath('stockists/stores');
-	        
+            
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__('There was a problem exporting the data'));
             $resultRedirect->setPath('stockists/stores/export');
@@ -138,7 +138,7 @@ class Export extends Stores
      * @return string
      */
     protected function addQuotationMarks($row)
-	{
-		return sprintf('"%s"', $row);
-	}
+    {
+        return sprintf('"%s"', $row);
+    }
 }

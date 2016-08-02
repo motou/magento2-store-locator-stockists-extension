@@ -6,7 +6,7 @@
     max-width: none;
 }
 .stockists .page-title-wrapper{
-	text-align: center;
+    text-align: center;
 }
 #map-canvas {
   height: 100%;
@@ -14,85 +14,85 @@
 }
 
 .stockists-index-index .main-container .main, .stockists-index-index .main-container .main .row {
-  max-width: none !important;
+    max-width: none !important;
 }
 
 .stockists-index-index .main-container .main .row {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .stockists-window {
-  padding: 20px 15px;
+    padding: 20px 15px;
 }
 .stockists-window p {
-  font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
 }
 .stockists-window .stockists-title {
-  color: #081c2a;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-weight: bold;
+    color: #081c2a;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 .stockists-window .stockists-telephone {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .search-stockists {
-  background: #ffffff;
-  top: 355px;
-  position: absolute;
-  right: 100px;
-  width: 285px;
-  height: 464px;
-  padding: 20px 17px 20px 15px;
+    background: #ffffff;
+    top: 355px;
+    position: absolute;
+    right: 100px;
+    width: 285px;
+    height: 464px;
+    padding: 20px 17px 20px 15px;
 }
 .search-stockists.close-up {
-  height: 250px;
+    height: 250px;
 }
 .search-stockists .search-title {
-  font-size: 24px;
-  margin-bottom: 19px;
-  font-family: "Times New Roman", Times, serif;
-  color: #081c2a;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    font-size: 24px;
+    margin-bottom: 19px;
+    font-family: "Times New Roman", Times, serif;
+    color: #081c2a;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .search-stockists p {
-  font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
-  margin-bottom: 0;
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 0;
 }
 .search-stockists .search-header p {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 .search-stockists .results-title {
-  color: #081c2a;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.3px;
+    color: #081c2a;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.3px;
 }
 .search-stockists .stockists-results {
-  overflow-y: scroll;
-  height: 315px;
-  margin-top: 15px;
+    overflow-y: scroll;
+    height: 315px;
+    margin-top: 15px;
 }
 .search-stockists .results-word {
-  padding-left: 5px;
-  font-size: 14px;
+    padding-left: 5px;
+    font-size: 14px;
 }
 
 .results-store.grenson {
-  display: none;
+    display: none;
 }
 .stockists-intro {
-  display: block;
+    display: block;
 }
 #stockist-search-term {
-	display: inline-block;
+    display: inline-block;
     height: 40px;
     padding-left: 10px;
     width: 184px;
@@ -100,43 +100,43 @@
     margin-top: 5px;
 }
 #stockists-submit {
-	display: inline-block;
-	margin-left: 0px;
-	background: #081c2a;
-	border: none;
-	font-size: 15px;
-	padding: 12px 10px;
-	top: -2px;
-	position: relative;
-	letter-spacing: 0.3px;
-	color: white;
-	border-radius: 0;
+    display: inline-block;
+    margin-left: 0px;
+    background: #081c2a;
+    border: none;
+    font-size: 15px;
+    padding: 12px 10px;
+    top: -2px;
+    position: relative;
+    letter-spacing: 0.3px;
+    color: white;
+    border-radius: 0;
 }
 
 .search-header {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 .results-content {
-  cursor: pointer;
-  width: 93%;
-  padding: 5px 10px 5px 5px;
-  margin-bottom: 10px;
+    cursor: pointer;
+    width: 93%;
+    padding: 5px 10px 5px 5px;
+    margin-bottom: 10px;
 }
 .results-content p:not(.results-title){
-	padding-bottom: 0;
-	font-size: 12px;
-	font-weight: normal;
+    padding-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
 }
 .results-content.active {
-  background: #f5f5f5;
+    background: #f5f5f5;
 }
 
 #grenson-stores {
-  display: none;
+    display: none;
 }
 .underline {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .search-stockists ::-webkit-scrollbar {
