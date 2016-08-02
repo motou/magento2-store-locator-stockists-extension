@@ -17,7 +17,7 @@
  */
  ?>
  
-<?php /** @var \Limesharp\Stockists\Block\Stores $block */?>
+<?php /** @var \Limesharp\Stockists\Block\Stockists $block */?>
 <?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
@@ -25,78 +25,78 @@
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
 <div class="search-stockists">
-	
-	<div class="search-header">
+    
+    <div class="search-header">
 
-		<p class="search-title"><?php echo __("Find a stockist") ?></p>
-		<p class="stockists-intro"><?php echo __("Enter a city, country or full post/zip code") ?></p>
-		<input id="stockist-search-term" type="text" placeholder="Search" /> 
-		<button id="stockists-submit"><?php echo __("Search") ?></button>
-		
-	</div>
-	<div class="stockists-results">
-		
+        <p class="search-title"><?php /* @escapeNotVerified */ echo __("Find a stockist") ?></p>
+        <p class="stockists-intro"><?php /* @escapeNotVerified */ echo __("Enter a city, country or full post/zip code") ?></p>
+        <input id="stockist-search-term" type="text" placeholder="Search" /> 
+        <button id="stockists-submit"><?php /* @escapeNotVerified */ echo __("Search") ?></button>
+        
+    </div>
+    <div class="stockists-results">
+        
 
-		<div class="results-store">
-			
-			<?php foreach ($data as $item): ?>
-			
+        <div class="results-store">
+            
+            <?php foreach ($data as $item): ?>
+            
 
-		        <?php $data_marker = $item["latitude"].$item["longitude"]; ?>				        
-		        
-	        	<div class="results-content loaded-results" data-marker="<?php echo $data_marker; ?>">
-		        	
-		        	<?php if($item["image"]): ?>
-		        		
-		        		<div class="image">
-			        		<img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$item["image"] ?>" alt="<?php echo $item["name"] ?>" /> 
-		        		</div>
-		        		
-		        	<?php endif; ?>
-		        	
-		        	
-		        	<p class="results-title"><?php echo $item["name"] ?></p>
-		        	
-		        	<?php if($item["address"]): ?>
-			        	<p class="results-address"><?php echo $item["address"] ?></p>
-		        	<?php endif; ?>
-		        	
-		        	<?php if($item["city"]): ?>
-			        	<p class="results-phone"><?php echo $item["city"]; echo $item["postcode"] ? ", " . $item["postcode"] : ""; ?></p>
-		        	<?php endif; ?>
-		        	
-		        	<?php if($item["country"] && $countryList[$item["country"]]): ?>
-			        	<p class="results-miles"><?php echo $countryList[$item["country"]] ?></p>
-		        	<?php endif; ?>
-		        	
-	        	</div>	
-		        	
-	        
-	        <?php endforeach; ?>
-	        			
-		</div>
-		
-	</div>
+                <?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
+                
+                <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+                    
+                    <?php if($item["image"]): ?>
+                        
+                        <div class="image">
+                            <img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$block->escapeHtml($item["image"]) ?>" alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
+                        </div>
+                        
+                    <?php endif; ?>
+                    
+                    
+                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+                    
+                    <?php if($item["address"]): ?>
+                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
+                    <?php endif; ?>
+                    
+                    <?php if($item["city"]): ?>
+                        <p class="results-phone"><?php echo $block->escapeHtml($item["city"]); echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; ?></p>
+                    <?php endif; ?>
+                    
+                    <?php if($item["country"] && $countryList[$item["country"]]): ?>
+                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+                    <?php endif; ?>
+                    
+                </div>    
+                    
+            
+            <?php endforeach; ?>
+                        
+        </div>
+        
+    </div>
 </div>
 
 
 
 <script type="text/x-magento-init">
-	{
-		"*": {
-		        
-        	"stockists_widget": " <?php echo "test" ?> "
-	        	
-	    }
+    {
+        "*": {
+                
+            "stockists_widget": " <?php echo "test" ?> "
+                
+        }
     }
 </script>
 <script>
-	
+    
     window.map_pin = '<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>';
     
     require([
         'limesharp_stockists'
     ], function ($) {
-	    
+        
     });
 </script>

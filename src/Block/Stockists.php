@@ -25,7 +25,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\Config\Source\Country;
 
-class Stores extends \Magento\Framework\View\Element\Template
+class Stockists extends \Magento\Framework\View\Element\Template
 {
 	
     
