@@ -18,6 +18,7 @@
 namespace Limesharp\Stockists\Model;
 
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Exception\LocalizedException;
 
 class UploaderPool
 {
@@ -50,15 +51,19 @@ class UploaderPool
     public function getUploader($type)
     {
         if (!isset($this->uploaders[$type])) {
-            throw new \Exception("Uploader not found for type: ".$type);
+            throw new \Magento\Framework\Exception\LocalizedException(
+	            __("Uploader not found for type: ".$type);
+            )
         }
         if (!is_object($this->uploaders[$type])) {
             $this->uploaders[$type] = $this->objectManager->create($this->uploaders[$type]);
 
         }
         $uploader = $this->uploaders[$type];
-        if (!($uploader instanceof Uploader)) {
-            throw new \Exception("Uploader for type {$type} not instance of ". Uploader::class);
+        if (!($uploader instanceof Uploader)) {	        
+            throw new \Magento\Framework\Exception\LocalizedException(
+	            __("Uploader for type {$type} not instance of ". Uploader::class);
+            )
         }
         return $uploader;
     }

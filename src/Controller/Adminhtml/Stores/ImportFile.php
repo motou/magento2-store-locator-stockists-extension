@@ -113,7 +113,7 @@ class ImportFile extends Stores
                         $stockist = $this->stockistFactory->create();
                     }
         
-                    $this->dataObjectHelper->populateWithArray($stockist, $individualStockist, StockistInterface::class);
+                    $this->dataObjectHelper->populateWithArray($stockist,$individualStockist,StockistInterface::class);
                     $this->stockistRepository->save($stockist);
                 }
     
@@ -162,7 +162,7 @@ class ImportFile extends Stores
     protected function filterFileData(array $fileHeaders, array $rawStockistData)
     {
         $rowCount=0;
-        $rawDataRows = array();
+        $rawDataRows = [];
         
         foreach ($rawStockistData as $rowIndex => $dataRow) {
             

@@ -89,7 +89,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
     {
 
         $loadCountries = $this->countryHelper->toOptionArray();
-        $countries = array();
+        $countries = [];
         $i = 0;
         foreach ($loadCountries as $country ){
             $i++;

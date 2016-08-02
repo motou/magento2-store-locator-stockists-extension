@@ -29,7 +29,8 @@ class Stores extends \Magento\Framework\App\Action\Action
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
         CollectionFactory $collectionFactory 
-    ){
+    )
+    {
         $this->collectionFactory = $collectionFactory;
         $this->resultJsonFactory = $resultJsonFactory;
         parent::__construct($context);
