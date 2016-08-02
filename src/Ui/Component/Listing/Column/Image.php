@@ -35,12 +35,12 @@ class Image extends Column
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
 
     /**
      * @var \Limesharp\Stockists\Model\Uploader
      */
-    protected $imageModel;
+    public $imageModel;
 
     /**
      * @param ContextInterface $context
@@ -96,7 +96,7 @@ class Image extends Column
      *
      * @return null|string
      */
-    protected function getAlt($row)
+    public function getAlt($row)
     {
         $altField = $this->getData('config/altField') ?: self::ALT_FIELD;
         return isset($row[$altField]) ? $row[$altField] : null;

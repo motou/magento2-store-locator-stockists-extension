@@ -26,12 +26,12 @@ class Generic
     /**
      * @var Context
      */
-    protected $context;
+    public $context;
 
     /**
      * @var StockistRepositoryInterface
      */
-    protected $stockistRepository;
+    public $stockistRepository;
 
     /**
      * @param Context $context

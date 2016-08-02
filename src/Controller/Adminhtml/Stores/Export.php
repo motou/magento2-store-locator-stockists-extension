@@ -45,27 +45,27 @@ class Export extends Stores
     /**
      * @var DataObjectProcessor
      */
-    protected $dataObjectProcessor;
+    public $dataObjectProcessor;
 
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    public $collectionFactory;
 
     /**
      * @var DataObjectHelper
      */
-    protected $dataObjectHelper;
+    public $dataObjectHelper;
 
     /**
      * @var UploaderPool
      */
-    protected $uploaderPool;
+    public $uploaderPool;
     
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */
-    protected $fileFactory;
+    public $fileFactory;
 
     /**
 

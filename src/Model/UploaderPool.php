@@ -25,11 +25,11 @@ class UploaderPool
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
+    public $objectManager;
     /**
      * @var array
      */
-    protected $uploaders;
+    public $uploaders;
 
     /**
      * @param ObjectManagerInterface $objectManager

@@ -33,32 +33,32 @@ class Collection extends AbstractCollection
     /**
      * @var string
      */
-    protected $_idFieldName = 'stockist_id';
+    public $_idFieldName = 'stockist_id';
     /**
      * Event prefix
      *
      * @var string
      */
-    protected $_eventPrefix = 'limesharp_stockists_stores_collection';
+    public $_eventPrefix = 'limesharp_stockists_stores_collection';
 
     /**
      * Event object
      *
      * @var string
      */
-    protected $_eventObject = 'stockist_collection';
+    public $_eventObject = 'stockist_collection';
 
     /**
      * Store manager
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
 
     /**
      * @var array
      */
-    protected $_joinedFields = [];
+    public $_joinedFields = [];
 
     /**
      * constructor
@@ -89,7 +89,7 @@ class Collection extends AbstractCollection
      *
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init(Stores::class, StockistResourceModel::class);
         $this->_map['fields']['stockist_id'] = 'main_table.stockist_id';
@@ -100,7 +100,7 @@ class Collection extends AbstractCollection
      *
      * @return $this
      */
-    protected function _afterLoad()
+    public function _afterLoad()
     {
         return parent::_afterLoad();
     }
@@ -147,7 +147,7 @@ class Collection extends AbstractCollection
      * @return void
      * @SuppressWarnings(PHPMD.Ecg.Sql.SlowQuery)
      */
-    protected function _renderFiltersBefore()
+    public function _renderFiltersBefore()
     {
         parent::_renderFiltersBefore();
     }
@@ -169,7 +169,7 @@ class Collection extends AbstractCollection
      * @param $tableName
      * @param $linkField
      */
-    protected function performAfterLoad($tableName, $linkField)
+    public function performAfterLoad($tableName, $linkField)
     {
         $linkedIds = $this->getColumnValues($linkField);
         if (count($linkedIds)) {

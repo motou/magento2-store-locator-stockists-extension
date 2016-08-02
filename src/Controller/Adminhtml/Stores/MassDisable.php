@@ -24,13 +24,13 @@ class MassDisable extends MassAction
     /**
      * @var bool
      */
-    protected $status = false;
+    public $status = false;
 
     /**
      * @param Stores $stockist
      * @return $this
      */
-    protected function massAction(Stores $stockist)
+    public function massAction(Stores $stockist)
     {
         $stockist->setStatus($this->status);
         $this->stockistRepository->save($stockist);

@@ -35,26 +35,26 @@ abstract class Stores extends Action
      *
      * @var StockistRepositoryInterface
      */
-    protected $stockistRepository;
+    public $stockistRepository;
 
     /**
      * Core registry
      *
      * @var Registry
      */
-    protected $coreRegistry;
+    public $coreRegistry;
 
     /**
      * date filter
      *
      * @var \Magento\Framework\Stdlib\DateTime\Filter\Date
      */
-    protected $dateFilter;
+    public $dateFilter;
 
     /**
      * @var PageFactory
      */
-    protected $resultPageFactory;
+    public $resultPageFactory;
 
     /**
      * @param Registry $registry

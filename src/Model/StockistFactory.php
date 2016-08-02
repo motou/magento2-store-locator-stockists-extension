@@ -28,14 +28,14 @@ class StockistFactory implements FactoryInterface
      *
      * @var ObjectManagerInterface
      */
-    protected $_objectManager = null;
+    public $_objectManager = null;
 
     /**
      * Instance name to create
      *
      * @var string
      */
-    protected $_instanceName = null;
+    public $_instanceName = null;
 
     /**
      * Factory constructor

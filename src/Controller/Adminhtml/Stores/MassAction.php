@@ -34,19 +34,19 @@ abstract class MassAction extends Stores
     /**
      * @var Filter
      */
-    protected $filter;
+    public $filter;
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    public $collectionFactory;
     /**
      * @var string
      */
-    protected $successMessage;
+    public $successMessage;
     /**
      * @var string
      */
-    protected $errorMessage;
+    public $errorMessage;
 
     /**
      * @param Registry $registry
@@ -81,7 +81,7 @@ abstract class MassAction extends Stores
      * @param StockistModel $stockist
      * @return mixed
      */
-    protected abstract function massAction(StockistModel $stockist);
+    public abstract function massAction(StockistModel $stockist);
 
     /**
      * execute action

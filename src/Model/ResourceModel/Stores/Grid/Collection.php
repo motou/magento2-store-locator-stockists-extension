@@ -35,7 +35,7 @@ class Collection extends StockistCollection implements SearchResultInterface
     /**
      * @var AggregationInterface
      */
-    protected $aggregations;
+    public $aggregations;
 
     /**
      * @param EntityFactoryInterface $entityFactory

@@ -34,11 +34,11 @@ class Uninstall implements UninstallInterface
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    public $collectionFactory;
     /**
      * @var Data
      */
-    protected $configResource;
+    public $configResource;
     /**
      * @param CollectionFactory $collectionFactory
      * @param Data $configResource
@@ -46,8 +46,7 @@ class Uninstall implements UninstallInterface
     public function __construct(
         CollectionFactory $collectionFactory,
         Data $configResource
-    )
-    {
+    ) {
         $this->collectionFactory = $collectionFactory;
         $this->configResource    = $configResource;
     }
@@ -75,7 +74,7 @@ class Uninstall implements UninstallInterface
      * @param AbstractModel $config
      * @throws \Exception
      */
-    protected function deleteConfig(AbstractModel $config)
+    public function deleteConfig(AbstractModel $config)
     {
         $this->configResource->delete($config);
     }

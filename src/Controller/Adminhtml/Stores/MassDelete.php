@@ -25,7 +25,7 @@ class MassDelete extends MassAction
      * @param Stores $stockist
      * @return $this
      */
-    protected function massAction(Stores $stockist)
+    public function massAction(Stores $stockist)
     {
         $this->stockistRepository->delete($stockist);
         return $this;

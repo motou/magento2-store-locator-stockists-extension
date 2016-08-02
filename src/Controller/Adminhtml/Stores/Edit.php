@@ -27,7 +27,7 @@ class Edit extends Stores
      *
      * @return int
      */
-    protected function _initStockist()
+    public function _initStockist()
     {
         $stockistId = $this->getRequest()->getParam('stockist_id');
         $this->coreRegistry->register(RegistryConstants::CURRENT_STOCKIST_ID, $stockistId);

@@ -48,150 +48,150 @@ class Image extends AbstractModel
     /**
      * @var int
      */
-    protected $width;
+    public $width;
 
     /**
      * @var int
      */
-    protected $height;
+    public $height;
 
     /**
      * Default quality value (for JPEG images only).
      *
      * @var int
      */
-    protected $quality = 80;
+    public $quality = 80;
 
     /**
      * @var bool
      */
-    protected $keepAspectRatio = true;
+    public $keepAspectRatio = true;
 
     /**
      * @var bool
      */
-    protected $keepFrame = true;
+    public $keepFrame = true;
 
     /**
      * @var bool
      */
-    protected $keepTransparency = true;
+    public $keepTransparency = true;
 
     /**
      * @var bool
      */
-    protected $constrainOnly = true;
+    public $constrainOnly = true;
 
     /**
      * @var int[]
      */
-    protected $backgroundColor = [255, 255, 255];
+    public $backgroundColor = [255, 255, 255];
 
     /**
      * @var string
      */
-    protected $baseFile;
+    public $baseFile;
 
     /**
      * @var bool
      */
-    protected $isBaseFilePlaceholder;
+    public $isBaseFilePlaceholder;
 
     /**
      * @var string|bool
      */
-    protected $newFile;
+    public $newFile;
 
     /**
      * @var MagentoImage
      */
-    protected $processor;
+    public $processor;
 
     /**
      * @var string
      */
-    protected $destinationSubdir;
+    public $destinationSubdir;
 
     /**
      * @var int
      */
-    protected $angle;
+    public $angle;
 
     /**
      * @var string
      */
-    protected $watermarkFile;
+    public $watermarkFile;
 
     /**
      * @var int
      */
-    protected $watermarkPosition;
+    public $watermarkPosition;
 
     /**
      * @var int
      */
-    protected $watermarkWidth;
+    public $watermarkWidth;
 
     /**
      * @var int
      */
-    protected $watermarkHeight;
+    public $watermarkHeight;
 
     /**
      * @var int
      */
-    protected $watermarkImageOpacity = 70;
+    public $watermarkImageOpacity = 70;
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\WriteInterface
      */
-    protected $mediaDirectory;
+    public $mediaDirectory;
 
     /**
      * @var \Magento\Framework\Image\Factory
      */
-    protected $imageFactory;
+    public $imageFactory;
 
     /**
      * @var \Magento\Framework\View\Asset\Repository
      */
-    protected $assetRepo;
+    public $assetRepo;
 
     /**
      * @var \Magento\Framework\View\FileSystem
      */
-    protected $viewFileSystem;
+    public $viewFileSystem;
 
     /**
      * Core file storage database
      *
      * @var \Magento\MediaStorage\Helper\File\Storage\Database
      */
-    protected $coreFileStorageDatabase = null;
+    public $coreFileStorageDatabase = null;
 
     /**
      * Core store config
      *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $scopeConfig;
+    public $scopeConfig;
 
     /**
      * @var Uploader
      */
-    protected $uploader;
+    public $uploader;
 
     /**
      * Store manager
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
 
     /**
      * @var string
      */
-    protected $entityCode;
+    public $entityCode;
 
     /**
      * @param Context $context
@@ -374,7 +374,7 @@ class Image extends AbstractModel
      * @param string|null $file
      * @return bool
      */
-    protected function checkMemory($file = null)
+    public function checkMemory($file = null)
     {
         return $this->getMemoryLimit() > $this->getMemoryUsage() + $this->getNeedMemoryForFile(
             $file
@@ -385,7 +385,7 @@ class Image extends AbstractModel
     /**
      * @return string
      */
-    protected function getMemoryLimit()
+    public function getMemoryLimit()
     {
         $memoryLimit = trim(strtoupper(ini_get('memory_limit')));
 
@@ -408,7 +408,7 @@ class Image extends AbstractModel
     /**
      * @return int
      */
-    protected function getMemoryUsage()
+    public function getMemoryUsage()
     {
         if (function_exists('memory_get_usage')) {
             return memory_get_usage();
@@ -421,7 +421,7 @@ class Image extends AbstractModel
      * @return float|int
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function getNeedMemoryForFile($file = null)
+    public function getNeedMemoryForFile($file = null)
     {
         $file = $file === null ? $this->getBaseFile() : $file;
         if (!$file) {
@@ -456,7 +456,7 @@ class Image extends AbstractModel
      * @param int[] $rgbArray
      * @return string
      */
-    protected function rgbToString($rgbArray)
+    public function rgbToString($rgbArray)
     {
         $result = [];
         foreach ($rgbArray as $value) {
@@ -787,7 +787,7 @@ class Image extends AbstractModel
      *
      * @return string | bool
      */
-    protected function getWatermarkFilePath()
+    public function getWatermarkFilePath()
     {
         $filePath = false;
 
@@ -935,7 +935,7 @@ class Image extends AbstractModel
      * @param string $filename
      * @return bool
      */
-    protected function fileExists($filename)
+    public function fileExists($filename)
     {
         if ($this->mediaDirectory->isFile($filename)) {
             return true;

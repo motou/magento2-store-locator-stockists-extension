@@ -38,19 +38,19 @@ class InlineEdit extends StockistController
     /**
      * @var DataObjectHelper
      */
-    protected $dataObjectHelper;
+    public $dataObjectHelper;
     /**
      * @var DataObjectProcessor
      */
-    protected $dataObjectProcessor;
+    public $dataObjectProcessor;
     /**
      * @var JsonFactory
      */
-    protected $jsonFactory;
+    public $jsonFactory;
     /**
      * @var StockistResourceModel
      */
-    protected $stockistResourceModel;
+    public $stockistResourceModel;
 
     /**
      * @param Registry $registry
@@ -73,8 +73,7 @@ class InlineEdit extends StockistController
         DataObjectHelper $dataObjectHelper,
         JsonFactory $jsonFactory,
         StockistResourceModel $stockistResourceModel
-    )
-    {
+    ) {
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper    = $dataObjectHelper;
         $this->jsonFactory         = $jsonFactory;
@@ -135,7 +134,7 @@ class InlineEdit extends StockistController
      * @param string $errorText
      * @return string
      */
-    protected function getErrorWithStockistId(Stores $stockist, $errorText)
+    public function getErrorWithStockistId(Stores $stockist, $errorText)
     {
         return '[Stockist ID: ' . $stockist->getId() . '] ' . $errorText;
     }

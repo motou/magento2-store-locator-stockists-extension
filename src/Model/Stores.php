@@ -31,7 +31,6 @@ use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 use Limesharp\Stockists\Model\Routing\RoutableInterface;
 use Limesharp\Stockists\Model\Source\AbstractSource;
 
-
 /**
  * @method StockistResourceModel _getResource()
  * @method StockistResourceModel getResource()
@@ -49,7 +48,7 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     /**
      * @var Url
      */
-    protected $urlModel;
+    public $urlModel;
     /**
      * cache tag
      *
@@ -62,36 +61,36 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
      *
      * @var string
      */
-    protected $_cacheTag = 'limesharp_stockists_stores';
+    public $_cacheTag = 'limesharp_stockists_stores';
 
     /**
      * Prefix of model events names
      *
      * @var string
      */
-    protected $_eventPrefix = 'limesharp_stockists_stores';
+    public $_eventPrefix = 'limesharp_stockists_stores';
 
     /**
      * filter model
      *
      * @var \Magento\Framework\Filter\FilterManager
      */
-    protected $filter;
+    public $filter;
 
     /**
      * @var UploaderPool
      */
-    protected $uploaderPool;
+    public $uploaderPool;
 
     /**
      * @var \Limesharp\Stockists\Model\Output
      */
-    protected $outputProcessor;
+    public $outputProcessor;
 
     /**
      * @var AbstractSource[]
      */
-    protected $optionProviders;
+    public $optionProviders;
 
     /**
      * @param Context $context
@@ -116,8 +115,7 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
         array $data = [],
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null
-    )
-    {
+    ) {
         $this->outputProcessor = $outputProcessor;
         $this->uploaderPool    = $uploaderPool;
         $this->filter          = $filter;
@@ -131,11 +129,10 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
      *
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init(StockistResourceModel::class);
     }
-
 
     /**
      * Get type
@@ -514,7 +511,6 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
-
 
     /**
      * @return array

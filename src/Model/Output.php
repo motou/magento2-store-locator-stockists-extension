@@ -22,7 +22,7 @@ class Output
     /**
      * @var \Zend_Filter_Interface
      */
-    protected $templateProcessor;
+    public $templateProcessor;
 
     /**
      * @param \Zend_Filter_Interface $templateProcessor

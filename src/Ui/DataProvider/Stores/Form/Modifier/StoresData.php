@@ -26,7 +26,7 @@ class StoresData implements ModifierInterface
     /**
      * @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection
      */
-    protected $collection;
+    public $collection;
 
     /**
      * @param CollectionFactory $stockistCollectionFactory

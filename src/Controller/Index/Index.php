@@ -34,10 +34,10 @@ class Index extends Action
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $scopeConfig;
+    public $scopeConfig;
     
     /** @var \Magento\Framework\View\Result\PageFactory  */
-    protected $resultPageFactory;
+    public $resultPageFactory;
 
     /**
      * @param Context $context

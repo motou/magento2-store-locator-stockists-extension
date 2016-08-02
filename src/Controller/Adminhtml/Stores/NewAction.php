@@ -30,7 +30,7 @@ class NewAction extends Action
     /**
      * @var ForwardFactory
      */
-    protected $resultForwardFactory;
+    public $resultForwardFactory;
 
     /**
      * constructor

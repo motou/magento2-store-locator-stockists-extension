@@ -22,5 +22,5 @@ class MassEnable extends MassDisable
     /**
      * @var bool
      */
-    protected $status = true;
+    public $status = true;
 }

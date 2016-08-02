@@ -36,12 +36,12 @@ class ServiceCollection extends AbstractServiceCollection
     /**
      * @var StockistRepositoryInterface
      */
-    protected $stockistRepository;
+    public $stockistRepository;
 
     /**
      * @var SimpleDataObjectConverter
      */
-    protected $simpleDataObjectConverter;
+    public $simpleDataObjectConverter;
 
     /**
      * @param EntityFactory $entityFactory

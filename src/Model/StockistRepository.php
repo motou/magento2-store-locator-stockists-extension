@@ -44,31 +44,31 @@ class StockistRepository implements StockistRepositoryInterface
     /**
      * @var array
      */
-    protected $instances = [];
+    public $instances = [];
     /**
      * @var ResourceStockist
      */
-    protected $resource;
+    public $resource;
     /**
      * @var StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
     /**
      * @var StockistCollectionFactory
      */
-    protected $stockistCollectionFactory;
+    public $stockistCollectionFactory;
     /**
      * @var StockistSearchResultsInterfaceFactory
      */
-    protected $searchResultsFactory;
+    public $searchResultsFactory;
     /**
      * @var StockistInterfaceFactory
      */
-    protected $stockistInterfaceFactory;
+    public $stockistInterfaceFactory;
     /**
      * @var DataObjectHelper
      */
-    protected $dataObjectHelper;
+    public $dataObjectHelper;
 
     public function __construct(
         ResourceStockist $resource,
@@ -235,7 +235,7 @@ class StockistRepository implements StockistRepositoryInterface
      * @return $this
      * @throws \Magento\Framework\Exception\InputException
      */
-    protected function addFilterGroupToCollection(FilterGroup $filterGroup, Collection $collection)
+    public function addFilterGroupToCollection(FilterGroup $filterGroup, Collection $collection)
     {
         $fields = [];
         $conditions = [];

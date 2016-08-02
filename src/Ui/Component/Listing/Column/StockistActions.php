@@ -47,7 +47,7 @@ class StockistActions extends Column
      * 
      * @var \Magento\Framework\UrlInterface
      */
-    protected $_urlBuilder;
+    public $_urlBuilder;
 
     /**
      * @param ContextInterface $context
@@ -62,8 +62,7 @@ class StockistActions extends Column
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
-    )
-    {
+    ) {
         $this->_urlBuilder = $urlBuilder;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }

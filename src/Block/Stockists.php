@@ -32,19 +32,19 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * @var StockistsCollectionFactory
      */
-    protected $stockistsCollectionFactory;
+    public $stockistsCollectionFactory;
         
     /**
      * @var Country
      */
-    protected $countryHelper;
+    public $countryHelper;
     
     /**
      * Store manager
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
     
     public function __construct(
         StockistsCollectionFactory $stockistsCollectionFactory,
@@ -52,8 +52,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
         Country $countryHelper,
         Context $context,
         array $data = []
-    )
-    {
+    ) {
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
         $this->storeManager = $storeManager;
         $this->countryHelper = $countryHelper;

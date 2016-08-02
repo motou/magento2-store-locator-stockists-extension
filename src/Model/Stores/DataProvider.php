@@ -27,12 +27,12 @@ class DataProvider extends AbstractDataProvider
     /**
      * @var array
      */
-    protected $loadedData;
+    public $loadedData;
 
     /**
      * @var PoolInterface
      */
-    protected $pool;
+    public $pool;
 
     /**
      * @param string $name

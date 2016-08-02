@@ -7,6 +7,8 @@
 namespace Limesharp\Stockists\Controller\Ajax;
 
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\JsonFactory;
 
 /**
  * Responsible for loading page content.
@@ -17,8 +19,7 @@ use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 class Stores extends \Magento\Framework\App\Action\Action
 {
     
-    protected $resultJsonFactory;
-    
+    protected $resultJsonFactory;    
     
     /**
      * @var CollectionFactory
@@ -26,11 +27,10 @@ class Stores extends \Magento\Framework\App\Action\Action
     protected $collectionFactory;
     
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
+        Context $context,
+        JsonFactory $resultJsonFactory,
         CollectionFactory $collectionFactory 
-    )
-    {
+    ) {
         $this->collectionFactory = $collectionFactory;
         $this->resultJsonFactory = $resultJsonFactory;
         parent::__construct($context);
@@ -42,15 +42,12 @@ class Stores extends \Magento\Framework\App\Action\Action
      * @return \Magento\Framework\Controller\Result\JsonFactory
      */
     public function execute()
-    {
-        
+    {        
         $collection = $this->collectionFactory->create()->getData();
-        $json = array();
-        foreach ($collection as $stockist){
+        $json = [];
+        foreach ($collection as $stockist) {
             $json[] = $stockist;
         }
-
         return  $this->resultJsonFactory->create()->setData($json);
-
     }
 }

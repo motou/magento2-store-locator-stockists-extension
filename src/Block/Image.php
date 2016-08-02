@@ -34,12 +34,12 @@ class Image extends Template
     /**
      * @var \Magento\Framework\Model\AbstractModel
      */
-    protected $entity;
+    public $entity;
 
     /**
      * @var array
      */
-    protected $attributes = [];
+    public $attributes = [];
 
     /**
      * @param Context $context

@@ -37,17 +37,17 @@ class Save extends Stores
     /**
      * @var DataObjectProcessor
      */
-    protected $dataObjectProcessor;
+    public $dataObjectProcessor;
 
     /**
      * @var DataObjectHelper
      */
-    protected $dataObjectHelper;
+    public $dataObjectHelper;
 
     /**
      * @var UploaderPool
      */
-    protected $uploaderPool;
+    public $uploaderPool;
 
     /**
      * @param Registry $registry
@@ -70,8 +70,7 @@ class Save extends Stores
         DataObjectProcessor $dataObjectProcessor,
         DataObjectHelper $dataObjectHelper,
         UploaderPool $uploaderPool
-    )
-    {
+    ) {
         $this->stockistFactory = $stockistFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper = $dataObjectHelper;
@@ -140,7 +139,7 @@ class Save extends Stores
      * @return Uploader
      * @throws \Exception
      */
-    protected function getUploader($type)
+    public function getUploader($type)
     {
         return $this->uploaderPool->getUploader($type);
     }
@@ -148,7 +147,7 @@ class Save extends Stores
     /**
      * @param $stockistData
      */
-    protected function storeStockistDataToSession($stockistData)
+    public function storeStockistDataToSession($stockistData)
     {
         $this->_getSession()->setLimesharpStockistsStoresData($stockistData);
     }

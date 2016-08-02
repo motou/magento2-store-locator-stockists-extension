@@ -34,29 +34,29 @@ class Stores extends AbstractDb
      *
      * @var \Magento\Store\Model\Store
      */
-    protected $store = null;
+    public $store = null;
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
      */
-    protected $date;
+    public $date;
 
     /**
      * Store manager
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime
      */
-    protected $dateTime;
+    public $dateTime;
 
     /**
      * @var \Magento\Framework\Event\ManagerInterface
      */
-    protected $eventManager;
+    public $eventManager;
 
     /**
      * @param Context $context
@@ -85,7 +85,7 @@ class Stores extends AbstractDb
      *
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init('limesharp_stockists_stores', 'stockist_id');
     }
@@ -96,7 +96,7 @@ class Stores extends AbstractDb
      * @param \Magento\Framework\Model\AbstractModel $object
      * @return $this
      */
-    protected function _beforeDelete(AbstractModel $object)
+    public function _beforeDelete(AbstractModel $object)
     {
         $condition = ['stockist_id = ?' => (int)$object->getId()];
         $this->getConnection()->delete($this->getTable('limesharp_stockists_stores'), $condition);
@@ -109,7 +109,7 @@ class Stores extends AbstractDb
      * @param AbstractModel|\Limesharp\Stockists\Model\Stores $object
      * @return $this
      */
-    protected function _beforeSave(AbstractModel $object)
+    public function _beforeSave(AbstractModel $object)
     {
 
         $object->setUpdatedAt($this->date->gmtDate());
@@ -186,7 +186,7 @@ class Stores extends AbstractDb
      * @param $attribute
      * @return $this
      */
-    protected function beforeSaveAttribute(AbstractModel $object, $attribute)
+    public function beforeSaveAttribute(AbstractModel $object, $attribute)
     {
         if ($object->getEventObject() && $object->getEventPrefix()) {
             $this->eventManager->dispatch(
@@ -208,7 +208,7 @@ class Stores extends AbstractDb
      * @param string $attribute
      * @return \Magento\Sales\Model\ResourceModel\Attribute
      */
-    protected function afterSaveAttribute(AbstractModel $object, $attribute)
+    public function afterSaveAttribute(AbstractModel $object, $attribute)
     {
         if ($object->getEventObject() && $object->getEventPrefix()) {
             $this->eventManager->dispatch(

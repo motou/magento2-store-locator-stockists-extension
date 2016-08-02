@@ -26,32 +26,32 @@ class ImageBuilder
     /**
      * @var ImageFactory
      */
-    protected $imageFactory;
+    public $imageFactory;
 
     /**
      * @var HelperFactory
      */
-    protected $helperFactory;
+    public $helperFactory;
 
     /**
      * @var \Magento\Framework\Model\AbstractModel
      */
-    protected $entity;
+    public $entity;
 
     /**
      * @var string
      */
-    protected $imageId;
+    public $imageId;
 
     /**
      * @var array
      */
-    protected $attributes = [];
+    public $attributes = [];
 
     /**
      * @var string
      */
-    protected $entityCode;
+    public $entityCode;
 
     /**
      * @param HelperFactory $helperFactory
@@ -109,7 +109,7 @@ class ImageBuilder
      *
      * @return string
      */
-    protected function getCustomAttributes()
+    public function getCustomAttributes()
     {
         $result = [];
         foreach ($this->attributes as $name => $value) {
@@ -124,7 +124,7 @@ class ImageBuilder
      * @param ImageHelper $helper
      * @return float|int
      */
-    protected function getRatio(ImageHelper $helper)
+    public function getRatio(ImageHelper $helper)
     {
         $width = $helper->getWidth();
         $height = $helper->getHeight();

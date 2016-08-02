@@ -50,14 +50,14 @@ class Uploader
      *
      * @var \Magento\MediaStorage\Helper\File\Storage\Database
      */
-    protected $coreFileStorageDatabase;
+    public $coreFileStorageDatabase;
 
     /**
      * Media directory object (writable).
      *
      * @var \Magento\Framework\Filesystem\Directory\WriteInterface
      */
-    protected $mediaDirectory;
+    public $mediaDirectory;
 
     /**
      * Uploader factory
@@ -71,33 +71,33 @@ class Uploader
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $storeManager;
+    public $storeManager;
 
     /**
      * @var \Psr\Log\LoggerInterface
      */
-    protected $logger;
+    public $logger;
 
     /**
      * Base tmp path
      *
      * @var string
      */
-    protected $baseTmpPath;
+    public $baseTmpPath;
 
     /**
      * Base path
      *
      * @var string
      */
-    protected $basePath;
+    public $basePath;
 
     /**
      * Allowed extensions
      *
      * @var string
      */
-    protected $allowedExtensions;
+    public $allowedExtensions;
 
     /**
      * @param Database $coreFileStorageDatabase

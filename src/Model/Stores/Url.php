@@ -41,12 +41,12 @@ class Url
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $urlBuilder;
+    public $urlBuilder;
 
     /**
      * @var ScopeConfigInterface
      */
-    protected $scopeConfig;
+    public $scopeConfig;
 
     /**
      * @param UrlInterface $urlBuilder

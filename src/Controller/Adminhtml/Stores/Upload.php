@@ -34,7 +34,7 @@ class Upload extends Action
      *
      * @var Uploader
      */
-    protected $uploader;
+    public $uploader;
 
     /**
      * @param Context $context
@@ -74,7 +74,7 @@ class Upload extends Action
     /**
      * @return string
      */
-    protected function getFieldName()
+    public function getFieldName()
     {
         return $this->_request->getParam('field');
     }

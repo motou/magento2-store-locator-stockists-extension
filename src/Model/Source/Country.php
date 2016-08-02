@@ -25,7 +25,7 @@ class Country extends AbstractSource implements ArrayInterface
     /**
      * @var \Limesharp\Stockists\Model\Stores
      */
-    protected $countryCollectionFactory;
+    public $countryCollectionFactory;
 
     /**
      * @param CountryCollectionFactory $countryCollectionFactory
@@ -34,8 +34,7 @@ class Country extends AbstractSource implements ArrayInterface
     public function __construct(
         CountryCollectionFactory $countryCollectionFactory,
         array $options = []
-    )
-    {
+    ) {
         $this->countryCollectionFactory = $countryCollectionFactory;
         parent::__construct($options);
     }

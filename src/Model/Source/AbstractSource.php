@@ -24,7 +24,7 @@ abstract class AbstractSource implements ArrayInterface
     /**
      * @var array
      */
-    protected $options;
+    public $options;
 
     /**
      * @param array $options
