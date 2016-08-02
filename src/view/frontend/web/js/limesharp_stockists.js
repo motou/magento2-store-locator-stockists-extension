@@ -22,7 +22,7 @@ require([
                 
             $('#stockist-search-term').keypress(function(e){
                 
-                if(e.which == 13){//Enter key pressed
+                if (e.which == 13){//Enter key pressed
                     
                     search_widget.search(map);
                 }
@@ -69,23 +69,23 @@ require([
                 function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
                     google.maps.event.addListener(marker, 'click', function() {
                         var contentString = '<div class="stockists-window"><p class="stockists-title">'+name+'</p>'
-                        if(link){
+                        if (link){
                             var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
                             contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+link+'</a></p>'
                         }
-                        if(telephone){
+                        if (telephone){
                             contentString += '<p class="stockists-telephone">'+telephone+'</p>';
                         }
-                        if(email){
+                        if (email){
                             contentString += '<p class="stockists-address"><a href="mailto:'+email+'" target="_blank">'+email+'</a></p>';
                         }
-                        if(address){
+                        if (address){
                             contentString += '<p class="stockists-telephone">'+address+'</p>'
                         }
-                        if(city){
+                        if (city){
                             contentString += '<p class="stockists-telephone">'+city+'</p>'
                         }
-                        if(postcode){
+                        if (postcode){
                             contentString += '<p class="stockists-web">'+postcode+'</p>';
                         }
                         contentString += '</div>';
@@ -134,7 +134,7 @@ require([
             
             function changeMarker(id){
                 for (i = 0; i < markers.length; i++) { 
-                    if(markers[i].record_id == id){
+                    if (markers[i].record_id == id){
                         google.maps.event.trigger(markers[i], 'click');
                     }
                 }

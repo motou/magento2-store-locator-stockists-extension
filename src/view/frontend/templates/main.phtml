@@ -21,6 +21,7 @@
 <?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
+<?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
@@ -46,10 +47,11 @@
                 
                 <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
                     
-                    <?php if($item["image"]): ?>
+                    <?php if ($item["image"]): ?>
                         
                         <div class="image">
-                            <img src="<?php echo $block->getBaseImageUrl()."limesharp_stockists/stockist/image/".$block->escapeHtml($item["image"]) ?>" alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
+                            <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
+                                 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
                         </div>
                         
                     <?php endif; ?>
@@ -57,15 +59,20 @@
                     
                     <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
                     
-                    <?php if($item["address"]): ?>
+                    <?php if ($item["address"]): ?>
                         <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
                     <?php endif; ?>
                     
-                    <?php if($item["city"]): ?>
-                        <p class="results-phone"><?php echo $block->escapeHtml($item["city"]); echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; ?></p>
+                    <?php if ($item["city"]): ?>
+                        <p class="results-phone">
+	                        <?php 
+		                        echo $block->escapeHtml($item["city"]); 
+		                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
+		                    ?>
+	                    </p>
                     <?php endif; ?>
                     
-                    <?php if($item["country"] && $countryList[$item["country"]]): ?>
+                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
                         <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
                     <?php endif; ?>
                     

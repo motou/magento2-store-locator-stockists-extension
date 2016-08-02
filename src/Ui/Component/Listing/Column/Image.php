@@ -71,11 +71,11 @@ class Image extends Column
      */
     public function prepareDataSource(array $dataSource)
     {
-        if(isset($dataSource['data']['items'])) {
+        if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
             foreach($dataSource['data']['items'] as & $item) {
                 $url = '';
-                if($item[$fieldName] != '') {
+                if ($item[$fieldName] != '') {
                     $url = $this->imageModel->getBaseUrl().$this->imageModel->getBasePath().$item[$fieldName];
                 }
                 $item[$fieldName . '_src'] = $url;

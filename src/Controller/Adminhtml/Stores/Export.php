@@ -81,9 +81,8 @@ class Export extends Stores
         DataObjectHelper $dataObjectHelper,
         UploaderPool $uploaderPool,
         FileFactory $fileFactory,
-        CollectionFactory $collectionFactory 
-    )
-    {
+        CollectionFactory $collectionFactory
+    ) {
         $this->collectionFactory = $collectionFactory;
         $this->fileFactory = $fileFactory;
         $this->stockistFactory = $stockistFactory;
@@ -104,13 +103,31 @@ class Export extends Stores
         
         try {
             
-            $content = '"store_id","name","address","city","country","postcode","region","email","phone","link","image","latitude","longitude","status","updated_at","created_at"'."\n";
+            $content = '';
+            $content .= '"store_id",';
+            $content .= '"name",';
+            $content .= '"address",';
+            $content .= '"city",';
+            $content .= '"country",';
+            $content .= '"postcode",';
+            $content .= '"region",';
+            $content .= '"email",';
+            $content .= '"phone",';
+            $content .= '"link",';
+            $content .= '"image",';
+            $content .= '"latitude",';
+            $content .= '"longitude",';
+            $content .= '"status",';
+            $content .= '"updated_at",';
+            $content .= '"created_at"';
+            $content .= "\n";
+            
             $fileName = 'stockists_export.csv';
             $collection = $this->collectionFactory->create()->getData();
             
             foreach ($collection as $stockist){
                 array_shift($stockist); //skip the id
-                $content .= implode(",", array_map(array($this, 'addQuotationMarks'),$stockist));
+                $content .= implode(",", array_map([$this, 'addQuotationMarks'],$stockist));
                 $content .= "\n";
             }
 
@@ -137,7 +154,7 @@ class Export extends Stores
      * @param string
      * @return string
      */
-    protected function addQuotationMarks($row)
+    public function addQuotationMarks($row)
     {
         return sprintf('"%s"', $row);
     }

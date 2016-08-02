@@ -93,7 +93,7 @@ class ImportFile extends Stores
         $filePath = $data["import"][0]["path"].$data["import"][0]["file"];
         $resultRedirect = $this->resultRedirectFactory->create();
         
-        if($data["import"][0]["path"] && $data["import"][0]["file"]){
+        if ($data["import"][0]["path"] && $data["import"][0]["file"]){
             
             try {
                 $rawStockistData = $this->csvProcessor->getData($filePath);

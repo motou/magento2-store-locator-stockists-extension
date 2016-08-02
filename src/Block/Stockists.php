@@ -93,7 +93,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
         $i = 0;
         foreach ($loadCountries as $country ){
             $i++;
-            if($i == 1){ //remove first element that is a select
+            if ($i == 1){ //remove first element that is a select
                 continue;
             }
             $countries[$country["value"]] = $country["label"];
