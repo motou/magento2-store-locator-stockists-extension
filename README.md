@@ -58,8 +58,7 @@ Or you can download this zip file and drop it into your app folder and then run 
 
 ## Support
 * We **DO NOT** offer any free technical support in installing or customizing this extension.
-* If you need support you can contact us but bear in mind that we may not consider quotes under £100.
-* If you have any questions, the best place to ask them is http://magento.stackexchange.com/ .
+* You can contact us for paid support or ask questions on http://magento.stackexchange.com/ .
 
 ## Demo
 
