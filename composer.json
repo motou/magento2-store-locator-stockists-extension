@@ -2,7 +2,7 @@
   "name": "limesharp/stockists",
   "description": "This is a stockists store locator extension for magento2",
   "type": "magento2-module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "keywords": ["magento", "magento2", "stockists", "store locator", "google maps"],
   "homepage": "https://github.com/ClaudiuCreanga/magento2-stockists-extension",
@@ -15,7 +15,8 @@
     }
   ],
   "require": {
-    "php": "~5.6.0|~7.0.0"
+    "php": "~5.6.0|~7.0.0",
+    "magento/product-community-edition": "^2.1.0"
   },
   "autoload": {
     "files": [ "src/registration.php" ],
