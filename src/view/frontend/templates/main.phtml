@@ -86,21 +86,20 @@
     </div>
 </div>
 
-
-
 <script type="text/x-magento-init">
     {
         "*": {
                 
-            "stockists_widget": " <?php echo "test" ?> "
+            "limesharp_stockists": {
+	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
+	            "map_pin" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>"
+            }
                 
         }
     }
 </script>
 <script>
-    
-    window.map_pin = '<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>';
-    
+        
     require([
         'limesharp_stockists'
     ], function ($) {

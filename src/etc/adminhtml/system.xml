@@ -33,13 +33,22 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists list meta title</label>
+                    <label>Stockists list title and meta title</label>
                 </field>
                 <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list meta description</label>
                 </field>
                 <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list meta keywords</label>
+                </field>
+                
+                <field id="map_style" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists style maps</label>
+                    <source_model>Limesharp\Stockists\Model\MapStyles</source_model>
+                    <comment>
+                        <![CDATA[Popular map styles from snazzymaps]]>
+                    </comment>
+                    <tooltip>If you want a preview of your styles go to https://snazzymaps.com and select the one you like.</tooltip>
                 </field>
 <!--
                 <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">

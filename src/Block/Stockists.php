@@ -24,10 +24,16 @@ use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as Stockist
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\Config\Source\Country;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Stockists extends \Magento\Framework\View\Element\Template
 {
-    
+        
+    /**
+     * @var string
+     */
+    const MAP_STYLES_CONFIG_PATH = 'limesharp_stockists/stockist/map_style';
     
     /**
      * @var StockistsCollectionFactory
@@ -46,16 +52,23 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */
     public $storeManager;
     
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    public $scopeConfig;
+    
     public function __construct(
         StockistsCollectionFactory $stockistsCollectionFactory,
         StoreManagerInterface $storeManager,
         Country $countryHelper,
         Context $context,
+        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
         $this->storeManager = $storeManager;
         $this->countryHelper = $countryHelper;
+        $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $data);
     }
     
@@ -98,6 +111,12 @@ class Stockists extends \Magento\Framework\View\Element\Template
             $countries[$country["value"]] = $country["label"];
         }
         return $countries;
+    }
+    
+        
+    public function getMapStyles()
+    {
+	    return $this->scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
 }

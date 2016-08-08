@@ -18,14 +18,17 @@ class Index extends Action
      * @var string
      */
     const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist/meta_description';
+    
     /**
      * @var string
      */
     const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stockist/meta_keywords';
+    
     /**
      * @var string
      */
     const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stockist/meta_title';
+    
     /**
      * @var string
      */
@@ -96,4 +99,5 @@ class Index extends Action
         return $resultPage;
 
     }
+
 }
