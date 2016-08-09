@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Limesharp_Stockists extension
  *
@@ -34,6 +35,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
      * @var string
      */
     const MAP_STYLES_CONFIG_PATH = 'limesharp_stockists/stockist/map_style';
+            
+    /**
+     * @var string
+     */
+    const ASK_LOCATION_CONFIG_PATH = 'limesharp_stockists/stockist/ask_location';
     
     /**
      * @var StockistsCollectionFactory
@@ -113,10 +119,24 @@ class Stockists extends \Magento\Framework\View\Element\Template
         return $countries;
     }
     
-        
+    /**
+     * get map style from configuration
+     *
+     * @return string
+     */   
     public function getMapStyles()
     {
 	    return $this->scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+    
+    /**
+     * get location settings from configuration
+     *
+     * @return string
+     */   
+    public function getLocationSettings()
+    {
+	    return $this->scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
 }

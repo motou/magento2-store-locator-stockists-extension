@@ -4,9 +4,10 @@ define([
         'stockists_countries',
         'stockists_mapstyles',
         'stockists_search',
+        'stockists_geolocation',
         'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
     ],
-    function($,config,country_list,mapstyles,search_widget) {
+    function($,config,country_list,mapstyles,search_widget,getGeolocation) {
 	    
 		return function (config) {
 
@@ -127,6 +128,30 @@ define([
 	                                
 	                }
 	                
+	                if(config.geolocation && navigator.geolocation){
+									        					
+						var geoOptions = function(){
+							return {
+								maximumAge: 5 * 60 * 1000,
+						    	timeout: 10 * 1000
+					    	}
+						};
+						
+						var geoSuccess = function(position) {
+												
+							centerMap(position.coords, map, markers)
+							
+						};
+						var geoError = function(position) {
+							
+							return;
+													
+						};
+					
+						navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+							
+		            } 
+	                
 	            
 	            }
 	    
@@ -143,6 +168,14 @@ define([
 	                }
 	            }
 	            
+	            //after the user has shared his geolocation, center map, insert marker and show stores
+	            function centerMap(coords, map, markers){
+		            
+					var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+
+                    getGeolocation.search(map, coords, latLng);
+					
+				}         
 	            
 	        });
 	    };

@@ -50,6 +50,15 @@
                     </comment>
                     <tooltip>If you want a preview of your styles go to https://snazzymaps.com and select the one you like.</tooltip>
                 </field>
+                
+                <field id="ask_location" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Ask for location</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[On page load ask the user for his location and show the closest store]]>
+                    </comment>
+                    <tooltip>If this setting is enabled when the user lands on /stockists/ page then it will be asked for his geolocation and then the closest stores to him will appear. The user must have a browser that supports geolocation. Be aware that some browsers, such as chrome, do not support geolocation over unencrypted http.</tooltip>
+                </field>
 <!--
                 <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list url</label>
