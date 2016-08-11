@@ -43,10 +43,16 @@
     background: #ffffff;
     top: 355px;
     position: absolute;
-    right: 100px;
     width: 285px;
     height: 464px;
     padding: 20px 17px 20px 15px;
+}
+.directions-panel{
+	left:100px;
+	display: none;
+}
+.search-stockists{
+    right: 100px;
 }
 .search-stockists.close-up {
     height: 250px;
@@ -160,5 +166,8 @@
 	position: relative;
 	top: 9px;
 	left: 15px;
+	cursor: pointer;
+}
+.ask-for-directions{
 	cursor: pointer;
 }

@@ -128,16 +128,19 @@ define([
 	                    bindInfoWindow(marker, map, infowindow, data.name, data.address, data.city, data.postcode, data.phone, data.link, data.email);
 	                                
 	                }
-	                
+	                if(config.geolocation){
+		                alert();
+	                }
 	                if(config.geolocation && navigator.geolocation){
 									        					
-						geoLocation();
+						getGeoLocation();
 							
 		            } 
 		            
 					// attach click events for directions
 					if(navigator.geolocation){
 						$(document).on("click", ".ask-for-directions", function(map){
+							$(".directions-panel").show();
 							getDirections();
 						})       
 					}
@@ -145,7 +148,7 @@ define([
 	            
 	            }
 	            
-	            function geoLocation(){
+	            function getGeoLocation(){
 	            	var geoOptions = function(){
 						return {
 							maximumAge: 5 * 60 * 1000,
@@ -192,17 +195,18 @@ define([
 				// on click location ask for geolocation and show stores
 				if(navigator.geolocation){
 					$(document).on("click", ".geocode-location", function(){
-						geoLocation();
+						getGeoLocation();
 					})       
 				}
 				
 				function getDirections(map){
+					console.log(map);
 					
 			        var directionsService = new google.maps.DirectionsService();
 					var directionsDisplay = new google.maps.DirectionsRenderer();
 					
 					directionsDisplay.setMap(map);
-					directionsDisplay.setPanel($('.directions-panel'));
+					directionsDisplay.setPanel($('.directions-panel')[0]);
 					
 					var request = {
 						origin: 'London', 
