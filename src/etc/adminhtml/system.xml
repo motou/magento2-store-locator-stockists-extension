@@ -32,6 +32,11 @@
                     <label>Enable Breadcrumbs</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+
+                <field id="template" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select Template</label>
+                    <source_model>Limesharp\Stockists\Model\Template</source_model>
+                </field>
                 <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list title and meta title</label>
                 </field>

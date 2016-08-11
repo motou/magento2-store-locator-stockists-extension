@@ -22,71 +22,74 @@
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
+<?php $templateSetting = $block->getTemplateSettings(); ?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
-<div class="directions-panel"></div> 
-<div class="search-stockists">
+<div class="parent-stockists <?php echo $templateSetting; ?>">
+	<div class="directions-panel"></div> 
+	<div class="search-stockists">
+		
+	    <div class="search-header">
 	
-    <div class="search-header">
-
-        <p class="search-title"><?php /* @escapeNotVerified */ echo __("Find a stockist") ?>
-        	<span class="geocode-location"></span>
-        </p>
-        <p class="stockists-intro"><?php /* @escapeNotVerified */ echo __("Enter a city, country or full post/zip code") ?></p>
-        <input id="stockist-search-term" type="text" placeholder="Search" /> 
-        <button id="stockists-submit"><?php /* @escapeNotVerified */ echo __("Search") ?></button>
-        
-    </div>
-    <div class="stockists-results">
-        
-
-        <div class="results-store">
-            
-            <?php foreach ($data as $item): ?>
-            
-
-                <?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
-                
-                <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
-                    
-                    <?php if ($item["image"]): ?>
-                        
-                        <div class="image">
-                            <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
-                                 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
-                        </div>
-                        
-                    <?php endif; ?>
-                    
-                    
-                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-                    
-                    <?php if ($item["address"]): ?>
-                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-                    <?php endif; ?>
-                    
-                    <?php if ($item["city"]): ?>
-                        <p class="results-phone">
-	                        <?php 
-		                        echo $block->escapeHtml($item["city"]); 
-		                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
-		                    ?>
-	                    </p>
-                    <?php endif; ?>
-                    
-                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
-                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
-                    <?php endif; ?>
-                    
-                </div>    
-                    
-            
-            <?php endforeach; ?>
-                        
-        </div>
-        
-    </div>
+	        <p class="search-title"><?php /* @escapeNotVerified */ echo __("Find a stockist") ?>
+	        	<span class="geocode-location"></span>
+	        </p>
+	        <p class="stockists-intro"><?php /* @escapeNotVerified */ echo __("Enter a city, country or full post/zip code") ?></p>
+	        <input id="stockist-search-term" type="text" placeholder="Search" /> 
+	        <button id="stockists-submit"><?php /* @escapeNotVerified */ echo __("Search") ?></button>
+	        
+	    </div>
+	    <div class="stockists-results">
+	        
+	
+	        <div class="results-store">
+	            
+	            <?php foreach ($data as $item): ?>
+	            
+	
+	                <?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
+	                
+	                <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+	                    
+	                    <?php if ($item["image"]): ?>
+	                        
+	                        <div class="image">
+	                            <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
+	                                 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
+	                        </div>
+	                        
+	                    <?php endif; ?>
+	                    
+	                    
+	                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+	                    
+	                    <?php if ($item["address"]): ?>
+	                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
+	                    <?php endif; ?>
+	                    
+	                    <?php if ($item["city"]): ?>
+	                        <p class="results-phone">
+		                        <?php 
+			                        echo $block->escapeHtml($item["city"]); 
+			                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
+			                    ?>
+		                    </p>
+	                    <?php endif; ?>
+	                    
+	                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
+	                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+	                    <?php endif; ?>
+	                    
+	                </div>    
+	                    
+	            
+	            <?php endforeach; ?>
+	                        
+	        </div>
+	        
+	    </div>
+	</div>
 </div>
 
 <script type="text/x-magento-init">
@@ -96,7 +99,8 @@
             "limesharp_stockists": {
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>",
-	            "geolocation" : "<?php echo $block->getLocationSettings() ?>"
+	            "geolocation" : "<?php echo $block->getLocationSettings() ?>",
+	            "template" : "<?php echo $block->getTemplateSettings() ?>"
             }
                 
         }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Limesharp_Stockists extension
  *
@@ -21,7 +22,7 @@ namespace Limesharp\Stockists\Model;
 class MapStyles
 {
 	
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return array(
             array(

@@ -42,6 +42,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
     const ASK_LOCATION_CONFIG_PATH = 'limesharp_stockists/stockist/ask_location';
     
     /**
+     * @var string
+     */
+    const TEMPLATE_CONFIG_PATH = 'limesharp_stockists/stockist/template';
+    
+    /**
      * @var StockistsCollectionFactory
      */
     public $stockistsCollectionFactory;
@@ -78,11 +83,6 @@ class Stockists extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
     
-    public function getBaseImageUrl()
-    {
-        return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-    }
-    
      /**
       * return stockists collection
       *
@@ -103,7 +103,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      *
      * @return array
      */
-    public function getCountries()
+    public function getCountries(): array
     {
 
         $loadCountries = $this->countryHelper->toOptionArray();
@@ -124,7 +124,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      *
      * @return string
      */   
-    public function getMapStyles()
+    public function getMapStyles(): string
     {
 	    return $this->scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
@@ -134,9 +134,28 @@ class Stockists extends \Magento\Framework\View\Element\Template
      *
      * @return string
      */   
-    public function getLocationSettings()
+    public function getLocationSettings(): string
     {
 	    return $this->scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+        
+    /**
+     * get template settings from configuration, i.e full width or page width
+     *
+     * @return string
+     */   
+    public function getTemplateSettings(): string
+    {
+	    return $this->scopeConfig->getValue(self::TEMPLATE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+     /**
+     * get template settings from configuration, i.e full width or page width
+     *
+     * @return string
+     */ 
+    public function getBaseImageUrl(): string
+    {
+        return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
     
 }

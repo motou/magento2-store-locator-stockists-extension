@@ -140,6 +140,7 @@ define([
 					// attach click events for directions
 					if(navigator.geolocation){
 						$(document).on("click", ".ask-for-directions", function(map){
+							console.log(map)
 							$(".directions-panel").show();
 							getDirections();
 						})       
