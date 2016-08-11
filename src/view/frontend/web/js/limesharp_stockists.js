@@ -92,6 +92,7 @@ define([
 	                        if (postcode) {
 	                            contentString += '<p class="stockists-web">'+postcode+'</p>';
 	                        }
+	                        contentString += '<p class="ask-for-directions">Get Directions</p>';
 	                        contentString += '</div>';
 	                        map.setCenter(marker.getPosition());
 	                        infowindow.setContent(contentString);
@@ -133,6 +134,13 @@ define([
 						geoLocation();
 							
 		            } 
+		            
+					// attach click events for directions
+					if(navigator.geolocation){
+						$(document).on("click", ".ask-for-directions", function(map){
+							getDirections();
+						})       
+					}
 	                
 	            
 	            }
@@ -187,6 +195,28 @@ define([
 						geoLocation();
 					})       
 				}
+				
+				function getDirections(map){
+					
+			        var directionsService = new google.maps.DirectionsService();
+					var directionsDisplay = new google.maps.DirectionsRenderer();
+					
+					directionsDisplay.setMap(map);
+					directionsDisplay.setPanel($('.directions-panel'));
+					
+					var request = {
+						origin: 'London', 
+						destination: 'Cambridge',
+						travelMode: google.maps.DirectionsTravelMode.DRIVING
+					};
+					
+					directionsService.route(request, function(response, status) {
+						if (status == google.maps.DirectionsStatus.OK) {
+							directionsDisplay.setDirections(response);
+						}
+					});
+				}
+
 				
 	        });
 	    };

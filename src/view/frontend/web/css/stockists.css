@@ -38,6 +38,7 @@
     margin-bottom: 0;
 }
 
+.directions-panel,
 .search-stockists {
     background: #ffffff;
     top: 355px;
@@ -139,10 +140,12 @@
     text-decoration: underline;
 }
 
+.directions-panel ::-webkit-scrollbar,
 .search-stockists ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
 }
+.directions-panel ::-webkit-scrollbar-thumb,
 .search-stockists ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
