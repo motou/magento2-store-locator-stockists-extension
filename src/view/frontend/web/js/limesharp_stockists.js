@@ -130,29 +130,33 @@ define([
 	                
 	                if(config.geolocation && navigator.geolocation){
 									        					
-						var geoOptions = function(){
-							return {
-								maximumAge: 5 * 60 * 1000,
-						    	timeout: 10 * 1000
-					    	}
-						};
-						
-						var geoSuccess = function(position) {
-												
-							centerMap(position.coords, map, markers)
-							
-						};
-						var geoError = function(position) {
-							
-							return;
-													
-						};
-					
-						navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+						geoLocation();
 							
 		            } 
 	                
 	            
+	            }
+	            
+	            function geoLocation(){
+	            	var geoOptions = function(){
+						return {
+							maximumAge: 5 * 60 * 1000,
+					    	timeout: 10 * 1000
+				    	}
+					};
+					
+					var geoSuccess = function(position) {
+											
+						centerMap(position.coords, map, markers)
+						
+					};
+					var geoError = function(position) {
+						
+						return;
+												
+					};
+				
+					navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 	            }
 	    
 	            $("body").on("click", ".results-content", function() {
@@ -175,8 +179,15 @@ define([
 
                     getGeolocation.search(map, coords, latLng);
 					
-				}         
-	            
+				}  
+				
+				// on click location ask for geolocation and show stores
+				if(navigator.geolocation){
+					$(document).on("click", ".geocode-location", function(){
+						geoLocation();
+					})       
+				}
+				
 	        });
 	    };
     }
