@@ -28,17 +28,17 @@ It requires magento 2.1 or above.
 
 ## Features
 
-* Details: name, address, city, country, postcode, link, telephone, email
-* Images: upload images of your stores
-* Interactive map: stores positioned on the map via longitude and latitude
-* Geolocation: show nearest stores to user
-* Search: search functionality in the sidebar, radius of 25 miles
-* Directions: show driving directions from user location to store
-* Map Styles: choose from over 10 different map styles to fit your store
-* Import: import your stores from a csv file
-* Export: export stores to a csv file
-* Breadcrumbs: show/hide breadcrumbs
-* SEO: edit titles, meta descriptions and keywords
+* Details: name, address, city, country, postcode, link, telephone, email;
+* Images: upload images of your stores;
+* Interactive map: stores positioned on the map via longitude and latitude;
+* Geolocation: show nearest stores to user;
+* Search: search functionality in the sidebar, radius of 25 miles;
+* Directions: show driving directions from user location to store;
+* Map Styles: choose from over 10 different map styles to fit your store;
+* Import: import your stores from a csv file;
+* Export: export stores to a csv file;
+* Breadcrumbs: show/hide breadcrumbs;
+* SEO: edit titles, meta descriptions and keywords.
 
 ## Usage
 
