@@ -92,3 +92,7 @@ It requires magento 2.1 or above.
 
 ![search](documentation/images/search.jpg?raw=true "search")
 
+* Driving directions:
+
+![Driving directions](documentation/images/directions.jpg?raw=true "Driving directions")
+
