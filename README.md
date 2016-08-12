@@ -66,7 +66,8 @@ It requires magento 2.1 or above.
 
 ## Support
 * We **DO NOT** offer any free technical support in installing or customizing this extension.
-* You can contact us for paid support or ask questions on http://magento.stackexchange.com/ .
+* This extention works out of the box with any magento 2.1 site, but depending on your theme it may need further styling.
+* If you need help please ask questions on http://magento.stackexchange.com/ .
 
 ## Demo
 
