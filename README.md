@@ -47,6 +47,7 @@ It requires magento 2.1 or above.
 * The default url is /stockists. So once installed go to www.website.com/stockists (insert store code if necessary);
 * Location in admin is inside content menu > stockists;
 * Name, latitude and longitude are required values;
+* Bear in mind that chrome and some other browsers allow geolocation services only via https;
 
 ### Import
 
