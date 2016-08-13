@@ -30,15 +30,22 @@ It requires magento 2.1 or above, php7 (for php5.6 use v.1.0.6).
 
 * Details: name, address, city, country, postcode, link, telephone, email;
 * Images: upload images of your stores;
+* Import: import your stores from a csv file;
+* Export: export stores to a csv file;
 * Interactive map: stores positioned on the map via longitude and latitude;
 * Geolocation: show nearest stores to user;
 * Search: search functionality in the sidebar, radius of 25 miles;
 * Directions: show driving directions from user location to store;
 * Map Styles: choose from over 10 different map styles to fit your store;
-* Import: import your stores from a csv file;
-* Export: export stores to a csv file;
 * Breadcrumbs: show/hide breadcrumbs;
-* SEO: edit titles, meta descriptions and keywords.
+* SEO: edit titles, meta descriptions and keywords;
+* Radius: Select and style your radius in settings;
+* Unit: Chose between miles and kilometres;
+
+### Suggested features (to be implemented):
+* allow users to upload custom map pin;
+* offer walking and cycle directions;
+* better styling for different design template.
 
 ## Usage
 
