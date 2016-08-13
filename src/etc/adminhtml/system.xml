@@ -26,17 +26,13 @@
             <label>Stockists</label>
             <tab>limesharp_stockists</tab>
             <resource>Limesharp_Stockists::stores</resource>
-            <group id="stockist" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Stockists</label>
+            <group id="stockist_content" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Content</label>
                 <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enable Breadcrumbs</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
-                <field id="template" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Select Template</label>
-                    <source_model>Limesharp\Stockists\Model\Template</source_model>
-                </field>
                 <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list title and meta title</label>
                 </field>
@@ -45,6 +41,29 @@
                 </field>
                 <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list meta keywords</label>
+                </field>
+            </group>
+            
+            <group id="stockist_map" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Map settings</label>
+                
+                <field id="template" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select Template</label>
+                    <source_model>Limesharp\Stockists\Model\Template</source_model>
+                </field>
+                
+                <field id="zoom" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Zoom</label>
+                    <comment>
+                        <![CDATA[Zoom level when loading the map, default is 13. Insert values between 1 and 20.]]>
+                    </comment>
+                </field>
+                
+                <field id="radius" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius</label>
+                    <comment>
+                        <![CDATA[Radius when user searches your stores, default is 25 miles. Insert values in km.]]>
+                    </comment>
                 </field>
                 
                 <field id="map_style" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -56,6 +75,14 @@
                     <tooltip>If you want a preview of your styles go to https://snazzymaps.com and select the one you like.</tooltip>
                 </field>
                 
+                <field id="unit_length" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Unit of length</label>
+                    <source_model>Limesharp\Stockists\Model\Unit</source_model>
+                    <comment>
+                        <![CDATA[Chose between km and miles, default is km.]]>
+                    </comment>
+                </field>
+                
                 <field id="ask_location" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Ask for location</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -64,6 +91,45 @@
                     </comment>
                     <tooltip>If this setting is enabled when the user lands on /stockists/ page then it will be asked for his geolocation and then the closest stores to him will appear. The user must have a browser that supports geolocation. Be aware that some browsers, such as chrome, do not support geolocation over unencrypted http.</tooltip>
                 </field>
+            </group>
+            
+            <group id="stockist_radius" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+	            <label>Radius style</label>                               
+                <field id="circle_stroke_weight" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Weight</label>
+                    <comment>
+                        <![CDATA[Stroke weight when user searches a location.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_stroke_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Opacity</label>
+                    <comment>
+                        <![CDATA[Stroke opacity when user searches a location.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_stroke_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Color</label>
+                    <comment>
+                        <![CDATA[Stroke color when user searches a location.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_fill_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Fill Opacity</label>
+                    <comment>
+                        <![CDATA[FIll opacity when user searches a location.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_fill_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Fill Color</label>
+                    <comment>
+                        <![CDATA[FIll color when user searches a location.]]>
+                    </comment>
+                </field>
+                
 <!--
                 <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists list url</label>

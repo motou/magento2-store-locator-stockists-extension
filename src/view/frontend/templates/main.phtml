@@ -28,6 +28,7 @@ declare(strict_types=1);
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
 <div class="parent-stockists <?php echo $templateSetting; ?>">
+	
 	<div class="directions-panel">
 		<p>Your directions: </p>
 		<div class="close"></div>
@@ -99,22 +100,22 @@ declare(strict_types=1);
 <script type="text/x-magento-init">
     {
         "*": {
-                
+	                        
             "limesharp_stockists": {
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>",
 	            "geolocation" : "<?php echo $block->getLocationSettings() ?>",
-	            "template" : "<?php echo $block->getTemplateSettings() ?>"
+	            "zoom" : "<?php echo $block->getZoomSettings() ?>",
+	            "radius" : "<?php echo $block->getRadiusSettings() ?>",
+	            "template" : "<?php echo $block->getTemplateSettings() ?>",
+	            "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
+	            "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
+	            "fillOpacity" : "<?php echo $block->getFillOpacitySettings() ?>",
+	            "strokeColor" : "<?php echo $block->getStrokeColorSettings() ?>",
+	            "strokeOpacity" : "<?php echo $block->getStrokeOpacitySettings() ?>",
+	            "strokeWeight" : "<?php echo $block->getStrokeWeightSettings() ?>"
             }
                 
         }
     }
-</script>
-<script>
-        
-    require([
-        'limesharp_stockists'
-    ], function ($) {
-        
-    });
 </script>

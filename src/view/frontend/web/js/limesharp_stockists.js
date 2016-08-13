@@ -7,13 +7,12 @@ define([
         'stockists_geolocation',
         'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
     ],
-    function($,config,country_list,mapstyles,search_widget,getGeolocation) {
+    function($,config,country_list,mapstyles,search_widget,currentLocation) {
 	    
 		return function (config) {
 
-
 	        $(document).ready(function() {
-	
+
 	            var map;
 	            markers = [];
 	
@@ -21,7 +20,7 @@ define([
 	
 	            $("#stockists-submit").on("click", function(e) {
 	                
-	                search_widget.search(map);
+	                search_widget.search(map,config);
 	                
 	            });
 	                
@@ -29,7 +28,7 @@ define([
 	                
 	                if (e.which == 13) {//Enter key pressed
 	                    
-	                    search_widget.search(map);
+	                    search_widget.search(map,config);
 	                }
 	                
 	            });
@@ -53,9 +52,8 @@ define([
 	                
 	                var mapElement = document.getElementById('map-canvas');	                
 	                var loadedMapStyles = mapstyles[config.map_styles];
-	                
 	                var mapOptions = {
-	                    zoom: 13, 
+	                    zoom: +config.zoom, 
 	                    scrollwheel: false,
 	                    center: {lat: 51.4935057, lng: -0.1506621},
 	                    styles: loadedMapStyles
@@ -131,7 +129,7 @@ define([
 	                
 	                if(config.geolocation == "1" && navigator.geolocation){
 									        					
-						getGeoLocation();
+						getGeoLocation(map);
 							
 		            } 
 		            
@@ -142,7 +140,7 @@ define([
 								latitude : $(this).parent(".stockists-window").attr("data-latitude"),
 								longitude : $(this).parent(".stockists-window").attr("data-longitude")
 							}
-							getGeoLocation(storeDirections, map);
+							getGeoLocation(map, storeDirections);
 							
 						})       
 					}
@@ -151,7 +149,7 @@ define([
 	            }
 	            
 	            //gets geolocation, if storeDirections is set then it is interpreted as a way to getDirection
-	            function getGeoLocation(storeDirections, map){
+	            function getGeoLocation(map, storeDirections){
 	            	var geoOptions = function(){
 						return {
 							maximumAge: 5 * 60 * 1000,
@@ -200,7 +198,7 @@ define([
 		            
 					var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
 
-                    getGeolocation.search(map, coords, latLng);
+                    currentLocation.search(map, coords, latLng, config);
 					
 				}  
 				

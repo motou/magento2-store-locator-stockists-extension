@@ -101,11 +101,16 @@ class Collection extends AbstractCollection
      *
      * @return $this
      */
-    public function _afterLoad()
+    public function _afterLoad(): Collection
     {
         return parent::_afterLoad();
     }
 
+    /**
+     * after collection load
+     *
+     * @return $this
+     */
     public function addFieldToFilter($field, $condition = null)
     {
         if ($field === 'store_id') {
@@ -122,7 +127,7 @@ class Collection extends AbstractCollection
      * @param bool $withAdmin
      * @return $this
      */
-    public function addStoreFilter($store, $withAdmin = true)
+    public function addStoreFilter($store, bool $withAdmin = true)
     {
         if (!$this->getFlag('store_filter_added')) {
             if ($store instanceof Store) {
