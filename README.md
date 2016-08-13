@@ -1,6 +1,6 @@
 # Magento2 stockists store locator extension
 
-This is a stockists store locator extension for magento2.
+This is a feature rich stockists store locator extension for magento2.
 
 **Table of Contents** 
 - [Magento2 stockists store locator extension](#)
@@ -45,7 +45,8 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 ### Suggested features (to be implemented):
 * allow users to upload custom map pin;
 * offer walking and cycle directions;
-* better styling for different design template.
+* better styling for different design template;
+* store schedule.
 
 ## Usage
 
