@@ -34,7 +34,7 @@ It requires magento 2.1 or above, php7 (for php5.6 use v.1.0.6).
 * Export: export stores to a csv file;
 * Interactive map: stores positioned on the map via longitude and latitude;
 * Geolocation: show nearest stores to user;
-* Search: search functionality in the sidebar, radius of 25 miles;
+* Search: search functionality in the sidebar;
 * Directions: show driving directions from user location to store;
 * Map Styles: choose from over 10 different map styles to fit your store;
 * Breadcrumbs: show/hide breadcrumbs;
