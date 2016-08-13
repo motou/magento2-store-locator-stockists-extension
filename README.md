@@ -24,7 +24,7 @@ $ php bin/magento setup:static-content:deploy
 
 Or you can download this zip file and drop it into your app folder and then run the last 2 commands above.
 
-It requires magento 2.1 or above.
+It requires magento 2.1 or above, php7 (for php5.6 use v.1.0.6).
 
 ## Features
 
