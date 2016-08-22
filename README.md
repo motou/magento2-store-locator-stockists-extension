@@ -46,7 +46,8 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 * allow users to upload custom map pin;
 * offer walking and cycle directions;
 * better styling for different design template;
-* store schedule.
+* store schedule;
+* private key for gmaps.
 
 ## Usage
 

@@ -90,7 +90,7 @@ define([
 	                        if (postcode) {
 	                            contentString += '<p class="stockists-web">'+postcode+'</p>';
 	                        }
-	                        contentString += '<p class="ask-for-directions">Get Directions</p>';
+	                        contentString += '<p class="ask-for-directions get-directions" data-directions="DRIVING">Get Directions</p>';
 	                        contentString += '</div>';
 	                        map.setCenter(marker.getPosition());
 	                        infowindow.setContent(contentString);
@@ -135,12 +135,14 @@ define([
 		            
 					// attach click events for directions
 					if(navigator.geolocation){
-						$(document).on("click", ".ask-for-directions", function(){
+						$(document).on("click", ".get-directions", function(){
 							var storeDirections = {
 								latitude : $(this).parent(".stockists-window").attr("data-latitude"),
 								longitude : $(this).parent(".stockists-window").attr("data-longitude")
 							}
-							getGeoLocation(map, storeDirections);
+							var userTravelMode = $(this).attr("data-directions");
+							console.log(userTravelMode);
+							getGeoLocation(map, storeDirections, userTravelMode);
 							
 						})       
 					}
@@ -210,18 +212,23 @@ define([
 				}
 				
 				//get driving directions from user location to store
-				function getDirections(map,storeDirections,userLocation){
+				function getDirections(map,storeDirections, userLocation, userTravelMode){
 					
 			        var directionsService = new google.maps.DirectionsService();
 					var directionsDisplay = new google.maps.DirectionsRenderer();
 					
 					directionsDisplay.setMap(map);
 					directionsDisplay.setPanel($('.directions-panel')[0]);
+					if(typeof userTravelMode === 'undefined'){
+						directionsTravelMode == DRIVING;
+					} else {
+						directionsTravelMode == userTravelMode;
+					}
 					
 					var request = {
 						destination: new google.maps.LatLng(storeDirections.latitude,storeDirections.longitude), 
 						origin: new google.maps.LatLng(userLocation.latitude,userLocation.longitude), 
-						travelMode: google.maps.DirectionsTravelMode.DRIVING
+						travelMode: directionsTravelMode
 					};
 					
 					directionsService.route(request, function(response, status) {

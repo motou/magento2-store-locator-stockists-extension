@@ -187,3 +187,9 @@
 .ask-for-directions{
 	cursor: pointer;
 }
+.change-directions{
+	font-size: 12px;
+}
+.change-directions span{
+	cursor: pointer;
+}
