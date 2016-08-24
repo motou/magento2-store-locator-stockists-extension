@@ -141,7 +141,6 @@ define([
 								longitude : $(this).parent(".stockists-window").attr("data-longitude")
 							}
 							var userTravelMode = $(this).attr("data-directions");
-							console.log(userTravelMode);
 							getGeoLocation(map, storeDirections, userTravelMode);
 							
 						})       
@@ -213,17 +212,18 @@ define([
 				
 				//get driving directions from user location to store
 				function getDirections(map,storeDirections, userLocation, userTravelMode){
-					
+											
+					if(typeof userTravelMode === 'undefined'){
+						var directionsTravelMode = DRIVING;
+					} else {
+						var directionsTravelMode = userTravelMode;
+					}
+
 			        var directionsService = new google.maps.DirectionsService();
 					var directionsDisplay = new google.maps.DirectionsRenderer();
-					
 					directionsDisplay.setMap(map);
 					directionsDisplay.setPanel($('.directions-panel')[0]);
-					if(typeof userTravelMode === 'undefined'){
-						directionsTravelMode == DRIVING;
-					} else {
-						directionsTravelMode == userTravelMode;
-					}
+					
 					
 					var request = {
 						destination: new google.maps.LatLng(storeDirections.latitude,storeDirections.longitude), 
