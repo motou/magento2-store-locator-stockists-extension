@@ -60,6 +60,9 @@ define([
 	                };
 	                
 	                map = new google.maps.Map(mapElement,mapOptions);
+					var directionsService = new google.maps.DirectionsService();
+					var directionsDisplay = new google.maps.DirectionsRenderer();
+					directionsDisplay.setMap(map);
 	                
 	                var image = {
 	                    url: config.map_pin
@@ -137,11 +140,12 @@ define([
 					if(navigator.geolocation){
 						$(document).on("click", ".get-directions", function(){
 							var storeDirections = {
-								latitude : $(this).parent(".stockists-window").attr("data-latitude"),
-								longitude : $(this).parent(".stockists-window").attr("data-longitude")
+								latitude : $(".stockists-window").attr("data-latitude"),
+								longitude : $(".stockists-window").attr("data-longitude")
 							}
 							var userTravelMode = $(this).attr("data-directions");
-							getGeoLocation(map, storeDirections, userTravelMode);
+						
+							getGeoLocation(map, storeDirections, userTravelMode, directionsService, directionsDisplay);
 							
 						})       
 					}
@@ -150,7 +154,7 @@ define([
 	            }
 	            
 	            //gets geolocation, if storeDirections is set then it is interpreted as a way to getDirection
-	            function getGeoLocation(map, storeDirections){
+	            function getGeoLocation(map, storeDirections, userTravelMode, directionsService, directionsDisplay){
 	            	var geoOptions = function(){
 						return {
 							maximumAge: 5 * 60 * 1000,
@@ -167,7 +171,7 @@ define([
 						
 						} else {
 						
-							getDirections(map,storeDirections,position.coords);
+							getDirections(map, storeDirections, position.coords, userTravelMode, directionsService, directionsDisplay);
 
 						}
 												
@@ -211,29 +215,25 @@ define([
 				}
 				
 				//get driving directions from user location to store
-				function getDirections(map,storeDirections, userLocation, userTravelMode){
+				function getDirections(map, storeDirections, userLocation, userTravelMode, directionsService, directionsDisplay){
 											
 					if(typeof userTravelMode === 'undefined'){
-						var directionsTravelMode = DRIVING;
+						var directionsTravelMode = "DRIVING";
 					} else {
 						var directionsTravelMode = userTravelMode;
+						
 					}
 
-			        var directionsService = new google.maps.DirectionsService();
-					var directionsDisplay = new google.maps.DirectionsRenderer();
-					directionsDisplay.setMap(map);
-					directionsDisplay.setPanel($('.directions-panel')[0]);
-					
-					
 					var request = {
 						destination: new google.maps.LatLng(storeDirections.latitude,storeDirections.longitude), 
 						origin: new google.maps.LatLng(userLocation.latitude,userLocation.longitude), 
-						travelMode: directionsTravelMode
+						travelMode: google.maps.TravelMode[directionsTravelMode]
 					};
 					
 					directionsService.route(request, function(response, status) {
 						if (status == google.maps.DirectionsStatus.OK) {
 							directionsDisplay.setDirections(response);
+							directionsDisplay.setPanel($('.directions-panel')[0]);
 						}
 					});
 					
