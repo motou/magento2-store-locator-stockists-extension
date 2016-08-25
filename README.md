@@ -35,7 +35,7 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 * Interactive map: stores positioned on the map via longitude and latitude;
 * Geolocation: show nearest stores to user;
 * Search: search functionality in the sidebar;
-* Directions: show driving directions from user location to store;
+* Directions: show directions from user location to store (driving, walking, cycling or public transport);
 * Map Styles: choose from over 10 different map styles to fit your store;
 * Breadcrumbs: show/hide breadcrumbs;
 * SEO: edit titles, meta descriptions and keywords;
@@ -44,8 +44,8 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
 ### Suggested features (to be implemented):
 * allow users to upload custom map pin;
-* offer walking and cycle directions;
 * better styling for different design template;
+* allow users to change stockist url
 * store schedule;
 * private key for gmaps.
 
