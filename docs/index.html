@@ -1,1 +1,169 @@
-test 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Stockists store locator extension for magento2 using gmaps</title>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="./stockists.css"/>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<meta name="description" content="Stockists store locator extension for magento2 using gmaps.">
+	<meta name="keywords" content="stockists, store locator, gmaps, magento, magento2">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+</head>
+<body>
+
+		<div class="header">
+			<div class="header-content">
+				<h1 class="title">Store Locator</h1>
+				<p class="subheading">the best store locator extension for magento2</p>
+				<ul class="nav">
+					<li><a href="#install">install</a></li>
+					<li><a href="#features">features</a></li>
+					<li><a href="#usage">usage</a></li>
+			          <li><a href="#demo">demo</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="fixed-header">
+			<div class="header-content">
+				<h1 class="title">Store Locator</h1>
+				<p class="subheading">the best store locator extension for magento2</p>
+				<ul class="nav">
+					<li><a href="#install">install</a></li>
+					<li><a href="#features">features</a></li>
+					<li><a href="#usage">usage</a></li>
+			          <li><a href="#demo">demo</a></li>
+			          <li><a href="#get">get it</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<section id="install" class="blue">
+						<div class="content">
+				<h2 >Installing with composer is easy:</h2>
+
+			<pre><code class="php">
+				$ composer require limesharp/stockists
+$ composer update
+$ php bin/magento setup:upgrade 
+$ php bin/magento setup:static-content:deploy
+			</code></pre>
+			<p>
+Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
+			</p>
+			<p>
+
+It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
+			</p>
+						</div>
+		</section>
+		<section id="features" class="blue">
+			<div class="content">
+				<h2>Features</h2>
+				<ul class="features">
+					<li>Details: name, address, city, country, postcode, link, telephone, email</li>
+<li>Images: upload images of your stores</li>
+<li>Import: import your stores from a csv file</li>
+<li>Export: export stores to a csv file</li>
+<li>Interactive map: stores positioned on the map via longitude and latitude</li>
+<li>Geolocation: show nearest stores to user</li>
+<li>Search: search functionality in the sidebar</li>
+<li>Directions: show directions from user location to store (driving, walking, cycling or public transport)</li>
+<li>Map Styles: choose from over 10 different map styles to fit your store</li>
+<li>Breadcrumbs: show/hide breadcrumbs</li>
+<li>SEO: edit titles, meta descriptions and keywords</li>
+<li>Radius: Select and style your radius in settings</li>
+<li>Unit: Chose between miles and kilometres</li>
+<li>Pin: Use custom map pin</li>
+				</ul>
+			</div>
+
+			
+						</section>
+		<section id="usage" class="blue">
+			<div class="content">
+				<h2 >Usage</h2>
+				<table class="settings">
+
+					<tbody>
+						<tr>
+							<td>Basic</td>
+							<td>The default url is /stockists. So once installed go to www.website.com/stockists (insert store code if necessary);
+</td>
+							<td>Location in admin is inside content menu > stockists;
+</td>
+							<td>Name, latitude and longitude are required values;
+</td>
+<td>Bear in mind that chrome and some other browsers allow geolocation services only via https;
+
+</td>
+						</tr>
+            <tr>
+              <td>Import</td>
+              <td>The csv file needs to be comma separated and values should be quoted</td>
+<td>check the sample csv file in documentation folder</td>
+<td>name, latitude and longitude are required</td>
+<td>country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA</td>
+<td>image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course)</td>
+<td>To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
+
+![csv](documentation/images/csv.jpg?raw=true "CSV")</td>
+            </tr>
+						<tr>
+														<td>Export</td>
+
+							<td>Just click export stores and a file will be saved by your browser on your computer</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+							<section id="demo" class="blue">
+			<div class="content">
+				<h2>Features</h2>
+				<ul class="features">
+					<li>Main dashboard</li>
+
+<li>[Main dashboard](documentation/images/main.jpg?raw=true "Main dashboard</li>
+<li>Location in admin</li>
+
+<li>[Locationd](documentation/images/location.jpg?raw=true "Location</li>
+<li>Settings</li>
+
+<li>[Settings](documentation/images/settings.jpg?raw=true "Settings</li>
+
+<li>Frontend full page</li>
+
+<li>[Frontend](documentation/images/front.jpg?raw=true "Frontend</li>
+
+<li>Frontend store window</li>
+
+<li>[window](documentation/images/window.jpg?raw=true "Window</li>
+
+<li>Frontend search</li>
+
+<li>[search](documentation/images/search.jpg?raw=true "search</li>
+
+<li>Driving directions</li>
+
+<li>[Driving directions](documentation/images/directions.jpg?raw=true "Driving directions</li>
+				</ul>
+			</div>
+							</section>
+						    <section id="get" class="white">
+
+			<div class="content">
+				<h2>Go Get It</h2>
+				<a class="button first" href="https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension/archive/master.zip">Download Now</a>
+				<a class="button last" href="https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension">View On Github</a>
+				<hr/>
+				
+			</div>
+		</section>
+
+</body>
+</html>
