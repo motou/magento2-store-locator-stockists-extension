@@ -24,6 +24,17 @@ declare(strict_types=1);
 <?php $countryList = $block->getCountries(); ?>
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
+<?php 
+	if($block->getMapPin()){ 
+		
+		$mapPin = $block->getMediaUrl()."limesharp_stockists/".$block->getMapPin();
+		
+	} else {
+		
+		$mapPin = $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png');
+	
+	}
+ ?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
@@ -104,7 +115,7 @@ declare(strict_types=1);
 	                        
             "limesharp_stockists": {
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
-	            "map_pin" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png') ?>",
+	            "map_pin" : "<?php echo $mapPin; ?>",
 	            "geolocation" : "<?php echo $block->getLocationSettings() ?>",
 	            "zoom" : "<?php echo $block->getZoomSettings() ?>",
 	            "radius" : "<?php echo $block->getRadiusSettings() ?>",

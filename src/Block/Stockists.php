@@ -40,6 +40,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * @var string
      */
+    const MAP_PIN_CONFIG_PATH = 'limesharp_stockists/stockist_map/map_pin';
+            
+    /**
+     * @var string
+     */
     const ASK_LOCATION_CONFIG_PATH = 'limesharp_stockists/stockist_map/ask_location';
     
     /**
@@ -161,6 +166,16 @@ class Stockists extends \Magento\Framework\View\Element\Template
     }
     
     /**
+     * get media url
+     *
+     * @return string
+     */  
+    public function getMediaUrl(): string
+    {
+	    return $this ->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
+    }
+    
+    /**
      * get map style from configuration
      *
      * @return string
@@ -168,6 +183,17 @@ class Stockists extends \Magento\Framework\View\Element\Template
     public function getMapStyles(): string
     {
 	    return $this->scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+        
+    /**
+     * get map pin from configuration
+     *
+     * @return string
+     */   
+    public function getMapPin(): string
+    {
+	    //$this->_mediaDirectory->getAbsolutePath($this->_appendScopeInfo(self::UPLOAD_DIR)
+	    return $this->scopeConfig->getValue(self::MAP_PIN_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
     /**

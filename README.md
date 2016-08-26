@@ -41,9 +41,9 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 * SEO: edit titles, meta descriptions and keywords;
 * Radius: Select and style your radius in settings;
 * Unit: Chose between miles and kilometres;
+* Pin: Use custom map pin;
 
 ### Suggested features (to be implemented):
-* allow users to upload custom map pin;
 * better styling for different design template;
 * allow users to change stockist url
 * store schedule;

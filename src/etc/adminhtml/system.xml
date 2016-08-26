@@ -75,6 +75,16 @@
                     <tooltip>If you want a preview of your styles go to https://snazzymaps.com and select the one you like.</tooltip>
                 </field>
                 
+                <field id="map_pin" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Map pin icon</label>
+                    <backend_model>Limesharp\Stockists\Model\SystemImage</backend_model>
+                    <base_url type="media" scope_info="1">limesharp_stockists</base_url>
+                    <comment>
+                        <![CDATA[A default pin image will be used if left blank]]>
+                    </comment>
+                    <tooltip>Allowed file types: jpg, jpeg, gif, png.</tooltip>
+                </field>
+                
                 <field id="unit_length" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Unit of length</label>
                     <source_model>Limesharp\Stockists\Model\Unit</source_model>
