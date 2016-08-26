@@ -94,3 +94,5 @@ table.settings td:nth-of-type(2):before{content: 'Type: '; font-weight: 700;}
 table.settings td:nth-of-type(3):before{content: 'Default: '; font-weight: 700;}
 table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;}
 }
+#demo img{ width:600px; }
+#demo .features li{ list-style: none; text-align: center; }
