@@ -24,7 +24,11 @@ $ php bin/magento setup:static-content:deploy
 
 Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
 
+Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a>
+
 It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
+
+Visit the extension website: http://claudiucreanga.me/magento2-store-locator-stockists-extension/
 
 ## Features
 
@@ -61,13 +65,13 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 ### Import
 
 * The csv file needs to be comma separated and values should be quoted;
-* check the sample csv file in documentation folder;
+* check the sample csv file in docs folder;
 * name, latitude and longitude are required;
 * country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
 * image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
-![csv](documentation/images/csv.jpg?raw=true "CSV")
+![csv](docs/images/csv.jpg?raw=true "CSV")
 
 ### Export
 
@@ -82,27 +86,27 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
 * Main dashboard:
 
-![Main dashboard](documentation/images/main.jpg?raw=true "Main dashboard")
+![Main dashboard](docs/images/main.jpg?raw=true "Main dashboard")
 * Location in admin:
 
-![Locationd](documentation/images/location.jpg?raw=true "Location")
+![Locationd](docs/images/location.jpg?raw=true "Location")
 * Settings:
 
-![Settings](documentation/images/settings.jpg?raw=true "Settings")
+![Settings](docs/images/settings.jpg?raw=true "Settings")
 
 * Frontend full page:
 
-![Frontend](documentation/images/front.jpg?raw=true "Frontend")
+![Frontend](docs/images/front.jpg?raw=true "Frontend")
 
 * Frontend store window:
 
-![window](documentation/images/window.jpg?raw=true "Window")
+![window](docs/images/window.jpg?raw=true "Window")
 
 * Frontend search:
 
-![search](documentation/images/search.jpg?raw=true "search")
+![search](docs/images/search.jpg?raw=true "search")
 
 * Driving directions:
 
-![Driving directions](documentation/images/directions.jpg?raw=true "Driving directions")
+![Driving directions](docs/images/directions.jpg?raw=true "Driving directions")
 
