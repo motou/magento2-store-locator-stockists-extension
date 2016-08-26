@@ -41,7 +41,7 @@
 .white{background:#fff;color:#3498db;}
 .white pre,.white hr{background:#3498db !important;}
 a{color:white;}
-#nav a{color:#3498db;}
+.nav a{color:#3498db;}
 body,html{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;background:#fff; font-family: "Lato","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; height:100%;line-height:1;margin:0;padding:0;text-rendering:optimizeLegibility;width:100%;}
 code{color:#000; overflow-x: scroll;}
 h1{color:#3498db;font-family:Pacifico;font-size:72px;font-weight:400;line-height:1.2;margin:0 auto 10px;text-align:center;}
