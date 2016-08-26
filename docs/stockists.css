@@ -20,7 +20,7 @@
 .content{margin:auto;padding:20px;width:600px;}
 .content:after,.buttons::after{clear:both;content:"";display:table;}
 .destroy{font-weight:400;margin-top:40px;}
-.features{display:block;list-style-type:none;margin-top:30px;padding:0;text-align:center;}
+.features{display:block;margin-top:30px;padding:0;}
 .features li{margin:20px 0;}
 .filter .button{background:#FFF;color:#3498db; margin-bottom: 40px;}
 .fixed-header{background:#FFF;box-shadow:2px 0 5px rgba(0,0,0,0.5);display:none;padding:10px;position:fixed;top:0;width:100%;z-index:10000;}
@@ -60,9 +60,6 @@ thead { display: none; }
 td { border: 0; padding: 10px 0px;}
 td,tbody { display: block; width: 100% !important;}
 table.settings td:nth-of-type(1), table.methods td:nth-of-type(1){font-weight: 700; font-size: 16px; line-height: 18px;}
-table.settings td:nth-of-type(2):before{content: 'Type: '; font-weight: 700;}
-table.settings td:nth-of-type(3):before{content: 'Default: '; font-weight: 700;}
-table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;}
 ul.nav{margin-bottom:0;padding-left:0;text-align:center;}
 ul.nav li{display:inline-block;list-style-type:none;margin:0 20px;}
 ul.nav li a{font-size:14px;text-decoration:none;}
