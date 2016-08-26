@@ -28,15 +28,8 @@ class Url
     /**
      * @var string
      */
-    const LIST_URL_CONFIG_PATH      = 'limesharp_stockists/stockist/list_url';
-    /**
-     * @var string
-     */
-    const URL_PREFIX_CONFIG_PATH    = 'limesharp_stockists/stockist/url_prefix';
-    /**
-     * @var string
-     */
-    const URL_SUFFIX_CONFIG_PATH    = 'limesharp_stockists/stockist/url_suffix';
+    const URL_CONFIG_PATH      = 'limesharp_stockists/stockist_content/url';
+
     /**
      * url builder
      *
@@ -66,7 +59,7 @@ class Url
      */
     public function getListUrl()
     {
-        $sefUrl = $this->scopeConfig->getValue(self::LIST_URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+        $sefUrl = $this->scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
         if ($sefUrl) {
             return $this->urlBuilder->getUrl('', ['_direct' => $sefUrl]);
         }
@@ -80,18 +73,7 @@ class Url
     public function getStockistUrl(Stores $stockist)
     {
         if ($urlKey = $stockist->getUrlKey()) {
-            $prefix = $this->scopeConfig->getValue(
-                self::URL_PREFIX_CONFIG_PATH,
-                ScopeInterface::SCOPE_STORE
-            );
-            $suffix = $this->scopeConfig->getValue(
-                self::URL_SUFFIX_CONFIG_PATH,
-                ScopeInterface::SCOPE_STORE
-            );
-            $path = (($prefix) ? $prefix . '/' : '').
-                $urlKey .
-                (($suffix) ? '.'. $suffix : '');
-            return $this->urlBuilder->getUrl('', ['_direct'=>$path]);
+            return $this->urlBuilder->getUrl('', ['_direct'=>$urlKey]);
         }
         return $this->urlBuilder->getUrl('stockists/stores/view', ['id' => $stockist->getId()]);
     }

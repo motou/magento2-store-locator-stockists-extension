@@ -34,14 +34,20 @@
                 </field>
 
                 <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists list title and meta title</label>
+                    <label>Stockists title and meta title</label>
                 </field>
                 <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists list meta description</label>
+                    <label>Stockists meta description</label>
                 </field>
                 <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists list meta keywords</label>
+                    <label>Stockists meta keywords</label>
                 </field>
+                
+                <field id="url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists url</label>
+                    <backend_model>Limesharp\Stockists\Model\UrlRewrite</backend_model>
+                </field>
+
             </group>
             
             <group id="stockist_map" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -108,49 +114,38 @@
                 <field id="circle_stroke_weight" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Stroke Weight</label>
                     <comment>
-                        <![CDATA[Stroke weight when user searches a location.]]>
+                        <![CDATA[Stroke weight when user searches a location. Expects integer.]]>
                     </comment>
                 </field>
                 
                 <field id="circle_stroke_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Stroke Opacity</label>
                     <comment>
-                        <![CDATA[Stroke opacity when user searches a location.]]>
+                        <![CDATA[Stroke opacity when user searches a location. Expects integer.]]>
                     </comment>
                 </field>
                 
                 <field id="circle_stroke_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Stroke Color</label>
                     <comment>
-                        <![CDATA[Stroke color when user searches a location.]]>
+                        <![CDATA[Stroke color when user searches a location. Expects hex value.]]>
                     </comment>
                 </field>
                 
                 <field id="circle_fill_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Fill Opacity</label>
                     <comment>
-                        <![CDATA[FIll opacity when user searches a location.]]>
+                        <![CDATA[FIll opacity when user searches a location. Expects integer.]]>
                     </comment>
                 </field>
                 
                 <field id="circle_fill_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Fill Color</label>
                     <comment>
-                        <![CDATA[FIll color when user searches a location.]]>
+                        <![CDATA[FIll color when user searches a location. Expects hex value.]]>
                     </comment>
                 </field>
                 
-<!--
-                <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists list url</label>
-                </field>
-                <field id="url_prefix" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists url prefix</label>
-                </field>
-                <field id="url_suffix" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Stockists url suffix</label>
-                </field>
--->
             </group>
         </section>
     </system>

@@ -25,9 +25,7 @@
                 <meta_title>Stockists</meta_title>
                 <meta_description>Stockists Description Here</meta_description>
                 <meta_keywords>Stockists Keywords Here</meta_keywords>
-                <list_url>Stockists</list_url>
-                <url_prefix>stockists</url_prefix>
-                <url_suffix>html</url_suffix>
+                <url>stockists</url>
             </stockist_content>
             <stockist_map>
                 <template>full_width_sidebar</template>

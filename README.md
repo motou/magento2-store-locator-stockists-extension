@@ -65,7 +65,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 ### Import
 
 * The csv file needs to be comma separated and values should be quoted;
-* check the sample csv file in docs folder;
+* check the sample csv file in in <a href="https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension/tree/master/docs">docs folder</a>;
 * name, latitude and longitude are required;
 * country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
 * image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);
