@@ -21,6 +21,7 @@
 					<li><a href="#features">features</a></li>
 					<li><a href="#usage">usage</a></li>
 					<li><a href="#demo">demo</a></li>
+					<li><a href="#get">get</a></li>
 				</ul>
 			</div>
 		</div>
@@ -41,16 +42,18 @@
 			<div class="content">
 				<h2 >Installing with composer is easy:</h2>
 				<pre><code class="php">
-				$ composer require limesharp/stockists
-$ composer update
-$ php bin/magento setup:upgrade 
-$ php bin/magento setup:static-content:deploy
-			</code></pre>
+					$ composer require limesharp/stockists
+					$ composer update
+					$ php bin/magento setup:upgrade 
+					$ php bin/magento setup:static-content:deploy
+				</code></pre>
+				<p>Or: </p>
+				<ul class="features">
+					<li> you can <a href="#get">download</a> the zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.</li>
+					<li> you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a></li>
+				</ul>
 				<p>
-					Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
-				</p>
-				<p>
-					It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
+					Note! It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 				</p>
 			</div>
 		</section>
@@ -90,13 +93,13 @@ $ php bin/magento setup:static-content:deploy
 						</tr>
 						<tr>
 							<td>Import</td>
-							<td>The csv file needs to be comma separated and values should be quoted</td>
-							<td>check the sample csv file in documentation folder</td>
-							<td>name, latitude and longitude are required</td>
-							<td>country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA</td>
-							<td>image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course)</td>
+							<td>The csv file needs to be comma separated and values should be quoted;</td>
+							<td>Check the sample csv file in documentation folder;</td>
+							<td>Name, latitude and longitude are required;</td>
+							<td>Country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;</td>
+							<td>The image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);</td>
 							<td>To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
-								![csv](documentation/images/csv.jpg?raw=true "CSV")
+								<img src="./images/csv.jpg" alt="magento2 store locator CSV" />
 							</td>
 						</tr>
 						<tr>
