@@ -19,11 +19,20 @@ declare(strict_types=1);
  
 namespace Limesharp\Stockists\Model;
 
-use Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory;
-use Limesharp\Stockists\Model\Stores\Url as UrlModel;
-use Magento\Framework\App\Action\Context;
+use Magento\UrlRewrite\Model\UrlRewrite as BaseUrlRewrite;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
+use Magento\Framework\App\Config\Value;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Cache\TypeListInterface;
+use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Store\Model\StoreManagerInterface;
 
-class UrlRewrite
+class UrlRewrite extends Value
 {
 	
     /**
@@ -34,53 +43,109 @@ class UrlRewrite
 	/**
 	* @var \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory
 	*/
-	protected $urlRewriteFactory;
+	protected $urlRewrite;
+	protected $urlRewriteService;
+	
+    /**
+     * Url finder
+     *
+     * @var UrlFinderInterface
+     */
+    protected $urlFinder;
 	
     /**
      * @var \Limesharp\Stockists\Model\Stores\Url
      */
     protected $urlModel;
-	 
-	/**
-	* @param Context $context
-	* @param \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory $urlRewriteFactory
-	*/
-	public function __construct(
-	    Context $context,
-	    UrlRewriteFactory $urlRewriteFactory,
-        UrlModel $urlModel
-	) {
-        parent::__construct($context);
-	    $this->urlRewriteFactory = $urlRewriteFactory;
-        $this->urlModel = $urlModel;
-	}
-	
-    public function _afterSave()
-    {
-	    var_dump($this->getCustomUrlRewrite());die("da");
-		if($this->getCustomUrlRewrite() != "stockists"){
-			$urlRewriteModel = $this->urlRewriteFactory->create();
-			/* set current store id */
-			$urlRewriteModel->setStoreId(1);
-			/* this url is not created by system so set as 0 */
-			$urlRewriteModel->setIsSystem(0);
-			/* unique identifier - set random unique value to id path */
-			$urlRewriteModel->setIdPath(rand(1, 100000));
-			/* set actual url path to target path field */
-			$urlRewriteModel->setTargetPath("stockists");
-			/* set requested path which you want to create */
-			$urlRewriteModel->setRequestPath($this->getCustomUrlRewrite());
-			/* set current store id */
-			$urlRewriteModel->save();
-		}
-    }
     
     /**
-     * get fill opacity settings from configuration
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    public $scopeConfig;
+	 
+	/**
+	 * @param Context $context
+     * @param \Magento\Framework\Model\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
+     * @param \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
+     * @param \Magento\Framework\Session\Config\Validator\CookieLifetimeValidator $configValidator
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
+     * @param array $data
+	 * @param \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory $urlRewriteFactory
+	 * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     */
+         protected $storeManager;
+
+    public function __construct(
+        Context $context,
+        Registry $registry,
+        ScopeConfigInterface $config,
+        TypeListInterface $cacheTypeList,
+        AbstractResource $resource = null,
+        AbstractDb $resourceCollection = null,
+	    BaseUrlRewrite $urlRewrite,
+	    UrlRewriteService $urlRewriteService,
+	    StoreManagerInterface $storeManager,
+	    UrlFinderInterface $urlFinder,
+        array $data = []
+    ) {
+		$this->urlRewrite = $urlRewrite;
+		$this->urlRewriteService = $urlRewriteService;
+		$this->storeManager = $storeManager;
+	    $this->urlFinder = $urlFinder;
+		$this->scopeConfig = $config;
+		parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
+    }
+	
+    public function afterSave()
+    {
+
+		$storeId = $this->storeManager->getStore()->getId();
+		
+		if($this->getCustomUrlRewrite() != "stockists" && $this->hasDataChanges()){ //different from default
+			
+			foreach ($this->_data as $key => $value) {
+				
+				if($key == "field" && $value == "url"){
+					
+					$filterData = [
+		                UrlRewriteService::TARGET_PATH => "stockists",
+		                UrlRewriteService::STORE_ID => $storeId
+		            ];
+					
+					$rewriteFinder = $this->urlFinder->findOneByData($filterData);
+					
+					// if it was already set, just update it to the new one
+					if($rewriteFinder){
+						$this->urlRewrite->load($rewriteFinder->getUrlRewriteId())
+										->setRequestPath($this->getCustomUrlRewrite())
+										->save();
+					} else {
+					
+						$this->urlRewrite->setStoreId($storeId)
+						->setIdPath(rand(1, 100000))
+						->setRequestPath($this->getCustomUrlRewrite())
+						->setTargetPath("stockists")
+						->setIsSystem(0)
+						->save();
+						
+					}
+				}
+			}
+		}
+		
+        return parent::afterSave();
+    }
+    
+    
+    /**
+     * get url from configuration
      *
      * @return string
      */   
-    public function getCustomUrlRewrite(): string
+    public function getCustomUrlRewrite()
     {
 	    return $this->scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
