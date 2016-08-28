@@ -432,9 +432,6 @@ ul.nav li a {
         font-weight: 700;
     }
 }
-#demo img {
-/*     width: 960px; */
-}
 #demo .features li {
     list-style: none;
     text-align: center;
@@ -534,10 +531,8 @@ ul.nav li a {
     font-size: 0;
     line-height: 0;
     position: absolute;
-    top: 50%;
+    top: 25%;
     display: block;
-    width: 20px;
-    height: 20px;
     margin-top: -10px;
     padding: 0;
     cursor: pointer;
@@ -566,7 +561,6 @@ ul.nav li a {
 }
 .slick-prev:before,
 .slick-next:before {
-    font-family: 'slick';
     font-size: 20px;
     line-height: 1;
     opacity: .75;
@@ -575,10 +569,10 @@ ul.nav li a {
     -moz-osx-font-smoothing: grayscale;
 }
 .slick-prev {
-    left: -25px;
+    left: -50px;
 }
 [dir='rtl'] .slick-prev {
-    right: -25px;
+    right: -50px;
     left: auto;
 }
 .slick-prev:before {
@@ -588,11 +582,11 @@ ul.nav li a {
     content: 'Previous’';
 }
 .slick-next {
-    right: -25px;
+    right: -50px;
 }
 [dir='rtl'] .slick-next {
     right: auto;
-    left: -25px;
+    left: -50px;
 }
 .slick-next:before {
     content: 'Next';
