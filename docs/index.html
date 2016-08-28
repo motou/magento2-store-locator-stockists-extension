@@ -24,6 +24,7 @@
 					<li><a href="#features">features</a></li>
 					<li><a href="#usage">usage</a></li>
 					<li><a href="#demo">demo</a></li>
+					<li><a href="#uninstall">uninstall</a></li>
 					<li><a href="#get">get</a></li>
 				</ul>
 			</div>
@@ -37,6 +38,7 @@
 					<li><a href="#features">features</a></li>
 					<li><a href="#usage">usage</a></li>
 					<li><a href="#demo">demo</a></li>
+					<li><a href="#uninstall">uninstall</a></li>
 					<li><a href="#get">get it</a></li>
 				</ul>
 			</div>
@@ -135,6 +137,27 @@ $ php bin/magento setup:static-content:deploy
 				</ul>
 			</div>
 		</section>
+		<section id="uninstall" class="blue">
+			<div class="content">
+				<h2>Uninstall</h2>
+				<table class="settings">
+					<tbody>
+						<tr>
+							<td>If you installed it manually</td>
+							<td>remove the folder app/code/Limesharp/Stockists</td>
+							<td>drop the tables limesharp_stockists_stores (drop table limesharp_stockists_stores);</td>
+							<td>remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'limesharp_stockists/%'</td>
+							<td>remove the module Limesharp_Stockists from app/etc/config.php</td>
+							<td>remove the module Limesharp_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Limesharp_Stockists'</td>
+						</tr>
+						<tr>
+							<td>If you installed it via composer</td>
+							<td>run this in console bin/magento module:uninstall -r Limesharp_Stockists.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
 		<section id="get" class="white">
 			<div class="content">
 				<h2>Go Get It</h2>
@@ -160,5 +183,18 @@ $ php bin/magento setup:static-content:deploy
 			</script>
 			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 		</div>
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./slick.js"></script>
+		<script>
+			$(document).ready(function() {
+			    $('#demo .features').slick({
+			        dots: true,
+			        infinite: true,
+			        speed: 500,
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			    });
+		    })
+		</script>
 	</body>
 </html>

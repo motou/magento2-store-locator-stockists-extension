@@ -108,3 +108,16 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 ![Driving directions](docs/images/directions.jpg?raw=true "Driving directions")
 
+## Uninstall
+
+* If you installed it manually:
+
+- remove the folder app/code/Limesharp/Stockists;
+- drop the tables limesharp_stockists_stores (drop table limesharp_stockists_stores);
+- remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'limesharp_stockists/%'
+- remove the module Limesharp_Stockists from app/etc/config.php
+- remove the module Limesharp_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Limesharp_Stockists'
+
+* If you installed it via composer:
+
+- run this in console bin/magento module:uninstall -r Limesharp_Stockists.
