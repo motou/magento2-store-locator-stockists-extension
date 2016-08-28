@@ -49,7 +49,7 @@ define([
 	                    initialize(response);
 	                });    
 	            }
-	            console.log(config)
+
 	            function initialize(response) {
 	                
 	                var mapElement = document.getElementById('map-canvas');	                
@@ -137,6 +137,13 @@ define([
 						getGeoLocation(map);
 							
 		            } 
+		            				
+					// on click location ask for geolocation and show stores
+					if(navigator.geolocation){
+						$(document).on("click", ".geocode-location", function(){
+							getGeoLocation(map);
+						})       
+					}
 		            
 					// attach click events for directions
 					if(navigator.geolocation){
@@ -168,7 +175,7 @@ define([
 						
 						// if no params then just center it, otherwise call directions
 						if (typeof storeDirections === 'undefined'){ 
-							
+
 							centerMap(position.coords, map, markers);
 						
 						} else {
@@ -208,13 +215,6 @@ define([
                     currentLocation.search(map, coords, latLng, config);
 					
 				}  
-				
-				// on click location ask for geolocation and show stores
-				if(navigator.geolocation){
-					$(document).on("click", ".geocode-location", function(){
-						getGeoLocation();
-					})       
-				}
 				
 				//get driving directions from user location to store
 				function getDirections(map, storeDirections, userLocation, userTravelMode, directionsService, directionsDisplay){
