@@ -120,4 +120,4 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 * If you installed it via composer:
 
-- run this in console bin/magento module:uninstall -r Limesharp_Stockists.
+- run this in console: php bin/magento module:uninstall -r Limesharp_Stockists.
