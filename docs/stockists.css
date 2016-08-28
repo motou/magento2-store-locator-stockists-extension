@@ -531,7 +531,7 @@ ul.nav li a {
     font-size: 0;
     line-height: 0;
     position: absolute;
-    top: 25%;
+    top: 50px;
     display: block;
     margin-top: -10px;
     padding: 0;
@@ -611,8 +611,8 @@ ul.nav li a {
 .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
