@@ -628,7 +628,8 @@ ul.nav li a {
     color: transparent;
     border: 0;
     outline: none;
-    background: transparent;
+    background: white;
+    border-radius: 50%;
 }
 .slick-dots li button:hover,
 .slick-dots li button:focus {
