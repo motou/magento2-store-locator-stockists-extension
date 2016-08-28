@@ -39,7 +39,7 @@
 					<li><a href="#usage">usage</a></li>
 					<li><a href="#demo">demo</a></li>
 					<li><a href="#uninstall">uninstall</a></li>
-					<li><a href="#get">get it</a></li>
+					<li><a href="#get">get</a></li>
 				</ul>
 			</div>
 		</div>
@@ -218,6 +218,24 @@ $ php bin/magento setup:static-content:deploy
 					adaptiveHeight: true
 			    });
 		    })
+	        $(window).on('scroll', function() {
+		        if ($(window).scrollTop() > 166) {
+		            $('.fixed-header').show();
+		        } else {
+		            $('.fixed-header').hide();
+		        }
+		    });
+		
+		    $('ul.nav a').on('click', function(event) {
+		      if ($(this).attr('href')[0] === "#") { 
+		        event.preventDefault();
+		          var targetID = $(this).attr('href');
+		          var targetST = $(targetID).offset().top - 48;
+		          $('body, html').animate({
+		              scrollTop: targetST + 'px'
+		          }, 300);
+		      }
+		    });
 		</script>
 	</body>
 </html>
