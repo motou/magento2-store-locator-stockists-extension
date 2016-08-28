@@ -49,13 +49,13 @@ define([
 	                    initialize(response);
 	                });    
 	            }
-	            
+	            console.log(config)
 	            function initialize(response) {
 	                
 	                var mapElement = document.getElementById('map-canvas');	                
 	                var loadedMapStyles = mapstyles[config.map_styles];
 	                var mapOptions = {
-	                    zoom: +config.zoom, 
+	                    zoom: config.zoom, 
 	                    scrollwheel: false,
 	                    center: {lat: config.latitude, lng: config.longitude},
 	                    styles: loadedMapStyles
@@ -132,7 +132,7 @@ define([
 	                                
 	                }
 	                
-	                if(config.geolocation == "1" && navigator.geolocation){
+	                if(config.geolocation && navigator.geolocation){
 									        					
 						getGeoLocation(map);
 							

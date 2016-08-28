@@ -38,7 +38,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Import: import your stores from a csv file;
 * Export: export stores to a csv file;
 * Interactive map: stores positioned on the map via longitude and latitude;
-* Geolocation: show nearest stores to user;
+* Geolocation: show nearest stores to user (in chrome only via https);
 * Search: search functionality in the sidebar;
 * Directions: show directions from user location to store (driving, walking, cycling or public transport);
 * Map Styles: choose from over 10 different map styles to fit your store;

@@ -35,7 +35,6 @@
                 <longitude>-0.1506621</longitude>
                 <radius>40233.6</radius>
                 <map_style>default</map_style>
-                <map_pin>default</map_pin>
                 <ask_location>1</ask_location>
             </stockist_map>    
             <stockist_radius>

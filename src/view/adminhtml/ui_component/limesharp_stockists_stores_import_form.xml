@@ -49,16 +49,11 @@
                     <item name="formElement" xsi:type="string">fileUploader</item>
                     <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
                     <item name="previewTmpl" xsi:type="string">Limesharp_Stockists/file-preview</item>
-                    <item name="notice" xsi:type="string" translate="true">Make sure your file is a correctly formatted CSV file, delimited by commas and the fields are quoted. If you are unsure, why not take a backup first via the export functionality.</item>
+                    <item name="notice" xsi:type="string" translate="true">Make sure your file is a correctly formatted CSV file, delimited by commas and the fields are quoted. If you are unsure, why not take a backup first via the export functionality. Your file should look like this if you open it in a text editor: https://github.com/ClaudiuCreanga/magento2-stockists-extension/blob/master/documentation/images/csv.jpg </item>
                     <item name="required" xsi:type="boolean">true</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="stockists/stores_file/upload/field/import"/>
-                    </item><!--
-
-                    <item name="tooltip" xsi:type="array">
-	                    <item name="description" xsi:type="string" translate="true">Your file should look like this if you open it in a text editor: https://github.com/ClaudiuCreanga/magento2-stockists-extension/blob/master/documentation/images/csv.jpg</item>
-	                </item>
--->
+                    </item>
                 </item>
             </argument>
         </field>

@@ -70,17 +70,17 @@ define([
                                     });
                                     var circle = new google.maps.Circle({
                                         map: map,
-                                        radius: +config.radius,    // value from admin settings
+                                        radius: config.radius,    // value from admin settings
                                         fillColor: config.fillColor,
-									    fillOpacity: +config.fillOpacity, 
+									    fillOpacity: config.fillOpacity, 
 									    strokeColor: config.strokeColor,
-									    strokeOpacity: +config.strokeOpacity,
-								        strokeWeight: +config.strokeWeight
+									    strokeOpacity: config.strokeOpacity,
+								        strokeWeight: config.strokeWeight
                                     });
                                     circle.bindTo('center', marker, 'position');
                                     for (i = 0; i < markers.length; i++) { 
                                         var distance = google.maps.geometry.spherical.computeDistanceBetween(marker.position, markers[i].position);
-                                        if (distance < +config.radius) {
+                                        if (distance < config.radius) {
 						                    if(config.unit == "default"){
 						                        var store_distance = parseFloat(distance*0.001).toFixed(2);
 						                        var unitOfLength = "kilometres";

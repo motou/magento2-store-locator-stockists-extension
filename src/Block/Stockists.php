@@ -198,9 +198,9 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * get map pin from configuration
      *
-     * @return string
+     * @return string or null
      */   
-    public function getMapPin(): string
+    public function getMapPin()
     {
 	    return $this->scopeConfig->getValue(self::MAP_PIN_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
@@ -208,11 +208,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * get location settings from configuration
      *
-     * @return string
+     * @return int
      */   
-    public function getLocationSettings(): string
+    public function getLocationSettings(): int
     {
-	    return $this->scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (int)$this->scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
         
     /**
@@ -248,51 +248,51 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * get latitude settings from configuration
      *
-     * @return int
+     * @return float
      */   
-    public function getLatitudeSettings(): int
+    public function getLatitudeSettings(): float
     {
-	    return (int)$this->scopeConfig->getValue(self::LATITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::LATITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
             
     /**
      * get longitude settings from configuration
      *
-     * @return int
+     * @return float
      */   
-    public function getLongitudeSettings(): int
+    public function getLongitudeSettings(): float
     {
-	    return (int)$this->scopeConfig->getValue(self::LONGITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::LONGITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
      * get radius settings from configuration
      *
-     * @return string
+     * @return float
      */   
-    public function getRadiusSettings(): string
+    public function getRadiusSettings(): float
     {
-	    return $this->scopeConfig->getValue(self::RADIUS_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::RADIUS_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
      * get stroke weight settings from configuration
      *
-     * @return string
+     * @return float
      */   
-    public function getStrokeWeightSettings(): string
+    public function getStrokeWeightSettings(): float
     {
-	    return $this->scopeConfig->getValue(self::STROKE_WEIGHT_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::STROKE_WEIGHT_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
      * get stroke opacity settings from configuration
      *
-     * @return string
+     * @return float
      */   
-    public function getStrokeOpacitySettings(): string
+    public function getStrokeOpacitySettings(): float
     {
-	    return $this->scopeConfig->getValue(self::STROKE_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::STROKE_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -310,9 +310,9 @@ class Stockists extends \Magento\Framework\View\Element\Template
      *
      * @return string
      */   
-    public function getFillOpacitySettings(): string
+    public function getFillOpacitySettings(): float
     {
-	    return $this->scopeConfig->getValue(self::FILL_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->scopeConfig->getValue(self::FILL_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**

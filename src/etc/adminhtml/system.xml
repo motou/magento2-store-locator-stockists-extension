@@ -128,14 +128,14 @@
                 <field id="circle_stroke_weight" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Stroke Weight</label>
                     <comment>
-                        <![CDATA[Stroke weight when user searches a location. Expects integer.]]>
+                        <![CDATA[Stroke weight when user searches a location. Expects integer or float.]]>
                     </comment>
                 </field>
                 
                 <field id="circle_stroke_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Stroke Opacity</label>
                     <comment>
-                        <![CDATA[Stroke opacity when user searches a location. Expects integer.]]>
+                        <![CDATA[Stroke opacity when user searches a location. Expects integer or float.]]>
                     </comment>
                 </field>
                 
@@ -149,7 +149,7 @@
                 <field id="circle_fill_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius Fill Opacity</label>
                     <comment>
-                        <![CDATA[FIll opacity when user searches a location. Expects integer.]]>
+                        <![CDATA[FIll opacity when user searches a location. Expects integer or float.]]>
                     </comment>
                 </field>
                 
