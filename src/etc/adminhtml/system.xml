@@ -65,6 +65,20 @@
                     </comment>
                 </field>
                 
+                <field id="latitude" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Latitude</label>
+                    <comment>
+                        <![CDATA[Default latitude when loading the map. It is used for centering the map at load time]]>
+                    </comment>
+                </field>
+                
+                <field id="longitude" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Latitude</label>
+                    <comment>
+                        <![CDATA[Default longitude when loading the map. It is used for centering the map at load time]]>
+                    </comment>
+                </field>
+                
                 <field id="radius" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Radius</label>
                     <comment>
