@@ -90,7 +90,9 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 ![Locationd](docs/images/location.jpg?raw=true "Location")
 * Settings:
 
-![Settings](docs/images/settings.jpg?raw=true "Settings")
+![Settings](docs/images/settings1.jpg?raw=true "Settings")
+![Settings](docs/images/settings2.jpg?raw=true "Settings")
+![Settings](docs/images/settings3.jpg?raw=true "Settings")
 
 * Frontend full page:
 
