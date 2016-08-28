@@ -41,10 +41,23 @@ class UrlRewrite extends Value
     const URL_CONFIG_PATH = 'limesharp_stockists/stockist_content/url';
 	
 	/**
-	* @var \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory
+	* @var BaseUrlRewrite
 	*/
 	protected $urlRewrite;
+	
+	/**
+     * Url rewrite service
+     *
+     * @var $urlRewriteService
+     */
 	protected $urlRewriteService;
+		
+    /**
+     * Store manager
+     *
+     * @var StoreManagerInterface
+     */
+	protected $storeManager;
 	
     /**
      * Url finder
@@ -73,10 +86,11 @@ class UrlRewrite extends Value
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
-	 * @param \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory $urlRewriteFactory
+	 * @param \Magento\UrlRewrite\Model\UrlRewrite $urlRewrite
+	 * @param \Magento\UrlRewrite\Service\V1\Data\UrlRewrite $UrlRewriteService
 	 * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+	 * @param \Magento\UrlRewrite\Model\UrlFinderInterface $urlFinder
      */
-         protected $storeManager;
 
     public function __construct(
         Context $context,
@@ -98,14 +112,21 @@ class UrlRewrite extends Value
 		$this->scopeConfig = $config;
 		parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
     }
-	
+    
+    /**
+     * after save callback
+     *
+     * @return $this
+     */
     public function afterSave()
     {
 
 		$storeId = $this->storeManager->getStore()->getId();
-		
-		if($this->getCustomUrlRewrite() != "stockists" && $this->hasDataChanges()){ //different from default
+
+		if($this->hasDataChanges()){ //different from default
 			
+			$getCustomUrlRewrite = $_POST["groups"]["stockist_content"]["fields"]["url"]["value"];
+						
 			foreach ($this->_data as $key => $value) {
 				
 				if($key == "field" && $value == "url"){
@@ -119,18 +140,31 @@ class UrlRewrite extends Value
 					
 					// if it was already set, just update it to the new one
 					if($rewriteFinder){
-						$this->urlRewrite->load($rewriteFinder->getUrlRewriteId())
-										->setRequestPath($this->getCustomUrlRewrite())
-										->save();
-					} else {
-					
-						$this->urlRewrite->setStoreId($storeId)
-						->setIdPath(rand(1, 100000))
-						->setRequestPath($this->getCustomUrlRewrite())
-						->setTargetPath("stockists")
-						->setIsSystem(0)
-						->save();
 						
+						if($getCustomUrlRewrite != "stockists"){
+
+							$this->urlRewrite->load($rewriteFinder->getUrlRewriteId())
+											->setRequestPath($getCustomUrlRewrite)
+											->save();
+											
+						} else {
+
+							$this->urlRewrite->load($rewriteFinder->getUrlRewriteId())->delete();
+							
+						}
+						
+					} else {
+						
+						if($getCustomUrlRewrite != "stockists"){
+							
+							$this->urlRewrite->setStoreId($storeId)
+							->setIdPath(rand(1, 100000))
+							->setRequestPath($getCustomUrlRewrite)
+							->setTargetPath("stockists")
+							->setIsSystem(0)
+							->save();
+							
+						}
 					}
 				}
 			}
