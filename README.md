@@ -43,15 +43,13 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Map Styles: choose from over 10 different map styles to fit your store;
 * Breadcrumbs: show/hide breadcrumbs;
 * SEO: edit titles, meta descriptions and keywords;
+* Url: chose your url where your store locator appears;
 * Radius: Select and style your radius in settings;
 * Unit: Chose between miles and kilometres;
 * Pin: Use custom map pin;
 
 ### Suggested features (to be implemented):
 * better styling for different design template;
-* allow users to change stockist url
-* store schedule;
-* private key for gmaps.
 
 ## Usage
 
