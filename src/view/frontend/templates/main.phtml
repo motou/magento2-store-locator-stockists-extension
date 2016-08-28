@@ -25,7 +25,7 @@ declare(strict_types=1);
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
 <?php 
-	if($block->getMapPin()){ 
+	if($block->getMapPin() == "default"){ 
 		
 		$mapPin = $block->getMediaUrl()."limesharp_stockists/".$block->getMapPin();
 		
@@ -34,7 +34,7 @@ declare(strict_types=1);
 		$mapPin = $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png');
 	
 	}
- ?>
+?>
 
 <div id="map-canvas" style="height: 100%; width: 100%;"></div>
 
@@ -118,6 +118,8 @@ declare(strict_types=1);
 	            "map_pin" : "<?php echo $mapPin; ?>",
 	            "geolocation" : "<?php echo $block->getLocationSettings() ?>",
 	            "zoom" : "<?php echo $block->getZoomSettings() ?>",
+	            "latitude" : "<?php echo $block->getLatitudeSettings() ?>",
+	            "longitude" : "<?php echo $block->getLongitudeSettings() ?>",
 	            "radius" : "<?php echo $block->getRadiusSettings() ?>",
 	            "template" : "<?php echo $block->getTemplateSettings() ?>",
 	            "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",

@@ -17,7 +17,8 @@ define([
 	            markers = [];
 	
 	            getStores();
-	
+				
+				// on search show the relevant stores
 	            $("#stockists-submit").on("click", function(e) {
 	                
 	                search_widget.search(map,config);
@@ -38,6 +39,7 @@ define([
 	                $(this).addClass("active");
 	            })    
 	            
+	            // get the stores from admin stockists/ajax/stores
 	            function getStores() {
 	                var url = window.location.href.replace(/\/+$/, "") + '/ajax/stores';
 	                $.ajax({
@@ -55,7 +57,7 @@ define([
 	                var mapOptions = {
 	                    zoom: +config.zoom, 
 	                    scrollwheel: false,
-	                    center: {lat: 51.4935057, lng: -0.1506621},
+	                    center: {lat: config.latitude, lng: config.longitude},
 	                    styles: loadedMapStyles
 	                };
 	                

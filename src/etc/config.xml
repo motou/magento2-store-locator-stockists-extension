@@ -31,8 +31,11 @@
                 <template>full_width_sidebar</template>
                 <unit_length>default</unit_length>
                 <zoom>13</zoom>
+                <latitude>51.4935057</latitude>
+                <longitude>-0.1506621</longitude>
                 <radius>40233.6</radius>
                 <map_style>default</map_style>
+                <map_pin>default</map_pin>
                 <ask_location>1</ask_location>
             </stockist_map>    
             <stockist_radius>

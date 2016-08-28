@@ -60,6 +60,16 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * @var int
      */
+    const LATITUDE_CONFIG_PATH = 'limesharp_stockists/stockist_map/latitude';
+            
+    /**
+     * @var int
+     */
+    const LONGITUDE_CONFIG_PATH = 'limesharp_stockists/stockist_map/longitude';
+            
+    /**
+     * @var int
+     */
     const ZOOM_CONFIG_PATH = 'limesharp_stockists/stockist_map/zoom';
             
     /**
@@ -192,7 +202,6 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getMapPin(): string
     {
-	    //$this->_mediaDirectory->getAbsolutePath($this->_appendScopeInfo(self::UPLOAD_DIR)
 	    return $this->scopeConfig->getValue(self::MAP_PIN_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
@@ -234,6 +243,26 @@ class Stockists extends \Magento\Framework\View\Element\Template
     public function getZoomSettings(): int
     {
 	    return (int)$this->scopeConfig->getValue(self::ZOOM_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+            
+    /**
+     * get latitude settings from configuration
+     *
+     * @return int
+     */   
+    public function getLatitudeSettings(): int
+    {
+	    return (int)$this->scopeConfig->getValue(self::LATITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+            
+    /**
+     * get longitude settings from configuration
+     *
+     * @return int
+     */   
+    public function getLongitudeSettings(): int
+    {
+	    return (int)$this->scopeConfig->getValue(self::LONGITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
