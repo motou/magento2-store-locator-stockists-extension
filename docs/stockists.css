@@ -63,10 +63,19 @@
 .content {
     margin: auto;
     padding: 20px;
-    width: 600px;
+    width: 100%:
+    @media only screen and (min-width=740px){
+	    width: 600px;
+	}
 }
 #demo .content{
-    width: 960px;
+    width: 100%;
+    @media only screen and (min-width=740px){
+	    width: 600px;
+	}
+    @media only screen and (min-width=1024px){
+	    width: 960px;
+	}
 }
 .content:after,
 .buttons::after {
