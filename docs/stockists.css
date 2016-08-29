@@ -63,7 +63,7 @@
 .content {
     margin: auto;
     padding: 20px;
-    width: 100%:
+    width: 100%;
     @media only screen and (min-width=740px){
 	    width: 600px;
 	}
