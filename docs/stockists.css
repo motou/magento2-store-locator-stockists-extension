@@ -204,7 +204,7 @@ h1 {
     }
 }
 h1.title {
-    font-size: 96px;
+    font-size: 20px;
 	@media only screen and (min-width=740px){
 	    font-size: 32px;
     }
