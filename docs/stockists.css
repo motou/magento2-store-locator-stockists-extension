@@ -64,16 +64,16 @@
     margin: auto;
     padding: 20px;
     width: 100%;
-    @media only screen and (min-width=740px){
+    @media (min-width=740px){
 	    width: 600px;
 	}
 }
 #demo .content{
     width: 100%;
-    @media only screen and (min-width=740px){
+    @media (min-width=740px){
 	    width: 600px;
 	}
-    @media only screen and (min-width=1024px){
+    @media (min-width=1024px){
 	    width: 960px;
 	}
 }
@@ -205,19 +205,19 @@ h1 {
     line-height: 1.2;
     margin: 0 auto 10px;
     text-align: center;
-    @media only screen and (min-width=740px){
+    @media (min-width=740px){
 	    font-size: 32px;
     }
-    @media only screen and (min-width=1024px){
+    @media (min-width=1024px){
 	    font-size: 72px;
     }
 }
 h1.title {
     font-size: 20px;
-	@media only screen and (min-width=740px){
+	@media (min-width=740px){
 	    font-size: 32px;
     }
-    @media only screen and (min-width=1024px){
+    @media (min-width=1024px){
 	    font-size: 72px;
     }
 }
@@ -226,10 +226,10 @@ h2 {
     font-size: 16px;
     margin: 20px auto;
     text-align: center;
-    @media only screen and (min-width=740px){
+    @media (min-width=740px){
         font-size: 20px;
 	}
-    @media only screen and (min-width=1024px){
+    @media (min-width=1024px){
         font-size: 36px;
 	}
 }
@@ -238,10 +238,10 @@ h4 {
     font-size: 16px;
     margin: 20px auto;
     text-align: center;
-    @media only screen and (min-width=740px){
+    @media (min-width=740px){
 	    font-size: 18px;
     }
-    @media only screen and (min-width=1024px){
+    @media (min-width=1024px){
 	    font-size: 28px;
     }
 }
