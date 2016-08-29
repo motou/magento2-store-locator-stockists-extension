@@ -659,3 +659,6 @@ ul.nav li a {
     opacity: .75;
     color: black;
 }
+.hide{
+	display: none;
+}
