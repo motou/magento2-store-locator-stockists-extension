@@ -30,10 +30,6 @@ class Template
                 'label' => 'Full Width with Sidebar Options',
             ),
             array(
-                'value' => 'full_width_top',
-                'label' => 'Full Width with Top Options',
-            ),
-            array(
                 'value' => 'page_width_sidebar',
                 'label' => 'Page Width with Sidebar Options',
             ),
