@@ -125,7 +125,7 @@ class UrlRewrite extends Value
 
 		if($this->hasDataChanges()){ //different from default
 			
-			$getCustomUrlRewrite = $_POST["groups"]["stockist_content"]["fields"]["url"]["value"];
+			$getCustomUrlRewrite = $this->_data["groups"]["stockist_content"]["fields"]["url"]["value"];
 						
 			foreach ($this->_data as $key => $value) {
 				
