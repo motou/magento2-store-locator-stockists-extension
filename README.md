@@ -48,9 +48,8 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Radius: Select and style your radius in settings;
 * Unit: Chose between miles and kilometres;
 * Pin: Use custom map pin;
-
-### Suggested features (to be implemented):
-* better styling for different design template;
+* Responsive: Mobile responsive templates;
+* Templates: Choose from 3 different templates;
 
 ## Usage
 
