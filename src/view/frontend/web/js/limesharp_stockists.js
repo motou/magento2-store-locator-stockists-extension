@@ -37,7 +37,12 @@ define([
 	            $("body").on("click",".results-content", function() {
 	                $(".results-content").not($(this)).removeClass("active");
 	                $(this).addClass("active");
-	            })    
+	            })
+	            
+				// full width template
+				if(config.template == "full_width_sidebar" || config.template == "full_width_top"){
+					$("body").addClass("full-width");
+				}
 	            
 	            // get the stores from admin stockists/ajax/stores
 	            function getStores() {
