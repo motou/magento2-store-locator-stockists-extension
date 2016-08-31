@@ -14,12 +14,6 @@
       "role": "Developer"
     }
   ],
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension.git"
-    }
-  ],
   "require": {
     "php": "~7.0.0",
     "magento/product-community-edition": "^2.1.0"
