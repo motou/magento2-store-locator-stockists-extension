@@ -23,11 +23,9 @@ use Magento\Backend\Block\Template\Context;
 use Limesharp\Stockists\Model\Stores;
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
 use Limesharp\Stockists\Model\ResourceModel\Stores\Collection;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\Config\Source\Country;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Stockists extends \Magento\Framework\View\Element\Template
 {
@@ -112,30 +110,14 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */
     public $countryHelper;
     
-    /**
-     * Store manager
-     *
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    public $storeManager;
-    
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    public $scopeConfig;
-    
     public function __construct(
         StockistsCollectionFactory $stockistsCollectionFactory,
-        StoreManagerInterface $storeManager,
         Country $countryHelper,
         Context $context,
-        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
-        $this->storeManager = $storeManager;
         $this->countryHelper = $countryHelper;
-        $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $data);
     }
     
@@ -182,7 +164,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */  
     public function getMediaUrl(): string
     {
-	    return $this ->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
+	    return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
     }
     
     /**
@@ -192,7 +174,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getMapStyles(): string
     {
-	    return $this->scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::MAP_STYLES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
         
     /**
@@ -202,7 +184,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getMapPin()
     {
-	    return $this->scopeConfig->getValue(self::MAP_PIN_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::MAP_PIN_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
     /**
@@ -212,7 +194,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getLocationSettings(): int
     {
-	    return (int)$this->scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (int)$this->_scopeConfig->getValue(self::ASK_LOCATION_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
         
     /**
@@ -222,7 +204,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getTemplateSettings(): string
     {
-	    return $this->scopeConfig->getValue(self::TEMPLATE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::TEMPLATE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
         
     /**
@@ -232,7 +214,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getUnitOfLengthSettings(): string
     {
-	    return $this->scopeConfig->getValue(self::UNIT_LENGTH_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::UNIT_LENGTH_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
             
     /**
@@ -242,7 +224,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getZoomSettings(): int
     {
-	    return (int)$this->scopeConfig->getValue(self::ZOOM_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (int)$this->_scopeConfig->getValue(self::ZOOM_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
             
     /**
@@ -252,7 +234,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getLatitudeSettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::LATITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::LATITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
             
     /**
@@ -262,7 +244,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getLongitudeSettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::LONGITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::LONGITUDE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -272,7 +254,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getRadiusSettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::RADIUS_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::RADIUS_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -282,7 +264,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getStrokeWeightSettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::STROKE_WEIGHT_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::STROKE_WEIGHT_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -292,7 +274,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getStrokeOpacitySettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::STROKE_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::STROKE_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -302,7 +284,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getStrokeColorSettings(): string
     {
-	    return $this->scopeConfig->getValue(self::STROKE_COLOR_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::STROKE_COLOR_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -312,7 +294,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getFillOpacitySettings(): float
     {
-	    return (float)$this->scopeConfig->getValue(self::FILL_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return (float)$this->_scopeConfig->getValue(self::FILL_OPACITY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
                 
     /**
@@ -322,7 +304,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */   
     public function getFillColorSettings(): string
     {
-	    return $this->scopeConfig->getValue(self::FILL_COLOR_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::FILL_COLOR_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
     
      /**
@@ -332,7 +314,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */ 
     public function getBaseImageUrl(): string
     {
-        return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
     
 }
