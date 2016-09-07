@@ -21,6 +21,7 @@ $ composer require limesharp/stockists
 $ composer update
 $ php bin/magento setup:upgrade 
 $ php bin/magento setup:static-content:deploy
+$ php bin/magento cache:clean
 ```
 
 Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
