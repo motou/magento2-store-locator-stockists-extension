@@ -4,8 +4,7 @@ define([
         'stockists_countries',
         'stockists_mapstyles',
         'stockists_search',
-        'stockists_geolocation',
-        'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBivSennK3jMSv4Zeict4gE7_qQ0LmRC8g&libraries=geometry'
+        'stockists_geolocation'
     ],
     function($,config,country_list,mapstyles,search_widget,currentLocation) {
 	    
@@ -13,11 +12,13 @@ define([
 
 	        $(document).ready(function() {
 
-	            var map;
+				$.getScript("https://maps.googleapis.com/maps/api/js?v=3&sensor=false&key="+config.apiKey+"&libraries=geometry", function () {
+					getStores();
+				});
+
+				var map;
 	            markers = [];
-	
-	            getStores();
-				
+
 				// on search show the relevant stores
 	            $("#stockists-submit").on("click", function(e) {
 	                
@@ -37,7 +38,7 @@ define([
 	            $("body").on("click",".results-content", function() {
 	                $(".results-content").not($(this)).removeClass("active");
 	                $(this).addClass("active");
-	            })
+	            });
 	            
 				// full width template
 				if(config.template == "full_width_sidebar" || config.template == "full_width_top"){
