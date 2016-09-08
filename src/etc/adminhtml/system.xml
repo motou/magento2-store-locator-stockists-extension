@@ -57,6 +57,15 @@
                     <label>Select Template</label>
                     <source_model>Limesharp\Stockists\Model\Template</source_model>
                 </field>
+
+                <field id="api_key" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gmaps Api Key</label>
+                    <validate>required-entry</validate>
+                    <comment>
+                        <![CDATA[Please change this value to your API key. This default key may stop working due to daily limits. This field is required.]]>
+                    </comment>
+                    <tooltip>To get a gmaps api key just login to your google account and go https://developers.google.com/maps/documentation/javascript/get-api-key and press on "get key".</tooltip>
+                </field>
                 
                 <field id="zoom" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Zoom</label>
