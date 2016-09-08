@@ -53,6 +53,7 @@ You should use your own gmaps api key. Go to https://developers.google.com/maps/
 * Pin: Use custom map pin;
 * Responsive: Mobile responsive templates;
 * Templates: Choose from 3 different templates;
+* Api key: Use your own Gmaps api key for higher traffic;
 
 ## Usage
 
