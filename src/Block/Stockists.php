@@ -49,7 +49,12 @@ class Stockists extends \Magento\Framework\View\Element\Template
      * @var string
      */
     const TEMPLATE_CONFIG_PATH = 'limesharp_stockists/stockist_map/template';
-    
+
+    /**
+     * @var string
+     */
+    const API_KEY_CONFIG_PATH = 'limesharp_stockists/stockist_map/api_key';
+
     /**
      * @var string
      */
@@ -205,6 +210,16 @@ class Stockists extends \Magento\Framework\View\Element\Template
     public function getTemplateSettings(): string
     {
 	    return $this->_scopeConfig->getValue(self::TEMPLATE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * get api key settings from configuration
+     *
+     * @return string
+     */
+    public function getApiKeySettings(): string
+    {
+	    return $this->_scopeConfig->getValue(self::API_KEY_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
         
     /**
