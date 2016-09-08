@@ -29,6 +29,7 @@
             </stockist_content>
             <stockist_map>
                 <template>full_width_sidebar</template>
+                <api_key>AIzaSyDQoYGuJE3CogwzmFTzp7Eb8LpL5Tp-swo</api_key>
                 <unit_length>default</unit_length>
                 <zoom>13</zoom>
                 <latitude>51.4935057</latitude>
