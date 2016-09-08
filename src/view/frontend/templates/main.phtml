@@ -215,6 +215,7 @@ declare(strict_types=1);
 	            "longitude" : <?php echo json_encode($block->getLongitudeSettings()) ?>,
 	            "radius" : <?php echo json_encode($block->getRadiusSettings()) ?>,
 	            "template" : "<?php echo $templateSetting; ?>",
+	            "apiKey" : "<?php echo $block->getApiKeySettings(); ?>",
 	            "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
 	            "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
 	            "fillOpacity" : <?php echo json_encode($block->getFillOpacitySettings()) ?>,
