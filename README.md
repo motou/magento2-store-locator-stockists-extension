@@ -32,6 +32,8 @@ It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
 Visit the extension website: http://claudiucreanga.me/magento2-store-locator-stockists-extension/
 
+You should use your own gmaps api key. Go to https://developers.google.com/maps/documentation/javascript/get-api-key and get your own key and then insert it in configuration > stockists > Gmaps Api Key. Otherwise the map may not work because of Gmaps' daily limits.
+
 ## Features
 
 * Details: name, address, city, country, postcode, link, telephone, email;
