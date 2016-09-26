@@ -2,14 +2,3 @@
 .*
 !.gitignore
 
-#other folder structure
-/Api
-/Block
-/Controller
-/etc
-/i18n
-/Model
-/Setup
-/Ui
-/view
-registration.php
