@@ -178,6 +178,20 @@
                         <![CDATA[Zoom level when loading the map, default is 16. Insert values between 1 and 20.]]>
                     </comment>
                 </field>
+                <field id="other_stores" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Other stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[If this is enabled then other stores will appear on the individual stores page at the bottom.. ]]>
+                    </comment>
+                </field>
+                <field id="stores_slider" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slider of other stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[If this is enabled then on the individual store page a slider of other stores will appear. It uses the slick slider.]]>
+                    </comment>
+                </field>
             </group>
         </section>
     </system>

@@ -129,6 +129,8 @@ if($block->getMapPin()){
 	            "map_pin" : "<?php echo $mapPin; ?>",
 	            "slider_arrow" : "<?php echo $block->getViewFileUrl("images/slider-arrow.svg"); ?>",
 	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
+	            "otherStores" : <?php echo json_encode($block->getOtherStoresSettings()) ?>,
+	            "otherStoresSlider" : <?php echo json_encode($block->getSliderSettings()) ?>,
 	            "modulePath" : "<?php echo $block->getBaseImageUrl().$modulePath; ?>",
 	            "zoom_individual" : <?php echo json_encode($block->getZoomIndividualSettings()) ?>,
 	            "storeDetails" : <?php echo json_encode($storeDetails) ?>,

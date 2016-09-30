@@ -47,6 +47,8 @@
             </stockist_radius>
             <stockist_individual>
                 <zoom_individual>16</zoom_individual>
+                <stores_slider>1</stores_slider>
+                <other_stores>1</other_stores>
             </stockist_individual>
         </limesharp_stockists>
     </default>

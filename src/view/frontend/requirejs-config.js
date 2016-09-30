@@ -8,6 +8,7 @@ var config = {
             stockists_search: 'Limesharp_Stockists/js/stockists_search',
             stockists_widget: 'Limesharp_Stockists/js/stockists_widget',
             stockists_geolocation: 'Limesharp_Stockists/js/stockists_geolocation',
+            stockists_slick: 'Limesharp_Stockists/js/stockists_slick',
             stockists_individual_stores: 'Limesharp_Stockists/js/limesharp_individual_stores'
         }
     }

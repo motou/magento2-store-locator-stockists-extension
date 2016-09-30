@@ -112,6 +112,10 @@ class ImportFile extends Stores
                         unset($individualStockist['stockist_id']);
                         $stockist = $this->stockistFactory->create();
                     }
+
+//                    if($individualStockist["link"]){
+//                        $this->
+//                    }
         
                     $this->dataObjectHelper->populateWithArray($stockist,$individualStockist,StockistInterface::class);
                     $this->stockistRepository->save($stockist);

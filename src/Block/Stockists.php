@@ -84,6 +84,16 @@ class Stockists extends \Magento\Framework\View\Element\Template
      * @var int
      */
     const ZOOM_INDIVIDUAL_CONFIG_PATH = 'limesharp_stockists/stockist_individual/zoom_individual';
+
+    /**
+     * @var int
+     */
+    const SLIDER_CONFIG_PATH = 'limesharp_stockists/stockist_individual/stores_slider';
+
+    /**
+     * @var int
+     */
+    const OTHER_STORES_CONFIG_PATH = 'limesharp_stockists/stockist_individual/other_stores';
             
     /**
      * @var string
@@ -260,6 +270,26 @@ class Stockists extends \Magento\Framework\View\Element\Template
     public function getModuleUrlSettings(): string
     {
 	    return (int)$this->_scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * get slider settings from configuration
+     *
+     * @return int
+     */
+    public function getSliderSettings(): int
+    {
+	    return (int)$this->_scopeConfig->getValue(self::SLIDER_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * get other stores settings from configuration
+     *
+     * @return int
+     */
+    public function getOtherStoresSettings(): int
+    {
+	    return (int)$this->_scopeConfig->getValue(self::OTHER_STORES_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
 
     /**
