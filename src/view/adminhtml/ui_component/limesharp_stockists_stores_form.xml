@@ -228,15 +228,28 @@
                 </item>
             </argument>
         </field>
-        <field name="link">
+        <field name="external_link">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Link</item>
+                    <item name="label" xsi:type="string" translate="true">External Link</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
-                    <item name="dataScope" xsi:type="string">link</item>
+                    <item name="dataScope" xsi:type="string">external_link</item>
+                    <item name="notice" xsi:type="string" translate="true">If your store has an individual store details page and it is on a different website, enter it here. Format: http://...</item>
+                </item>
+            </argument>
+        </field>
+        <field name="schedule">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Schedule</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">schedule</item>
                 </item>
             </argument>
         </field>
@@ -254,6 +267,92 @@
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="stockists/stores_image/upload/field/image"/>
                     </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Store Details</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="link">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Internal Link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">link</item>
+                    <item name="notice" xsi:type="string" translate="true">If you want a store details page on the same website enter your url here. If the final url is www.website.com/stores/waterloo then you need to enter only waterloo.</item>
+                </item>
+            </argument>
+        </field>
+        <field name="station">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Nearest Station</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">station</item>
+                </item>
+            </argument>
+        </field>
+        <field name="distance">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Distance</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">distance</item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">description</item>
+                </item>
+            </argument>
+        </field>
+        <field name="details_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="label" xsi:type="string" translate="true">Store Details Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Limesharp_Stockists/image-preview</item>
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="stockists/stores_image/upload/field/details_image"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="intro">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Menu Intro</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">stores</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">intro</item>
                 </item>
             </argument>
         </field>

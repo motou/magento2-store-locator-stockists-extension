@@ -168,7 +168,16 @@
                         <![CDATA[FIll color when user searches a location. Expects hex value.]]>
                     </comment>
                 </field>
-                
+            </group>
+
+            <group id="stockist_individual" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings for individual store page</label>
+                <field id="zoom_individual" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Zoom on Store details</label>
+                    <comment>
+                        <![CDATA[Zoom level when loading the map, default is 16. Insert values between 1 and 20.]]>
+                    </comment>
+                </field>
             </group>
         </section>
     </system>

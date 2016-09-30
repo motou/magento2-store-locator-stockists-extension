@@ -207,6 +207,7 @@ declare(strict_types=1);
         "*": {
 	                        
             "limesharp_stockists": {
+	            "moduleUrl" : "<?php echo $block->getModuleUrlSettings() ?>",
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $mapPin; ?>",
 	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,

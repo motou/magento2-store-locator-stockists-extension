@@ -45,6 +45,9 @@
                 <circle_fill_opacity>0.2</circle_fill_opacity>
                 <circle_fill_color>#00FFFF</circle_fill_color>
             </stockist_radius>
+            <stockist_individual>
+                <zoom_individual>16</zoom_individual>
+            </stockist_individual>
         </limesharp_stockists>
     </default>
 </config>

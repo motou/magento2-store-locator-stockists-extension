@@ -7,7 +7,8 @@ var config = {
             stockists_mapstyles: 'Limesharp_Stockists/js/stockists_mapstyles',
             stockists_search: 'Limesharp_Stockists/js/stockists_search',
             stockists_widget: 'Limesharp_Stockists/js/stockists_widget',
-            stockists_geolocation: 'Limesharp_Stockists/js/stockists_geolocation'
+            stockists_geolocation: 'Limesharp_Stockists/js/stockists_geolocation',
+            stockists_individual_stores: 'Limesharp_Stockists/js/limesharp_individual_stores'
         }
     }
 };

@@ -34,6 +34,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
      * @var string
      */
     const MAP_STYLES_CONFIG_PATH = 'limesharp_stockists/stockist_map/map_style';
+
+    /**
+     * @var string
+     */
+    const URL_CONFIG_PATH = 'limesharp_stockists/stockist_content/url';
             
     /**
      * @var string
@@ -74,6 +79,11 @@ class Stockists extends \Magento\Framework\View\Element\Template
      * @var int
      */
     const ZOOM_CONFIG_PATH = 'limesharp_stockists/stockist_map/zoom';
+
+    /**
+     * @var int
+     */
+    const ZOOM_INDIVIDUAL_CONFIG_PATH = 'limesharp_stockists/stockist_individual/zoom_individual';
             
     /**
      * @var string
@@ -241,7 +251,27 @@ class Stockists extends \Magento\Framework\View\Element\Template
     {
 	    return (int)$this->_scopeConfig->getValue(self::ZOOM_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
-            
+
+    /**
+     * get url settings from configuration
+     *
+     * @return string
+     */
+    public function getModuleUrlSettings(): string
+    {
+	    return (int)$this->_scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * get individual zoom settings from configuration for store details page
+     *
+     * @return int
+     */
+    public function getZoomIndividualSettings(): int
+    {
+        return (int)$this->_scopeConfig->getValue(self::ZOOM_INDIVIDUAL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+    }
+
     /**
      * get latitude settings from configuration
      *
