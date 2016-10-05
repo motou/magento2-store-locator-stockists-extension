@@ -269,7 +269,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
      */
     public function getModuleUrlSettings(): string
     {
-	    return (int)$this->_scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+	    return $this->_scopeConfig->getValue(self::URL_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
     }
 
     /**
