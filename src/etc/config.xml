@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Limesharp_Stockists extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
+ * @copyright 2016 Claudiu Creanga
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Claudiu Creanga
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <limesharp_stockists>
+            <stockist_content>
+                <breadcrumbs>1</breadcrumbs>
+                <meta_title>Stockists</meta_title>
+                <meta_description>Stockists Description Here</meta_description>
+                <meta_keywords>Stockists Keywords Here</meta_keywords>
+                <url>stockists</url>
+            </stockist_content>
+            <stockist_map>
+                <template>full_width_sidebar</template>
+                <api_key>AIzaSyDQoYGuJE3CogwzmFTzp7Eb8LpL5Tp-swo</api_key>
+                <unit_length>default</unit_length>
+                <zoom>13</zoom>
+                <latitude>51.4935057</latitude>
+                <longitude>-0.1506621</longitude>
+                <radius>40233.6</radius>
+                <map_style>default</map_style>
+                <ask_location>1</ask_location>
+            </stockist_map>    
+            <stockist_radius>
+                <circle_stroke_weight>1</circle_stroke_weight>
+                <circle_stroke_opacity>0.5</circle_stroke_opacity>
+                <circle_stroke_color>#0000A0</circle_stroke_color>
+                <circle_fill_opacity>0.2</circle_fill_opacity>
+                <circle_fill_color>#00FFFF</circle_fill_color>
+            </stockist_radius>
+            <stockist_individual>
+                <zoom_individual>16</zoom_individual>
+                <stores_slider>1</stores_slider>
+                <other_stores>1</other_stores>
+            </stockist_individual>
+        </limesharp_stockists>
+    </default>
+</config>

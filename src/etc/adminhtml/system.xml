@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Limesharp_Stockists extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
+ * @copyright 2016 Claudiu Creanga
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Claudiu Creanga
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="limesharp_stockists" sortOrder="2000">
+            <label>Stockists</label>
+        </tab>
+        <section id="limesharp_stockists" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Stockists</label>
+            <tab>limesharp_stockists</tab>
+            <resource>Limesharp_Stockists::stores</resource>
+            <group id="stockist_content" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Content</label>
+                <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists title and meta title</label>
+                </field>
+                <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists meta description</label>
+                </field>
+                <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists meta keywords</label>
+                </field>
+                
+                <field id="url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists url</label>
+                    <backend_model>Limesharp\Stockists\Model\UrlRewrite</backend_model>
+                </field>
+
+            </group>
+            
+            <group id="stockist_map" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Map settings</label>
+                
+                <field id="template" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select Template</label>
+                    <source_model>Limesharp\Stockists\Model\Template</source_model>
+                </field>
+
+                <field id="api_key" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gmaps Api Key</label>
+                    <validate>required-entry</validate>
+                    <comment>
+                        <![CDATA[Please change this value to your API key. This default key may stop working due to daily limits. This field is required.]]>
+                    </comment>
+                    <tooltip>To get a gmaps api key just login to your google account and go https://developers.google.com/maps/documentation/javascript/get-api-key and press on "get key".</tooltip>
+                </field>
+                
+                <field id="zoom" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Zoom</label>
+                    <comment>
+                        <![CDATA[Zoom level when loading the map, default is 13. Insert values between 1 and 20.]]>
+                    </comment>
+                </field>
+                
+                <field id="latitude" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Latitude</label>
+                    <comment>
+                        <![CDATA[Default latitude when loading the map. It is used for centering the map at load time]]>
+                    </comment>
+                </field>
+                
+                <field id="longitude" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Latitude</label>
+                    <comment>
+                        <![CDATA[Default longitude when loading the map. It is used for centering the map at load time]]>
+                    </comment>
+                </field>
+                
+                <field id="radius" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius</label>
+                    <comment>
+                        <![CDATA[Radius when user searches your stores, default is 25 miles. Insert values in km.]]>
+                    </comment>
+                </field>
+                
+                <field id="map_style" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Stockists style maps</label>
+                    <source_model>Limesharp\Stockists\Model\MapStyles</source_model>
+                    <comment>
+                        <![CDATA[Popular map styles from snazzymaps]]>
+                    </comment>
+                    <tooltip>If you want a preview of your styles go to https://snazzymaps.com and select the one you like.</tooltip>
+                </field>
+                
+                <field id="map_pin" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Map pin icon</label>
+                    <backend_model>Limesharp\Stockists\Model\SystemImage</backend_model>
+                    <base_url type="media" scope_info="1">limesharp_stockists</base_url>
+                    <comment>
+                        <![CDATA[A default pin image will be used if left blank]]>
+                    </comment>
+                    <tooltip>Allowed file types: jpg, jpeg, gif, png.</tooltip>
+                </field>
+                
+                <field id="unit_length" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Unit of length</label>
+                    <source_model>Limesharp\Stockists\Model\Unit</source_model>
+                    <comment>
+                        <![CDATA[Chose between km and miles, default is km.]]>
+                    </comment>
+                </field>
+                
+                <field id="ask_location" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Ask for location</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[On page load ask the user for his location and show the closest store]]>
+                    </comment>
+                    <tooltip>If this setting is enabled when the user lands on /stockists/ page then it will be asked for his geolocation and then the closest stores to him will appear. The user must have a browser that supports geolocation. Be aware that some browsers, such as chrome, do not support geolocation over unencrypted http.</tooltip>
+                </field>
+            </group>
+            
+            <group id="stockist_radius" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+	            <label>Radius style</label>                               
+                <field id="circle_stroke_weight" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Weight</label>
+                    <comment>
+                        <![CDATA[Stroke weight when user searches a location. Expects integer or float.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_stroke_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Opacity</label>
+                    <comment>
+                        <![CDATA[Stroke opacity when user searches a location. Expects integer or float.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_stroke_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Stroke Color</label>
+                    <comment>
+                        <![CDATA[Stroke color when user searches a location. Expects hex value.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_fill_opacity" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Fill Opacity</label>
+                    <comment>
+                        <![CDATA[FIll opacity when user searches a location. Expects integer or float.]]>
+                    </comment>
+                </field>
+                
+                <field id="circle_fill_color" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Radius Fill Color</label>
+                    <comment>
+                        <![CDATA[FIll color when user searches a location. Expects hex value.]]>
+                    </comment>
+                </field>
+            </group>
+
+            <group id="stockist_individual" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings for individual store page</label>
+                <field id="zoom_individual" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Zoom on Store details</label>
+                    <comment>
+                        <![CDATA[Zoom level when loading the map, default is 16. Insert values between 1 and 20.]]>
+                    </comment>
+                </field>
+                <field id="other_stores" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Other stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[If this is enabled then other stores will appear on the individual stores page at the bottom.. ]]>
+                    </comment>
+                </field>
+                <field id="stores_slider" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slider of other stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[If this is enabled then on the individual store page a slider of other stores will appear. It uses the slick slider.]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
