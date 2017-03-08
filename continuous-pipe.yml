@@ -1,0 +1,231 @@
+defaults:
+    cluster: ${CLUSTER}
+    environment:
+        name: '"magento2-demo-" ~ code_reference.branch'
+    
+tasks:
+    images:
+        build:
+            services:
+                web:
+                    image: quay.io/richdynamix/demo-magento2
+                    environment:
+                        - name: MAGENTO_USERNAME
+                          value: ${MAGENTO_USERNAME}
+                        - name: MAGENTO_PASSWORD
+                          value: ${MAGENTO_PASSWORD}
+
+    infrastructure:
+        deploy:
+            services:
+                database:
+                    specification:
+                        volumes:
+                            - type: persistent
+                              name: database-volume
+                              capacity: 5Gi
+                              storage_class: default
+
+                        volume_mounts:
+                            - name: database-volume
+                              mount_path: /var/lib/mysql
+
+                        command:
+                            - /usr/local/bin/docker-entrypoint.sh
+                            - mysqld
+                            - --ignore-db-dir=lost+found
+                            - --max_allowed_packet=128M
+
+                        ports:
+                            - 3306
+
+                        resources:
+                            requests:
+                                cpu: 50m
+                                memory: 250Mi
+                            limits:
+                                cpu: 500m
+                                memory: 2Gi
+
+                        environment_variables:
+                            - name: MYSQL_PASSWORD
+                              value: ${DATABASE_PASSWORD}
+                            - name: MYSQL_ROOT_PASSWORD
+                              value: ${DATABASE_ROOT_PASSWORD}
+                            - name: MYSQL_DATABASE
+                              value: magento2
+                            - name: MYSQL_USER
+                              value: magento2
+
+                redis:
+                    deployment_strategy:
+                        readiness_probe:
+                            type: tcp
+                            port: 6379
+
+                    specification:
+                        ports:
+                            - 6379
+
+                        resources:
+                            requests:
+                                cpu: 50m
+                                memory: 100Mi
+                            limits:
+                                cpu: 250m
+                                memory: 250Mi
+
+    reserve_ip:
+        deploy:
+            services:
+                proxy:
+                    specification:
+                        source:
+                            image: docker.io/continuouspipe/landing-page
+                            tag: latest
+                        accessibility:
+                            from_external: true
+                        ports:
+                            - 80
+                            - 443
+        filter:
+            expression: 'tasks.infrastructure.services.database.created'
+
+
+    initialization:
+        run:
+            image:
+                from_service: web
+
+            commands:
+               - bash /usr/local/share/magento2/development/install.sh
+
+            environment_variables: &WEB_ENV_VARS
+                - name: PRODUCTION_ENVIRONMENT
+                  value: ${PRODUCTION_ENVIRONMENT}
+                - name: PUBLIC_ADDRESS
+                  value: https://${SERVICE_PROXY_PUBLIC_ENDPOINT}/
+                - name: MAGENTO_CRYPT_KEY
+                  value: ${MAGENTO_CRYPT_KEY}
+                - name: APP_USER_LOCAL
+                  value: false
+                - name: DATABASE_NAME
+                  value: magento2
+                - name: DATABASE_USER
+                  value: magento2
+                - name: DATABASE_PASSWORD
+                  value: ${DATABASE_PASSWORD}
+                - name: DATABASE_ROOT_PASSWORD
+                  value: ${DATABASE_ROOT_PASSWORD}
+                - name: DEVELOPMENT_MODE
+                  value: false
+
+        filter:
+            expression: 'tasks.infrastructure.services.database.created'
+
+    application:
+        deploy:
+            services:
+                proxy:
+                    specification:
+                        source:
+                            image: quay.io/continuouspipe/nginx-reverse-proxy
+                            tag: stable
+                        accessibility:
+                            from_external: true
+                        ports:
+                            - 80
+                            - 443
+
+                        resources:
+                            requests:
+                                cpu: 50m
+                                memory: 500Mi
+
+                            limits:
+                                cpu: 1
+                                memory: 2G
+
+                        environment_variables:
+                            - name: AUTH_HTTP_ENABLED
+                              value: true
+                            - name: AUTH_HTTP_HTPASSWD
+                              value: ${AUTH_HTTP_HTPASSWD}
+
+                    deployment_strategy:
+                        readiness_probe:
+                            type: tcp
+                            port: 80
+
+                        liveness_probe:
+                            type: exec
+                            command:
+                                - curl
+                                - -k
+                                - -I
+                                - -X GET
+                                - -H
+                                - "Authorization: Basic ${AUTH_HTTP_AUTHORISATION_STRING}"
+                                - https://localhost/
+                            initial_delay_seconds: 300
+                            period_seconds: 300
+                            success_threshold: 1
+                            failure_threshold: 10
+
+                varnish:
+                    specification:
+                        source:
+                            image: quay.io/continuouspipe/magento2-varnish4
+                            tag: stable
+
+                        accessibility:
+                            from_external: false
+
+                        resources:
+                            requests:
+                                cpu: 50m
+                                memory: 500Mi
+
+                            limits:
+                                cpu: 1
+                                memory: 2G
+
+                        ports:
+                            - 80
+
+                web:
+                    specification:
+                        accessibility:
+                            from_external: false
+
+                        environment_variables:
+                            <<: *WEB_ENV_VARS
+
+                        resources:
+                            requests:
+                                cpu: 50m
+                                memory: 500Mi
+
+                            limits:
+                                cpu: 1
+                                memory: 2G
+
+                        ports:
+                            - 80
+
+                    deployment_strategy:
+                        readiness_probe:
+                            type: tcp
+                            port: 80
+
+                        liveness_probe:
+                            type: exec
+                            command:
+                                - curl
+                                - -I
+                                - -X GET
+                                - http://localhost/
+                            initial_delay_seconds: 300
+                            period_seconds: 300
+                            success_threshold: 1
+                            failure_threshold: 10
