@@ -1,7 +1,7 @@
 defaults:
     cluster: ${CLUSTER}
     environment:
-        name: '"magento2-demo-" ~ code_reference.branch'
+        name: '"magento2-storelocator-" ~ code_reference.branch'
     
 tasks:
     images:
@@ -148,7 +148,7 @@ tasks:
 
                         environment_variables:
                             - name: AUTH_HTTP_ENABLED
-                              value: true
+                              value: false
                             - name: AUTH_HTTP_HTPASSWD
                               value: ${AUTH_HTTP_HTPASSWD}
 
