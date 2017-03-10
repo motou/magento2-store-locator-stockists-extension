@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,14 +10,14 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
  
-namespace Limesharp\Stockists\Setup;
+namespace Storelocator\Stockists\Setup;
 
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -41,9 +41,9 @@ class InstallSchema implements InstallSchemaInterface
     {
         $installer = $setup;
         $installer->startSetup();
-        if (!$installer->tableExists('limesharp_stockists_stores')) {
+        if (!$installer->tableExists('storelocator_stockists_stores')) {
             $table = $installer->getConnection()
-                ->newTable($installer->getTable('limesharp_stockists_stores'));
+                ->newTable($installer->getTable('storelocator_stockists_stores'));
             $table->addColumn(
                     'stockist_id',
                     Table::TYPE_INTEGER,
@@ -180,9 +180,9 @@ class InstallSchema implements InstallSchemaInterface
             $installer->getConnection()->createTable($table);
             
             $installer->getConnection()->addIndex(
-                $installer->getTable('limesharp_stockists_stores'),
+                $installer->getTable('storelocator_stockists_stores'),
                 $setup->getIdxName(
-                    $installer->getTable('limesharp_stockists_stores'),
+                    $installer->getTable('storelocator_stockists_stores'),
                     ['name','photo'],
                     AdapterInterface::INDEX_TYPE_FULLTEXT
                 ),

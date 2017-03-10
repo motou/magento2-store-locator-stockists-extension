@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Model\ResourceModel;
+namespace Storelocator\Stockists\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
@@ -25,7 +25,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Stdlib\DateTime as LibDateTime;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Store\Model\Store;
-use Limesharp\Stockists\Model\Stores as StockistModel;
+use Storelocator\Stockists\Model\Stores as StockistModel;
 use Magento\Framework\Event\ManagerInterface;
 
 class Stores extends AbstractDb
@@ -88,7 +88,7 @@ class Stores extends AbstractDb
      */
     public function _construct()
     {
-        $this->_init('limesharp_stockists_stores', 'stockist_id');
+        $this->_init('storelocator_stockists_stores', 'stockist_id');
     }
 
     /**
@@ -100,14 +100,14 @@ class Stores extends AbstractDb
     public function _beforeDelete(AbstractModel $object)
     {
         $condition = ['stockist_id = ?' => (int)$object->getId()];
-        $this->getConnection()->delete($this->getTable('limesharp_stockists_stores'), $condition);
+        $this->getConnection()->delete($this->getTable('storelocator_stockists_stores'), $condition);
         return parent::_beforeDelete($object);
     }
 
     /**
      * before save callback
      *
-     * @param AbstractModel|\Limesharp\Stockists\Model\Stores $object
+     * @param AbstractModel|\Storelocator\Stockists\Model\Stores $object
      * @return $this
      */
     public function _beforeSave(AbstractModel $object)

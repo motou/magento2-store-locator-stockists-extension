@@ -48,7 +48,7 @@
 				<div class="content">
 					<h2 >Installing with composer is easy:</h2>
 					<pre><code class="php">
-	$ composer require limesharp/stockists
+	$ composer require storelocator/stockists
 	$ composer update
 	$ php bin/magento setup:upgrade 
 	$ php bin/magento setup:static-content:deploy
@@ -57,7 +57,7 @@
 					<p>Or: </p>
 					<ul class="features">
 						<li> you can <a href="#get">download</a> the zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.</li>
-						<li> you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a></li>
+						<li> you can also get it from the <a href="https://marketplace.magento.com/storelocator-stockists.html"> magento2 marketplace.</a></li>
 					</ul>
 					<p>
 						Note! It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
@@ -120,7 +120,7 @@
 								<td>Check the sample csv file in <a href="https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension/tree/master/docs">documentation folder</a>;</td>
 								<td>Name, latitude and longitude are required;</td>
 								<td>Country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;</td>
-								<td>The image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);</td>
+								<td>The image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/storelocator_stockists/stockist/image/t/e/ (last 2 letters changed of course);</td>
 								<td>To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 									<img src="./images/csv.jpg" alt="magento2 store locator CSV" />
 								</td>
@@ -183,15 +183,15 @@
 						<tbody>
 							<tr>
 								<td>If you installed it manually</td>
-								<td>remove the folder app/code/Limesharp/Stockists</td>
-								<td>drop the tables limesharp_stockists_stores (drop table limesharp_stockists_stores);</td>
-								<td>remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'limesharp_stockists/%'</td>
-								<td>remove the module Limesharp_Stockists from app/etc/config.php</td>
-								<td>remove the module Limesharp_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Limesharp_Stockists'</td>
+								<td>remove the folder app/code/Storelocator/Stockists</td>
+								<td>drop the tables storelocator_stockists_stores (drop table storelocator_stockists_stores);</td>
+								<td>remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'storelocator_stockists/%'</td>
+								<td>remove the module Storelocator_Stockists from app/etc/config.php</td>
+								<td>remove the module Storelocator_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Storelocator_Stockists'</td>
 							</tr>
 							<tr>
 								<td>If you installed it via composer</td>
-								<td>run this in console: php bin/magento module:uninstall -r Limesharp_Stockists.</td>
+								<td>run this in console: php bin/magento module:uninstall -r Storelocator_Stockists.</td>
 							</tr>
 						</tbody>
 					</table>

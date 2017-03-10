@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,44 +10,44 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 
-namespace Limesharp\Stockists\Controller\View;
+namespace Storelocator\Stockists\Controller\View;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
-use Limesharp\Stockists\Model\Stores;
+use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
+use Storelocator\Stockists\Model\Stores;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Index
- * @package Limesharp\Stockists\Controller\View
+ * @package Storelocator\Stockists\Controller\View
  */
 class Index extends Action
 {
     /**
      * @var string
      */
-    const META_DESCRIPTION_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_description';
+    const META_DESCRIPTION_CONFIG_PATH = 'storelocator_stockists/stockist_content/meta_description';
 
     /**
      * @var string
      */
-    const META_KEYWORDS_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_keywords';
+    const META_KEYWORDS_CONFIG_PATH = 'storelocator_stockists/stockist_content/meta_keywords';
 
     /**
      * @var string
      */
-    const META_TITLE_CONFIG_PATH = 'limesharp_stockists/stockist_content/meta_title';
+    const META_TITLE_CONFIG_PATH = 'storelocator_stockists/stockist_content/meta_title';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,28 +10,28 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
  ?>
  
-<?php /** @var \Limesharp\Stockists\Block\Stockists $block */?>
+<?php /** @var \Storelocator\Stockists\Block\Stockists $block */?>
 <?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
-<?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
+<?php $modulePath = "storelocator_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
 <?php 
 	if($block->getMapPin()){ 
 		
-		$mapPin = $block->getMediaUrl()."limesharp_stockists/".$block->getMapPin();
+		$mapPin = $block->getMediaUrl()."storelocator_stockists/".$block->getMapPin();
 		
 	} else {
 		
-		$mapPin = $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png');
+		$mapPin = $block->getViewFileUrl('Storelocator_Stockists::images/map_pin.png');
 	
 	}
 ?>
@@ -206,7 +206,7 @@ declare(strict_types=1);
     {
         "*": {
 	                        
-            "limesharp_stockists": {
+            "storelocator_stockists": {
 	            "moduleUrl" : "<?php echo $block->getModuleUrlSettings() ?>",
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $mapPin; ?>",
