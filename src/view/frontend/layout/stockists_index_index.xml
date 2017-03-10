@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Limesharp_Stockists extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
+ * @copyright 2016 Claudiu Creanga
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Claudiu Creanga
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Stockists</title>
+        <css src="Limesharp_Stockists::css/stockists.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="stockists"/>
+        <referenceContainer name="content">
+            <block class="Limesharp\Stockists\Block\Stockists" name="stockists.stores" template="Limesharp_Stockists::main.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
