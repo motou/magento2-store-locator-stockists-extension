@@ -58,8 +58,8 @@ class InstallSchema implements InstallSchemaInterface
                 )
                 ->addColumn(
                     'store_id',
-                    Table::TYPE_SMALLINT,
-                    null,
+                    Table::TYPE_TEXT,
+                    255,
                     [
                         'unsigned'  => true,
                         'nullable'  => false,
