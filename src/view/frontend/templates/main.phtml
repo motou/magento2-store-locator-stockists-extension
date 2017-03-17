@@ -24,6 +24,8 @@ declare(strict_types=1);
 <?php $countryList = $block->getCountries(); ?>
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
+<?php $storeId = $block->getStoreId(); ?>
+
 <?php 
 	if($block->getMapPin()){ 
 		
@@ -65,46 +67,48 @@ declare(strict_types=1);
 		        <div class="results-store">
 		            
 		            <?php foreach ($data as $item): ?>
-		            
+				<?php $stores = explode(",", $item["store_id"]); ?>
+				<?php if (in_array($storeId, $stores)): ?>		        
 		
-		                <?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
-		                
-		                <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
-		                    
-		                    <?php if ($item["image"]): ?>
-		                        
-		                        <div class="image">
-		                            <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
-		                                 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
-		                        </div>
-		                        
-		                    <?php endif; ?>
-		                    
-		                    <div class="results-item-data">
-			                    
-			                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-			                    
-			                    <?php if ($item["address"]): ?>
-			                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-			                    <?php endif; ?>
-			                    
-			                    <?php if ($item["city"]): ?>
-			                        <p class="results-phone">
-				                        <?php 
-					                        echo $block->escapeHtml($item["city"]); 
-					                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
-					                    ?>
-				                    </p>
-			                    <?php endif; ?>
-			                    
-			                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
-			                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
-			                    <?php endif; ?>
-			                    
-		                    </div>
-		                    
-		                </div>    
-		                    
+					<?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
+
+					<div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+
+					    <?php if ($item["image"]): ?>
+
+						<div class="image">
+						    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
+							 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
+						</div>
+
+					    <?php endif; ?>
+
+					    <div class="results-item-data">
+
+						    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+
+						    <?php if ($item["address"]): ?>
+							<p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
+						    <?php endif; ?>
+
+						    <?php if ($item["city"]): ?>
+							<p class="results-phone">
+								<?php 
+									echo $block->escapeHtml($item["city"]); 
+									echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
+								    ?>
+							    </p>
+						    <?php endif; ?>
+
+						    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
+							<p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+						    <?php endif; ?>
+
+					    </div>
+
+					</div> 
+				
+				<?php endif; ?>		                  
 		            
 		            <?php endforeach; ?>
 		                        
@@ -149,47 +153,48 @@ declare(strict_types=1);
 	        <div class="results-store">
 	            
 	            <?php foreach ($data as $item): ?>
-	            
+	            	<?php $stores = explode(",", $item["store_id"]); ?>
+			<?php if (in_array($storeId, $stores)): ?>	
 	
-	                <?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
-	                
-	                <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
-	                    
-	                    <?php if ($item["image"]): ?>
-	                        
-	                        <div class="image">
-	                            <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
-	                                 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
-	                        </div>
-	                        
-	                    <?php endif; ?>
-	                    
-	                    <div class="results-item-data">
-	                    
-		                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-		                    
-		                    <?php if ($item["address"]): ?>
-		                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-		                    <?php endif; ?>
-		                    
-		                    <?php if ($item["city"]): ?>
-		                        <p class="results-phone">
-			                        <?php 
-				                        echo $block->escapeHtml($item["city"]); 
-				                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
-				                    ?>
-			                    </p>
-		                    <?php endif; ?>
-		                    
-		                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
-		                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
-		                    <?php endif; ?>
-		                    
-	                    </div>
-	                    
-	                </div>    
-	                    
-	            
+				<?php $data_marker = $item["latitude"].$item["longitude"]; ?>                        
+
+				<div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+
+				    <?php if ($item["image"]): ?>
+
+					<div class="image">
+					    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>" 
+						 alt="<?php echo $block->escapeHtml($item["name"]) ?>" /> 
+					</div>
+
+				    <?php endif; ?>
+
+				    <div class="results-item-data">
+
+					    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+
+					    <?php if ($item["address"]): ?>
+						<p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
+					    <?php endif; ?>
+
+					    <?php if ($item["city"]): ?>
+						<p class="results-phone">
+							<?php 
+								echo $block->escapeHtml($item["city"]); 
+								echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : ""; 
+							    ?>
+						    </p>
+					    <?php endif; ?>
+
+					    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
+						<p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+					    <?php endif; ?>
+
+				    </div>
+
+				</div>  
+			<?php endif; ?>
+	                    	            
 	            <?php endforeach; ?>
 	                        
 	        </div>
