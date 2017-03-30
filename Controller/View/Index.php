@@ -27,6 +27,7 @@ use Magento\Store\Model\ScopeInterface;
 use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
 use Storelocator\Stockists\Model\Stores;
 use Magento\Store\Model\StoreManagerInterface;
+use Storelocator\Stockists\Block\Stockists;
 
 /**
  * Class Index
@@ -68,6 +69,13 @@ class Index extends Action
     public $stockistsCollectionFactory;
 
     /**
+     * Configuration
+     *
+     * @var Stockists
+     */
+    protected $stockistsConfig;
+
+    /**
      * @param Context $context
      * @param PageFactory $resultPageFactory
      * @param ScopeConfigInterface $scopeConfig
@@ -77,13 +85,15 @@ class Index extends Action
         PageFactory $resultPageFactory,
         ScopeConfigInterface $scopeConfig,
         StockistsCollectionFactory $stockistsCollectionFactory,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+        Stockists $stockistsConfig
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
         $this->scopeConfig = $scopeConfig;
         $this->stockistsCollectionFactory = $stockistsCollectionFactory;
         $this->storeManager = $storeManager;
+        $this->stockistsConfig = $stockistsConfig;
     }
 
     /**
@@ -94,7 +104,9 @@ class Index extends Action
     public function execute()
     {
         $url = $this->_url->getCurrentUrl();
-        preg_match('/our-stores\/(.*)/',$url,$matches);
+        $moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
+
+        preg_match('/'.$moduleUrl.'\/(.*)/', $url, $matches);
 
         $details = $this->getStoreDetails($matches[1]);
         $allStores = $this->getAllStockistStores();

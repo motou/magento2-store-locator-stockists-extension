@@ -120,9 +120,16 @@ class Export extends Stores
             $content .= '"longitude",';
             $content .= '"status",';
             $content .= '"updated_at",';
-            $content .= '"created_at"';
+            $content .= '"created_at",';
+            $content .= '"schedule",';
+            $content .= '"intro",';
+            $content .= '"description",';
+            $content .= '"distance",';
+            $content .= '"station",';
+            $content .= '"details_image",';
+            $content .= '"external_link"';
             $content .= "\n";
-            
+
             $fileName = 'stockists_export.csv';
             $collection = $this->collectionFactory->create()->getData();
             

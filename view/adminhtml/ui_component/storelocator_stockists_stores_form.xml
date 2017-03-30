@@ -287,7 +287,7 @@
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">link</item>
-                    <item name="notice" xsi:type="string" translate="true">If you want a store details page on the same website enter your url here. If the final url is www.website.com/stores/waterloo then you need to enter only waterloo.</item>
+                    <item name="notice" xsi:type="string" translate="true">If you want a store details page on the same website enter your url here. If the final url is www.website.com/stockists/waterloo then you need to enter only waterloo.</item>
                 </item>
             </argument>
         </field>
@@ -348,7 +348,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Menu Intro</item>
+                    <item name="label" xsi:type="string" translate="true">Intro</item>
                     <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>

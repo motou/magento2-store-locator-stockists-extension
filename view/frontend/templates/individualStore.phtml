@@ -18,7 +18,6 @@ declare(strict_types=1);
  */
 ?>
 <?php /** @var \Storelocator\Stockists\Block\Stockists $block */ ?>
-<?php $_store = $block->getCurrentStore();?>
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
 <?php $modulePath = "storelocator_stockists/stockist/image/"; ?>
@@ -39,7 +38,7 @@ if($block->getMapPin()){
 <div class="individual-stockists">
 
     <div class="image">
-        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($storeDetails["image"]) ?>"
+        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($storeDetails["details_image"]) ?>"
              alt="<?php echo $block->escapeHtml(__($storeDetails["address"])) ?>" />
     </div>
 
@@ -74,12 +73,9 @@ if($block->getMapPin()){
             </a>
         </div>
         <div id="map-canvas-individual"></div>
-        <div class="lunch">
-            <a class="lunch-menu" href="<?php echo $block->escapeHtml($storeDetails["lunch_menu"]) ?>" target="_blank">
-                <?php echo $block->escapeHtml(__("View lunch menu served at this store.")) ?>
-            </a>
-            <p class="lunch-intro">
-                <?php echo $block->escapeHtml(__($storeDetails["intro"])) ?>
+        <div class="intro">
+            <p class="intro">
+                <?php echo $block->escapeHtml(__($storeDetails["intro"])); ?>
             </p>
         </div>
         <?php if ($storeDetails["schedule"]): ?>
@@ -99,26 +95,28 @@ if($block->getMapPin()){
 </div>
 <div class="clearfix"></div>
 
-<div class="all-stores">
-    <div class="all-stores-title">
-        <p><?php echo $block->escapeHtml(__("View Our Other Stores")) ?></p>
-    </div>
-    <div class="all-stores-slider-wrapper">
-        <?php foreach($allStores as $store): ?>
-            <div class="item">
-                <div class="image">
-                    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
-                         alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
-                </div>
-                <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
-                    <div class="details">
-                        <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+<?php if($block->getOtherStoresSettings()): ?>
+    <div class="all-stores">
+        <div class="all-stores-title">
+            <p><?php echo $block->escapeHtml(__("View Our Other Stores")) ?></p>
+        </div>
+        <div class="all-stores-slider-wrapper">
+            <?php foreach($allStores as $store): ?>
+                <div class="item">
+                    <div class="image">
+                        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
+                             alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
                     </div>
-                </a>
-            </div>
-        <?php endforeach; ?>
+                    <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
+                        <div class="details">
+                            <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 
 <script type="text/x-magento-init">
     {

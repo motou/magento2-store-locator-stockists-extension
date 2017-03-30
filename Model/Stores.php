@@ -177,6 +177,73 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     }
 
     /**
+     * set external link
+     *
+     * @param $external_link
+     * @return StockistInterface
+     */
+    public function setExternalLink($external_link)
+    {
+        return $this->setData(StockistInterface::EXTERNAL_LINK, $external_link);
+    }
+
+
+    /**
+     * set schedule
+     *
+     * @param $schedule
+     * @return StockistInterface
+     */
+    public function setSchedule($schedule)
+    {
+        return $this->setData(StockistInterface::SCHEDULE, $schedule);
+    }
+
+    /**
+     * set distance
+     *
+     * @param $distance
+     * @return StockistInterface
+     */
+    public function setDistance($distance)
+    {
+        return $this->setData(StockistInterface::DISTANCE, $distance);
+    }
+
+    /**
+     * set description
+     *
+     * @param $description
+     * @return StockistInterface
+     */
+    public function setDescription($description)
+    {
+        return $this->setData(StockistInterface::DESCRIPTION, $description);
+    }
+
+    /**
+     * set station
+     *
+     * @param $station
+     * @return StockistInterface
+     */
+    public function setStation($station)
+    {
+        return $this->setData(StockistInterface::STATION, $station);
+    }
+
+    /**
+     * set intro
+     *
+     * @param $intro
+     * @return StockistInterface
+     */
+    public function setIntro($intro)
+    {
+        return $this->setData(StockistInterface::INTRO, $intro);
+    }
+
+    /**
      * set type
      *
      * @param $type
@@ -372,6 +439,66 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     }
 
     /**
+     * Get schedule
+     *
+     * @return string
+     */
+    public function getSchedule()
+    {
+        return $this->getData(StockistInterface::SCHEDULE);
+    }
+
+    /**
+     * Get intro
+     *
+     * @return string
+     */
+    public function getIntro()
+    {
+        return $this->getData(StockistInterface::INTRO);
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->getData(StockistInterface::DESCRIPTION);
+    }
+
+    /**
+     * Get station
+     *
+     * @return string
+     */
+    public function getStation()
+    {
+        return $this->getData(StockistInterface::STATION);
+    }
+
+    /**
+     * Get distance
+     *
+     * @return string
+     */
+    public function getDistance()
+    {
+        return $this->getData(StockistInterface::DISTANCE);
+    }
+
+    /**
+     * Get details image
+     *
+     * @return string
+     */
+    public function getDetailsImage()
+    {
+        return $this->getData(StockistInterface::DETAILS_IMAGE);
+    }
+
+    /**
      * Get city
      *
      * @return string
@@ -440,6 +567,48 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
             }
         }
         return $url;
+    }
+
+    /**
+     * @return bool|string
+     * @throws LocalizedException
+     */
+    public function getDetailsImageUrl()
+    {
+        $url = false;
+        $image = $this->getDetailsImage();
+        if ($image) {
+            if (is_string($image)) {
+                $uploader = $this->uploaderPool->getUploader('image');
+                $url = $uploader->getBaseUrl().$uploader->getBasePath().$image;
+            } else {
+                throw new LocalizedException(
+                    __('Something went wrong while getting the image url.')
+                );
+            }
+        }
+        return $url;
+    }
+
+    /**
+     * Get external link
+     *
+     * @return string
+     */
+    public function getExternalLink()
+    {
+        return $this->getData(StockistInterface::EXTERNAL_LINK);
+    }
+
+    /**
+     * set details image
+     *
+     * @param $details_image
+     * @return StockistInterface
+     */
+    public function setDetailsImage($details_image)
+    {
+        return $this->setData(StockistInterface::DETAILS_IMAGE, $details_image);
     }
 
     /**

@@ -55,6 +55,10 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Templates: Choose from 3 different templates;
 * Api key: Use your own Gmaps api key for higher traffic;
 
+### TO DO
+
+* Create individual store pages on csv import, currently working only on admin save
+
 ## Usage
 
 ### Basic
@@ -71,6 +75,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * name, latitude and longitude are required;
 * country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
 * image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/storelocator_stockists/stockist/image/t/e/ (last 2 letters changed of course);
+* if you want a stockist to be in multiple stores you can pass the ids of stores comma separated inside the store_id field;
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
 ![csv](docs/images/csv.jpg?raw=true "CSV")
