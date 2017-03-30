@@ -156,9 +156,18 @@ class Stockists extends \Magento\Framework\View\Element\Template
         $collection = $this->stockistsCollectionFactory->create()
             ->addFieldToSelect('*')
             ->addFieldToFilter('status', Stores::STATUS_ENABLED)
-            ->addStoreFilter($this->_storeManager->getStore()->getId())
             ->setOrder('name', 'ASC');
         return $collection;
+    }
+
+    /**
+     * Get store identifier
+     *
+     * @return  string
+     */
+    public function getStoreId()
+    {
+        return $this->_storeManager->getStore()->getId();
     }
     
     /**

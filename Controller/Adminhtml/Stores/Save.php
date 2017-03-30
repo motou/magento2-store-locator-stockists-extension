@@ -101,6 +101,14 @@ class Save extends Stores
             }
             $image = $this->getUploader('image')->uploadFileAndGetName('image', $data);
             $data['image'] = $image;
+            if(isset($data['store_id'])) {
+                if(in_array('0',$data['store_id'])){
+                    $data['store_id'] = '0';
+                }
+                else{
+                    $data['store_id'] = implode(",", $data['store_id']);
+                }
+            }
             $this->dataObjectHelper->populateWithArray($stockist, $data, StockistInterface::class);
             $this->stockistRepository->save($stockist);
             $this->messageManager->addSuccessMessage(__('You saved the store'));

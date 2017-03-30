@@ -82,6 +82,7 @@
             <argument name="uploaderPool" xsi:type="object">Storelocator\Stockists\Model\UploaderPool</argument>
             <argument name="optionProviders" xsi:type="array">
                 <item name="country" xsi:type="object">Storelocator\Stockists\Model\Source\Country</item>
+                <item name="store_id" xsi:type="object">Storelocator\Stockists\Model\Source\Stores</item>
             </argument>
         </arguments>
     </type>

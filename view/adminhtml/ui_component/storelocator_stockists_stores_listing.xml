@@ -316,12 +316,17 @@
                 </item>
             </argument>
         </column>
-        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+        <column name="store_id">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Storelocator\Stockists\Model\Source\Stores</item>
                 <item name="config" xsi:type="array">
                     <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
-                    <item name="sortable" xsi:type="boolean">false</item>
-                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="editor" xsi:type="string">select</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Sore Views</item>
                 </item>
             </argument>
         </column>

@@ -21,7 +21,7 @@
   "autoload": {
     "files": [ "src/registration.php" ],
     "psr-4": {
-      "Storelocator\\Stockists\\": "src/"
+      "Storelocator\\Stockists\\": ""
     }
   }
 }
