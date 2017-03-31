@@ -90,6 +90,13 @@ class Save extends Stores
     protected $stockistsConfig;
 
     /**
+     * StockistInterfaceFactory
+     *
+     * @var Stockists
+     */
+    protected $stockistFactory;
+
+    /**
      * @param Registry $registry
      * @param StockistRepositoryInterface $stockistRepository
      * @param PageFactory $resultPageFactory
@@ -221,7 +228,7 @@ class Save extends Stores
 
     /**
      * Saves the url rewrite for that specific store
-     * @param $data array
+     * @param $link string
      * @param $id int
      * @param $storeId int
      * @return void

@@ -122,11 +122,11 @@ class Export extends Stores
             $content .= '"updated_at",';
             $content .= '"created_at",';
             $content .= '"schedule",';
-            $content .= '"intro",';
-            $content .= '"description",';
-            $content .= '"distance",';
             $content .= '"station",';
+            $content .= '"description",';
+            $content .= '"intro",';
             $content .= '"details_image",';
+            $content .= '"distance",';
             $content .= '"external_link"';
             $content .= "\n";
 

@@ -24,7 +24,7 @@ $ php bin/magento setup:static-content:deploy
 $ php bin/magento cache:clean
 ```
 
-Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
+Or you can download the latest zip file from releases, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
 
 Or you can also get it from the <a href="https://marketplace.magento.com/storelocator-stockists.html"> magento2 marketplace.</a>
 
@@ -36,8 +36,9 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 ## Features
 
-* Details: name, address, city, country, postcode, link, telephone, email;
-* Images: upload images of your stores;
+* Details: name, address, city, country, postcode, internal link, external link, telephone, email, schedule, description, intro, nearest station, distance;
+* Images: upload images of your stores. Two images can be uploaded, one for index page and one for individual store pages;
+* Individual store pages on your website;
 * Import: import your stores from a csv file;
 * Export: export stores to a csv file;
 * Interactive map: stores positioned on the map via longitude and latitude;
@@ -55,7 +56,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Templates: Choose from 3 different templates;
 * Api key: Use your own Gmaps api key for higher traffic;
 
-### TO DO
+### Version 2
 
 * Create individual store pages on csv import, currently working only on admin save
 
@@ -85,7 +86,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Just click export stores and a file will be saved by your browser on your computer;
 
 ## Support
-* We **DO NOT** offer any free technical support in installing or customizing this extension.
+* I **DO NOT** offer any free technical support in installing or customizing this extension.
 * This extention works out of the box with any magento 2.1 site, but depending on your theme it may need further styling.
 * If you need help please ask questions on http://magento.stackexchange.com/ .
 

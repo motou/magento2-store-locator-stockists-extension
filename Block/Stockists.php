@@ -151,7 +151,7 @@ class Stockists extends \Magento\Framework\View\Element\Template
       *
       * @return CollectionFactory
       */
-    public function getStoresForFrontend(): Collection
+    public function getStoresForFrontend()
     {
         $collection = $this->stockistsCollectionFactory->create()
             ->addFieldToSelect('*')

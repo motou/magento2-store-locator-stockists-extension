@@ -68,7 +68,7 @@
 }
 .directions-panel .close{
 	display: inline-block;
-	background: url('close.svg') no-repeat;
+	background: url('../images/close.svg') no-repeat;
 	width: 25px;
 	height: 25px;
 	cursor: pointer;
@@ -204,7 +204,7 @@
 }
 .geocode-location{
 	display: inline-block;
-	background: url('location.svg') no-repeat;
+	background: url('../images/location.svg') no-repeat;
 	width: 30px;
 	height: 30px;
 	cursor: pointer;

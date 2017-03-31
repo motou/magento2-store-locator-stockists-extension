@@ -33,7 +33,11 @@ use Storelocator\Stockists\Api\Data\StockistInterfaceFactory;
 use Storelocator\Stockists\Controller\Adminhtml\Stores;
 use Storelocator\Stockists\Model\Uploader;
 use Storelocator\Stockists\Model\UploaderPool;
-
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\UrlRewrite\Model\UrlRewrite as BaseUrlRewrite;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
+use Storelocator\Stockists\Block\Stockists;
 
 class ImportFile extends Stores
 {
@@ -59,6 +63,46 @@ class ImportFile extends Stores
 
 
     /**
+     * @var BaseUrlRewrite
+     */
+    protected $urlRewrite;
+
+    /**
+     * Url rewrite service
+     *
+     * @var $urlRewriteService
+     */
+    protected $urlRewriteService;
+
+    /**
+     * Url finder
+     *
+     * @var UrlFinderInterface
+     */
+    protected $urlFinder;
+
+    /**
+     * Store manager
+     *
+     * @var StoreManagerInterface
+     */
+    protected $storeManager;
+
+    /**
+     * Configuration
+     *
+     * @var Stockists
+     */
+    protected $stockistsConfig;
+
+    /**
+     * StockistInterfaceFactory
+     *
+     * @var Stockists
+     */
+    protected $stockistFactory;
+
+    /**
 
      */
     public function __construct(
@@ -71,9 +115,19 @@ class ImportFile extends Stores
         DataObjectProcessor $dataObjectProcessor,
         DataObjectHelper $dataObjectHelper,
         UploaderPool $uploaderPool,
+        BaseUrlRewrite $urlRewrite,
+        UrlRewriteService $urlRewriteService,
+        UrlFinderInterface $urlFinder,
+        StoreManagerInterface $storeManager,
+        Stockists $stockistsConfig,
         Csv $csvProcessor
     ) {
         $this->csvProcessor = $csvProcessor;
+        $this->urlRewrite = $urlRewrite;
+        $this->urlRewriteService = $urlRewriteService;
+        $this->urlFinder = $urlFinder;
+        $this->storeManager = $storeManager;
+        $this->stockistsConfig = $stockistsConfig;
         $this->stockistFactory = $stockistFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper = $dataObjectHelper;
@@ -92,7 +146,7 @@ class ImportFile extends Stores
         $data = $this->getRequest()->getPostValue();
         $filePath = $data["import"][0]["path"].$data["import"][0]["file"];
         $resultRedirect = $this->resultRedirectFactory->create();
-        
+
         if ($data["import"][0]["path"] && $data["import"][0]["file"]) {
             
             try {
@@ -113,9 +167,11 @@ class ImportFile extends Stores
                         $stockist = $this->stockistFactory->create();
                     }
 
-//                    if($individualStockist["link"]){
-//                        $this->
-//                    }
+                    $storeId = $individualStockist["store_id"] ?? $this->storeManager->getStore()->getId();
+var_dump($stockist->getStockistId(), $storeId); die();
+                    if($individualStockist["link"]){
+                        $this->saveUrlRewrite($individualStockist["link"], $stockistId, $storeId);
+                    }
         
                     $this->dataObjectHelper->populateWithArray($stockist,$individualStockist,StockistInterface::class);
                     $this->stockistRepository->save($stockist);
@@ -153,6 +209,14 @@ class ImportFile extends Stores
         }
 
         return $resultRedirect;
+    }
+
+    /**
+     * @param $stockistData
+     */
+    public function storeStockistDataToSession($stockistData)
+    {
+        $this->_getSession()->setStorelocatorStockistsStoresData($stockistData);
     }
 
     /**
@@ -198,6 +262,60 @@ class ImportFile extends Stores
     public function getUploader($type)
     {
         return $this->uploaderPool->getUploader($type);
+    }
+
+    /**
+     * Saves the url rewrite for that specific store
+     * @param $link string
+     * @param $id int
+     * @param $storeId int
+     * @return void
+     */
+    public function saveUrlRewrite($link, $id, $storeId)
+    {
+        $moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
+        $getCustomUrlRewrite = $moduleUrl."/".$link;
+        $stockistId = $moduleUrl."-".$id;
+        $filterData = [
+            UrlRewriteService::STORE_ID => $storeId,
+            UrlRewriteService::ENTITY_TYPE =>  $stockistId,
+            UrlRewriteService::ENTITY_ID => $id
+        ];
+
+        $rewriteFinder = $this->urlFinder->findOneByData($filterData);
+
+        // if it was not set, create a new one and if necessary delete the old one
+        if ($rewriteFinder === null) {
+
+            // check maybe there is an old url with this target path and delete it
+            $filterDataOldUrl = [
+                UrlRewriteService::STORE_ID => $storeId,
+                UrlRewriteService::REQUEST_PATH => $getCustomUrlRewrite,
+            ];
+            $rewriteFinderOldUrl = $this->urlFinder->findOneByData($filterDataOldUrl);
+
+            if($rewriteFinderOldUrl !== null){
+                $this->urlRewrite->load($rewriteFinderOldUrl->getUrlRewriteId())->delete();
+            }
+
+            // now we can save
+            $this->urlRewrite->setStoreId($storeId)
+                ->setIdPath(rand(1, 100000))
+                ->setRequestPath($getCustomUrlRewrite)
+                ->setTargetPath("stockists/view/index")
+                ->setEntityType($stockistId)
+                ->setEntityId($id)
+                ->setIsSystem(0)
+                ->save();
+        } else {
+            // if it was set check if the info is different and update it if that's the case
+            $targetPathAlreadySet = $this->urlRewrite->load($rewriteFinder->getUrlRewriteId())->getRequestPath();
+            if($targetPathAlreadySet != $getCustomUrlRewrite) {
+                $this->urlRewrite->load($rewriteFinder->getUrlRewriteId())
+                    ->setRequestPath($getCustomUrlRewrite)
+                    ->save();
+            }
+        }
     }
     
 }

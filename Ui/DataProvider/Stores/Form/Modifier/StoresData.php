@@ -55,7 +55,7 @@ class StoresData implements ModifierInterface
     public function modifyData(array $data)
     {
         $items = $this->collection->getItems();
-        /** @var $stockist \Limesharp\Stockists\Model\Stores */
+        /** @var $stockist \Storelocator\Stockists\Model\Stores */
         foreach ($items as $stockist) {
             $_data = $stockist->getData();
             if (isset($_data['image'])) {
