@@ -1,6 +1,6 @@
 # Magento2 stockists store locator extension
 
-This is a feature rich stockists store locator extension for magento2.
+This is a feature rich stockists store locator extension for magento2. 
 
 **Table of Contents** 
 - [Magento2 stockists store locator extension](#)
