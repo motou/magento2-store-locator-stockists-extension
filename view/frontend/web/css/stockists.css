@@ -381,7 +381,6 @@
 .individual-stockists .schedule {
     font-size: 15px;
     margin-top: 30px;
-    border-bottom: 1px solid #c5b097;
 }
 .individual-stockists .schedule .day {
     margin-bottom: 15px;
@@ -389,6 +388,29 @@
 .all-stores {
     padding-top: 32px;
     width: 100%;
+    display:none;
+}
+.all-stores button {
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+.all-stores button#arrow-left {
+    left: -5rem;
+}
+.all-stores button#arrow-right {
+    right: -5rem;
+}
+.all-stores button#arrow-right img {
+    width: 1.5rem;
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.all-stores button#arrow-left,
+.all-stores button#arrow-right {
+    top: 5.5rem;
+    position: absolute;
 }
 .all-stores .all-stores-title {
     text-align: center;
@@ -401,7 +423,6 @@
     text-align: center;
 }
 .all-stores .all-stores-slider-wrapper ul.slick-dots li {
-    display: inline-block;
     margin-right: 1rem;
     margin-left: 1rem;
 }
@@ -418,7 +439,42 @@
     text-indent: 9999px;
     overflow: hidden;
 }
+.slick-dots li {
+    display: none
+}
+.slick-dots li.slick-active,
+.slick-dots li.slick-active + li,
+.slick-dots li.slick-active + li + li,
+.slick-dots li.slick-active + li + li + li,
+.slick-dots li.slick-active + li + li + li + li {
+    display: inline-block;
+}
+.all-stores .all-stores-slider-wrapper .item .details {
+    position: absolute;
+    bottom: 0;
+    background: url("../images/store-background.svg") no-repeat;
+    background-size: cover;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+.all-stores .all-stores-slider-wrapper .item .details p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    padding-top: 12px;
+    text-align:center;
+}
+.all-stores .all-stores-slider-wrapper .item {
+    position: relative;
+}
 @media only screen and (min-width: 768px) {
+    .all-stores .all-stores-slider-wrapper .item {
+        margin: 0 10px;
+    }
+    .all-stores{
+        display: block;
+    }
     .individual-stockists {
         border-bottom: 1px solid #c5b097;
         margin-top: 33px;
@@ -448,6 +504,12 @@
         background: #c5b097;
         width: 45px;
         height: 6px;
+    }
+    .individual-stockists .details .nearest-station p {
+        padding-left: 48px;
+    }
+    .individual-stockists .details .distance p {
+        padding-left: 48px;
     }
     .individual-stockists .details .address {
         margin-top: 29px;
@@ -494,6 +556,18 @@
     }
     #map-canvas-individual {
         height: 189px;
+    }
+    .all-stores .all-stores-slider-wrapper .item .details {
+        position: absolute;
+        bottom: 0;
+        background: url("../images/store-background.svg") no-repeat;
+        background-size: cover;
+        height: 50px;
+        width: 100%;
+        text-align: center;
+    }
+    .all-stores .all-stores-slider-wrapper {
+        margin: 0 auto;
     }
 }
 @media only screen and (min-width: 1024px) {

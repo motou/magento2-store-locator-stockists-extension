@@ -250,6 +250,7 @@
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">schedule</item>
+                    <item name="notice" xsi:type="string" translate="true">Use \n at the end of each day if you want it to break it by day</item>
                 </item>
             </argument>
         </field>

@@ -54,17 +54,19 @@ if($block->getMapPin()){
                 <p><?php echo $block->escapeHtml($storeDetails["city"]) ?></p>
                 <p><?php echo $block->escapeHtml($storeDetails["postcode"]) ?></p>
             </div>
-            <div class="station">
-                <div class="nearest-station">
-                    <p>
-                        <span class="nearest"><?php echo $block->escapeHtml(__("Nearest Station")); ?>
-                        </span><?php echo $block->escapeHtml($storeDetails["station"]) ?></span>
-                    </p>
+            <?php if($storeDetails["station"]): ?>
+                <div class="station">
+                    <div class="nearest-station">
+                        <p>
+                            <span class="nearest"><?php echo $block->escapeHtml(__("Nearest Station")); ?>
+                            </span><?php echo $block->escapeHtml($storeDetails["station"]) ?></span>
+                        </p>
+                    </div>
+                    <div class="distance">
+                        <p><?php echo $storeDetails["distance"] ?></p>
+                    </div>
                 </div>
-                <div class="distance">
-                    <p><?php echo $storeDetails["distance"] ?></p>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
         <div class="clearfix"></div>
         <div class="get-directions">
@@ -73,18 +75,29 @@ if($block->getMapPin()){
             </a>
         </div>
         <div id="map-canvas-individual"></div>
+        <?php if($storeDetails["intro"]): ?>
         <div class="intro">
             <p class="intro">
                 <?php echo $block->escapeHtml(__($storeDetails["intro"])); ?>
             </p>
         </div>
+        <?php endif; ?>
+
+        <?php if($storeDetails["description"]): ?>
+        <div class="intro">
+            <p class="intro">
+                <?php echo $block->escapeHtml(__($storeDetails["description"])); ?>
+            </p>
+        </div>
+        <?php endif; ?>
+
         <?php if ($storeDetails["schedule"]): ?>
             <div class="schedule">
                 <?php
                 $schedule = $block->escapeHtml($storeDetails["schedule"]);
-                $schedule = explode("/n",$schedule);
+                $schedule = explode("\n",$schedule);
                 foreach($schedule as $day): ?>
-                    <p class="day"><?php echo $day; ?></p>
+                    <p class="day"><?php echo str_replace('\n', "", $day); ?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -125,7 +138,7 @@ if($block->getMapPin()){
             "stockists_individual_stores": {
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $mapPin; ?>",
-	            "slider_arrow" : "<?php echo $block->getViewFileUrl("images/slider-arrow.svg"); ?>",
+	            "slider_arrow" : "<?php echo $block->getViewFileUrl('Storelocator_Stockists::images/slider-arrow.svg'); ?>",
 	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
 	            "otherStores" : <?php echo json_encode($block->getOtherStoresSettings()) ?>,
 	            "otherStoresSlider" : <?php echo json_encode($block->getSliderSettings()) ?>,

@@ -34,6 +34,7 @@ use Storelocator\Stockists\Model\Uploader;
 use Storelocator\Stockists\Model\UploaderPool;
 use Magento\UrlRewrite\Model\UrlRewrite as BaseUrlRewrite;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
+use Magento\UrlRewrite\Model\UrlRewriteFactory;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Storelocator\Stockists\Block\Stockists;
@@ -96,6 +97,9 @@ class Save extends Stores
      */
     protected $stockistFactory;
 
+    /** @var UrlRewriteFactory */
+    protected $urlRewriteFactory;
+
     /**
      * @param Registry $registry
      * @param StockistRepositoryInterface $stockistRepository
@@ -117,6 +121,7 @@ class Save extends Stores
         UrlRewriteService $urlRewriteService,
         UrlFinderInterface $urlFinder,
         StoreManagerInterface $storeManager,
+        UrlRewriteFactory $urlRewriteFactory,
         StockistInterfaceFactory $stockistFactory,
         Stockists $stockistsConfig,
         DataObjectProcessor $dataObjectProcessor,
@@ -132,6 +137,7 @@ class Save extends Stores
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->uploaderPool = $uploaderPool;
+        $this->urlRewriteFactory = $urlRewriteFactory;
         parent::__construct($registry, $stockistRepository, $resultPageFactory, $dateFilter, $context);
     }
 
@@ -142,13 +148,13 @@ class Save extends Stores
      */
     public function execute()
     {
-        $storeId = $this->storeManager->getStore()->getId();
-
         /** @var \Storelocator\Stockists\Api\Data\StockistInterface $stockist */
         $stockist = null;
         $data = $this->getRequest()->getPostValue();
         $id = !empty($data['stockist_id']) ? $data['stockist_id'] : null;
         $resultRedirect = $this->resultRedirectFactory->create();
+
+        $storeId = $data["store_id"] ?? $this->storeManager->getStore()->getId();
 
         if($data["link"]) {
             $this->saveUrlRewrite($data["link"], $id, $storeId);
@@ -230,51 +236,66 @@ class Save extends Stores
      * Saves the url rewrite for that specific store
      * @param $link string
      * @param $id int
-     * @param $storeId int
+     * @param $storeIds string
      * @return void
      */
-    public function saveUrlRewrite($link, $id, $storeId)
+    public function saveUrlRewrite($link, $id, $storeIds)
     {
         $moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
-        $getCustomUrlRewrite = $moduleUrl."/".$link;
-        $stockistId = $moduleUrl."-".$id;
-        $filterData = [
-            UrlRewriteService::STORE_ID => $storeId,
-            UrlRewriteService::ENTITY_TYPE =>  $stockistId,
-            UrlRewriteService::ENTITY_ID => $id
-        ];
+        $getCustomUrlRewrite = $moduleUrl . "/" . $link;
+        $stockistId = $moduleUrl . "-" . $id;
 
-        $rewriteFinder = $this->urlFinder->findOneByData($filterData);
+        foreach ($storeIds as $storeId){
 
-        // if it was not set, create a new one and if necessary delete the old one
-        if ($rewriteFinder === null) {
-
-            // check maybe there is an old url with this target path and delete it
-            $filterDataOldUrl = [
+            $filterData = [
                 UrlRewriteService::STORE_ID => $storeId,
                 UrlRewriteService::REQUEST_PATH => $getCustomUrlRewrite,
+                UrlRewriteService::ENTITY_ID => $id,
+
             ];
-            $rewriteFinderOldUrl = $this->urlFinder->findOneByData($filterDataOldUrl);
 
-            if($rewriteFinderOldUrl !== null){
-                $this->urlRewrite->load($rewriteFinderOldUrl->getUrlRewriteId())->delete();
-            }
+            // check if there is an entity with same url and same id
+            $rewriteFinder = $this->urlFinder->findOneByData($filterData);
 
-            // now we can save
-            $this->urlRewrite->setStoreId($storeId)
-                ->setIdPath(rand(1, 100000))
-                ->setRequestPath($getCustomUrlRewrite)
-                ->setTargetPath("stockists/view/index")
-                ->setEntityType($stockistId)
-                ->setEntityId($id)
-                ->setIsSystem(0)
-                ->save();
-        } else {
-            // if it was set check if the info is different and update it if that's the case
-            $targetPathAlreadySet = $this->urlRewrite->load($rewriteFinder->getUrlRewriteId())->getRequestPath();
-            if($targetPathAlreadySet != $getCustomUrlRewrite) {
-                $this->urlRewrite->load($rewriteFinder->getUrlRewriteId())
+            // if there is then do nothing, otherwise proceed
+            if ($rewriteFinder === null) {
+
+                // check maybe there is an old url with this target path and delete it
+                $filterDataOldUrl = [
+                    UrlRewriteService::STORE_ID => $storeId,
+                    UrlRewriteService::REQUEST_PATH => $getCustomUrlRewrite,
+                ];
+                $rewriteFinderOldUrl = $this->urlFinder->findOneByData($filterDataOldUrl);
+
+                if ($rewriteFinderOldUrl !== null) {
+                    $this->urlRewrite->load($rewriteFinderOldUrl->getUrlRewriteId())->delete();
+                }
+
+                // check maybe there is an old id with different url, in this case load the id and update the url
+                $filterDataOldId = [
+                    UrlRewriteService::STORE_ID => $storeId,
+                    UrlRewriteService::ENTITY_TYPE => $stockistId,
+                    UrlRewriteService::ENTITY_ID => $id
+                ];
+                $rewriteFinderOldId = $this->urlFinder->findOneByData($filterDataOldId);
+
+                if ($rewriteFinderOldId !== null) {
+                    $this->urlRewriteFactory->create()->load($rewriteFinderOldId->getUrlRewriteId())
+                        ->setRequestPath($getCustomUrlRewrite)
+                        ->save();
+
+                    continue;
+                }
+
+                // now we can save
+                $this->urlRewriteFactory->create()
+                    ->setStoreId($storeId)
+                    ->setIdPath(rand(1, 100000))
                     ->setRequestPath($getCustomUrlRewrite)
+                    ->setTargetPath("stockists/view/index")
+                    ->setEntityType($stockistId)
+                    ->setEntityId($id)
+                    ->setIsAutogenerated(0)
                     ->save();
             }
         }

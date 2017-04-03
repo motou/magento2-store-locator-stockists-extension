@@ -112,6 +112,10 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 ![window](docs/images/window.jpg?raw=true "Window")
 
+* Store Details:
+
+![window](docs/images/store-details.png?raw=true "Window")
+
 * Frontend search:
 
 ![search](docs/images/search.jpg?raw=true "search")
