@@ -17,7 +17,7 @@ This is a feature rich stockists store locator extension for magento2.
 ## Install
 
 ```
-$ composer require storelocator/stockists
+$ composer require limesharp/stockists
 $ composer update
 $ php bin/magento setup:upgrade 
 $ php bin/magento setup:static-content:deploy
@@ -26,7 +26,7 @@ $ php bin/magento cache:clean
 
 Or you can download the latest zip file from releases, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
 
-Or you can also get it from the <a href="https://marketplace.magento.com/storelocator-stockists.html"> magento2 marketplace.</a>
+Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a>
 
 It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
@@ -55,10 +55,6 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Responsive: Mobile responsive templates;
 * Templates: Choose from 3 different templates;
 * Api key: Use your own Gmaps api key for higher traffic;
-
-### Version 2
-
-* Create individual store pages on csv import, currently working only on admin save
 
 ## Usage
 
