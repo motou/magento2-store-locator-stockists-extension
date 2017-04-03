@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,8 +10,8 @@
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
@@ -19,13 +19,13 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="storelocator_stockists" sortOrder="2000">
+        <tab id="limesharp_stockists" sortOrder="2000">
             <label>Stockists</label>
         </tab>
-        <section id="storelocator_stockists" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="limesharp_stockists" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Stockists</label>
-            <tab>storelocator_stockists</tab>
-            <resource>Storelocator_Stockists::stores</resource>
+            <tab>limesharp_stockists</tab>
+            <resource>Limesharp_Stockists::stores</resource>
             <group id="stockist_content" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Content</label>
                 <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -45,7 +45,7 @@
                 
                 <field id="url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists url</label>
-                    <backend_model>Storelocator\Stockists\Model\UrlRewrite</backend_model>
+                    <backend_model>Limesharp\Stockists\Model\UrlRewrite</backend_model>
                 </field>
 
             </group>
@@ -55,7 +55,7 @@
                 
                 <field id="template" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Select Template</label>
-                    <source_model>Storelocator\Stockists\Model\Template</source_model>
+                    <source_model>Limesharp\Stockists\Model\Template</source_model>
                 </field>
 
                 <field id="api_key" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -97,7 +97,7 @@
                 
                 <field id="map_style" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Stockists style maps</label>
-                    <source_model>Storelocator\Stockists\Model\MapStyles</source_model>
+                    <source_model>Limesharp\Stockists\Model\MapStyles</source_model>
                     <comment>
                         <![CDATA[Popular map styles from snazzymaps]]>
                     </comment>
@@ -106,8 +106,8 @@
                 
                 <field id="map_pin" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Map pin icon</label>
-                    <backend_model>Storelocator\Stockists\Model\SystemImage</backend_model>
-                    <base_url type="media" scope_info="1">storelocator_stockists</base_url>
+                    <backend_model>Limesharp\Stockists\Model\SystemImage</backend_model>
+                    <base_url type="media" scope_info="1">limesharp_stockists</base_url>
                     <comment>
                         <![CDATA[A default pin image will be used if left blank]]>
                     </comment>
@@ -116,7 +116,7 @@
                 
                 <field id="unit_length" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Unit of length</label>
-                    <source_model>Storelocator\Stockists\Model\Unit</source_model>
+                    <source_model>Limesharp\Stockists\Model\Unit</source_model>
                     <comment>
                         <![CDATA[Chose between km and miles, default is km.]]>
                     </comment>

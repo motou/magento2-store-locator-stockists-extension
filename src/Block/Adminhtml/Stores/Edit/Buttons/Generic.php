@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,16 +10,16 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons;
+namespace Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons;
 
 use Magento\Backend\Block\Widget\Context;
-use Storelocator\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class Generic

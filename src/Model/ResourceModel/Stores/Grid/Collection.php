@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Model\ResourceModel\Stores\Grid;
+namespace Limesharp\Stockists\Model\ResourceModel\Stores\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\Search\AggregationInterface;
@@ -28,7 +28,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
-use Storelocator\Stockists\Model\ResourceModel\Stores\Collection as StockistCollection;
+use Limesharp\Stockists\Model\ResourceModel\Stores\Collection as StockistCollection;
 
 
 class Collection extends StockistCollection implements SearchResultInterface

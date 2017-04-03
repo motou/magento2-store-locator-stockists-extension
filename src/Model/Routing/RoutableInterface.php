@@ -1,5 +1,5 @@
 <?php
-namespace Storelocator\Stockists\Model\Routing;
+namespace Limesharp\Stockists\Model\Routing;
 
 interface RoutableInterface
 {

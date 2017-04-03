@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,25 +10,25 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Model\Stores;
+namespace Limesharp\Stockists\Model\Stores;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
-use Storelocator\Stockists\Model\Stores;
+use Limesharp\Stockists\Model\Stores;
 
 class Url
 {
     /**
      * @var string
      */
-    const URL_CONFIG_PATH      = 'storelocator_stockists/stockist_content/url';
+    const URL_CONFIG_PATH      = 'limesharp_stockists/stockist_content/url';
 
     /**
      * url builder

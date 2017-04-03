@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Model;
+namespace Limesharp\Stockists\Model;
 
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Data\Collection\Db;
@@ -26,11 +26,11 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
-use Storelocator\Stockists\Api\Data\StockistInterface;
-use Storelocator\Stockists\Model\Stores\Url;
-use Storelocator\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
-use Storelocator\Stockists\Model\Routing\RoutableInterface;
-use Storelocator\Stockists\Model\Source\AbstractSource;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Model\Stores\Url;
+use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
+use Limesharp\Stockists\Model\Routing\RoutableInterface;
+use Limesharp\Stockists\Model\Source\AbstractSource;
 
 /**
  * @method StockistResourceModel _getResource()
@@ -55,21 +55,21 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
      *
      * @var string
      */
-    const CACHE_TAG = 'storelocator_stockists';
+    const CACHE_TAG = 'limesharp_stockists';
 
     /**
      * cache tag
      *
      * @var string
      */
-    public $_cacheTag = 'storelocator_stockists_stores';
+    public $_cacheTag = 'limesharp_stockists_stores';
 
     /**
      * Prefix of model events names
      *
      * @var string
      */
-    public $_eventPrefix = 'storelocator_stockists_stores';
+    public $_eventPrefix = 'limesharp_stockists_stores';
 
     /**
      * filter model
@@ -84,7 +84,7 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public $uploaderPool;
 
     /**
-     * @var \Storelocator\Stockists\Model\Output
+     * @var \Limesharp\Stockists\Model\Output
      */
     public $outputProcessor;
 

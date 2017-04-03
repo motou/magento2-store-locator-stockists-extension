@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,16 +10,16 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Controller\Adminhtml\Stores;
+namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
-use Storelocator\Stockists\Controller\Adminhtml\Stores;
-use Storelocator\Stockists\Controller\RegistryConstants;
+use Limesharp\Stockists\Controller\Adminhtml\Stores;
+use Limesharp\Stockists\Controller\RegistryConstants;
 
 class Edit extends Stores
 {
@@ -46,7 +46,7 @@ class Edit extends Stores
         $stockistId = $this->_initStockist();
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Storelocator_Stockists::stores');
+        $resultPage->setActiveMenu('Limesharp_Stockists::stores');
         $resultPage->getConfig()->getTitle()->prepend(__('Stockists'));
         $resultPage->addBreadcrumb(__('Stockists'), __('Stockists'), $this->getUrl('stockists/stores'));
 

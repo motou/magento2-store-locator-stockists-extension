@@ -1,5 +1,5 @@
 {
-  "name": "storelocator/stockists",
+  "name": "limesharp/stockists",
   "description": "This is a stockists store locator extension for magento2",
   "type": "magento2-module",
   "version": "2.0.0",
@@ -9,7 +9,7 @@
   "authors": [
     {
       "name": "Claudiu Creanga",
-      "email": "claudiu@storelocator.net",
+      "email": "claudiu@limesharp.net",
       "homepage": "http://claudiucreanga.me",
       "role": "Developer"
     }
@@ -21,7 +21,7 @@
   "autoload": {
     "files": [ "src/registration.php" ],
     "psr-4": {
-      "Storelocator\\Stockists\\": ""
+      "Limesharp\\Stockists\\": ""
     }
   }
 }

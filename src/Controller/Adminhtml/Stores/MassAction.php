@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Controller\Adminhtml\Stores;
+namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -25,10 +25,10 @@ use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Ui\Component\MassAction\Filter;
-use Storelocator\Stockists\Api\StockistRepositoryInterface;
-use Storelocator\Stockists\Controller\Adminhtml\Stores;
-use Storelocator\Stockists\Model\Stores as StockistModel;
-use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Controller\Adminhtml\Stores;
+use Limesharp\Stockists\Model\Stores as StockistModel;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 
 abstract class MassAction extends Stores
 {
@@ -104,7 +104,7 @@ abstract class MassAction extends Stores
             $this->messageManager->addExceptionMessage($e, __($this->errorMessage));
         }
         $redirectResult = $this->resultRedirectFactory->create();
-        $redirectResult->setPath('storelocator_stockists/*/index');
+        $redirectResult->setPath('limesharp_stockists/*/index');
         return $redirectResult;
     }
 }

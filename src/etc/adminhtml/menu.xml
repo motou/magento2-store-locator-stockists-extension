@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,8 +10,8 @@
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
@@ -19,11 +19,11 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Storelocator_Stockists"
+        <add id="Limesharp_Stockists"
              title="Stockists"
-             module="Storelocator_Stockists"
+             module="Limesharp_Stockists"
              sortOrder="9999"
-             resource="Storelocator_Stockists::stores"
+             resource="Limesharp_Stockists::stores"
              parent="Magento_Backend::content"
              action="stockists/stores"
             />                            

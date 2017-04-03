@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Controller\Adminhtml\Stores;
+namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
 
 use Magento\Backend\Model\Session;
 use Magento\Backend\App\Action\Context;
@@ -27,18 +27,18 @@ use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\File\Csv;
-use Storelocator\Stockists\Api\StockistRepositoryInterface;
-use Storelocator\Stockists\Api\Data\StockistInterface;
-use Storelocator\Stockists\Api\Data\StockistInterfaceFactory;
-use Storelocator\Stockists\Controller\Adminhtml\Stores;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
+use Limesharp\Stockists\Controller\Adminhtml\Stores;
 use Magento\UrlRewrite\Model\UrlRewriteFactory;
-use Storelocator\Stockists\Model\Uploader;
-use Storelocator\Stockists\Model\UploaderPool;
+use Limesharp\Stockists\Model\Uploader;
+use Limesharp\Stockists\Model\UploaderPool;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\UrlRewrite as BaseUrlRewrite;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
-use Storelocator\Stockists\Block\Stockists;
+use Limesharp\Stockists\Block\Stockists;
 
 class ImportFile extends Stores
 {
@@ -222,7 +222,7 @@ class ImportFile extends Stores
      */
     public function storeStockistDataToSession($stockistData)
     {
-        $this->_getSession()->setStorelocatorStockistsStoresData($stockistData);
+        $this->_getSession()->setLimesharpStockistsStoresData($stockistData);
     }
 
     /**

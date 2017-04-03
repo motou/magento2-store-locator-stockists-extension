@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Model;
+namespace Limesharp\Stockists\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -27,14 +27,14 @@ use Magento\Framework\Exception\StateException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
-use Storelocator\Stockists\Api\StockistRepositoryInterface;
-use Storelocator\Stockists\Api\Data;
-use Storelocator\Stockists\Api\Data\StockistInterface;
-use Storelocator\Stockists\Api\Data\StockistInterfaceFactory;
-use Storelocator\Stockists\Api\Data\StockistSearchResultsInterfaceFactory;
-use Storelocator\Stockists\Model\ResourceModel\Stores as ResourceStockist;
-use Storelocator\Stockists\Model\ResourceModel\Stores\Collection;
-use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistCollectionFactory;
+use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Limesharp\Stockists\Api\Data;
+use Limesharp\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
+use Limesharp\Stockists\Api\Data\StockistSearchResultsInterfaceFactory;
+use Limesharp\Stockists\Model\ResourceModel\Stores as ResourceStockist;
+use Limesharp\Stockists\Model\ResourceModel\Stores\Collection;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistCollectionFactory;
 
 /**
  * Class StockistRepository
@@ -89,8 +89,8 @@ class StockistRepository implements StockistRepositoryInterface
     /**
      * Save page.
      *
-     * @param \Storelocator\Stockists\Api\Data\StockistInterface $stockist
-     * @return \Storelocator\Stockists\Api\Data\StockistInterface
+     * @param \Limesharp\Stockists\Api\Data\StockistInterface $stockist
+     * @return \Limesharp\Stockists\Api\Data\StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(StockistInterface $stockist)
@@ -115,14 +115,14 @@ class StockistRepository implements StockistRepositoryInterface
      * Retrieve Stockist.
      *
      * @param int $stockistId
-     * @return \Storelocator\Stockists\Api\Data\StockistInterface
+     * @return \Limesharp\Stockists\Api\Data\StockistInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($stockistId)
     {
         if (!isset($this->instances[$stockistId])) {
 
-            /** @var \Storelocator\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
+            /** @var \Limesharp\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
             $stockist = $this->stockistInterfaceFactory->create();
             $this->resource->load($stockist, $stockistId);
             
@@ -140,16 +140,16 @@ class StockistRepository implements StockistRepositoryInterface
      * Retrieve pages matching the specified criteria.
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Storelocator\Stockists\Api\Data\StockistSearchResultsInterface
+     * @return \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var \Storelocator\Stockists\Api\Data\StockistSearchResultsInterface $searchResults */
+        /** @var \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface $searchResults */
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($searchCriteria);
 
-        /** @var \Storelocator\Stockists\Model\ResourceModel\Stores\Collection $collection */
+        /** @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection $collection */
         $collection = $this->stockistCollectionFactory->create();
 
         //Add filters from root filter group to the collection
@@ -176,11 +176,11 @@ class StockistRepository implements StockistRepositoryInterface
         $collection->setCurPage($searchCriteria->getCurrentPage());
         $collection->setPageSize($searchCriteria->getPageSize());
 
-        /** @var \Storelocator\Stockists\Api\Data\StockistInterface[] $stockists */
+        /** @var \Limesharp\Stockists\Api\Data\StockistInterface[] $stockists */
         $stockists = [];
-        /** @var \Storelocator\Stockists\Model\Stores $stockist */
+        /** @var \Limesharp\Stockists\Model\Stores $stockist */
         foreach ($collection as $stockist) {
-            /** @var \Storelocator\Stockists\Api\Data\StockistInterface $stockistDataObject */
+            /** @var \Limesharp\Stockists\Api\Data\StockistInterface $stockistDataObject */
             $stockistDataObject = $this->stockistInterfaceFactory->create();
             $this->dataObjectHelper->populateWithArray($stockistDataObject, $stockist->getData(), StockistInterface::class);
             $stockists[] = $stockistDataObject;
@@ -192,13 +192,13 @@ class StockistRepository implements StockistRepositoryInterface
     /**
      * Delete stockist.
      *
-     * @param \Storelocator\Stockists\Api\Data\StockistInterface $stockist
+     * @param \Limesharp\Stockists\Api\Data\StockistInterface $stockist
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function delete(StockistInterface $stockist)
     {
-        /** @var \Storelocator\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
+        /** @var \Limesharp\Stockists\Api\Data\StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
         $id = $stockist->getId();
         try {
             unset($this->instances[$id]);

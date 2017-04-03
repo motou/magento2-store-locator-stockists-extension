@@ -1,7 +1,7 @@
 <?php
-namespace Storelocator\Stockists\Model\Routing;
+namespace Limesharp\Stockists\Model\Routing;
 
-use Storelocator\Stockists\Model\FactoryInterface;
+use Limesharp\Stockists\Model\FactoryInterface;
 
 class Entity
 {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Model\Source;
+namespace Limesharp\Stockists\Model\Source;
 
 use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
 use Magento\Framework\Option\ArrayInterface;
@@ -24,7 +24,7 @@ use Magento\Framework\Option\ArrayInterface;
 class Country extends AbstractSource implements ArrayInterface
 {
     /**
-     * @var \Storelocator\Stockists\Model\Stores
+     * @var \Limesharp\Stockists\Model\Stores
      */
     public $countryCollectionFactory;
 

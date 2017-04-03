@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,14 +10,14 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
  
-namespace Storelocator\Stockists\Setup;
+namespace Limesharp\Stockists\Setup;
 
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -61,12 +61,12 @@ class Uninstall implements UninstallInterface
     // @codingStandardsIgnoreEnd
     {
         //remove tables
-        if ($setup->tableExists('storelocator_stockists_stores')) {
-            $setup->getConnection()->dropTable('storelocator_stockists_stores');
+        if ($setup->tableExists('limesharp_stockists_stores')) {
+            $setup->getConnection()->dropTable('limesharp_stockists_stores');
         }
         //remove config settings if any
         $collection = $this->collectionFactory->create()
-            ->addPathFilter('storelocator_stockists_stores');
+            ->addPathFilter('limesharp_stockists_stores');
         foreach ($collection as $config) {
             $this->deleteConfig($config);
         }

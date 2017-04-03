@@ -1,6 +1,6 @@
 define([
         'jquery',
-        'storelocator_stockists',
+        'limesharp_stockists',
         'stockists_countries',
         'stockists_mapstyles',
         'stockists_search',

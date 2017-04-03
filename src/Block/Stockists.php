@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,19 +10,19 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
  
-namespace Storelocator\Stockists\Block;
+namespace Limesharp\Stockists\Block;
 
 use Magento\Backend\Block\Template\Context;
-use Storelocator\Stockists\Model\Stores;
-use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
-use Storelocator\Stockists\Model\ResourceModel\Stores\Collection;
+use Limesharp\Stockists\Model\Stores;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory as StockistsCollectionFactory;
+use Limesharp\Stockists\Model\ResourceModel\Stores\Collection;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\Config\Source\Country;
 use Magento\Store\Model\ScopeInterface;
@@ -33,97 +33,97 @@ class Stockists extends \Magento\Framework\View\Element\Template
     /**
      * @var string
      */
-    const MAP_STYLES_CONFIG_PATH = 'storelocator_stockists/stockist_map/map_style';
+    const MAP_STYLES_CONFIG_PATH = 'limesharp_stockists/stockist_map/map_style';
 
     /**
      * @var string
      */
-    const URL_CONFIG_PATH = 'storelocator_stockists/stockist_content/url';
+    const URL_CONFIG_PATH = 'limesharp_stockists/stockist_content/url';
             
     /**
      * @var string
      */
-    const MAP_PIN_CONFIG_PATH = 'storelocator_stockists/stockist_map/map_pin';
+    const MAP_PIN_CONFIG_PATH = 'limesharp_stockists/stockist_map/map_pin';
             
     /**
      * @var string
      */
-    const ASK_LOCATION_CONFIG_PATH = 'storelocator_stockists/stockist_map/ask_location';
+    const ASK_LOCATION_CONFIG_PATH = 'limesharp_stockists/stockist_map/ask_location';
     
     /**
      * @var string
      */
-    const TEMPLATE_CONFIG_PATH = 'storelocator_stockists/stockist_map/template';
+    const TEMPLATE_CONFIG_PATH = 'limesharp_stockists/stockist_map/template';
 
     /**
      * @var string
      */
-    const API_KEY_CONFIG_PATH = 'storelocator_stockists/stockist_map/api_key';
+    const API_KEY_CONFIG_PATH = 'limesharp_stockists/stockist_map/api_key';
 
     /**
      * @var string
      */
-    const UNIT_LENGTH_CONFIG_PATH = 'storelocator_stockists/stockist_map/unit_length';
+    const UNIT_LENGTH_CONFIG_PATH = 'limesharp_stockists/stockist_map/unit_length';
         
     /**
      * @var int
      */
-    const LATITUDE_CONFIG_PATH = 'storelocator_stockists/stockist_map/latitude';
+    const LATITUDE_CONFIG_PATH = 'limesharp_stockists/stockist_map/latitude';
             
     /**
      * @var int
      */
-    const LONGITUDE_CONFIG_PATH = 'storelocator_stockists/stockist_map/longitude';
+    const LONGITUDE_CONFIG_PATH = 'limesharp_stockists/stockist_map/longitude';
             
     /**
      * @var int
      */
-    const ZOOM_CONFIG_PATH = 'storelocator_stockists/stockist_map/zoom';
+    const ZOOM_CONFIG_PATH = 'limesharp_stockists/stockist_map/zoom';
 
     /**
      * @var int
      */
-    const ZOOM_INDIVIDUAL_CONFIG_PATH = 'storelocator_stockists/stockist_individual/zoom_individual';
+    const ZOOM_INDIVIDUAL_CONFIG_PATH = 'limesharp_stockists/stockist_individual/zoom_individual';
 
     /**
      * @var int
      */
-    const SLIDER_CONFIG_PATH = 'storelocator_stockists/stockist_individual/stores_slider';
+    const SLIDER_CONFIG_PATH = 'limesharp_stockists/stockist_individual/stores_slider';
 
     /**
      * @var int
      */
-    const OTHER_STORES_CONFIG_PATH = 'storelocator_stockists/stockist_individual/other_stores';
+    const OTHER_STORES_CONFIG_PATH = 'limesharp_stockists/stockist_individual/other_stores';
             
     /**
      * @var string
      */
-    const RADIUS_CONFIG_PATH = 'storelocator_stockists/stockist_map/radius';
+    const RADIUS_CONFIG_PATH = 'limesharp_stockists/stockist_map/radius';
             
     /**
      * @var string
      */
-    const STROKE_WEIGHT_CONFIG_PATH = 'storelocator_stockists/stockist_radius/circle_stroke_weight';
+    const STROKE_WEIGHT_CONFIG_PATH = 'limesharp_stockists/stockist_radius/circle_stroke_weight';
     
     /**
      * @var string
      */
-    const STROKE_OPACITY_CONFIG_PATH = 'storelocator_stockists/stockist_radius/circle_stroke_opacity';
+    const STROKE_OPACITY_CONFIG_PATH = 'limesharp_stockists/stockist_radius/circle_stroke_opacity';
         
     /**
      * @var string
      */
-    const STROKE_COLOR_CONFIG_PATH = 'storelocator_stockists/stockist_radius/circle_stroke_color';
+    const STROKE_COLOR_CONFIG_PATH = 'limesharp_stockists/stockist_radius/circle_stroke_color';
             
     /**
      * @var string
      */
-    const FILL_OPACITY_CONFIG_PATH = 'storelocator_stockists/stockist_radius/circle_fill_opacity';
+    const FILL_OPACITY_CONFIG_PATH = 'limesharp_stockists/stockist_radius/circle_fill_opacity';
             
     /**
      * @var string
      */
-    const FILL_COLOR_CONFIG_PATH = 'storelocator_stockists/stockist_radius/circle_fill_color';
+    const FILL_COLOR_CONFIG_PATH = 'limesharp_stockists/stockist_radius/circle_fill_color';
     
     /**
      * @var StockistsCollectionFactory

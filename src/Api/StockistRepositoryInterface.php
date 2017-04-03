@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,16 +10,16 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Storelocator\Stockists\Api;
+namespace Limesharp\Stockists\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Storelocator\Stockists\Api\Data\StockistInterface;
+use Limesharp\Stockists\Api\Data\StockistInterface;
 
 /**
  * @api
@@ -48,7 +48,7 @@ interface StockistRepositoryInterface
      * Retrieve pages matching the specified criteria.
      *
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \Storelocator\Stockists\Api\Data\StockistSearchResultsInterface
+     * @return \Limesharp\Stockists\Api\Data\StockistSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);

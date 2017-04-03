@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,22 +10,22 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 
-namespace Storelocator\Stockists\Ui\DataProvider\Stores\Form\Modifier;
+namespace Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier;
 
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 
 class StoresData implements ModifierInterface
 {
     /**
-     * @var \Storelocator\Stockists\Model\ResourceModel\Stores\Collection
+     * @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection
      */
     public $collection;
 
@@ -55,7 +55,7 @@ class StoresData implements ModifierInterface
     public function modifyData(array $data)
     {
         $items = $this->collection->getItems();
-        /** @var $stockist \Storelocator\Stockists\Model\Stores */
+        /** @var $stockist \Limesharp\Stockists\Model\Stores */
         foreach ($items as $stockist) {
             $_data = $stockist->getData();
             if (isset($_data['image'])) {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Storelocator\Stockists\Model\Source;
+namespace Limesharp\Stockists\Model\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 use \Magento\Store\Model\StoreManagerInterface;

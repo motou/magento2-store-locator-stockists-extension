@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Storelocator_Stockists extension
+ * Limesharp_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,8 +10,8 @@
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Storelocator
- * @package   Storelocator_Stockists
+ * @category  Limesharp
+ * @package   Limesharp_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
@@ -23,7 +23,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="storelocator_stockists_stores_form"/>
+            <uiComponent name="limesharp_stockists_stores_form"/>
         </referenceContainer>
     </body>
 </page>
