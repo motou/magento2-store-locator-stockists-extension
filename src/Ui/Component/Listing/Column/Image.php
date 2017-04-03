@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,21 +10,21 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
      
-namespace Limesharp\Stockists\Ui\Component\Listing\Column;
+namespace Storelocator\Stockists\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Limesharp\Stockists\Model\Uploader;
+use Storelocator\Stockists\Model\Uploader;
 
 /**
  * @method Image setName($name)
@@ -39,7 +39,7 @@ class Image extends Column
     public $storeManager;
 
     /**
-     * @var \Limesharp\Stockists\Model\Uploader
+     * @var \Storelocator\Stockists\Model\Uploader
      */
     public $imageModel;
 
@@ -47,7 +47,7 @@ class Image extends Column
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
-     * @param \Limesharp\Stockists\Model\Uploader $imageModel
+     * @param \Storelocator\Stockists\Model\Uploader $imageModel
      * @param array $components
      * @param array $data
      */
@@ -82,7 +82,7 @@ class Image extends Column
                 $item[$fieldName . '_src'] = $url;
                 $item[$fieldName . '_alt'] = $this->getAlt($item) ?: '';
                 $item[$fieldName . '_link'] = $this->urlBuilder->getUrl(
-                    'limesharp_stockists/stockist/edit',
+                    'storelocator_stockists/stockist/edit',
                     ['store_id' => $item['store_id']]
                 );
                 $item[$fieldName . '_orig_src'] = $url;

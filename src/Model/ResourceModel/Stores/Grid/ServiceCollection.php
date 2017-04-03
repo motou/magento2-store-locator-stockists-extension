@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,14 +10,14 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 // @codingStandardsIgnoreFile
-namespace Limesharp\Stockists\Model\ResourceModel\Stores\Grid;
+namespace Storelocator\Stockists\Model\ResourceModel\Stores\Grid;
 
 use Magento\Framework\Api\AbstractServiceCollection;
 use Magento\Framework\Api\FilterBuilder;
@@ -26,8 +26,8 @@ use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\Api\SortOrderBuilder;
 use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
-use Limesharp\Stockists\Api\StockistRepositoryInterface;
-use Limesharp\Stockists\Api\Data\StockistInterface;
+use Storelocator\Stockists\Api\StockistRepositoryInterface;
+use Storelocator\Stockists\Api\Data\StockistInterface;
 
 /**
  * Stockist collection backed by services

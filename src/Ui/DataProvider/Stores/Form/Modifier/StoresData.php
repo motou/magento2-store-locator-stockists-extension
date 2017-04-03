@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,22 +10,22 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 
-namespace Limesharp\Stockists\Ui\DataProvider\Stores\Form\Modifier;
+namespace Storelocator\Stockists\Ui\DataProvider\Stores\Form\Modifier;
 
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 
 class StoresData implements ModifierInterface
 {
     /**
-     * @var \Limesharp\Stockists\Model\ResourceModel\Stores\Collection
+     * @var \Storelocator\Stockists\Model\ResourceModel\Stores\Collection
      */
     public $collection;
 
@@ -55,7 +55,7 @@ class StoresData implements ModifierInterface
     public function modifyData(array $data)
     {
         $items = $this->collection->getItems();
-        /** @var $stockist \Limesharp\Stockists\Model\Stores */
+        /** @var $stockist \Storelocator\Stockists\Model\Stores */
         foreach ($items as $stockist) {
             $_data = $stockist->getData();
             if (isset($_data['image'])) {
@@ -63,6 +63,12 @@ class StoresData implements ModifierInterface
                 $image[0]['name'] = $stockist->getImage();
                 $image[0]['url'] = $stockist->getImageUrl();
                 $_data['image'] = $image;
+            }
+            if (isset($_data['details_image'])) {
+                $image = [];
+                $image[0]['name'] = $stockist->getDetailsImage();
+                $image[0]['url'] = $stockist->getDetailsImageUrl();
+                $_data['details_image'] = $image;
             }
             $stockist->setData($_data);
             $data[$stockist->getId()] = $_data;

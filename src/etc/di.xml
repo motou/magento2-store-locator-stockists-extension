@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,35 +10,35 @@
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Limesharp\Stockists\Api\StockistRepositoryInterface" type="Limesharp\Stockists\Model\StockistRepository" />
-    <preference for="Limesharp\Stockists\Api\Data\StockistInterface" type="Limesharp\Stockists\Model\Stores" />
+    <preference for="Storelocator\Stockists\Api\StockistRepositoryInterface" type="Storelocator\Stockists\Model\StockistRepository" />
+    <preference for="Storelocator\Stockists\Api\Data\StockistInterface" type="Storelocator\Stockists\Model\Stores" />
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="limesharp_stockists_stores_listing_data_source" xsi:type="string">Limesharp\Stockists\Model\ResourceModel\Stores\Grid\Collection</item>
+                <item name="storelocator_stockists_stores_listing_data_source" xsi:type="string">Storelocator\Stockists\Model\ResourceModel\Stores\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Model\ResourceModel\Stores\Grid\Collection">
+    <type name="Storelocator\Stockists\Model\ResourceModel\Stores\Grid\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">limesharp_stockists_stores</argument>
-            <argument name="eventPrefix" xsi:type="string">limesharp_stockists_stores_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">storelocator_stockists_stores</argument>
+            <argument name="eventPrefix" xsi:type="string">storelocator_stockists_stores_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">stores_grid_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Limesharp\Stockists\Model\ResourceModel\Stores</argument>
+            <argument name="resourceModel" xsi:type="string">Storelocator\Stockists\Model\ResourceModel\Stores</argument>
         </arguments>
     </type>
-    <virtualType name="LimesharpStockistsStoresImageUploader" type="Limesharp\Stockists\Model\Uploader">
+    <virtualType name="StorelocatorStockistsStoresImageUploader" type="Storelocator\Stockists\Model\Uploader">
         <arguments>
-            <argument name="baseTmpPath" xsi:type="const">Limesharp\Stockists\Model\Uploader::IMAGE_TMP_PATH</argument>
-            <argument name="basePath" xsi:type="const">Limesharp\Stockists\Model\Uploader::IMAGE_PATH</argument>
+            <argument name="baseTmpPath" xsi:type="const">Storelocator\Stockists\Model\Uploader::IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Storelocator\Stockists\Model\Uploader::IMAGE_PATH</argument>
             <argument name="allowedExtensions" xsi:type="array">
                 <item name="jpg" xsi:type="string">jpg</item>
                 <item name="jpeg" xsi:type="string">jpeg</item>
@@ -47,76 +47,77 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\Image\Upload">
+    <type name="Storelocator\Stockists\Controller\Adminhtml\Stores\Image\Upload">
         <arguments>
-            <argument name="uploader" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
+            <argument name="uploader" xsi:type="object">StorelocatorStockistsStoresImageUploader</argument>
         </arguments>
     </type>
-    <virtualType name="LimesharpStockistsStoresFileUploader" type="Limesharp\Stockists\Model\Uploader">
+    <virtualType name="StorelocatorStockistsStoresFileUploader" type="Storelocator\Stockists\Model\Uploader">
         <arguments>
-            <argument name="baseTmpPath" xsi:type="const">Limesharp\Stockists\Model\Uploader::FILE_TMP_PATH</argument>
-            <argument name="basePath" xsi:type="const">Limesharp\Stockists\Model\Uploader::FILE_PATH</argument>
+            <argument name="baseTmpPath" xsi:type="const">Storelocator\Stockists\Model\Uploader::FILE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Storelocator\Stockists\Model\Uploader::FILE_PATH</argument>
             <argument name="allowedExtensions" xsi:type="array" />
         </arguments>
     </virtualType>
-    <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\File\Upload">
+    <type name="Storelocator\Stockists\Controller\Adminhtml\Stores\File\Upload">
         <arguments>
-            <argument name="uploader" xsi:type="object">LimesharpStockistsStoresFileUploader</argument>
+            <argument name="uploader" xsi:type="object">StorelocatorStockistsStoresFileUploader</argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Model\UploaderPool">
+    <type name="Storelocator\Stockists\Model\UploaderPool">
         <arguments>
             <argument name="uploaders" xsi:type="array">
-                <item name="image" xsi:type="string">LimesharpStockistsStoresImageUploader</item>
-                <item name="file" xsi:type="string">LimesharpStockistsStoresFileUploader</item>
+                <item name="image" xsi:type="string">StorelocatorStockistsStoresImageUploader</item>
+                <item name="file" xsi:type="string">StorelocatorStockistsStoresFileUploader</item>
             </argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Controller\Adminhtml\Stores\Save">
+    <type name="Storelocator\Stockists\Controller\Adminhtml\Stores\Save">
         <arguments>
-            <argument name="uploaderPool" xsi:type="object">Limesharp\Stockists\Model\UploaderPool</argument>
+            <argument name="uploaderPool" xsi:type="object">Storelocator\Stockists\Model\UploaderPool</argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Model\Stores">
+    <type name="Storelocator\Stockists\Model\Stores">
         <arguments>
-            <argument name="uploaderPool" xsi:type="object">Limesharp\Stockists\Model\UploaderPool</argument>
+            <argument name="uploaderPool" xsi:type="object">Storelocator\Stockists\Model\UploaderPool</argument>
             <argument name="optionProviders" xsi:type="array">
-                <item name="country" xsi:type="object">Limesharp\Stockists\Model\Source\Country</item>
+                <item name="country" xsi:type="object">Storelocator\Stockists\Model\Source\Country</item>
+                <item name="store_id" xsi:type="object">Storelocator\Stockists\Model\Source\Stores</item>
             </argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Ui\Component\Listing\Column\Image">
+    <type name="Storelocator\Stockists\Ui\Component\Listing\Column\Image">
         <arguments>
-            <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
+            <argument name="imageModel" xsi:type="object">StorelocatorStockistsStoresImageUploader</argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Model\Output">
+    <type name="Storelocator\Stockists\Model\Output">
         <arguments>
             <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
         </arguments>
     </type>
-    <virtualType name="LimesharpStockistsModelStoresSourceStatus" type="Limesharp\Stockists\Model\Source\Options">
+    <virtualType name="StorelocatorStockistsModelStoresSourceStatus" type="Storelocator\Stockists\Model\Source\Options">
         <arguments>
             <argument name="options" xsi:type="array">
                 <item name="1" xsi:type="array">
-                    <item name="value" xsi:type="const">Limesharp\Stockists\Model\Stores::STATUS_ENABLED</item>
+                    <item name="value" xsi:type="const">Storelocator\Stockists\Model\Stores::STATUS_ENABLED</item>
                     <item name="label" xsi:type="string" translate="true">Enabled</item>
                 </item>
                 <item name="2" xsi:type="array">
-                    <item name="value" xsi:type="const">Limesharp\Stockists\Model\Stores::STATUS_DISABLED</item>
+                    <item name="value" xsi:type="const">Storelocator\Stockists\Model\Stores::STATUS_DISABLED</item>
                     <item name="label" xsi:type="string" translate="true">Disabled</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>  
-    <type name="Limesharp\Stockists\Model\Image">
+    <type name="Storelocator\Stockists\Model\Image">
         <arguments>
-            <argument name="uploader" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
+            <argument name="uploader" xsi:type="object">StorelocatorStockistsStoresImageUploader</argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Ui\Component\Listing\Column\Image">
+    <type name="Storelocator\Stockists\Ui\Component\Listing\Column\Image">
         <arguments>
-            <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
+            <argument name="imageModel" xsi:type="object">StorelocatorStockistsStoresImageUploader</argument>
         </arguments>
     </type>
 </config>

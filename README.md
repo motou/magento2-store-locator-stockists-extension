@@ -17,16 +17,16 @@ This is a feature rich stockists store locator extension for magento2.
 ## Install
 
 ```
-$ composer require limesharp/stockists
+$ composer require storelocator/stockists
 $ composer update
 $ php bin/magento setup:upgrade 
 $ php bin/magento setup:static-content:deploy
 $ php bin/magento cache:clean
 ```
 
-Or you can download this zip file, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
+Or you can download the latest zip file from releases, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
 
-Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a>
+Or you can also get it from the <a href="https://marketplace.magento.com/storelocator-stockists.html"> magento2 marketplace.</a>
 
 It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
@@ -36,8 +36,9 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 ## Features
 
-* Details: name, address, city, country, postcode, link, telephone, email;
-* Images: upload images of your stores;
+* Details: name, address, city, country, postcode, internal link, external link, telephone, email, schedule, description, intro, nearest station, distance;
+* Images: upload images of your stores. Two images can be uploaded, one for index page and one for individual store pages;
+* Individual store pages on your website;
 * Import: import your stores from a csv file;
 * Export: export stores to a csv file;
 * Interactive map: stores positioned on the map via longitude and latitude;
@@ -55,6 +56,10 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * Templates: Choose from 3 different templates;
 * Api key: Use your own Gmaps api key for higher traffic;
 
+### Version 2
+
+* Create individual store pages on csv import, currently working only on admin save
+
 ## Usage
 
 ### Basic
@@ -70,17 +75,18 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * check the sample csv file in in <a href="https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension/tree/master/docs">docs folder</a>;
 * name, latitude and longitude are required;
 * country field should be the 2 letter ISO code. Example: GB for United Kingdom and US for USA;
-* image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/limesharp_stockists/stockist/image/t/e/ (last 2 letters changed of course);
+* image should be the path of the image which is built from the first to letters separated by slash and then the name of the image. Example: for image test.png the path is /t/e/test.png. The image should be placed in folder pub/media/storelocator_stockists/stockist/image/t/e/ (last 2 letters changed of course);
+* if you want a stockist to be in multiple stores you can pass the ids of stores comma separated inside the store_id field;
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
-![csv](docs/images/csv.jpg?raw=true "CSV")
+![csv](../../magento2-store-locator-stockists-extension/docs/images/csv.jpg?raw=true "CSV")
 
 ### Export
 
 * Just click export stores and a file will be saved by your browser on your computer;
 
 ## Support
-* We **DO NOT** offer any free technical support in installing or customizing this extension.
+* I **DO NOT** offer any free technical support in installing or customizing this extension.
 * This extention works out of the box with any magento 2.1 site, but depending on your theme it may need further styling.
 * If you need help please ask questions on http://magento.stackexchange.com/ .
 
@@ -88,42 +94,46 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 * Main dashboard:
 
-![Main dashboard](docs/images/main.jpg?raw=true "Main dashboard")
+![Main dashboard](../../magento2-store-locator-stockists-extension/docs/images/main.jpg?raw=true "Main dashboard")
 * Location in admin:
 
-![Locationd](docs/images/location.jpg?raw=true "Location")
+![Locationd](../../magento2-store-locator-stockists-extension/docs/images/location.jpg?raw=true "Location")
 * Settings:
 
-![Settings](docs/images/settings1.jpg?raw=true "Settings")
-![Settings](docs/images/settings2.jpg?raw=true "Settings")
-![Settings](docs/images/settings3.jpg?raw=true "Settings")
+![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings1.jpg?raw=true "Settings")
+![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings2.jpg?raw=true "Settings")
+![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings3.jpg?raw=true "Settings")
 
 * Frontend full page:
 
-![Frontend](docs/images/front.jpg?raw=true "Frontend")
+![Frontend](../../magento2-store-locator-stockists-extension/docs/images/front.jpg?raw=true "Frontend")
 
 * Frontend store window:
 
-![window](docs/images/window.jpg?raw=true "Window")
+![window](../../magento2-store-locator-stockists-extension/docs/images/window.jpg?raw=true "Window")
+
+* Store Details:
+
+![window](../../magento2-store-locator-stockists-extension/docs/images/store-details.png?raw=true "Window")
 
 * Frontend search:
 
-![search](docs/images/search.jpg?raw=true "search")
+![search](../../magento2-store-locator-stockists-extension/docs/images/search.jpg?raw=true "search")
 
 * Driving directions:
 
-![Driving directions](docs/images/directions.jpg?raw=true "Driving directions")
+![Driving directions](../../magento2-store-locator-stockists-extension/docs/images/directions.jpg?raw=true "Driving directions")
 
 ## Uninstall
 
 * If you installed it manually:
 
-	- remove the folder app/code/Limesharp/Stockists;
-	- drop the tables limesharp_stockists_stores (drop table limesharp_stockists_stores);
-	- remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'limesharp_stockists/%'
-	- remove the module Limesharp_Stockists from app/etc/config.php
-	- remove the module Limesharp_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Limesharp_Stockists'
+	- remove the folder app/code/Storelocator/Stockists;
+	- drop the tables storelocator_stockists_stores (drop table storelocator_stockists_stores);
+	- remove the config settings. DELETE FROM core_config_data WHERE path LIKE 'storelocator_stockists/%'
+	- remove the module Storelocator_Stockists from app/etc/config.php
+	- remove the module Storelocator_Stockists from table setup_module: DELETE FROM setup_module WHERE module='Storelocator_Stockists'
 
 * If you installed it via composer:
 
-	- run this in console: php bin/magento module:uninstall -r Limesharp_Stockists.
+	- run this in console: php bin/magento module:uninstall -r Storelocator_Stockists.

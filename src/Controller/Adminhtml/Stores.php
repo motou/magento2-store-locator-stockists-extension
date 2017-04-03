@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,27 +10,27 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Controller\Adminhtml;
+namespace Storelocator\Stockists\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
-use Limesharp\Stockists\Api\StockistRepositoryInterface;
+use Storelocator\Stockists\Api\StockistRepositoryInterface;
 
 abstract class Stores extends Action
 {
     /**
      * @var string
      */
-    const ACTION_RESOURCE = 'Limesharp_Stockists::stores';
+    const ACTION_RESOURCE = 'Storelocator_Stockists::stores';
     /**
      * stockist factory
      *

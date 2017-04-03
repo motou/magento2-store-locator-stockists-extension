@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Model\ResourceModel\Stores;
+namespace Storelocator\Stockists\Model\ResourceModel\Stores;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
@@ -26,8 +26,8 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
-use Limesharp\Stockists\Model\Stores;
-use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
+use Storelocator\Stockists\Model\Stores;
+use Storelocator\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 
 class Collection extends AbstractCollection
 {
@@ -40,7 +40,7 @@ class Collection extends AbstractCollection
      *
      * @var string
      */
-    public $_eventPrefix = 'limesharp_stockists_stores_collection';
+    public $_eventPrefix = 'storelocator_stockists_stores_collection';
 
     /**
      * Event object
@@ -180,8 +180,8 @@ class Collection extends AbstractCollection
         $linkedIds = $this->getColumnValues($linkField);
         if (count($linkedIds)) {
             $connection = $this->getConnection();
-            $select = $connection->select()->from(['limesharp_stockists_stores' => $this->getTable($tableName)])
-                ->where('limesharp_stockists_stores.' . $linkField . ' IN (?)', $linkedIds);
+            $select = $connection->select()->from(['storelocator_stockists_stores' => $this->getTable($tableName)])
+                ->where('storelocator_stockists_stores.' . $linkField . ' IN (?)', $linkedIds);
             // @codingStandardsIgnoreStart
             $result = $connection->fetchAll($select);
             // @codingStandardsIgnoreEnd

@@ -2,26 +2,26 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">limesharp_stockists_stores_form.stores_form_data_source</item>
-            <item name="deps" xsi:type="string">limesharp_stockists_stores_form.stores_form_data_source</item>
+            <item name="provider" xsi:type="string">storelocator_stockists_stores_form.stores_form_data_source</item>
+            <item name="deps" xsi:type="string">storelocator_stockists_stores_form.stores_form_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Store Information</item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
-            <item name="namespace" xsi:type="string">limesharp_stockists_stores_form</item>
+            <item name="namespace" xsi:type="string">storelocator_stockists_stores_form</item>
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Back</item>
-            <item name="delete" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Delete</item>
-            <item name="reset" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Reset</item>
-            <item name="save" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Save</item>
-            <item name="save_and_continue" xsi:type="string">Limesharp\Stockists\Block\Adminhtml\Stores\Edit\Buttons\SaveAndContinue</item>
+            <item name="back" xsi:type="string">Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Back</item>
+            <item name="delete" xsi:type="string">Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Delete</item>
+            <item name="reset" xsi:type="string">Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Reset</item>
+            <item name="save" xsi:type="string">Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons\Save</item>
+            <item name="save_and_continue" xsi:type="string">Storelocator\Stockists\Block\Adminhtml\Stores\Edit\Buttons\SaveAndContinue</item>
         </item>
     </argument>
     <dataSource name="stores_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Limesharp\Stockists\Model\Stores\DataProvider</argument>
+            <argument name="class" xsi:type="string">Storelocator\Stockists\Model\Stores\DataProvider</argument>
             <argument name="name" xsi:type="string">stores_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">stockist_id</argument>
             <argument name="requestFieldName" xsi:type="string">stockist_id</argument>
@@ -174,7 +174,7 @@
         </field>
         <field name="country">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Limesharp\Stockists\Model\Source\Country</item>
+                <item name="options" xsi:type="object">Storelocator\Stockists\Model\Source\Country</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Country</item>
@@ -250,6 +250,7 @@
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">schedule</item>
+                    <item name="notice" xsi:type="string" translate="true">Use \n at the end of each day if you want it to break it by day</item>
                 </item>
             </argument>
         </field>
@@ -262,7 +263,7 @@
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">fileUploader</item>
                     <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">Limesharp_Stockists/image-preview</item>
+                    <item name="previewTmpl" xsi:type="string">Storelocator_Stockists/image-preview</item>
                     <item name="required" xsi:type="boolean">false</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="stockists/stores_image/upload/field/image"/>
@@ -287,7 +288,7 @@
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">link</item>
-                    <item name="notice" xsi:type="string" translate="true">If you want a store details page on the same website enter your url here. If the final url is www.website.com/stores/waterloo then you need to enter only waterloo.</item>
+                    <item name="notice" xsi:type="string" translate="true">If you want a store details page on the same website enter your url here. If the final url is www.website.com/stockists/waterloo then you need to enter only waterloo.</item>
                 </item>
             </argument>
         </field>
@@ -336,7 +337,7 @@
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">fileUploader</item>
                     <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">Limesharp_Stockists/image-preview</item>
+                    <item name="previewTmpl" xsi:type="string">Storelocator_Stockists/image-preview</item>
                     <item name="required" xsi:type="boolean">false</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="stockists/stores_image/upload/field/details_image"/>
@@ -348,7 +349,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Menu Intro</item>
+                    <item name="label" xsi:type="string" translate="true">Intro</item>
                     <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">stores</item>
                     <item name="sortOrder" xsi:type="number">20</item>
@@ -367,7 +368,7 @@
         </argument>
         <field name="storeviews">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Limesharp\Stockists\Ui\Component\Listing\Column\Store\Options</item>
+                <item name="options" xsi:type="object">Storelocator\Stockists\Ui\Component\Listing\Column\Store\Options</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">int</item>
                     <item name="label" xsi:type="string" translate="true">Store View</item>

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Api\Data;
+namespace Storelocator\Stockists\Api\Data;
 
 use Magento\Framework\Api\SearchResultsInterface;
 
@@ -28,14 +28,14 @@ interface StockistSearchResultsInterface extends SearchResultsInterface
     /**
      * Get stockist list.
      *
-     * @return \Limesharp\Stockists\Api\Data\StockistInterface[]
+     * @return \Storelocator\Stockists\Api\Data\StockistInterface[]
      */
     public function getItems();
 
     /**
      * Set stockists list.
      *
-     * @param \Limesharp\Stockists\Api\Data\StockistInterface[] $items
+     * @param \Storelocator\Stockists\Api\Data\StockistInterface[] $items
      * @return $this
      */
     public function setItems(array $items);

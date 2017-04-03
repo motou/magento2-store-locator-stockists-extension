@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Model;
+namespace Storelocator\Stockists\Model;
 
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Data\Collection\Db;
@@ -26,11 +26,11 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
-use Limesharp\Stockists\Api\Data\StockistInterface;
-use Limesharp\Stockists\Model\Stores\Url;
-use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
-use Limesharp\Stockists\Model\Routing\RoutableInterface;
-use Limesharp\Stockists\Model\Source\AbstractSource;
+use Storelocator\Stockists\Api\Data\StockistInterface;
+use Storelocator\Stockists\Model\Stores\Url;
+use Storelocator\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
+use Storelocator\Stockists\Model\Routing\RoutableInterface;
+use Storelocator\Stockists\Model\Source\AbstractSource;
 
 /**
  * @method StockistResourceModel _getResource()
@@ -55,21 +55,21 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
      *
      * @var string
      */
-    const CACHE_TAG = 'limesharp_stockists';
+    const CACHE_TAG = 'storelocator_stockists';
 
     /**
      * cache tag
      *
      * @var string
      */
-    public $_cacheTag = 'limesharp_stockists_stores';
+    public $_cacheTag = 'storelocator_stockists_stores';
 
     /**
      * Prefix of model events names
      *
      * @var string
      */
-    public $_eventPrefix = 'limesharp_stockists_stores';
+    public $_eventPrefix = 'storelocator_stockists_stores';
 
     /**
      * filter model
@@ -84,7 +84,7 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public $uploaderPool;
 
     /**
-     * @var \Limesharp\Stockists\Model\Output
+     * @var \Storelocator\Stockists\Model\Output
      */
     public $outputProcessor;
 
@@ -174,6 +174,73 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public function setName($name)
     {
         return $this->setData(StockistInterface::NAME, $name);
+    }
+
+    /**
+     * set external link
+     *
+     * @param $external_link
+     * @return StockistInterface
+     */
+    public function setExternalLink($external_link)
+    {
+        return $this->setData(StockistInterface::EXTERNAL_LINK, $external_link);
+    }
+
+
+    /**
+     * set schedule
+     *
+     * @param $schedule
+     * @return StockistInterface
+     */
+    public function setSchedule($schedule)
+    {
+        return $this->setData(StockistInterface::SCHEDULE, $schedule);
+    }
+
+    /**
+     * set distance
+     *
+     * @param $distance
+     * @return StockistInterface
+     */
+    public function setDistance($distance)
+    {
+        return $this->setData(StockistInterface::DISTANCE, $distance);
+    }
+
+    /**
+     * set description
+     *
+     * @param $description
+     * @return StockistInterface
+     */
+    public function setDescription($description)
+    {
+        return $this->setData(StockistInterface::DESCRIPTION, $description);
+    }
+
+    /**
+     * set station
+     *
+     * @param $station
+     * @return StockistInterface
+     */
+    public function setStation($station)
+    {
+        return $this->setData(StockistInterface::STATION, $station);
+    }
+
+    /**
+     * set intro
+     *
+     * @param $intro
+     * @return StockistInterface
+     */
+    public function setIntro($intro)
+    {
+        return $this->setData(StockistInterface::INTRO, $intro);
     }
 
     /**
@@ -372,6 +439,66 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     }
 
     /**
+     * Get schedule
+     *
+     * @return string
+     */
+    public function getSchedule()
+    {
+        return $this->getData(StockistInterface::SCHEDULE);
+    }
+
+    /**
+     * Get intro
+     *
+     * @return string
+     */
+    public function getIntro()
+    {
+        return $this->getData(StockistInterface::INTRO);
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->getData(StockistInterface::DESCRIPTION);
+    }
+
+    /**
+     * Get station
+     *
+     * @return string
+     */
+    public function getStation()
+    {
+        return $this->getData(StockistInterface::STATION);
+    }
+
+    /**
+     * Get distance
+     *
+     * @return string
+     */
+    public function getDistance()
+    {
+        return $this->getData(StockistInterface::DISTANCE);
+    }
+
+    /**
+     * Get details image
+     *
+     * @return string
+     */
+    public function getDetailsImage()
+    {
+        return $this->getData(StockistInterface::DETAILS_IMAGE);
+    }
+
+    /**
      * Get city
      *
      * @return string
@@ -440,6 +567,48 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
             }
         }
         return $url;
+    }
+
+    /**
+     * @return bool|string
+     * @throws LocalizedException
+     */
+    public function getDetailsImageUrl()
+    {
+        $url = false;
+        $image = $this->getDetailsImage();
+        if ($image) {
+            if (is_string($image)) {
+                $uploader = $this->uploaderPool->getUploader('image');
+                $url = $uploader->getBaseUrl().$uploader->getBasePath().$image;
+            } else {
+                throw new LocalizedException(
+                    __('Something went wrong while getting the image url.')
+                );
+            }
+        }
+        return $url;
+    }
+
+    /**
+     * Get external link
+     *
+     * @return string
+     */
+    public function getExternalLink()
+    {
+        return $this->getData(StockistInterface::EXTERNAL_LINK);
+    }
+
+    /**
+     * set details image
+     *
+     * @param $details_image
+     * @return StockistInterface
+     */
+    public function setDetailsImage($details_image)
+    {
+        return $this->setData(StockistInterface::DETAILS_IMAGE, $details_image);
     }
 
     /**

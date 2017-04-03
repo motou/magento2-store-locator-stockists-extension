@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,36 +10,35 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 ?>
-<?php /** @var \Limesharp\Stockists\Block\Stockists $block */ ?>
-<?php $_store = $block->getCurrentStore();?>
+<?php /** @var \Storelocator\Stockists\Block\Stockists $block */ ?>
 <?php $data = $block->getStoresForFrontend(); ?>
 <?php $countryList = $block->getCountries(); ?>
-<?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
+<?php $modulePath = "storelocator_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
 <?php $storeDetails = $this->getDetails(); ?>
 <?php $allStores = $this->getAllStores(); ?>
 <?php
 if($block->getMapPin()){
 
-    $mapPin = $block->getMediaUrl()."limesharp_stockists/".$block->getMapPin();
+    $mapPin = $block->getMediaUrl()."storelocator_stockists/".$block->getMapPin();
 
 } else {
 
-    $mapPin = $block->getViewFileUrl('Limesharp_Stockists::images/map_pin.png');
+    $mapPin = $block->getViewFileUrl('Storelocator_Stockists::images/map_pin.png');
 
 }
 ?>
 <div class="individual-stockists">
 
     <div class="image">
-        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($storeDetails["image"]) ?>"
+        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($storeDetails["details_image"]) ?>"
              alt="<?php echo $block->escapeHtml(__($storeDetails["address"])) ?>" />
     </div>
 
@@ -55,17 +54,19 @@ if($block->getMapPin()){
                 <p><?php echo $block->escapeHtml($storeDetails["city"]) ?></p>
                 <p><?php echo $block->escapeHtml($storeDetails["postcode"]) ?></p>
             </div>
-            <div class="station">
-                <div class="nearest-station">
-                    <p>
-                        <span class="nearest"><?php echo $block->escapeHtml(__("Nearest Station")); ?>
-                        </span><?php echo $block->escapeHtml($storeDetails["station"]) ?></span>
-                    </p>
+            <?php if($storeDetails["station"]): ?>
+                <div class="station">
+                    <div class="nearest-station">
+                        <p>
+                            <span class="nearest"><?php echo $block->escapeHtml(__("Nearest Station")); ?>
+                            </span><?php echo $block->escapeHtml($storeDetails["station"]) ?></span>
+                        </p>
+                    </div>
+                    <div class="distance">
+                        <p><?php echo $storeDetails["distance"] ?></p>
+                    </div>
                 </div>
-                <div class="distance">
-                    <p><?php echo $storeDetails["distance"] ?></p>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
         <div class="clearfix"></div>
         <div class="get-directions">
@@ -74,21 +75,29 @@ if($block->getMapPin()){
             </a>
         </div>
         <div id="map-canvas-individual"></div>
-        <div class="lunch">
-            <a class="lunch-menu" href="<?php echo $block->escapeHtml($storeDetails["lunch_menu"]) ?>" target="_blank">
-                <?php echo $block->escapeHtml(__("View lunch menu served at this store.")) ?>
-            </a>
-            <p class="lunch-intro">
-                <?php echo $block->escapeHtml(__($storeDetails["intro"])) ?>
+        <?php if($storeDetails["intro"]): ?>
+        <div class="intro">
+            <p class="intro">
+                <?php echo $block->escapeHtml(__($storeDetails["intro"])); ?>
             </p>
         </div>
+        <?php endif; ?>
+
+        <?php if($storeDetails["description"]): ?>
+        <div class="intro">
+            <p class="intro">
+                <?php echo $block->escapeHtml(__($storeDetails["description"])); ?>
+            </p>
+        </div>
+        <?php endif; ?>
+
         <?php if ($storeDetails["schedule"]): ?>
             <div class="schedule">
                 <?php
                 $schedule = $block->escapeHtml($storeDetails["schedule"]);
-                $schedule = explode("/n",$schedule);
+                $schedule = explode("\n",$schedule);
                 foreach($schedule as $day): ?>
-                    <p class="day"><?php echo $day; ?></p>
+                    <p class="day"><?php echo str_replace('\n', "", $day); ?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -99,26 +108,28 @@ if($block->getMapPin()){
 </div>
 <div class="clearfix"></div>
 
-<div class="all-stores">
-    <div class="all-stores-title">
-        <p><?php echo $block->escapeHtml(__("View Our Other Stores")) ?></p>
-    </div>
-    <div class="all-stores-slider-wrapper">
-        <?php foreach($allStores as $store): ?>
-            <div class="item">
-                <div class="image">
-                    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
-                         alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
-                </div>
-                <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
-                    <div class="details">
-                        <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+<?php if($block->getOtherStoresSettings()): ?>
+    <div class="all-stores">
+        <div class="all-stores-title">
+            <p><?php echo $block->escapeHtml(__("View Our Other Stores")) ?></p>
+        </div>
+        <div class="all-stores-slider-wrapper">
+            <?php foreach($allStores as $store): ?>
+                <div class="item">
+                    <div class="image">
+                        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
+                             alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
                     </div>
-                </a>
-            </div>
-        <?php endforeach; ?>
+                    <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
+                        <div class="details">
+                            <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 
 <script type="text/x-magento-init">
     {
@@ -127,7 +138,7 @@ if($block->getMapPin()){
             "stockists_individual_stores": {
 	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
 	            "map_pin" : "<?php echo $mapPin; ?>",
-	            "slider_arrow" : "<?php echo $block->getViewFileUrl("images/slider-arrow.svg"); ?>",
+	            "slider_arrow" : "<?php echo $block->getViewFileUrl('Storelocator_Stockists::images/slider-arrow.svg'); ?>",
 	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
 	            "otherStores" : <?php echo json_encode($block->getOtherStoresSettings()) ?>,
 	            "otherStoresSlider" : <?php echo json_encode($block->getSliderSettings()) ?>,

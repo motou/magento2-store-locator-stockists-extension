@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,14 +10,14 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 
-namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
+namespace Storelocator\Stockists\Controller\Adminhtml\Stores;
 
 use Magento\Backend\Model\Session;
 use Magento\Backend\App\Action\Context;
@@ -31,13 +31,13 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Ui\Component\MassAction\Filter;
-use Limesharp\Stockists\Api\StockistRepositoryInterface;
-use Limesharp\Stockists\Api\Data\StockistInterface;
-use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
-use Limesharp\Stockists\Controller\Adminhtml\Stores;
-use Limesharp\Stockists\Model\Uploader;
-use Limesharp\Stockists\Model\UploaderPool;
-use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
+use Storelocator\Stockists\Api\StockistRepositoryInterface;
+use Storelocator\Stockists\Api\Data\StockistInterface;
+use Storelocator\Stockists\Api\Data\StockistInterfaceFactory;
+use Storelocator\Stockists\Controller\Adminhtml\Stores;
+use Storelocator\Stockists\Model\Uploader;
+use Storelocator\Stockists\Model\UploaderPool;
+use Storelocator\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 
 
 
@@ -120,9 +120,16 @@ class Export extends Stores
             $content .= '"longitude",';
             $content .= '"status",';
             $content .= '"updated_at",';
-            $content .= '"created_at"';
+            $content .= '"created_at",';
+            $content .= '"schedule",';
+            $content .= '"station",';
+            $content .= '"description",';
+            $content .= '"intro",';
+            $content .= '"details_image",';
+            $content .= '"distance",';
+            $content .= '"external_link"';
             $content .= "\n";
-            
+
             $fileName = 'stockists_export.csv';
             $collection = $this->collectionFactory->create()->getData();
             

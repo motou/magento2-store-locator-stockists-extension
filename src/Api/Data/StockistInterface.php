@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Api\Data;
+namespace Storelocator\Stockists\Api\Data;
 
 /**
  * @api
@@ -44,6 +44,13 @@ interface StockistInterface
     const CREATED_AT          = 'created_at';
     const UPDATED_AT          = 'updated_at';
     const STORE_ID            = 'store_id';
+    const SCHEDULE            = 'schedule';
+    const INTRO               = 'intro';
+    const DESCRIPTION         = 'description';
+    const DISTANCE            = 'distance';
+    const STATION             = 'station';
+    const DETAILS_IMAGE       = 'details_image';
+    const EXTERNAL_LINK       = 'external_link';
 
 
     /**
@@ -52,6 +59,57 @@ interface StockistInterface
      * @return int|null
      */
     public function getId();
+
+    /**
+     * Get schedule
+     *
+     * @return string
+     */
+    public function getSchedule();
+
+
+    /**
+     * Get intro
+     *
+     * @return string
+     */
+    public function getIntro();
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
+     * Get external link
+     *
+     * @return string
+     */
+    public function getExternalLink();
+
+    /**
+     * Get distance
+     *
+     * @return string
+     */
+    public function getDistance();
+
+    /**
+     * Get station
+     *
+     * @return string
+     */
+    public function getStation();
+
+    /**
+     * Get store details image
+     *
+     * @return string
+     */
+    public function getDetailsImage();
+
 
     /**
      * Get name
@@ -206,6 +264,63 @@ interface StockistInterface
      * @return StockistInterface
      */
     public function setPostcode($postcode);
+
+
+    /**
+     * set schedule
+     *
+     * @param $schedule
+     * @return StockistInterface
+     */
+    public function setSchedule($schedule);
+
+    /**
+     * set description
+     *
+     * @param $description
+     * @return StockistInterface
+     */
+    public function setDescription($description);
+
+    /**
+     * set distance
+     *
+     * @param $distance
+     * @return StockistInterface
+     */
+    public function setDistance($distance);
+
+    /**
+     * set station
+     *
+     * @param $station
+     * @return StockistInterface
+     */
+    public function setStation($station);
+
+    /**
+     * set external link
+     *
+     * @param $external_link
+     * @return StockistInterface
+     */
+    public function setExternalLink($external_link);
+
+    /**
+     * set intro
+     *
+     * @param $intro
+     * @return StockistInterface
+     */
+    public function setIntro($intro);
+
+    /**
+     * set store details image
+     *
+     * @param $details_image
+     * @return StockistInterface
+     */
+    public function setDetailsImage($details_image);
 
     /**
      * set region

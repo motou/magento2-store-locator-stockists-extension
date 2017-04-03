@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,13 +10,13 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
-namespace Limesharp\Stockists\Controller\Adminhtml\Stores;
+namespace Storelocator\Stockists\Controller\Adminhtml\Stores;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Session;
@@ -27,12 +27,12 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\View\Result\PageFactory;
-use Limesharp\Stockists\Api\StockistRepositoryInterface;
-use Limesharp\Stockists\Api\Data\StockistInterface;
-use Limesharp\Stockists\Api\Data\StockistInterfaceFactory;
-use Limesharp\Stockists\Controller\Adminhtml\Stores as StockistController;
-use Limesharp\Stockists\Model\Stores;
-use Limesharp\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
+use Storelocator\Stockists\Api\StockistRepositoryInterface;
+use Storelocator\Stockists\Api\Data\StockistInterface;
+use Storelocator\Stockists\Api\Data\StockistInterfaceFactory;
+use Storelocator\Stockists\Controller\Adminhtml\Stores as StockistController;
+use Storelocator\Stockists\Model\Stores;
+use Storelocator\Stockists\Model\ResourceModel\Stores as StockistResourceModel;
 
 class InlineEdit extends StockistController
 {
@@ -101,7 +101,7 @@ class InlineEdit extends StockistController
         }
 
         foreach (array_keys($postItems) as $stockistId) {
-            /** @var \Limesharp\Stockists\Model\Stores|StockistInterface $stockist */
+            /** @var \Storelocator\Stockists\Model\Stores|StockistInterface $stockist */
             $stockist = $this->stockistRepository->getById((int)$stockistId);
             try {
                 $stockistData = $this->filterData($postItems[$stockistId]);

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,17 +10,17 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
  
-namespace Limesharp\Stockists\Model;
+namespace Storelocator\Stockists\Model;
 
 use Magento\Framework\ObjectManagerInterface;
-use Limesharp\Stockists\Model\Routing\RoutableInterface;
+use Storelocator\Stockists\Model\Routing\RoutableInterface;
 
 class StockistFactory implements FactoryInterface
 {
@@ -54,7 +54,7 @@ class StockistFactory implements FactoryInterface
      * Create class instance with specified parameters
      *
      * @param array $data
-     * @return RoutableInterface|\Limesharp\Stockists\Model\Stores
+     * @return RoutableInterface|\Storelocator\Stockists\Model\Stores
      */
     public function create(array $data = array())
     {

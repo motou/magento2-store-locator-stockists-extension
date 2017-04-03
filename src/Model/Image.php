@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /**
- * Limesharp_Stockists extension
+ * Storelocator_Stockists extension
  *
  * NOTICE OF LICENSE
  *
@@ -10,14 +10,14 @@ declare(strict_types=1);
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
- * @category  Limesharp
- * @package   Limesharp_Stockists
+ * @category  Storelocator
+ * @package   Storelocator_Stockists
  * @copyright 2016 Claudiu Creanga
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @author    Claudiu Creanga
  */
 
-namespace Limesharp\Stockists\Model;
+namespace Storelocator\Stockists\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -720,7 +720,7 @@ class Image extends AbstractModel
     {
         if ($this->newFile === true) {
             $url = $this->assetRepo->getUrl(
-                "Limesharp_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
+                "Storelocator_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
             );
         } else {
             $url = $this->storeManager->getStore()->getBaseUrl(
@@ -957,7 +957,7 @@ class Image extends AbstractModel
         $fileInfo = null;
         if ($this->newFile === true) {
             $asset = $this->assetRepo->createAsset(
-                "Limesharp_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
+                "Storelocator_Stockists::images/".$this->entityCode."/placeholder/{$this->getDestinationSubdir()}.jpg"
             );
             $img = $asset->getSourceFile();
             $fileInfo = getimagesize($img);

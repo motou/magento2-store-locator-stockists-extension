@@ -38,13 +38,15 @@ define([
 						content: ""
 					});
 
-					function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
+					function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, external_link, email) {
 						google.maps.event.addListener(marker, 'click', function() {
 							var contentString = '<div class="stockists-window" data-latitude="'+marker.getPosition().lat()+'" data-longitude="'+marker.getPosition().lng()+'"><p class="stockists-title">'+name+'</p>'
-							if (link) {
-								var protocol_link = config.moduleUrl+"/"+link;
-								contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">Visit store page</a></p>'
-							}
+                            if (external_link) {
+                                var protocol_link = external_link.indexOf("http") > -1 ? external_link : "http://"+external_link;
+                                contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+external_link+'</a></p>'
+                            } else if (link) {
+                                contentString += '<p class="stockists-telephone"><a href="/'+config.moduleUrl+'/'+link+'" target="_blank">Detail page</a></p>'
+                            }
 							if (telephone) {
 								contentString += '<p class="stockists-telephone">'+telephone+'</p>';
 							}
@@ -89,19 +91,19 @@ define([
 						title: config.storeDetails.name
 					});
 
-					bindInfoWindow(marker, map, infowindow, config.storeDetails.name, config.storeDetails.address, config.storeDetails.city, config.storeDetails.postcode, config.storeDetails.phone, config.storeDetails.link, config.storeDetails.email);
+					bindInfoWindow(marker, map, infowindow, config.storeDetails.name, config.storeDetails.address, config.storeDetails.city, config.storeDetails.postcode, config.storeDetails.phone, config.storeDetails.link, config.storeDetails.external_link, config.storeDetails.email);
 
 				}
 
 				if (config.otherStores && config.otherStoresSlider) {
-					$('.all-stores-slider-wrapper').on(
-						'init',
-						function (event, slick) {
-							if ($(window).width() < 768) {
-								$(".all-stores-slider-wrapper").css("max-width", $(window).width() - 50 + "px");
-							}
-						}
-					)
+					// $('.all-stores-slider-wrapper').on(
+					// 	'init',
+					// 	function (event, slick) {
+					// 		if ($(window).width() < 768) {
+					// 			$(".all-stores-slider-wrapper").css("max-width", $(window).width() - 50 + "px");
+					// 		}
+					// 	}
+					// );
 					function initializeSlick() {
 						$(".all-stores-slider-wrapper").slick({
 							dots: true,

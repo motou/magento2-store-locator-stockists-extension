@@ -1,6 +1,6 @@
 define([
         'jquery',
-        'limesharp_stockists',
+        'storelocator_stockists',
         'stockists_countries',
         'stockists_mapstyles',
         'stockists_search',
@@ -47,7 +47,7 @@ define([
 	            
 	            // get the stores from admin stockists/ajax/stores
 	            function getStores() {
-	                var url = window.location.protocol+"//"+window.location.host + config.moduleUrl + '/ajax/stores';
+	                var url = window.location.protocol+"//"+window.location.host + "/" + config.moduleUrl + '/ajax/stores';
 	                $.ajax({
 	                    dataType: 'json',
 	                    url: url
@@ -79,12 +79,14 @@ define([
 	                    content: ""
 	                });
 	                
-	                function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, email) {
+	                function bindInfoWindow(marker, map, infowindow, name, address, city, postcode, telephone, link, external_link, email) {
 	                    google.maps.event.addListener(marker, 'click', function() {
 	                        var contentString = '<div class="stockists-window" data-latitude="'+marker.getPosition().lat()+'" data-longitude="'+marker.getPosition().lng()+'"><p class="stockists-title">'+name+'</p>'
-	                        if (link) {
-	                            var protocol_link = link.indexOf("http") > -1 ? link : "http://"+link;
-	                            contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+link+'</a></p>'
+	                        if (external_link) {
+	                            var protocol_link = external_link.indexOf("http") > -1 ? external_link : "http://"+external_link;
+	                            contentString += '<p class="stockists-telephone"><a href="'+protocol_link+'" target="_blank">'+external_link+'</a></p>'
+	                        } else if (link) {
+	                            contentString += '<p class="stockists-telephone"><a href="/'+config.moduleUrl+'/'+link+'" target="_blank">Detail page</a></p>'
 	                        }
 	                        if (telephone) {
 	                            contentString += '<p class="stockists-telephone">'+telephone+'</p>';
@@ -134,7 +136,7 @@ define([
 	                    });
 	                    markers.push(marker);
 	    
-	                    bindInfoWindow(marker, map, infowindow, data.name, data.address, data.city, data.postcode, data.phone, data.link, data.email);
+	                    bindInfoWindow(marker, map, infowindow, data.name, data.address, data.city, data.postcode, data.phone, data.link, data.external_link, data.email);
 	                                
 	                }
 	                
@@ -157,7 +159,7 @@ define([
 							var storeDirections = {
 								latitude : $(".stockists-window").attr("data-latitude"),
 								longitude : $(".stockists-window").attr("data-longitude")
-							}
+							};
 							var userTravelMode = $(this).attr("data-directions");
 						
 							getGeoLocation(map, storeDirections, userTravelMode, directionsService, directionsDisplay);
