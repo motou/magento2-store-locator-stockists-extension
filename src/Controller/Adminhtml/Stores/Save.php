@@ -181,7 +181,7 @@ class Save extends Stores
             $this->stockistRepository->save($stockist);
 
             if($data["link"]) {
-                $this->saveUrlRewrite($data["link"], $data['stockist_id'], $storeId);
+                $this->saveUrlRewrite($data["link"], $stockist->getId(), $storeId);
             }
 
             $this->messageManager->addSuccessMessage(__('You saved the store'));
@@ -246,6 +246,7 @@ class Save extends Stores
         $moduleUrl = $this->stockistsConfig->getModuleUrlSettings();
         $getCustomUrlRewrite = $moduleUrl . "/" . $link;
         $stockistId = $moduleUrl . "-" . $id;
+        $storeIds = explode(",", $storeIds);
 
         foreach ($storeIds as $storeId){
 
