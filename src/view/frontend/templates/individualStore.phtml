@@ -23,7 +23,7 @@ declare(strict_types=1);
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
 <?php $storeDetails = $this->getDetails(); ?>
-<?php $allStores = $this->getAllStores(); ?>
+<?php $storeId = $block->getStoreId(); ?>
 <?php
 if($block->getMapPin()){
 
@@ -114,18 +114,21 @@ if($block->getMapPin()){
             <p><?php echo $block->escapeHtml(__("View Our Other Stores")) ?></p>
         </div>
         <div class="all-stores-slider-wrapper">
-            <?php foreach($allStores as $store): ?>
-                <div class="item">
-                    <div class="image">
-                        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
-                             alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
-                    </div>
-                    <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
-                        <div class="details">
-                            <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
-                        </div>
-                    </a>
-                </div>
+            <?php foreach($data as $store): ?>
+		<?php $stores = explode(",", $store["store_id"]); ?>
+		<?php if (in_array($storeId, $stores) and $storeDetails["stockist_id"] != $store["stockist_id"]): ?>
+			<div class="item">
+			    <div class="image">
+				<img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
+				     alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
+			    </div>
+			    <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
+				<div class="details">
+				    <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+				</div>
+			    </a>
+			</div>
+		<?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>
