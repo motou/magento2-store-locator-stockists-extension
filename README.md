@@ -75,7 +75,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * if you want a stockist to be in multiple stores you can pass the ids of stores comma separated inside the store_id field;
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
-![csv]docs/images/csv.jpg?raw=true "CSV")
+![csv](docs/images/csv.jpg?raw=true "CSV")
 
 ### Export
 
