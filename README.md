@@ -75,7 +75,7 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 * if you want a stockist to be in multiple stores you can pass the ids of stores comma separated inside the store_id field;
 * To make sure your csv file is formatted correctly, you can open it in a text editor. It should look like this (comma separated and quoted values):
 
-![csv](../../magento2-store-locator-stockists-extension/docs/images/csv.jpg?raw=true "CSV")
+![csv]docs/images/csv.jpg?raw=true "CSV")
 
 ### Export
 
@@ -90,35 +90,35 @@ Visit the extension website: http://claudiucreanga.me/magento2-store-locator-sto
 
 * Main dashboard:
 
-![Main dashboard](../../magento2-store-locator-stockists-extension/docs/images/main.jpg?raw=true "Main dashboard")
+![Main dashboard](docs/images/main.jpg?raw=true "Main dashboard")
 * Location in admin:
 
-![Locationd](../../magento2-store-locator-stockists-extension/docs/images/location.jpg?raw=true "Location")
+![Locationd](docs/images/location.jpg?raw=true "Location")
 * Settings:
 
-![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings1.jpg?raw=true "Settings")
-![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings2.jpg?raw=true "Settings")
-![Settings](../../magento2-store-locator-stockists-extension/docs/images/settings3.jpg?raw=true "Settings")
+![Settings](docs/images/settings1.jpg?raw=true "Settings")
+![Settings](docs/images/settings2.jpg?raw=true "Settings")
+![Settings](docs/images/settings3.jpg?raw=true "Settings")
 
 * Frontend full page:
 
-![Frontend](../../magento2-store-locator-stockists-extension/docs/images/front.jpg?raw=true "Frontend")
+![Frontend](docs/images/front.jpg?raw=true "Frontend")
 
 * Frontend store window:
 
-![window](../../magento2-store-locator-stockists-extension/docs/images/window.jpg?raw=true "Window")
+![window](docs/images/window.jpg?raw=true "Window")
 
 * Store Details:
 
-![window](../../magento2-store-locator-stockists-extension/docs/images/store-details.png?raw=true "Window")
+![window](docs/images/store-details.png?raw=true "Window")
 
 * Frontend search:
 
-![search](../../magento2-store-locator-stockists-extension/docs/images/search.jpg?raw=true "search")
+![search](docs/images/search.jpg?raw=true "search")
 
 * Driving directions:
 
-![Driving directions](../../magento2-store-locator-stockists-extension/docs/images/directions.jpg?raw=true "Driving directions")
+![Driving directions](docs/images/directions.jpg?raw=true "Driving directions")
 
 ## Uninstall
 
