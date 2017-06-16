@@ -111,7 +111,7 @@
                     <comment>
                         <![CDATA[A default pin image will be used if left blank]]>
                     </comment>
-                    <tooltip>Allowed file types: jpg, jpeg, gif, png.</tooltip>
+                    <tooltip>Allowed file types: jpg, jpeg, gif, png, svg.</tooltip>
                 </field>
                 
                 <field id="unit_length" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
