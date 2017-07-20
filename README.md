@@ -30,7 +30,7 @@ Or you can also get it from the <a href="https://marketplace.magento.com/limesha
 
 It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
-Visit the extension website: http://claudiucreanga.me/magento2-store-locator-stockists-extension/
+Visit the extension website: http://claudiucreanga.github.io/magento2-store-locator-stockists-extension/
 
 <b>You need to use your own gmaps api key</b>. Go to https://developers.google.com/maps/documentation/javascript/get-api-key and get your own key and then insert it in configuration > stockists > Gmaps Api Key. Otherwise the map may not work because of Gmaps' daily limits.
 
