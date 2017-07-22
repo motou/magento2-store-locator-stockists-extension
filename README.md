@@ -26,7 +26,7 @@ $ php bin/magento cache:clean
 
 Or you can download the latest zip file from releases, drop it into your app folder, copy the contents of src folder into the main folder and then run the last 2 commands above.
 
-Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a>
+Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a> (there it is the old version 1.0.6 with less features)
 
 It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
 
