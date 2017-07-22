@@ -82,7 +82,7 @@
                 </field>
                 
                 <field id="longitude" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Latitude</label>
+                    <label>Longitude</label>
                     <comment>
                         <![CDATA[Default longitude when loading the map. It is used for centering the map at load time]]>
                     </comment>
