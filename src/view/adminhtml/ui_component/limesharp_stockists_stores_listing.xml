@@ -326,7 +326,7 @@
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
                     <item name="align" xsi:type="string">left</item>
-                    <item name="label" xsi:type="string" translate="true">Sore Views</item>
+                    <item name="label" xsi:type="string" translate="true">Store Views</item>
                 </item>
             </argument>
         </column>
