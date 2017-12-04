@@ -167,7 +167,7 @@ class Save extends Stores
             $details_image = $this->getUploader('image')->uploadFileAndGetName('details_image', $data);
             $data['details_image'] = $details_image;
 
-            if(isset($data['store_id'])) {
+            if(is_array($data['store_id']) && isset($data['store_id'])) {
                 if(in_array('0',$data['store_id'])){
                     $data['store_id'] = '0';
                 }
