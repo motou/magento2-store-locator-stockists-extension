@@ -1,3 +1,5 @@
+Looking for a maintainer to take control of this project and move it forward. There are new releases of magento2 and apparently some things stopped working, i.e. issue #29. As I no longer work with magento, I don't have time to debug the issue. 
+
 # Magento2 stockists store locator extension
 
 This is a feature rich stockists store locator extension for magento2. 
