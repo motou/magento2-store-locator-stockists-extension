@@ -66,9 +66,8 @@ class Index extends Action
     {
 
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->set(
-            $this->scopeConfig->getValue(self::META_TITLE_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
-        );
+        $pageTitle = $this->scopeConfig->getValue(self::META_TITLE_CONFIG_PATH, ScopeInterface::SCOPE_STORE);
+        $resultPage->getConfig()->getTitle()->set($pageTitle);
         $resultPage->getConfig()->setDescription(
             $this->scopeConfig->getValue(self::META_DESCRIPTION_CONFIG_PATH, ScopeInterface::SCOPE_STORE)
         );
@@ -90,7 +89,7 @@ class Index extends Action
                 $breadcrumbsBlock->addCrumb(
                     'stockists',
                     [
-                        'label'    => __('Stockists'),
+                        'label'    => $pageTitle,
                     ]
                 );
             }
