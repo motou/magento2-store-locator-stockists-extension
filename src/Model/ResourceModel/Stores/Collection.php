@@ -142,7 +142,13 @@ class Collection extends AbstractCollection
                 $store[] = Store::DEFAULT_STORE_ID;
             }
 
-            $this->addFilter('store_id', ['in' => $store], 'public');
+            $filterParams = [];
+
+            foreach ($store as $storeId) {
+                $filterParams[]['finset'] = $storeId;
+            }
+
+            $this->addFilter('store_id', $filterParams, 'public');
         }
         return $this;
     }
