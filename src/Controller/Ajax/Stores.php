@@ -22,6 +22,7 @@ namespace Limesharp\Stockists\Controller\Ajax;
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Responsible for loading page content.
@@ -41,14 +42,21 @@ class Stores extends \Magento\Framework\App\Action\Action
      * @var CollectionFactory
      */
     protected $collectionFactory;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    public $storeManager;
     
     public function __construct(
         Context $context,
         JsonFactory $resultJsonFactory,
-        CollectionFactory $collectionFactory 
+        CollectionFactory $collectionFactory,
+        StoreManagerInterface $storeManager
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->resultJsonFactory = $resultJsonFactory;
+        $this->storeManager = $storeManager;
         parent::__construct($context);
     }
     
@@ -59,7 +67,9 @@ class Stores extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {        
-        $collection = $this->collectionFactory->create()->getData();
+        $collection = $this->collectionFactory->create()
+            ->addStoreFilter($this->storeManager->getStore()->getId())
+            ->getData();
         $json = [];
         foreach ($collection as $stockist) {
             $json[] = $stockist;
