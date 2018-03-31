@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Limesharp\Stockists\Controller\Ajax;
 
+use Limesharp\Stockists\Model\Stores as StoresModel;
 use Limesharp\Stockists\Model\ResourceModel\Stores\CollectionFactory;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
@@ -68,6 +69,7 @@ class Stores extends \Magento\Framework\App\Action\Action
     public function execute()
     {        
         $collection = $this->collectionFactory->create()
+            ->addFieldToFilter('status', StoresModel::STATUS_ENABLED)
             ->addStoreFilter($this->storeManager->getStore()->getId())
             ->getData();
         $json = [];
