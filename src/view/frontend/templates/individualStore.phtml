@@ -23,7 +23,6 @@ declare(strict_types=1);
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
 <?php $storeDetails = $this->getDetails(); ?>
-<?php $storeId = $block->getStoreId(); ?>
 <?php
 if($block->getMapPin()){
 
@@ -115,20 +114,19 @@ if($block->getMapPin()){
         </div>
         <div class="all-stores-slider-wrapper">
             <?php foreach($data as $store): ?>
-		<?php $stores = explode(",", $store["store_id"]); ?>
-		<?php if (in_array($storeId, $stores) and $storeDetails["stockist_id"] != $store["stockist_id"]): ?>
-			<div class="item">
-			    <div class="image">
-				<img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
-				     alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
-			    </div>
-			    <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
-				<div class="details">
-				    <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
-				</div>
-			    </a>
-			</div>
-		<?php endif; ?>
+                <?php if ($storeDetails["stockist_id"] != $store["stockist_id"]): ?>
+                    <div class="item">
+                        <div class="image">
+                        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($store["image"]) ?>"
+                             alt="<?php echo $block->escapeHtml($store["address"]) ?>" />
+                        </div>
+                        <a href="<?php echo $block->escapeHtml(__($store["link"])) ?>" class="individual-store-link">
+                            <div class="details">
+                                <p><?php echo $block->escapeHtml(__($store["name"])) ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -139,23 +137,23 @@ if($block->getMapPin()){
         "*": {
 
             "stockists_individual_stores": {
-	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
-	            "map_pin" : "<?php echo $mapPin; ?>",
-	            "slider_arrow" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/slider-arrow.svg'); ?>",
-	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
-	            "otherStores" : <?php echo json_encode($block->getOtherStoresSettings()) ?>,
-	            "otherStoresSlider" : <?php echo json_encode($block->getSliderSettings()) ?>,
-	            "modulePath" : "<?php echo $block->getBaseImageUrl().$modulePath; ?>",
-	            "zoom_individual" : <?php echo json_encode($block->getZoomIndividualSettings()) ?>,
-	            "storeDetails" : <?php echo json_encode($storeDetails) ?>,
-	            "radius" : <?php echo json_encode($block->getRadiusSettings()) ?>,
-	            "apiKey" : "<?php echo $block->getApiKeySettings(); ?>",
-	            "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
-	            "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
-	            "fillOpacity" : <?php echo json_encode($block->getFillOpacitySettings()) ?>,
-	            "strokeColor" : "<?php echo $block->getStrokeColorSettings() ?>",
-	            "strokeOpacity" : <?php echo json_encode($block->getStrokeOpacitySettings()) ?>,
-	            "strokeWeight" : <?php echo json_encode($block->getStrokeWeightSettings()) ?>
+                "map_styles" : "<?php echo $block->getMapStyles() ?>",
+                "map_pin" : "<?php echo $mapPin; ?>",
+                "slider_arrow" : "<?php echo $block->getViewFileUrl('Limesharp_Stockists::images/slider-arrow.svg'); ?>",
+                "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
+                "otherStores" : <?php echo json_encode($block->getOtherStoresSettings()) ?>,
+                "otherStoresSlider" : <?php echo json_encode($block->getSliderSettings()) ?>,
+                "modulePath" : "<?php echo $block->getBaseImageUrl().$modulePath; ?>",
+                "zoom_individual" : <?php echo json_encode($block->getZoomIndividualSettings()) ?>,
+                "storeDetails" : <?php echo json_encode($storeDetails) ?>,
+                "radius" : <?php echo json_encode($block->getRadiusSettings()) ?>,
+                "apiKey" : "<?php echo $block->getApiKeySettings(); ?>",
+                "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
+                "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
+                "fillOpacity" : <?php echo json_encode($block->getFillOpacitySettings()) ?>,
+                "strokeColor" : "<?php echo $block->getStrokeColorSettings() ?>",
+                "strokeOpacity" : <?php echo json_encode($block->getStrokeOpacitySettings()) ?>,
+                "strokeWeight" : <?php echo json_encode($block->getStrokeWeightSettings()) ?>
             }
 
         }

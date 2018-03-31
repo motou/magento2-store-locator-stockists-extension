@@ -24,7 +24,6 @@ declare(strict_types=1);
 <?php $countryList = $block->getCountries(); ?>
 <?php $modulePath = "limesharp_stockists/stockist/image/"; ?>
 <?php $templateSetting = $block->getTemplateSettings(); ?>
-<?php $storeId = $block->getStoreId(); ?>
 
 <?php
 if($block->getMapPin()){
@@ -67,48 +66,44 @@ if($block->getMapPin()){
                 <div class="results-store">
 
                     <?php foreach ($data as $item): ?>
-                        <?php $stores = explode(",", $item["store_id"]); ?>
-                        <?php if (in_array($storeId, $stores)): ?>
 
-                            <?php $data_marker = $item["latitude"].$item["longitude"]; ?>
+                        <?php $data_marker = $item["latitude"].$item["longitude"]; ?>
 
-                            <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+                        <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
 
-                                <?php if ($item["image"]): ?>
+                            <?php if ($item["image"]): ?>
 
-                                    <div class="image">
-                                        <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>"
-                                             alt="<?php echo $block->escapeHtml($item["name"]) ?>" />
-                                    </div>
+                                <div class="image">
+                                    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>"
+                                        alt="<?php echo $block->escapeHtml($item["name"]) ?>" />
+                                </div>
 
+                            <?php endif; ?>
+
+                            <div class="results-item-data">
+
+                                <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+
+                                <?php if ($item["address"]): ?>
+                                    <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
                                 <?php endif; ?>
 
-                                <div class="results-item-data">
-
-                                    <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-
-                                    <?php if ($item["address"]): ?>
-                                        <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-                                    <?php endif; ?>
-
-                                    <?php if ($item["city"]): ?>
-                                        <p class="results-phone">
-                                            <?php
+                                <?php if ($item["city"]): ?>
+                                    <p class="results-phone">
+                                        <?php
                                             echo $block->escapeHtml($item["city"]);
                                             echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : "";
-                                            ?>
-                                        </p>
-                                    <?php endif; ?>
+                                        ?>
+                                    </p>
+                                <?php endif; ?>
 
-                                    <?php if ($item["country"] && $countryList[$item["country"]]): ?>
-                                        <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
-                                    <?php endif; ?>
-
-                                </div>
+                                <?php if ($item["country"] && $countryList[$item["country"]]): ?>
+                                    <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+                                <?php endif; ?>
 
                             </div>
 
-                        <?php endif; ?>
+                        </div>
 
                     <?php endforeach; ?>
 
@@ -153,47 +148,43 @@ if($block->getMapPin()){
             <div class="results-store">
 
                 <?php foreach ($data as $item): ?>
-                    <?php $stores = explode(",", $item["store_id"]); ?>
-                    <?php if (in_array($storeId, $stores)): ?>
+                    <?php $data_marker = $item["latitude"].$item["longitude"]; ?>
 
-                        <?php $data_marker = $item["latitude"].$item["longitude"]; ?>
+                    <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
 
-                        <div class="results-content loaded-results" data-marker="<?php echo $block->escapeHtml($data_marker); ?>">
+                        <?php if ($item["image"]): ?>
 
-                            <?php if ($item["image"]): ?>
-
-                                <div class="image">
-                                    <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>"
-                                         alt="<?php echo $block->escapeHtml($item["name"]) ?>" />
-                                </div>
-
-                            <?php endif; ?>
-
-                            <div class="results-item-data">
-
-                                <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
-
-                                <?php if ($item["address"]): ?>
-                                    <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
-                                <?php endif; ?>
-
-                                <?php if ($item["city"]): ?>
-                                    <p class="results-phone">
-                                        <?php
-                                        echo $block->escapeHtml($item["city"]);
-                                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : "";
-                                        ?>
-                                    </p>
-                                <?php endif; ?>
-
-                                <?php if ($item["country"] && $countryList[$item["country"]]): ?>
-                                    <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
-                                <?php endif; ?>
-
+                            <div class="image">
+                                <img src="<?php echo $block->getBaseImageUrl().$modulePath.$block->escapeHtml($item["image"]) ?>"
+                                    alt="<?php echo $block->escapeHtml($item["name"]) ?>" />
                             </div>
 
+                        <?php endif; ?>
+
+                        <div class="results-item-data">
+
+                            <p class="results-title"><?php echo $block->escapeHtml($item["name"]); ?></p>
+
+                            <?php if ($item["address"]): ?>
+                                <p class="results-address"><?php echo $block->escapeHtml($item["address"]); ?></p>
+                            <?php endif; ?>
+
+                            <?php if ($item["city"]): ?>
+                                <p class="results-phone">
+                                    <?php
+                                        echo $block->escapeHtml($item["city"]);
+                                        echo $block->escapeHtml($item["postcode"]) ? ", " . $block->escapeHtml($item["postcode"]) : "";
+                                    ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <?php if ($item["country"] && $countryList[$item["country"]]): ?>
+                                <p class="results-miles"><?php echo $block->escapeHtml($countryList[$item["country"]]) ?></p>
+                            <?php endif; ?>
+
                         </div>
-                    <?php endif; ?>
+
+                    </div>
 
                 <?php endforeach; ?>
 
@@ -212,22 +203,22 @@ if($block->getMapPin()){
         "*": {
 
             "limesharp_stockists": {
-	            "moduleUrl" : "<?php echo $block->getModuleUrlSettings() ?>",
-	            "map_styles" : "<?php echo $block->getMapStyles() ?>",
-	            "map_pin" : "<?php echo $mapPin; ?>",
-	            "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
-	            "zoom" : <?php echo json_encode($block->getZoomSettings()) ?>,
-	            "latitude" : <?php echo json_encode($block->getLatitudeSettings()) ?>,
-	            "longitude" : <?php echo json_encode($block->getLongitudeSettings()) ?>,
-	            "radius" : <?php echo json_encode($block->getRadiusSettings()) ?>,
-	            "template" : "<?php echo $templateSetting; ?>",
-	            "apiKey" : "<?php echo $block->getApiKeySettings(); ?>",
-	            "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
-	            "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
-	            "fillOpacity" : <?php echo json_encode($block->getFillOpacitySettings()) ?>,
-	            "strokeColor" : "<?php echo $block->getStrokeColorSettings() ?>",
-	            "strokeOpacity" : <?php echo json_encode($block->getStrokeOpacitySettings()) ?>,
-	            "strokeWeight" : <?php echo json_encode($block->getStrokeWeightSettings()) ?>
+                "moduleUrl" : "<?php echo $block->getModuleUrlSettings() ?>",
+                "map_styles" : "<?php echo $block->getMapStyles() ?>",
+                "map_pin" : "<?php echo $mapPin; ?>",
+                "geolocation" : <?php echo json_encode($block->getLocationSettings()) ?>,
+                "zoom" : <?php echo json_encode($block->getZoomSettings()) ?>,
+                "latitude" : <?php echo json_encode($block->getLatitudeSettings()) ?>,
+                "longitude" : <?php echo json_encode($block->getLongitudeSettings()) ?>,
+                "radius" : <?php echo json_encode($block->getRadiusSettings()) ?>,
+                "template" : "<?php echo $templateSetting; ?>",
+                "apiKey" : "<?php echo $block->getApiKeySettings(); ?>",
+                "unit" : "<?php echo $block->getUnitOfLengthSettings() ?>",
+                "fillColor" : "<?php echo $block->getFillColorSettings() ?>",
+                "fillOpacity" : <?php echo json_encode($block->getFillOpacitySettings()) ?>,
+                "strokeColor" : "<?php echo $block->getStrokeColorSettings() ?>",
+                "strokeOpacity" : <?php echo json_encode($block->getStrokeOpacitySettings()) ?>,
+                "strokeWeight" : <?php echo json_encode($block->getStrokeWeightSettings()) ?>
             }
 
         }
