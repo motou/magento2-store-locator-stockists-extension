@@ -25,7 +25,14 @@
              sortOrder="9999"
              resource="Limesharp_Stockists::stores"
              parent="Magento_Backend::content"
+        />
+        <add id="Limesharp_Stockists::store"
+             title="Stores"
+             module="Limesharp_Stockists"
+             sortOrder="10"
+             resource="Limesharp_Stockists::stores"
+             parent="Limesharp_Stockists"
              action="stockists/stores"
-            />                            
+            />
     </menu>
 </config>
