@@ -18,10 +18,12 @@ declare(strict_types=1);
  */
 namespace Limesharp\Stockists\Api\Data;
 
+use Magento\Framework\Api\ExtensibleDataInterface;
+
 /**
  * @api
  */
-interface StockistInterface
+interface StockistInterface extends ExtensibleDataInterface
 {
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case
@@ -51,14 +53,6 @@ interface StockistInterface
     const STATION             = 'station';
     const DETAILS_IMAGE       = 'details_image';
     const EXTERNAL_LINK       = 'external_link';
-
-
-    /**
-     * Get ID
-     *
-     * @return int|null
-     */
-    public function getId();
 
     /**
      * Get schedule
@@ -208,14 +202,6 @@ interface StockistInterface
      * @return string
      */
     public function getCountry();
-
-    /**
-     * set id
-     *
-     * @param $id
-     * @return StockistInterface
-     */
-    public function setId($id);
 
     /**
      * set name
