@@ -20,6 +20,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Limesharp\Stockists\Api\StockistRepositoryInterface" type="Limesharp\Stockists\Model\StockistRepository" />
     <preference for="Limesharp\Stockists\Api\Data\StockistInterface" type="Limesharp\Stockists\Model\Stores" />
+    <preference for="Limesharp\Stockists\Api\Data\Stockist\CustomAttributeListInterface" type="Limesharp\Stockists\Model\Stores\CustomAttributeList" />    
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">

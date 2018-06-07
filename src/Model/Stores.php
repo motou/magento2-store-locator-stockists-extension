@@ -18,11 +18,13 @@ declare(strict_types=1);
  */
 namespace Limesharp\Stockists\Model;
 
+use Magento\Framework\Api\ExtensionAttributesFactory;
+use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Data\Collection\Db;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\FilterManager;
-use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
@@ -36,7 +38,7 @@ use Limesharp\Stockists\Model\Source\AbstractSource;
  * @method StockistResourceModel _getResource()
  * @method StockistResourceModel getResource()
  */
-class Stores extends AbstractModel implements StockistInterface, RoutableInterface
+class Stores extends AbstractExtensibleModel implements StockistInterface, RoutableInterface
 {
     /**
      * @var int
@@ -94,8 +96,15 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public $optionProviders;
 
     /**
+     * @var \Limesharp\Stockists\Api\Data\Stockist\CustomAttributeListInterface
+     */
+    private $attributeList;
+
+    /**
      * @param Context $context
      * @param Registry $registry
+     * @param ExtensionAttributesFactory $extensionFactory
+     * @param AttributeValueFactory $customAttributeFactory
      * @param Output $outputProcessor
      * @param UploaderPool $uploaderPool
      * @param FilterManager $filter
@@ -108,6 +117,8 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
     public function __construct(
         Context $context,
         Registry $registry,
+        ExtensionAttributesFactory $extensionFactory,
+        AttributeValueFactory $customAttributeFactory,
         Output $outputProcessor,
         UploaderPool $uploaderPool,
         FilterManager $filter,
@@ -122,7 +133,15 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
         $this->filter          = $filter;
         $this->urlModel        = $urlModel;
         $this->optionProviders = $optionProviders;
-        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        parent::__construct(
+            $context,
+            $registry,
+            $extensionFactory,
+            $customAttributeFactory,
+            $resource,
+            $resourceCollection,
+            $data
+        );
     }
 
     /**
@@ -679,7 +698,7 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
      */
     public function getIdentities()
     {
-        return [self::CACHE_TAG . '_' . $this->getId()];
+        return [self::CACHE_TAG . '_' . $this->getStoreId()];
     }
 
     /**
@@ -730,5 +749,49 @@ class Stores extends AbstractModel implements StockistInterface, RoutableInterfa
             return '';
         }
         return $this->optionProviders[$attribute]->getOptionText($this->getData($attribute));
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface|null
+     */
+    public function getExtensionAttributes()
+    {
+        return $this->_getExtensionAttributes();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface $extensionAttributes
+     * @return $this
+     */
+    public function setExtensionAttributes(
+        \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface $extensionAttributes
+    ) {
+        return $this->_setExtensionAttributes($extensionAttributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getCustomAttributesCodes()
+    {
+        return array_keys($this->getAttributeList()->getAttributes());
+    }
+
+    /**
+     * Get new AttributeList dependency for application code.
+     * @return \Magento\Customer\Model\Address\CustomAttributeListInterface
+     */
+    private function getAttributeList()
+    {
+        if (!$this->attributeList) {
+            $this->attributeList = \Magento\Framework\App\ObjectManager::getInstance()->get(
+                \Limesharp\Stockists\Api\Data\Stockist\CustomAttributeListInterface::class
+            );
+        }
+        return $this->attributeList;
     }
 }
