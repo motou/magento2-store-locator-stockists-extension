@@ -96,7 +96,7 @@ class StockistRepository implements StockistRepositoryInterface
     public function save(StockistInterface $stockist)
     {
         /** @var StockistInterface|\Magento\Framework\Model\AbstractModel $stockist */
-        if (empty($stockist->getStoreId())) {
+        if ($stockist->getStoreId() == "") {
             $storeId = $this->storeManager->getStore()->getId();
             $stockist->setStoreId($storeId);
         }
