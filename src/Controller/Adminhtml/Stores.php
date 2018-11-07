@@ -89,6 +89,7 @@ abstract class Stores extends Action
     {
         $inputFilter = new \Zend_Filter_Input(
             [],
+            [],
             $data
         );
         $data = $inputFilter->getUnescaped();
