@@ -1,4 +1,3 @@
-Looking for a maintainer to take control of this project and move it forward. As I no longer work with magento, I don't have time to improve it or debug issues. Anyone interested, post your availability here: https://github.com/ClaudiuCreanga/magento2-store-locator-stockists-extension/issues/30
 
 # Magento2 stockists store locator extension
 
