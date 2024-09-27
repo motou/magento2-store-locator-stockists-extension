@@ -92,11 +92,6 @@
             <argument name="imageModel" xsi:type="object">LimesharpStockistsStoresImageUploader</argument>
         </arguments>
     </type>
-    <type name="Limesharp\Stockists\Model\Output">
-        <arguments>
-            <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
-        </arguments>
-    </type>
     <virtualType name="LimesharpStockistsModelStoresSourceStatus" type="Limesharp\Stockists\Model\Source\Options">
         <arguments>
             <argument name="options" xsi:type="array">
