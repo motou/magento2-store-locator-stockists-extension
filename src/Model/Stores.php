@@ -86,11 +86,6 @@ class Stores extends AbstractExtensibleModel implements StockistInterface, Routa
     public $uploaderPool;
 
     /**
-     * @var \Limesharp\Stockists\Model\Output
-     */
-    public $outputProcessor;
-
-    /**
      * @var AbstractSource[]
      */
     public $optionProviders;
@@ -105,7 +100,6 @@ class Stores extends AbstractExtensibleModel implements StockistInterface, Routa
      * @param Registry $registry
      * @param ExtensionAttributesFactory $extensionFactory
      * @param AttributeValueFactory $customAttributeFactory
-     * @param Output $outputProcessor
      * @param UploaderPool $uploaderPool
      * @param FilterManager $filter
      * @param Url $urlModel
@@ -119,7 +113,6 @@ class Stores extends AbstractExtensibleModel implements StockistInterface, Routa
         Registry $registry,
         ExtensionAttributesFactory $extensionFactory,
         AttributeValueFactory $customAttributeFactory,
-        Output $outputProcessor,
         UploaderPool $uploaderPool,
         FilterManager $filter,
         Url $urlModel,
@@ -128,7 +121,6 @@ class Stores extends AbstractExtensibleModel implements StockistInterface, Routa
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null
     ) {
-        $this->outputProcessor = $outputProcessor;
         $this->uploaderPool    = $uploaderPool;
         $this->filter          = $filter;
         $this->urlModel        = $urlModel;
