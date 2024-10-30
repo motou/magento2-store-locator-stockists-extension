@@ -116,10 +116,9 @@ class Uploader
         UploaderFactory $uploaderFactory,
         StoreManagerInterface $storeManager,
         LoggerInterface $logger,
-        $allowedExtensions = [],
         $baseTmpPath,
-        $basePath
-
+        $basePath,
+        $allowedExtensions = []
     ) {
         $this->coreFileStorageDatabase  = $coreFileStorageDatabase;
         $this->mediaDirectory           = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
