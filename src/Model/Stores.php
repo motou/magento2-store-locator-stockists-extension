@@ -118,8 +118,8 @@ class Stores extends AbstractExtensibleModel implements StockistInterface, Routa
         Url $urlModel,
         array $optionProviders = [],
         array $data = [],
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null
     ) {
         $this->uploaderPool    = $uploaderPool;
         $this->filter          = $filter;

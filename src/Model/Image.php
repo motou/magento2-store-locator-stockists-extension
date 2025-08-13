@@ -222,8 +222,8 @@ class Image extends AbstractModel
         ViewFileSystem $viewFileSystem,
         ScopeConfigInterface $scopeConfig,
         $entityCode,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->storeManager             = $storeManager;

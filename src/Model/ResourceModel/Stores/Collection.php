@@ -79,7 +79,7 @@ class Collection extends AbstractCollection
         ManagerInterface $eventManager,
         StoreManagerInterface $storeManager,
         $connection = null,
-        AbstractDb $resource = null
+        ?AbstractDb $resource = null
     ) {
         $this->storeManager = $storeManager;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
