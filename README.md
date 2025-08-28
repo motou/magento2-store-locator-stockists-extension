@@ -29,7 +29,7 @@ Or you can download the latest zip file from releases, drop it into your app fol
 
 Or you can also get it from the <a href="https://marketplace.magento.com/limesharp-stockists.html"> magento2 marketplace.</a> (there it is the old version 1.0.6 with less features)
 
-It requires magento 2.1 or above and php7 (for php5.6 use v.1.0.6).
+It requires magento 2.2 or above and php 7.1+ (for php 5.6 use v.1.0.6).
 
 Visit the extension website: http://claudiucreanga.github.io/magento2-store-locator-stockists-extension/
 
