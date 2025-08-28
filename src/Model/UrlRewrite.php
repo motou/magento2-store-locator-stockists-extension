@@ -97,12 +97,12 @@ class UrlRewrite extends Value
         Registry $registry,
         ScopeConfigInterface $config,
         TypeListInterface $cacheTypeList,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
 	    BaseUrlRewrite $urlRewrite,
 	    UrlRewriteService $urlRewriteService,
 	    StoreManagerInterface $storeManager,
 	    UrlFinderInterface $urlFinder,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
 		$this->urlRewrite = $urlRewrite;
